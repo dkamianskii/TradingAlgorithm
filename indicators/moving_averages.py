@@ -8,83 +8,87 @@ Created on Mon Dec 13 13:05:20 2021
 
 import pandas as pd
 import numpy as np
+from typing import Union, Optional, Sequence
+
+# Typing
+Realization = Sequence[float]
 
 
 # Simple moving average
 
-def SMA(time_series, N):
+def SMA(time_series: Union[pd.Series, Realization], N: int) -> np.ndarray:
     """
-        Compute Simple Moving Average for time_series
-    """
-    if (isinstance(time_series, pd.core.series.Series)):
-        ts = time_series
-    elif (isinstance(time_series, np.ndarray) or isinstance(time_series, list)):
-        ts = pd.Series(time_series)
-    else:
-        raise TypeError("time_series parameter must be pandas Series, list or numpy ndarray")
+        Compute Simple Moving Average for time series
 
-    if (not isinstance(N, int)):
-        raise TypeError("N parameter must be int")
+        :param time_series: Input time series or a sequence of floats
+        :param N: Number of points used in averaging
+    """
+    if (isinstance(time_series, pd.Series)):
+        ts = time_series
+    else:
+        ts = pd.Series(time_series)
+
     if ((N >= len(time_series)) or (N < 0)):
-        raise ValueError("N parameter must be >= 0 and less then lenght of the time_series")
+        raise ValueError("N parameter must be >= 0 and less then length of the time_series")
 
     return ts.rolling(N).mean().to_numpy()[(N - 1):]
 
 
 # EMA - Exponential moving average
 
-def EMA(time_series: "pandas Series, list or numpy ndarray",
-        N: "int >= 0 ,number of previous data points for averaging",
-        alpha: "float in (0,1) interval, smoothing factor" = None,
-        ema_0_init: "str: 'mean N' or 'first', definied the way of initialization of the first ema:" +
-                    "first value can be chosen or can be calculated as mean of first N values" = "first"
-        ) -> "numpy ndarray of averaged values, shorter then original time_series by size of N":
+def EMA(time_series: Union[pd.Series, Realization], N: int,
+        alpha: Optional[float] = None,
+        ema_0_init: Optional[str] = "first") -> np.ndarray:
     """
-        Compute Exponential Moving Average for time_series
-    """
-    if (not (isinstance(time_series, pd.core.series.Series) or
-             isinstance(time_series, list) or
-             isinstance(time_series, np.ndarray))):
-        raise TypeError("time_series parameter must be pandas Series, list or numpy ndarray")
+        Compute Exponential Moving Average for time series
+        Calculation Formula EMA(i) = alpha*time_series[i] + (1 - alpha)*EMA(i - 1)
 
-    if (not isinstance(N, int)):
-        raise TypeError("N parameter must be int")
+        :param time_series: Input time series or a sequence of floats
+        :param N: Determines alpha if it's not specified and number of points in SMA,
+         using for calculating first EMA
+        :param alpha: Smoothing coefficient, must be in (0,1) range. The bigger it is
+         the more weight last element in averaging gains. By default, calculates as 2 / (N + 1)
+        :param ema_0_init: Determines the way first EMA is calculated. Could be 'first' or 'mean N'.
+         If 'first' then EMA(0) = time_series[0], if 'mean N' then EMA(0) = SMA(time_series[0:N - 1]).
+         Equal 'first' by default.
+    """
     if ((N >= len(time_series)) or (N < 0)):
-        raise ValueError("N parameter must be >= 0 and less then lenght of the time_series")
+        raise ValueError("N parameter must be >= 0 and less then length of the time_series")
 
     if (alpha is None):
         alpha = 2 / (N + 1)
-    elif (not isinstance(alpha, float)):
-        raise TypeError("alpha parameter must be float")
     elif ((alpha <= 0) or (alpha >= 1)):
         raise ValueError("alpha parameter must be in (0,1) boundaries")
 
-    ema = None
-    final_lenght = 0
     indent = 0
 
     if (ema_0_init == "mean N"):
         final_lenght = len(time_series) - N + 1
-        ema = np.ndarray(final_lenght)
+        ema = np.empty(final_lenght)
         ema[0] = np.mean(time_series[0:N])
         indent = N - 1
     elif (ema_0_init == "first"):
         final_lenght = len(time_series)
-        ema = np.ndarray(final_lenght)
+        ema = np.empty(final_lenght)
         ema[0] = time_series[0]
     else:
-        raise TypeError("ema_0_init parameter must be str: 'mean N' or 'first'")
+        raise ValueError("ema_0_init parameter could be only 'mean N' or 'first'")
 
     for i in range(1, final_lenght):
         ema[i] = alpha * time_series[indent + i] + (1 - alpha) * ema[i - 1]
+
     return ema
 
 
 # SMMA - Smoothed moving average
 
-def SMMA(time_series: "pandas Series, list or numpy ndarray",
-         N: "int >= 0 ,number of previous data points for averaging") -> "numpy ndarray of averaged values, shorter then original time_series by size of N":
+def SMMA(time_series: Union[pd.Series, Realization], N: int) -> np.ndarray:
     """
-        Compute Smoothed Moving Average for time_series
+        Compute Smoothed Moving Average for time series
+        Equals EMA with parameter alpha = 1 / N, and EMA(0) = SMA(time_series[0:N - 1])
+
+        :param time_series: Input time series or a sequence of floats
+        :param N: Determines alpha (alpha = 1 / N) and number of points in SMA,
+         using for calculating first EMA
     """
-    return EMA(time_series, N, (1 / N), ema_0_init="mean N")
+    return EMA(time_series, N, alpha=(1 / N), ema_0_init="mean N")

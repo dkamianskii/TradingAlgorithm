@@ -28,8 +28,8 @@ def SMA(time_series: Union[pd.Series, Realization], N: int) -> np.ndarray:
     else:
         ts = pd.Series(time_series)
 
-    if ((N >= len(time_series)) or (N < 0)):
-        raise ValueError("N parameter must be >= 0 and less then length of the time_series")
+    if ((N >= len(time_series)) or (N <= 0)):
+        raise ValueError("N parameter must be > 0 and less then length of the time_series")
 
     return ts.rolling(N).mean().to_numpy()[(N - 1):]
 
@@ -52,8 +52,8 @@ def EMA(time_series: Union[pd.Series, Realization], N: int,
          If 'first' then EMA(0) = time_series[0], if 'mean N' then EMA(0) = SMA(time_series[0:N - 1]).
          Equal 'first' by default.
     """
-    if ((N >= len(time_series)) or (N < 0)):
-        raise ValueError("N parameter must be >= 0 and less then length of the time_series")
+    if ((N >= len(time_series)) or (N <= 0)):
+        raise ValueError("N parameter must be > 0 and less then length of the time_series")
 
     if (alpha is None):
         alpha = 2 / (N + 1)

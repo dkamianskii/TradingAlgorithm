@@ -57,7 +57,7 @@ def EMA(time_series: Union[pd.Series, Realization], N: int,
 
     if (alpha is None):
         alpha = 2 / (N + 1)
-    elif ((alpha <= 0) or (alpha >= 1)):
+    elif ((alpha <= 0) or (alpha > 1)):
         raise ValueError("alpha parameter must be in (0,1) boundaries")
 
     indent = 0

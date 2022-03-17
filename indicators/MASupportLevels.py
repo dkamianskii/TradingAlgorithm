@@ -7,9 +7,9 @@ from indicators.AbstractIndicator import AbstractIndicator
 import plotly as py
 import plotly.express as px
 import cufflinks as cf
+import plotly.graph_objects as go
 
 cf.go_offline()
-import plotly.graph_objects as go
 
 
 class MASupportLevels(AbstractIndicator):
@@ -134,7 +134,7 @@ class MASupportLevels(AbstractIndicator):
         if ((point["Open"] > MA_point["main"]) and (point["Open"] > point["Close"])):  # support
             if ((point["Close"] <= MA_point["top border"]) or (point["Low"] <= MA_point["top border"])):
                 return (True, "support")
-        elif((point["Open"] < MA_point["main"]) and (point["Open"] < point["Close"])):  # resistance
+        elif ((point["Open"] < MA_point["main"]) and (point["Open"] < point["Close"])):  # resistance
             if ((point["Close"] >= MA_point["bottom border"]) or (point["High"] >= MA_point["bottom border"])):
                 return (True, "resistance")
 
@@ -197,7 +197,6 @@ class MASupportLevels(AbstractIndicator):
         if ((end_date is None) or (end_date > self.data.index[-1])):
             end_date = self.data.index[-1]
 
-        day_diff = (end_date - start_date).days
         selected_data = self.data[start_date:end_date]
 
         fig = go.Figure()
@@ -209,7 +208,8 @@ class MASupportLevels(AbstractIndicator):
                             name="Price")
 
         for period, MA in self.MAs.items():
-            if ((self.tested_MAs is not None) and (len(self.tested_MAs.keys()) != 0) and (period in self.tested_MAs.keys())):
+            if ((self.tested_MAs is not None) and (len(self.tested_MAs.keys()) != 0) and (
+                    period in self.tested_MAs.keys())):
                 fig.add_trace(go.Scatter(x=MA.index, y=MA["main"], mode='lines',
                                          line=dict(width=2), name=f"{period} EMA tested"))
             else:
@@ -219,20 +219,12 @@ class MASupportLevels(AbstractIndicator):
         selected_trade_points = self.select_action_trade_points(start_date=start_date, end_date=end_date)
 
         buy_actions = ["buy", "actively buy"]
-        buys = selected_trade_points[selected_trade_points["Action"].isin(buy_actions)]
-        fig.add_trace(go.Scatter(x=buys.index,
-                                 y=buys["This Day Close"],
+        fig.add_trace(go.Scatter(x=selected_trade_points.index,
+                                 y=selected_trade_points["This Day Close"],
                                  mode="markers",
-                                 marker=dict(color="green", size=5),
-                                 name="Buy action"))
-
-        sell_actions = ["sell", "actively sell"]
-        sells = selected_trade_points[selected_trade_points["Action"].isin(sell_actions)]
-        fig.add_trace(go.Scatter(x=sells.index,
-                                 y=sells["This Day Close"],
-                                 mode="markers",
-                                 marker=dict(color="red", size=5),
-                                 name="Sell action"))
+                                 marker=dict(color=np.where(selected_trade_points["Action"].isin(buy_actions), "green", "red"),
+                                             size=5),
+                                 name="Action points"))
 
         fig.update_layout(title="Price with Moving Averages",
                           xaxis_title="Date",

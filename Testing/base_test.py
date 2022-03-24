@@ -10,6 +10,8 @@ from indicators.MASupportLevels import MASupportLevels
 from indicators.SuperTrend import SuperTrend
 
 data = yf.download("AAPL", start="2021-01-01", end="2021-12-30")
+new_date = pd.Timestamp(ts_input="2022-01-05")
+data.at[new_date,"Close"] = 10
 # start_date = pd.Timestamp(ts_input="2021-10-01")
 # print(data["Close"][start_date])
 # test_df = pd.DataFrame(index=data.index[20:], columns=["Value", "Color"])
@@ -20,11 +22,12 @@ data = yf.download("AAPL", start="2021-01-01", end="2021-12-30")
 # support_levels.test_MAs_for_data()
 # support_levels.find_trade_points(use_tested_MAs=True)
 # tp = support_levels.trade_points
-super_trend = SuperTrend(data=data)
-super_trend.calculate()
-super_trend.find_trade_points()
-tp = super_trend.select_action_trade_points()
-super_trend.plot()
+# super_trend = SuperTrend(data=data)
+# super_trend.calculate()
+# super_trend.find_trade_points()
+# tp = super_trend.select_action_trade_points()
+# super_trend.plot()
+t = data.loc[new_date]
 dd = 1
 
 # print(data.shape[0])

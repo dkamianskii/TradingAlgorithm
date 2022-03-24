@@ -49,6 +49,12 @@ class AbstractIndicator(ABC):
             self.set_data(data)
 
     @abstractmethod
+    def evaluate_new_point(self, new_point: pd.Series, special_params: Optional = None):
+        self.data.append(new_point)
+        self.price.append(new_point["Close"])
+        pass
+
+    @abstractmethod
     def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
         pass
 
@@ -62,10 +68,6 @@ class AbstractIndicator(ABC):
 
         if (date > self.trade_points.index[-1]):
             raise ValueError("irrelevant date was translated")
-        # next_date_to_action_index = self.trade_points.index.tolist().index(date) + 1
-        # if(next_date_to_action_index >= self.trade_points.shape[0]):
-        #     return
-        #next_date_to_action = self.trade_points.index[next_date_to_action_index]
         self.trade_points.at[date, "Action"] = action
 
     def select_action_trade_points(self, start_date: Optional[pd.Timestamp] = None,

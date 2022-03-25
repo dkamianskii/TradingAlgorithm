@@ -11,6 +11,8 @@ import numpy as np
 from typing import Union, Optional, Sequence
 
 # Typing
+from numpy import double
+
 Realization = Sequence[float]
 
 
@@ -80,6 +82,14 @@ def EMA(time_series: Union[pd.Series, Realization], N: int,
     return ema
 
 
+def EMA_one_point(prev_ema: Union[float, double, int],
+                  new_point: Union[float, double, int],
+                  N: int, alpha: Optional[float] = None):
+    if (alpha is None):
+        alpha = 2 / (N + 1)
+    return alpha * new_point + (1 - alpha) * prev_ema
+
+
 # SMMA - Smoothed moving average
 
 def SMMA(time_series: Union[pd.Series, Realization], N: int) -> np.ndarray:
@@ -92,3 +102,9 @@ def SMMA(time_series: Union[pd.Series, Realization], N: int) -> np.ndarray:
          using for calculating first EMA
     """
     return EMA(time_series, N, alpha=(1 / N), ema_0_init="mean N")
+
+
+def SMMA_one_point(prev_smma: Union[float, double, int],
+                   new_point: Union[float, double, int],
+                   N: int):
+    return EMA_one_point(prev_smma, new_point, N, alpha=(1 / N))

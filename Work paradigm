@@ -1,0 +1,2 @@
+We must keep all info in vars that is needed to calculate indicator for new point.
+Rework all process of finding trade points. It must be based on making trade decision on one point at once.

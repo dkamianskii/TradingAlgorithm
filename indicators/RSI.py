@@ -5,12 +5,18 @@ Created on Mon Dec 13 13:13:05 2021
 @author: aspod
 """
 
-import indicators.moving_averages as ma
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from typing import Optional, Dict
+from typing import Optional, Dict, Union
+
+import indicators.moving_averages as ma
 from indicators.AbstractIndicator import AbstractIndicator
+
+import cufflinks as cf
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
+
+cf.go_offline()
 
 # RSI - Relative strength index
 class RSI(AbstractIndicator):
@@ -24,7 +30,8 @@ class RSI(AbstractIndicator):
     Methods: set_N, set_data, calculate, print_trade_points, plot
     Attributes: RSI_val, trade_points
     """
-    def __init__(self, data: Optional[pd.DataFrame] = None, N: Optional[int] = 14):
+    def __init__(self, data: Optional[pd.DataFrame] = None,
+                 N: Optional[int] = 14):
         """
         :param N: Parameter that determines number of points in MA, used for calculating index.
          Must be > 0. By default, equals 14
@@ -32,9 +39,12 @@ class RSI(AbstractIndicator):
          but must be set before calculating
         """
         super(RSI, self).__init__(data)
-        self._N: int
-        self.set_N(N)
+        self._N: int = 0
         self.RSI_val: Optional[pd.Series] = None
+        self._last_average_U: float = 0
+        self._last_average_D: float = 0
+        self._prev_RSI: Optional[float] = None
+        self.set_N(N)
 
     def set_N(self, N: int):
         """
@@ -43,7 +53,97 @@ class RSI(AbstractIndicator):
         if (N <= 0):
             raise ValueError("N parameter must be > 0 and less then length of the time_series")
         self._N = N
+        self.clear_vars()
         return self
+
+    def clear_vars(self):
+        super().clear_vars()
+        self.RSI_val: Optional = None
+        self._last_average_U = 0
+        self._last_average_D = 0
+        self._prev_RSI = None
+
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None):
+        """
+        Calculates RSI for provided date point
+
+        Formula: RSI = 100 - 100 / (1 + (average gain / average loss) )
+        """
+        date = pd.Timestamp(ts_input=date)
+        prev_Close = self.data.iloc[-1]["Close"]
+        if (new_point["Close"] > prev_Close):
+            val_U = new_point["Close"] - prev_Close
+            val_D = 0
+        else:
+            val_D = prev_Close - new_point["Close"]
+            val_U = 0
+        RS = np.divide(ma.SMMA_one_point(prev_smma=self._last_average_U, new_point=val_U, N=self._N),
+             ma.SMMA_one_point(prev_smma=self._last_average_D, new_point=val_D, N=self._N))
+        RSI = 100 - 100 / (1 + RS)
+        self.data.loc[date] = new_point
+        self.RSI_val = self.RSI_val.append(to_append=pd.Series({date: RSI}))
+        self.__make_trade_decision(new_point, date, RSI)
+        return self
+
+    def __make_trade_decision(self, new_point, date, RSI):
+        """
+                Trade strategy explanation:
+                Key index values are 70 and 30.
+                When index is >= 70 we consider that stock is overbought and for <= 30 is oversold.
+                We describe strategy for sell/open short case, buy/open long is symmetrically opposite.
+
+                1. While RSI is in (70,30) boundaries we consider there is no signal to sell or buy.
+                2. Once RSI hits boundary we start track it's dynamic.
+                3. If RSI achieves level of 80, it is a strong sign that stock is overbought and soon will go down - actively sell.
+                4. In other cases:
+                    - if we see a rapid index change (>= 5 in one day) - sell.
+                    - if we see RSI goes down and gets close to the boundary - sell.
+                    - if current RSI is less than 70 but previous day it was over it - sell.
+                """
+        if ((RSI < 70) and (RSI > 30)):
+            if (self._prev_RSI is None):
+                self.add_trade_point(date, new_point["Close"], "none")
+            else:
+                if ((self._prev_RSI >= 70) and (RSI >= 67.5)):
+                    self.add_trade_point(date, new_point["Close"], "sell")
+                elif ((self._prev_RSI <= 30) and (RSI <= 32.5)):
+                    self.add_trade_point(date, new_point["Close"], "buy")
+                else:
+                    self.add_trade_point(date, new_point["Close"], "none")
+                self._prev_RSI = None
+            return
+
+        if (RSI > 80):
+            self.add_trade_point(date, new_point["Close"], "actively sell")
+            self._prev_RSI = None
+            return
+        if (RSI < 20):
+            self.add_trade_point(date, new_point["Close"], "actively buy")
+            self._prev_RSI = None
+            return
+
+        if (RSI >= 70):
+            if (self._prev_RSI is None):
+                self._prev_RSI = RSI
+                self.add_trade_point(date, new_point["Close"], "none")
+                return
+            if ((abs(RSI - self._prev_RSI) >= 5) or ((RSI < self._prev_RSI) and (RSI < 70.5))):
+                self.add_trade_point(date, new_point["Close"], "sell")
+                self._prev_RSI = None
+                return
+        if (RSI <= 30):
+            if (self._prev_RSI is None):
+                self._prev_RSI = RSI
+                self.add_trade_point(date, new_point["Close"], "none")
+                return
+            if ((abs(RSI - self._prev_RSI) >= 5) or ((RSI > self._prev_RSI) and (RSI > 30.5))):
+                self.add_trade_point(date, new_point["Close"], "buy")
+                self._prev_RSI = None
+                return
+
+        self._prev_RSI = RSI
+        self.add_trade_point(date, new_point["Close"], "none")
+
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         """
@@ -55,16 +155,21 @@ class RSI(AbstractIndicator):
         """
         super().calculate(data)
         # calculating U and D
-        data_len = len(self.price)
+        data_len = self.data.shape[0]
         days_U_D = {'U': np.zeros((data_len - 1), dtype=float), 'D': np.zeros((data_len - 1), dtype=float)}
+        Closes = self.data["Close"]
         for i in range(1, data_len):
-            if (self.price[i] > self.price[i - 1]):
-                days_U_D['U'][i - 1] = self.price[i] - self.price[i - 1]
+            if (Closes[i] > Closes[i - 1]):
+                days_U_D['U'][i - 1] = Closes[i] - Closes[i - 1]
             else:
-                days_U_D['D'][i - 1] = self.price[i - 1] - self.price[i]
+                days_U_D['D'][i - 1] = Closes[i - 1] - Closes[i]
 
+        average_U = ma.SMMA(days_U_D['U'], self._N)
+        average_D = ma.SMMA(days_U_D['D'], self._N)
+        self._last_average_U = average_U[-1]
+        self._last_average_D = average_D[-1]
         # calculating RSI
-        RS = np.divide(ma.SMMA(days_U_D['U'], self._N), ma.SMMA(days_U_D['D'], self._N))
+        RS = np.divide(average_U, average_D)
         RSI = 100 - 100 / (1 + RS)
         self.RSI_val = pd.Series(data=RSI, index=self.data.index[self._N:])
 
@@ -72,77 +177,15 @@ class RSI(AbstractIndicator):
 
     def find_trade_points(self) -> pd.DataFrame:
         """
-        Finds trade points in provided data using previously calculated indicator value
-
-        Trade strategy explanation:
-        Key index values are 70 and 30.
-        When index is >= 70 we consider that stock is overbought and for <= 30 is oversold.
-        The strategy for sell/open short case will be described bellow, buy/open long is symmetrically opposite.
-
-        1. While RSI is in (70,30) boundaries we consider there is no signal to sell or buy.
-        2. Once RSI hits boundary we start track it's dynamic.
-        3. If RSI achieves level of 80, it is a strong sign that stock is overbought and soon will go down - actively sell.
-        4. In other cases:
-            - if we see a rapid index change (>= 5 in one day) - sell.
-            - if we see RSI goes down and gets close to the boundary - sell.
-            - if current RSI is less than 70 but previous day it was over it - sell.
+        Finds trade points in provided data using previously calculated indicator values
         """
-        self.clear_trade_points()
-        self.__trade_rule()
+        self._prev_RSI = None
+        for i in range(len(self.RSI_val)):
+            date = self.RSI_val.index[i]
+            RSI = self.RSI_val[i]
+            point = self.data.loc[date]
+            self.__make_trade_decision(point, date, RSI)
         return self.trade_points
-
-    def __trade_rule(self):
-        """
-        Trade strategy explanation:
-        Key index values are 70 and 30.
-        When index is >= 70 we consider that stock is overbought and for <= 30 is oversold.
-        We describe strategy for sell/open short case, buy/open long is symmetrically opposite.
-
-        1. While RSI is in (70,30) boundaries we consider there is no signal to sell or buy.
-        2. Once RSI hits boundary we start track it's dynamic.
-        3. If RSI achieves level of 80, it is a strong sign that stock is overbought and soon will go down - actively sell.
-        4. In other cases:
-            - if we see a rapid index change (>= 5 in one day) - sell.
-            - if we see RSI goes down and gets close to the boundary - sell.
-            - if current RSI is less than 70 but previous day it was over it - sell.
-        """
-        dates = self.RSI_val.index
-        prev = None
-        for i, rsi in enumerate(self.RSI_val):
-            if ((rsi < 70) and (rsi > 30)):
-                if (prev is None):
-                    continue
-                else:
-                    if ((prev >= 70) and (rsi >= 67.5)):
-                        self.add_trade_point(dates[i], "sell")
-                    elif ((prev <= 30) and (rsi <= 32.5)):
-                        self.add_trade_point(dates[i], "buy")
-                    prev = None
-                    continue
-
-            if (rsi > 80):
-                self.add_trade_point(dates[i], "actively sell")
-                continue
-            if (rsi < 20):
-                self.add_trade_point(dates[i], "actively buy")
-                continue
-
-            if (rsi >= 70):
-                if (prev is None):
-                    prev = rsi
-                    continue
-                if ((abs(rsi - prev) >= 5) or ((rsi < prev) and (rsi < 70.5))):
-                    self.add_trade_point(dates[i], "sell")
-                    prev = rsi
-                    continue
-            if (rsi <= 30):
-                if (prev is None):
-                    prev = rsi
-                    continue
-                if ((abs(rsi - prev) >= 5) or ((rsi > prev) and (rsi > 30.5))):
-                    self.add_trade_point(dates[i], "buy")
-                    prev = rsi
-                    continue
 
     def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
         """
@@ -153,18 +196,43 @@ class RSI(AbstractIndicator):
         if((end_date is None) or (end_date > self.RSI_val.index[-1])):
             end_date = self.RSI_val.index[-1]
 
-        day_diff = (end_date - start_date).days
+        selected_data = self.data[start_date:end_date]
         selected_rsi = self.RSI_val[start_date:end_date]
-
-        fig, ax = plt.subplots(figsize=(int(day_diff / 3), 8))
-        ax.plot(selected_rsi.index, selected_rsi, color="blue")
-        ax.plot(selected_rsi.index, np.full(len(selected_rsi), 70), linestyle="--", color="red")
-        ax.plot(selected_rsi.index, np.full(len(selected_rsi), 30), linestyle="--", color="red")
-
         selected_trade_points = self.select_action_trade_points(start_date=start_date, end_date=end_date)
 
-        ax.scatter(selected_trade_points.index,
-                   self.RSI_val[self.RSI_val.index.isin(selected_trade_points.index)],
-                   facecolors='none', linewidths=2, marker="o", color="green")
-        ax.grid(which='both')
-        plt.show()
+        fig = make_subplots(rows=2, cols=1,
+                            shared_xaxes=True,
+                            vertical_spacing=0.2)
+
+        fig.add_candlestick(x=selected_data.index,
+                            open=selected_data["Open"],
+                            close=selected_data["Close"],
+                            high=selected_data["High"],
+                            low=selected_data["Low"],
+                            name="Price",
+                            row=1, col=1)
+
+        buy_actions = ["buy", "actively buy"]
+        fig.add_trace(go.Scatter(x=selected_trade_points.index,
+                                 y=selected_trade_points["Price"],
+                                 mode="markers",
+                                 marker=dict(
+                                     color=np.where(selected_trade_points["Action"].isin(buy_actions), "green", "red"),
+                                     size=5),
+                                 name="Action points"),
+                      row=1, col=1)
+
+        fig.add_trace(go.Scatter(x=selected_rsi.index, y=selected_rsi, mode='lines',
+                                 line=dict(width=1, color="blue"), name="RSI"),
+                      row=2, col=1)
+        fig.add_trace(go.Scatter(x=selected_rsi.index, y=np.full(len(selected_rsi), 70), mode='lines',
+                                 line=dict(width=1, dash='dash', color="black"), showlegend=False),
+                      row=2, col=1)
+        fig.add_trace(go.Scatter(x=selected_rsi.index, y=np.full(len(selected_rsi), 30), mode='lines',
+                                 line=dict(width=1, dash='dash', color="black"), showlegend=False),
+                      row=2, col=1)
+
+        fig.update_layout(title=f"Price with RSI",
+                          xaxis_title="Date")
+
+        fig.show()

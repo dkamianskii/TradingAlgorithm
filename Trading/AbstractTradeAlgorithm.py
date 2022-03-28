@@ -6,8 +6,8 @@ class AbstractTradeAlgorithm(ABC):
 
     def __init__(self):
         self.train_data: Optional[pd.DataFrame] = None
-        self.trade_data: Optional[pd.DataFrame] = None
-        self.trade_points: Optional[pd.DataFrame] = None
+        self.whole_data: Optional[pd.DataFrame] = None
+        self.trade_start_date: Optional[pd.Timestamp] = None
 
     def __clear_trade_points(self, data: pd.DataFrame):
         self.trade_points = pd.DataFrame()
@@ -18,10 +18,11 @@ class AbstractTradeAlgorithm(ABC):
     @abstractmethod
     def train(self, data: pd.DataFrame):
         self.train_data = data
+        self.trade_start_date = data.index[-1]
+        self.whole_data = data.copy()
         pass
 
     @abstractmethod
-    def trade(self, data: pd.DataFrame) -> pd.DataFrame:
-        self.__clear_trade_points(data)
-        self.trade_data = data
+    def day_analysis(self, new_day_data: pd.Series) -> pd.DataFrame:
+        self.whole_data.append(new_day_data)
         pass

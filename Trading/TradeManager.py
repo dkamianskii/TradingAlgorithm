@@ -1,10 +1,14 @@
 import numpy as np
 import pandas as pd
-from typing import Optional
+from AbstractTradeAlgorithm import AbstractTradeAlgorithm
+from MACDSuperTrendTradeAlgorithm import MACDSuperTrendTradeAlgorithm
+from typing import Optional, List, Dict
 
 
 class TradeManager:
-    def __init__(self):
+    trade_algorithms_list: List[str] = ["MACD_SuperTrend", "Indicators_council", "Price_prediction"]
+
+    def __init__(self, trade_algorithm_to_use: str = "MACD_SuperTrend"):
         """
         Control:
          - stock market data,
@@ -29,9 +33,22 @@ class TradeManager:
            currently managed assets
          - save information about profitability of made deals and current finance assets
         """
-        self.data: Optional[pd.DataFrame] = None
-        self.last_day_data = None
+        self.__data: Optional[pd.DataFrame] = None
+        self.__last_day_data = None
         self.portfolio = [] # currently managed assets
+        self.__trade_algorithm: Optional[AbstractTradeAlgorithm] = None
+        self.__trade_algorithm_name = trade_algorithm_to_use
+        if (trade_algorithm_to_use not in TradeManager.trade_algorithms_list):
+           raise ValueError("name of trade algorithm must be one from trade algorithms names list")
+        if (trade_algorithm_to_use == "MACD_SuperTrend"):
+            self.__trade_algorithm = MACDSuperTrendTradeAlgorithm()
+        self.default_params_fit_grid: List[dict] = []
+
+    def __set_default_params_fit_grid(self):
+
+        if(self.__trade_algorithm_name == "MACD_SuperTrend"):
+            lookback_periods = [8,9,10]
+            multiplier = [1,2,3]
 
     def __add_to_portfolio(self, stock_name: str, price: float, amount: int, action: str, final_sum: float):
         take_profit_lvl = self.__evaluate_take_profit(price, action)
@@ -53,3 +70,14 @@ class TradeManager:
     def __evaluate_stop_loss(self, price: float, action: str) -> float:
         """IN PROGRESS"""
         return price*0.98
+
+    def backtest(self, use_auto_fit: Optional[bool] = True, custom_fit_frid: Optional[List[dict]] = None):
+        params_fit_grid: List[dict]
+        # if (self.__trade_algorithm_name == TradeManager.trade_algorithms_list[0]):
+        #
+        # if custom_fit_frid is None:
+        #     pass
+        # else:
+        #     pass
+        # if use_auto_fit:
+        #     pass

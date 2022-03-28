@@ -25,12 +25,12 @@ def SMA(time_series: Union[pd.Series, Realization], N: int) -> np.ndarray:
         :param time_series: Input time series or a sequence of floats
         :param N: Number of points used in averaging
     """
-    if (isinstance(time_series, pd.Series)):
+    if isinstance(time_series, pd.Series):
         ts = time_series
     else:
         ts = pd.Series(time_series)
 
-    if ((N >= len(time_series)) or (N <= 0)):
+    if (N >= len(time_series)) or (N <= 0):
         raise ValueError("N parameter must be > 0 and less then length of the time_series")
 
     return ts.rolling(N).mean().to_numpy()[(N - 1):]
@@ -54,29 +54,29 @@ def EMA(time_series: Union[pd.Series, Realization], N: int,
          If 'first' then EMA(0) = time_series[0], if 'mean N' then EMA(0) = SMA(time_series[0:N - 1]).
          Equal 'first' by default.
     """
-    if ((N >= len(time_series)) or (N <= 0)):
+    if (N >= len(time_series)) or (N <= 0):
         raise ValueError("N parameter must be > 0 and less then length of the time_series")
 
-    if (alpha is None):
+    if alpha is None:
         alpha = 2 / (N + 1)
-    elif ((alpha <= 0) or (alpha > 1)):
+    elif (alpha <= 0) or (alpha > 1):
         raise ValueError("alpha parameter must be in (0,1) boundaries")
 
     indent = 0
 
-    if (ema_0_init == "mean N"):
-        final_lenght = len(time_series) - N + 1
-        ema = np.empty(final_lenght)
+    if ema_0_init == "mean N":
+        final_length = len(time_series) - N + 1
+        ema = np.empty(final_length)
         ema[0] = np.mean(time_series[0:N])
         indent = N - 1
-    elif (ema_0_init == "first"):
-        final_lenght = len(time_series)
-        ema = np.empty(final_lenght)
+    elif ema_0_init == "first":
+        final_length = len(time_series)
+        ema = np.empty(final_length)
         ema[0] = time_series[0]
     else:
         raise ValueError("ema_0_init parameter could be only 'mean N' or 'first'")
 
-    for i in range(1, final_lenght):
+    for i in range(1, final_length):
         ema[i] = alpha * time_series[indent + i] + (1 - alpha) * ema[i - 1]
 
     return ema
@@ -84,8 +84,8 @@ def EMA(time_series: Union[pd.Series, Realization], N: int,
 
 def EMA_one_point(prev_ema: Union[float, double, int],
                   new_point: Union[float, double, int],
-                  N: int, alpha: Optional[float] = None):
-    if (alpha is None):
+                  N: int, alpha: Optional[float] = None) -> float:
+    if alpha is None:
         alpha = 2 / (N + 1)
     return alpha * new_point + (1 - alpha) * prev_ema
 
@@ -106,5 +106,5 @@ def SMMA(time_series: Union[pd.Series, Realization], N: int) -> np.ndarray:
 
 def SMMA_one_point(prev_smma: Union[float, double, int],
                    new_point: Union[float, double, int],
-                   N: int):
+                   N: int) -> float:
     return EMA_one_point(prev_smma, new_point, N, alpha=(1 / N))

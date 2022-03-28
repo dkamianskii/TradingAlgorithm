@@ -18,6 +18,7 @@ import plotly.graph_objects as go
 
 cf.go_offline()
 
+
 # RSI - Relative strength index
 class RSI(AbstractIndicator):
     """
@@ -30,6 +31,7 @@ class RSI(AbstractIndicator):
     Methods: set_N, set_data, calculate, print_trade_points, plot
     Attributes: RSI_val, trade_points
     """
+
     def __init__(self, data: Optional[pd.DataFrame] = None,
                  N: Optional[int] = 14):
         """
@@ -50,7 +52,7 @@ class RSI(AbstractIndicator):
         """
         :param N: Parameter that determines number of points in MA, used for calculating index. Must be > 0.
         """
-        if (N <= 0):
+        if N <= 0:
             raise ValueError("N parameter must be > 0 and less then length of the time_series")
         self._N = N
         self.clear_vars()
@@ -58,7 +60,7 @@ class RSI(AbstractIndicator):
 
     def clear_vars(self):
         super().clear_vars()
-        self.RSI_val: Optional = None
+        self.RSI_val: Optional[pd.Series] = None
         self._last_average_U = 0
         self._last_average_D = 0
         self._prev_RSI = None
@@ -71,14 +73,15 @@ class RSI(AbstractIndicator):
         """
         date = pd.Timestamp(ts_input=date)
         prev_Close = self.data.iloc[-1]["Close"]
-        if (new_point["Close"] > prev_Close):
+        if new_point["Close"] > prev_Close:
             val_U = new_point["Close"] - prev_Close
             val_D = 0
         else:
             val_D = prev_Close - new_point["Close"]
             val_U = 0
-        RS = np.divide(ma.SMMA_one_point(prev_smma=self._last_average_U, new_point=val_U, N=self._N),
-             ma.SMMA_one_point(prev_smma=self._last_average_D, new_point=val_D, N=self._N))
+        self._last_average_U = ma.SMMA_one_point(prev_smma=self._last_average_U, new_point=val_U, N=self._N)
+        self._last_average_D = ma.SMMA_one_point(prev_smma=self._last_average_D, new_point=val_D, N=self._N)
+        RS = np.divide(self._last_average_U, self._last_average_D)
         RSI = 100 - 100 / (1 + RS)
         self.data.loc[date] = new_point
         self.RSI_val = self.RSI_val.append(to_append=pd.Series({date: RSI}))
@@ -100,50 +103,49 @@ class RSI(AbstractIndicator):
                     - if we see RSI goes down and gets close to the boundary - sell.
                     - if current RSI is less than 70 but previous day it was over it - sell.
                 """
-        if ((RSI < 70) and (RSI > 30)):
-            if (self._prev_RSI is None):
+        if (RSI < 70) and (RSI > 30):
+            if self._prev_RSI is None:
                 self.add_trade_point(date, new_point["Close"], "none")
             else:
-                if ((self._prev_RSI >= 70) and (RSI >= 67.5)):
+                if (self._prev_RSI >= 70) and (RSI >= 67.5):
                     self.add_trade_point(date, new_point["Close"], "sell")
-                elif ((self._prev_RSI <= 30) and (RSI <= 32.5)):
+                elif (self._prev_RSI <= 30) and (RSI <= 32.5):
                     self.add_trade_point(date, new_point["Close"], "buy")
                 else:
                     self.add_trade_point(date, new_point["Close"], "none")
                 self._prev_RSI = None
             return
 
-        if (RSI > 80):
+        if RSI > 80:
             self.add_trade_point(date, new_point["Close"], "actively sell")
             self._prev_RSI = None
             return
-        if (RSI < 20):
+        if RSI < 20:
             self.add_trade_point(date, new_point["Close"], "actively buy")
             self._prev_RSI = None
             return
 
-        if (RSI >= 70):
-            if (self._prev_RSI is None):
+        if RSI >= 70:
+            if self._prev_RSI is None:
                 self._prev_RSI = RSI
                 self.add_trade_point(date, new_point["Close"], "none")
                 return
-            if ((abs(RSI - self._prev_RSI) >= 5) or ((RSI < self._prev_RSI) and (RSI < 70.5))):
+            if (abs(RSI - self._prev_RSI) >= 5) or ((RSI < self._prev_RSI) and (RSI < 70.5)):
                 self.add_trade_point(date, new_point["Close"], "sell")
                 self._prev_RSI = None
                 return
-        if (RSI <= 30):
-            if (self._prev_RSI is None):
+        if RSI <= 30:
+            if self._prev_RSI is None:
                 self._prev_RSI = RSI
                 self.add_trade_point(date, new_point["Close"], "none")
                 return
-            if ((abs(RSI - self._prev_RSI) >= 5) or ((RSI > self._prev_RSI) and (RSI > 30.5))):
+            if (abs(RSI - self._prev_RSI) >= 5) or ((RSI > self._prev_RSI) and (RSI > 30.5)):
                 self.add_trade_point(date, new_point["Close"], "buy")
                 self._prev_RSI = None
                 return
 
         self._prev_RSI = RSI
         self.add_trade_point(date, new_point["Close"], "none")
-
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         """
@@ -159,7 +161,7 @@ class RSI(AbstractIndicator):
         days_U_D = {'U': np.zeros((data_len - 1), dtype=float), 'D': np.zeros((data_len - 1), dtype=float)}
         Closes = self.data["Close"]
         for i in range(1, data_len):
-            if (Closes[i] > Closes[i - 1]):
+            if Closes[i] > Closes[i - 1]:
                 days_U_D['U'][i - 1] = Closes[i] - Closes[i - 1]
             else:
                 days_U_D['D'][i - 1] = Closes[i - 1] - Closes[i]
@@ -179,6 +181,8 @@ class RSI(AbstractIndicator):
         """
         Finds trade points in provided data using previously calculated indicator values
         """
+        if self.RSI_val is None:
+            raise SyntaxError("find_trade_points can be called only after calculate method was called at least once")
         self._prev_RSI = None
         for i in range(len(self.RSI_val)):
             date = self.RSI_val.index[i]
@@ -191,9 +195,9 @@ class RSI(AbstractIndicator):
         """
         Plots the RSI graphic in specified time diapason
         """
-        if((start_date is None) or (start_date < self.RSI_val.index[0])):
+        if (start_date is None) or (start_date < self.RSI_val.index[0]):
             start_date = self.RSI_val.index[0]
-        if((end_date is None) or (end_date > self.RSI_val.index[-1])):
+        if (end_date is None) or (end_date > self.RSI_val.index[-1]):
             end_date = self.RSI_val.index[-1]
 
         selected_data = self.data[start_date:end_date]

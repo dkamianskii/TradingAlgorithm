@@ -43,8 +43,9 @@ class MACD(AbstractIndicator):
                  signal_period: Optional[int] = 9,
                  trade_strategy: Optional[str] = "classic"):
         """
-        :param data: time series for computing MACD. Could be not specified with instantiating,
+        :param data: time series for computing MACD. Could be not specified with instantiation,
          but must be set before calculating
+        :param trade_strategy: "classic" or "convergence
         """
         super().__init__(data)
         self._short_period: int = 0
@@ -57,8 +58,8 @@ class MACD(AbstractIndicator):
         self._last_short_ma: float = 0
         self._last_long_ma: float = 0
         self._last_signal_ma: float = 0
-        self._prev_hist: float = 0
-        self._pre_prev_hist: float = 0
+        self._prev_hist: Optional[float] = None
+        self._pre_prev_hist: Optional[float] = None
         self._hist_peak: float = 0
         self._convergence_flag: bool = False
 
@@ -88,8 +89,8 @@ class MACD(AbstractIndicator):
         self._last_short_ma: float = 0
         self._last_long_ma: float = 0
         self._last_signal_ma: float = 0
-        self._prev_hist: float = 0
-        self._pre_prev_hist: float = 0
+        self._prev_hist: Optional[float] = None
+        self._pre_prev_hist: Optional[float] = None
         self._hist_peak: float = 0
         self._convergence_flag: bool = False
 
@@ -129,42 +130,40 @@ class MACD(AbstractIndicator):
                         self.add_trade_point(date, new_point["Close"], "actively sell")
                     else:
                         self.add_trade_point(date, new_point["Close"], "sell")
-                    return
-                elif np.sign(self._prev_hist) < 0:
+                else:
                     if MACD < 0:
                         self.add_trade_point(date, new_point["Close"], "actively buy")
                     else:
                         self.add_trade_point(date, new_point["Close"], "buy")
-                    return
+            else:
+                self.add_trade_point(date, new_point["Close"], "none")
             self._prev_hist = histogram
-            self.add_trade_point(date, new_point["Close"], "none")
-
-        if self._trade_strategy == "convergence":
+        elif self._trade_strategy == "convergence":
             if (self._prev_hist is not None) and (self._pre_prev_hist is not None):
-                sign_diff_flag = np.sign(self._prev_hist) != np.sign(histogram)
-                if not self._convergence_flag:
-                    if (np.abs(histogram) < np.abs(self._prev_hist)) and (
-                            np.abs(self._prev_hist) < np.abs(self._pre_prev_hist)):
-                        self._convergence_flag = True
-                        self._hist_peak = self._pre_prev_hist
-                elif (np.abs(histogram) <= 0.15 * np.abs(self._hist_peak)) or sign_diff_flag:
+                if (histogram == 0) or (np.sign(self._prev_hist) != np.sign(histogram)):
                     if np.sign(self._prev_hist) > 0:
-                        if sign_diff_flag:
-                            self.add_trade_point(date, new_point["Close"], "sell")
-                        else:
+                        self.add_trade_point(date, new_point["Close"], "sell")
+                    else:
+                        self.add_trade_point(date, new_point["Close"], "buy")
+                    self._convergence_flag = False
+                else:
+                    if not self._convergence_flag:
+                        if (np.abs(histogram) < np.abs(self._prev_hist)) and (
+                                np.abs(self._prev_hist) < np.abs(self._pre_prev_hist)):
+                            self._convergence_flag = True
+                            self._hist_peak = self._pre_prev_hist
+                    if self._convergence_flag and np.abs(histogram) <= 0.15 * np.abs(self._hist_peak):
+                        if np.sign(self._prev_hist) > 0:
                             self.add_trade_point(date, new_point["Close"], "actively sell")
-                    elif np.sign(self._prev_hist) < 0:
-                        if sign_diff_flag:
-                            self.add_trade_point(date, new_point["Close"], "buy")
                         else:
                             self.add_trade_point(date, new_point["Close"], "actively buy")
-                    self._convergence_flag = False
-                    self._pre_prev_hist = self._prev_hist
-                    self._prev_hist = histogram
-                    return
+                        self._convergence_flag = False
+                    else:
+                        self.add_trade_point(date, new_point["Close"], "none")
+            else:
+                self.add_trade_point(date, new_point["Close"], "none")
             self._pre_prev_hist = self._prev_hist
             self._prev_hist = histogram
-            self.add_trade_point(date, new_point["Close"], "none")
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         """
@@ -175,11 +174,14 @@ class MACD(AbstractIndicator):
         super().calculate(data)
         # calculating short and long moving averages
         short_ma = ma.EMA(time_series=self.data["Close"], N=self._short_period)
+        self._last_short_ma = short_ma[-1]
         long_ma = ma.EMA(time_series=self.data["Close"], N=self._long_period)
+        self._last_long_ma = long_ma[-1]
         # macd = MA_short - MA_long
         MACD = short_ma - long_ma
         # singal is MA on macd
         signal = ma.EMA(MACD, self._signal_period)
+        self._last_signal_ma = signal[-1]
         histogram = MACD - signal
         df_data = {"date": self.data.index, "MACD": MACD, "signal": signal, "histogram": histogram}
         self.MACD_val = pd.DataFrame(data=df_data).set_index("date")
@@ -244,7 +246,7 @@ class MACD(AbstractIndicator):
 
         fig.add_bar(x=selected_macd.index, y=selected_macd["histogram"], marker=dict(
             color=np.where(selected_macd["histogram"] > 0, "green", "red")
-        ), row=2, col=1)
+        ), name="MACD signal difference", row=2, col=1)
 
         fig.update_layout(title=f"Price with MACD",
                           xaxis_title="Date")

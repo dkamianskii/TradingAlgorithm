@@ -9,7 +9,7 @@ from indicators.RSI import RSI
 from indicators.MASupportLevels import MASupportLevels
 from indicators.SuperTrend import SuperTrend
 
-data = yf.download("AMD", start="2021-05-14", end="2021-12-21")
+data = yf.download("AMD", start="2021-01-01", end="2021-12-21")
 new_date = pd.Timestamp(ts_input="2021-12-20")
 new_point = data.loc[new_date]
 train_data = data.iloc[0:-1]
@@ -46,7 +46,6 @@ train_data = data.iloc[0:-1]
 # rsi_apple.find_trade_points()
 # rsi_apple.evaluate_new_point(new_point, new_date)
 # b2 = rsi_apple.select_action_trade_points()
-#
 # rsi_apple.plot()
 
 # MACD
@@ -56,10 +55,12 @@ macd_test.calculate()
 macd_test.find_trade_points()
 macd_test.plot()
 
-macd_apple = MACD(data=train_data)
+macd_apple = MACD(data=train_data, trade_strategy=MACD.supported_trade_strategies[1])
 macd_apple.calculate()
 macd_apple.find_trade_points()
 macd_apple.evaluate_new_point(new_point, new_date)
+b3 = macd_apple.select_action_trade_points()
+print(b3)
 macd_apple.plot()
 
 dd = 1

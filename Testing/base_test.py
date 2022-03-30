@@ -23,11 +23,6 @@ train_data = data.iloc[0:-1]
 # support_levels.test_MAs_for_data()
 # support_levels.find_trade_points(use_tested_MAs=True)
 # tp = support_levels.trade_points
-# super_trend = SuperTrend(data=data)
-# super_trend.calculate()
-# super_trend.find_trade_points()
-# tp = super_trend.select_action_trade_points()
-# super_trend.plot()
 
 # action_trade_points = support_levels.select_action_trade_points()
 # print(action_trade_points)
@@ -50,18 +45,31 @@ train_data = data.iloc[0:-1]
 
 # MACD
 
-macd_test = MACD(data=data)
-macd_test.calculate()
-macd_test.find_trade_points()
-macd_test.plot()
+# macd_test = MACD(data=data)
+# macd_test.calculate()
+# macd_test.find_trade_points()
+# macd_test.plot()
+#
+# macd_apple = MACD(data=train_data, trade_strategy=MACD.supported_trade_strategies[1])
+# macd_apple.calculate()
+# macd_apple.find_trade_points()
+# macd_apple.evaluate_new_point(new_point, new_date)
+# b3 = macd_apple.select_action_trade_points()
+# print(b3)
+# macd_apple.plot()
 
-macd_apple = MACD(data=train_data, trade_strategy=MACD.supported_trade_strategies[1])
-macd_apple.calculate()
-macd_apple.find_trade_points()
-macd_apple.evaluate_new_point(new_point, new_date)
-b3 = macd_apple.select_action_trade_points()
-print(b3)
-macd_apple.plot()
+# Super Trend
+
+super_trend = SuperTrend(data=data)
+super_trend.calculate()
+super_trend.find_trade_points()
+super_trend.plot()
+
+super_trend = SuperTrend(data=train_data)
+super_trend.calculate()
+super_trend.find_trade_points()
+super_trend.evaluate_new_point(new_point, new_date)
+super_trend.plot()
 
 dd = 1
 

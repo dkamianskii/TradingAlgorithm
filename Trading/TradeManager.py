@@ -2,20 +2,20 @@ import numpy as np
 import pandas as pd
 from AbstractTradeAlgorithm import AbstractTradeAlgorithm
 from MACDSuperTrendTradeAlgorithm import MACDSuperTrendTradeAlgorithm
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Union
 
 
 class TradeManager:
-    trade_algorithms_list: List[str] = ["MACD_SuperTrend", "Indicators_council", "Price_prediction"]
+    default_trade_algorithms_list: List[str] = ["MACD_SuperTrend", "Indicators_council", "Price_prediction"]
 
-    def __init__(self, trade_algorithm_to_use: str = "MACD_SuperTrend"):
+    def __init__(self, trade_algorithm_to_use: str = "MACD_SuperTrend",
+                 custom_trade_algorithm: Optional[AbstractTradeAlgorithm] = None):
         """
         Control:
          - stock market data,
          - currently managed assets (open long and short bids) and their limits
         Init:
-         - initiate selected TradeAlgorithm
-         - receive primary data
+        Set tracked stocks with their primary stock data and trade algorithms with params grid for each
         BackTest:
          calculate efficiency of TradeAlgorithm for provided primary data
          - receive starting date for back test to separate train data from test data
@@ -33,28 +33,31 @@ class TradeManager:
            currently managed assets
          - save information about profitability of made deals and current finance assets
         """
-        self.__data: Optional[pd.DataFrame] = None
-        self.__last_day_data = None
-        self.portfolio = [] # currently managed assets
-        self.__trade_algorithm: Optional[AbstractTradeAlgorithm] = None
-        self.__trade_algorithm_name = trade_algorithm_to_use
-        if (trade_algorithm_to_use not in TradeManager.trade_algorithms_list):
-           raise ValueError("name of trade algorithm must be one from trade algorithms names list")
-        if (trade_algorithm_to_use == "MACD_SuperTrend"):
-            self.__trade_algorithm = MACDSuperTrendTradeAlgorithm()
-        self.default_params_fit_grid: List[dict] = []
+        self.portfolio: List[Dict] = [] # currently managed assets
+        self.tracked_stocks: Dict = {}
 
-    def __set_default_params_fit_grid(self):
-
-        if(self.__trade_algorithm_name == "MACD_SuperTrend"):
-            lookback_periods = [8,9,10]
-            multiplier = [1,2,3]
+    def set_tracked_stock(self, stock_name: str,
+                          stock_data: pd.DataFrame,
+                          trade_algorithms: List[str],
+                          custom_trade_algorithms: Optional[List[AbstractTradeAlgorithm]] = None,
+                          custom_params_grid: Optional[Dict] = None):
+        algorithms = []
+        for trade_algorithm in trade_algorithms:
+            if trade_algorithm == "MACD_SuperTrend":
+                algorithms.append(MACDSuperTrendTradeAlgorithm())
+            else:
+                raise ValueError("algorithm must be one of default trade algorithms or user should provide custom trade algorithm")
+        for custom_trade_algorithm in custom_trade_algorithms:
+            algorithms.append(custom_trade_algorithm)
+        self.tracked_stocks[stock_name] = {"data": stock_data,
+                                           "trade algorithms": algorithms,
+                                           "params grid": custom_params_grid}
 
     def __add_to_portfolio(self, stock_name: str, price: float, amount: int, action: str, final_sum: float):
         take_profit_lvl = self.__evaluate_take_profit(price, action)
         stop_loss_lvl = self.__evaluate_stop_loss(price, action)
         bid_type = "short bid"
-        if ((action == "buy") or (action == "actively buy")):
+        if (action == "buy") or (action == "actively buy"):
             bid_type = "long bid"
         self.portfolio.append({"Name": stock_name,
                                "Price": price,

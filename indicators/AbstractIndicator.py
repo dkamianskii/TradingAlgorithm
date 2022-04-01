@@ -20,7 +20,7 @@ class AbstractIndicator(ABC):
         """
         self.data: Optional[pd.DataFrame] = None
         self.trade_points: Optional[pd.DataFrame] = None
-        if (data is not None):
+        if data is not None:
             self.set_data(data)
 
     def set_data(self, data: pd.DataFrame):
@@ -42,8 +42,8 @@ class AbstractIndicator(ABC):
 
     @abstractmethod
     def calculate(self, data: Optional[pd.DataFrame] = None):
-        if (data is None):
-            if (self.data is None):
+        if data is None:
+            if self.data is None:
                 raise ValueError("calculate method could not be used without setted data")
         else:
             self.set_data(data)
@@ -66,7 +66,7 @@ class AbstractIndicator(ABC):
         :param price: price of purchase
         :param action: "actively buy", "buy", "none", "sell", "actively sell" (one of the actions)
         """
-        if (action not in AbstractIndicator.actions):
+        if action not in AbstractIndicator.actions:
             raise ValueError("unknown action was translated")
 
         self.trade_points.loc[date] = {"Price": price, "Action": action}
@@ -77,9 +77,9 @@ class AbstractIndicator(ABC):
         Select trade action points starting from the start date and to the end date.
         Actions are "actively buy", "buy", "sell", "actively sell"
         """
-        if(start_date is None):
+        if start_date is None:
             start_date = self.trade_points.index[0]
-        if (end_date is None):
+        if end_date is None:
             end_date = self.trade_points.index[-1]
 
         action_points = self.trade_points[start_date:end_date]

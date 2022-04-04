@@ -11,6 +11,10 @@ class AbstractTradeAlgorithm(ABC):
         self.trade_start_date: Optional[pd.Timestamp] = None
 
     @abstractmethod
+    def get_algorithm_name(self) -> str:
+        pass
+
+    @abstractmethod
     def train(self, data: pd.DataFrame,
               hyperparameters_autofit: Optional[bool] = True,
               params_train_grid: Optional[Dict] = None):
@@ -22,5 +26,5 @@ class AbstractTradeAlgorithm(ABC):
     @abstractmethod
     def evaluate_new_point(self, new_point: pd.Series,
                            date: Union[str, pd.Timestamp],
-                           special_params: Optional[Dict] = None):
+                           special_params: Optional[Dict] = None) -> str:
         pass

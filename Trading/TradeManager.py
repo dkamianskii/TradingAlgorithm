@@ -2,14 +2,17 @@ import numpy as np
 import pandas as pd
 from AbstractTradeAlgorithm import AbstractTradeAlgorithm
 from MACDSuperTrendTradeAlgorithm import MACDSuperTrendTradeAlgorithm
-from typing import Optional, List, Dict, Union
+from typing import Optional, List, Dict, Union, Tuple
 
 
 class TradeManager:
     default_trade_algorithms_list: List[str] = ["MACD_SuperTrend", "Indicators_council", "Price_prediction"]
 
-    def __init__(self, trade_algorithm_to_use: str = "MACD_SuperTrend",
-                 custom_trade_algorithm: Optional[AbstractTradeAlgorithm] = None):
+    def __init__(self, days_to_keep_limit: Optional[int] = 14,
+                 use_limited_money: Optional[bool] = False,
+                 money_for_a_bid: Optional[float] = 10000,
+                 start_capital: Optional[float] = 0,
+                 risk_rate: Optional[float] = 0.05):
         """
         Control:
          - stock market data,
@@ -33,54 +36,191 @@ class TradeManager:
            currently managed assets
          - save information about profitability of made deals and current finance assets
         """
-        self.portfolio: List[Dict] = [] # currently managed assets
-        self.tracked_stocks: Dict = {}
+        self.portfolio: List[Dict] = []
+        self.tracked_stocks: Dict[str, Dict] = {}
+        self._trade_result: pd.DataFrame = pd.DataFrame([{"Stock Name": "Total",
+                                                          "Earned Profit": 0.0,
+                                                          "Wins": 0,
+                                                          "Loses": 0,
+                                                          "Draws": 0}])
+        self.trade_result = self._trade_result.set_index("Stock Name")
+        self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
+        self._use_limited_money: bool = use_limited_money
+        self._risk_rate: float = risk_rate
+        self._money_for_a_bid: float = money_for_a_bid
+        self.available_money: float = start_capital
+        self.account_money: float = start_capital
+        self.start_capital: float = start_capital
+
+    def clear_history(self):
+        self.portfolio = []
+        self.available_money = self.start_capital
+        self.account_money = self.start_capital
+        self.trade_result = pd.DataFrame([{"Stock Name": "Total",
+                                           "Earned Profit": 0.0,
+                                           "Wins": 0,
+                                           "Loses": 0,
+                                           "Draws": 0}])
+        self.trade_result = self.trade_result.set_index("Stock Name")
+
+    def clear_tracked_stocks_list(self):
+        self.tracked_stocks = {}
+
+    def set_manager_params(self, days_to_keep_limit: Optional[int] = 14,
+                           use_limited_money: Optional[bool] = False,
+                           money_for_a_bid: Optional[float] = 10000,
+                           start_capital: Optional[float] = 0,
+                           risk_rate: Optional[float] = 0.05):
+        self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
+        self._use_limited_money: bool = use_limited_money
+        self._risk_rate: float = risk_rate
+        self._money_for_a_bid: float = money_for_a_bid
+        self.available_money: float = start_capital
+        self.account_money: float = start_capital
+        self.start_capital: float = start_capital
 
     def set_tracked_stock(self, stock_name: str,
                           stock_data: pd.DataFrame,
-                          trade_algorithms: List[str],
-                          custom_trade_algorithms: Optional[List[AbstractTradeAlgorithm]] = None,
-                          custom_params_grid: Optional[Dict] = None):
-        algorithms = []
-        for trade_algorithm in trade_algorithms:
+                          trade_algorithm: Union[str, AbstractTradeAlgorithm],
+                          custom_params_grid: Optional[List[Dict]] = None):
+        if type(trade_algorithm) is str:
             if trade_algorithm == "MACD_SuperTrend":
-                algorithms.append(MACDSuperTrendTradeAlgorithm())
+                algorithm = MACDSuperTrendTradeAlgorithm()
             else:
-                raise ValueError("algorithm must be one of default trade algorithms or user should provide custom trade algorithm")
-        for custom_trade_algorithm in custom_trade_algorithms:
-            algorithms.append(custom_trade_algorithm)
-        self.tracked_stocks[stock_name] = {"data": stock_data,
-                                           "trade algorithms": algorithms,
-                                           "params grid": custom_params_grid}
+                raise ValueError(
+                    "algorithm must be one of default trade algorithms or user should provide custom trade algorithm")
+        else:
+            algorithm = trade_algorithm
+        new_stock = pd.DataFrame([{"Stock Name": stock_name,
+                                   "Earned Profit": 0.0,
+                                   "Wins": 0,
+                                   "Loses": 0,
+                                   "Draws": 0}]).set_index("Stock Name")
+        self.trade_result = pd.concat([new_stock, self.trade_result])
+        self.tracked_stocks[stock_name] = {
+            "data": stock_data,
+            "trade algorithm": algorithm,
+            "params grid": custom_params_grid}
 
-    def __add_to_portfolio(self, stock_name: str, price: float, amount: int, action: str, final_sum: float):
-        take_profit_lvl = self.__evaluate_take_profit(price, action)
-        stop_loss_lvl = self.__evaluate_stop_loss(price, action)
-        bid_type = "short bid"
+    def __add_to_portfolio(self, stock_name: str,
+                           price: float,
+                           date: pd.Timestamp,
+                           amount: int,
+                           action: str):
+        stop_loss_lvl, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(price, action)
+        if self._use_limited_money:
+            self.available_money -= price * amount
         if (action == "buy") or (action == "actively buy"):
             bid_type = "long bid"
+        else:
+            bid_type = "short bid"
         self.portfolio.append({"Name": stock_name,
                                "Price": price,
                                "Type": bid_type,
                                "Amount": amount,
-                               "Final Sum": final_sum,
                                "Take Profit Level": take_profit_lvl,
-                               "Stop Loss Level": stop_loss_lvl})
+                               "Stop Loss Level": stop_loss_lvl,
+                               "Date": date})
 
-    def __evaluate_take_profit(self, price: float, action: str) -> float:
+    def __evaluate_stop_loss_and_take_profit(self, price: float, action: str) -> Tuple[float, float]:
         """IN PROGRESS"""
-        return price*1.04
-    def __evaluate_stop_loss(self, price: float, action: str) -> float:
-        """IN PROGRESS"""
-        return price*0.98
+        if action == "buy":
+            return price * 0.985, price * 1.025
+        elif action == "actively buy":
+            return price * 0.985, price * 1.05
+        elif action == "sell":
+            return price * 1.015, price * 0.975
+        elif action == "actively sell":
+            return price * 1.015, price * 0.95
 
-    def backtest(self, use_auto_fit: Optional[bool] = True, custom_fit_frid: Optional[List[dict]] = None):
-        params_fit_grid: List[dict]
-        # if (self.__trade_algorithm_name == TradeManager.trade_algorithms_list[0]):
-        #
-        # if custom_fit_frid is None:
-        #     pass
-        # else:
-        #     pass
-        # if use_auto_fit:
-        #     pass
+    def __manage_portfolio_assets(self, stock_name: str, new_point: pd.Series, date: pd.Timestamp):
+        """IN PROGRESS"""
+        for i in range(len(self.portfolio)):
+            asset = self.portfolio[i]
+            if asset["Name"] == stock_name:
+                if asset["Type"] == "long bid":
+                    if (new_point["Close"] >= asset["Take Profit Level"]) or \
+                            (new_point["Close"] <= asset["Stop Loss Level"]):
+                        self.portfolio.pop(i)
+                        price_diff = new_point["Close"] - asset["Price"]
+                        self.trade_result.loc[stock_name]["Earned Profit"] += price_diff * asset["Amount"]
+                        if price_diff > 0:
+                            self.trade_result.loc[stock_name]["Wins"] += 1
+                        else:
+                            self.trade_result.loc[stock_name]["Loses"] += 1
+                        if self._use_limited_money:
+                            self.available_money += new_point["Close"] * asset["Amount"]
+                            self.account_money += price_diff * asset["Amount"]
+                        continue
+                else:
+                    if (new_point["Close"] <= asset["Take Profit Level"]) or \
+                            (new_point["Close"] >= asset["Stop Loss Level"]):
+                        self.portfolio.pop(i)
+                        price_diff = asset["Price"] - new_point["Close"]
+                        self.trade_result.loc[stock_name]["Earned Profit"] += price_diff * asset["Amount"]
+                        if price_diff > 0:
+                            self.trade_result.loc[stock_name]["Wins"] += 1
+                        else:
+                            self.trade_result.loc[stock_name]["Loses"] += 1
+                        if self._use_limited_money:
+                            self.available_money += (asset["Price"] + price_diff) * asset["Amount"]
+                            self.account_money += price_diff * asset["Amount"]
+                        continue
+                if (date - asset["Date"]) > self._days_to_keep_limit:
+                    self.portfolio.pop(i)
+                    self.trade_result.loc[stock_name]["Draws"] += 1
+                    self.available_money += new_point["Close"] * asset["Amount"]
+
+    def __evaluate_shares_amount_to_bid(self, price: float) -> int:
+        shares_to_buy = 0
+        if self._use_limited_money:
+            money_to_risk = self.account_money * self._risk_rate
+            if self.available_money > money_to_risk:
+                shares_to_buy = np.floor(money_to_risk / price)
+        else:
+            shares_to_buy = np.floor(self._money_for_a_bid / price)
+        return shares_to_buy
+
+    def train(self):
+        for stock_name, stock in self.tracked_stocks.items():
+            algorithm: AbstractTradeAlgorithm = stock["trade algorithm"]
+            if stock["params grid"] is None:
+                algorithm.train(stock["data"])
+            else:
+                algorithm.train(stock["data"], False, stock["params grid"])
+
+    def evaluate_new_point(self, stock_name: str,
+                           new_point: pd.Series,
+                           date: Union[str, pd.Timestamp],
+                           add_point_to_the_data: Optional[bool] = True):
+        date = pd.Timestamp(ts_input=date)
+        self.__manage_portfolio_assets(stock_name, new_point, date)
+        stock = self.tracked_stocks[stock_name]
+        action = stock["trade algorithm"].evaluate_new_point(new_point, date)
+        if action != "none":
+            amount = self.__evaluate_shares_amount_to_bid(new_point["Close"])
+            if amount == 0:
+                print(f"Not enough money to purchase {stock_name} at {date} by price {new_point['Close']}")
+            else:
+                self.__add_to_portfolio(stock_name, new_point["Close"], date, amount, action)
+        if add_point_to_the_data:
+            stock["data"].loc[date] = new_point
+
+    def backtest(self, test_start_date: Union[str, pd.Timestamp],
+                 test_end_date: Optional[Union[str, pd.Timestamp]] = None):
+        test_start_date = pd.Timestamp(ts_input=test_start_date)
+        for stock_name, stock in self.tracked_stocks.items():
+            train_data: pd.DataFrame = stock["data"][:test_start_date]
+            if test_end_date is not None:
+                test_end_date = pd.Timestamp(ts_input=test_end_date)
+                test_data: pd.DataFrame = stock["data"][test_start_date:test_end_date]
+            else:
+                test_data: pd.DataFrame = stock["data"][test_start_date:]
+            algorithm: AbstractTradeAlgorithm = stock["trade algorithm"]
+            if stock["params grid"] is None:
+                algorithm.train(train_data)
+            else:
+                algorithm.train(train_data, False, stock["params grid"])
+            for date, point in test_data.iterrows():
+                self.evaluate_new_point(stock_name, point, date, False)
+            print(self.trade_result)

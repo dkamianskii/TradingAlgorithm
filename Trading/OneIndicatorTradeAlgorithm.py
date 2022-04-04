@@ -2,16 +2,18 @@ import pandas as pd
 from typing import Optional, Union, Dict
 
 from Trading.AbstractTradeAlgorithm import AbstractTradeAlgorithm
-from indicators.SuperTrend import SuperTrend
-from indicators.MACD import MACD
 from indicators.AbstractIndicator import AbstractIndicator
 
 
 class OneIndicatorTradeAlgorithm(AbstractTradeAlgorithm):
 
-    def __init__(self, indicator: AbstractIndicator):
+    def get_algorithm_name(self) -> str:
+        return self._indicator_name
+
+    def __init__(self, indicator: AbstractIndicator, indicator_name: str):
         super().__init__()
         self._indicator: AbstractIndicator = indicator
+        self._indicator_name: str = indicator_name
 
     def train(self, data: pd.DataFrame,
               hyperparameters_autofit: Optional[bool] = True,

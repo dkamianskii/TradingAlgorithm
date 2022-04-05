@@ -6,13 +6,15 @@ from indicators.MACD import MACD
 from indicators.RSI import RSI
 from indicators.ATR import ATR
 from indicators.SuperTrend import SuperTrend
-from Trading.OneIndicatorTradeAlgorithm import OneIndicatorTradeAlgorithm
+
 
 
 data = yf.download("AMD", start="2021-01-01", end="2021-12-21")
 new_date = pd.Timestamp(ts_input="2021-12-20")
 new_point = data.loc[new_date]
 train_data = data.iloc[0:-1]
+data[["Close", "Low"]] = 0
+print(data)
 # start_date = pd.Timestamp(ts_input="2021-10-01")
 # print(data["Close"][start_date])
 # test_df = pd.DataFrame(index=data.index[20:], columns=["Value", "Color"])
@@ -71,13 +73,6 @@ train_data = data.iloc[0:-1]
 # super_trend.evaluate_new_point(new_point, new_date)
 # super_trend.plot()
 
-# One Indicator trade algorithm
-
-rsi_i = RSI()
-trade_algorithm = OneIndicatorTradeAlgorithm(rsi_i)
-trade_algorithm.train(train_data)
-res = trade_algorithm.evaluate_new_point(new_point, new_date)
-print(res)
 dd = 1
 
 

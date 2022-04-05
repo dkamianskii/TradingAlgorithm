@@ -38,12 +38,13 @@ class TradeManager:
         """
         self.portfolio: List[Dict] = []
         self.tracked_stocks: Dict[str, Dict] = {}
-        self._trade_result: pd.DataFrame = pd.DataFrame([{"Stock Name": "Total",
+        self.trade_result: pd.DataFrame = pd.DataFrame([{"Stock Name": "Total",
                                                           "Earned Profit": 0.0,
                                                           "Wins": 0,
                                                           "Loses": 0,
                                                           "Draws": 0}])
-        self.trade_result = self._trade_result.set_index("Stock Name")
+        self.trade_result = self.trade_result.set_index("Stock Name")
+        self._train_results: Dict[str, Dict[Dict, pd.DataFrame]] = {}
         self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
         self._use_limited_money: bool = use_limited_money
         self._risk_rate: float = risk_rate
@@ -56,15 +57,17 @@ class TradeManager:
         self.portfolio = []
         self.available_money = self.start_capital
         self.account_money = self.start_capital
+        self.trade_result["Earned Profit"] = 0.0
+        self.trade_result[["Wins", "Loses", "Draws"]] = 0
+
+    def clear_tracked_stocks_list(self):
+        self.tracked_stocks = {}
         self.trade_result = pd.DataFrame([{"Stock Name": "Total",
                                            "Earned Profit": 0.0,
                                            "Wins": 0,
                                            "Loses": 0,
                                            "Draws": 0}])
         self.trade_result = self.trade_result.set_index("Stock Name")
-
-    def clear_tracked_stocks_list(self):
-        self.tracked_stocks = {}
 
     def set_manager_params(self, days_to_keep_limit: Optional[int] = 14,
                            use_limited_money: Optional[bool] = False,
@@ -181,14 +184,6 @@ class TradeManager:
             shares_to_buy = np.floor(self._money_for_a_bid / price)
         return shares_to_buy
 
-    def train(self):
-        for stock_name, stock in self.tracked_stocks.items():
-            algorithm: AbstractTradeAlgorithm = stock["trade algorithm"]
-            if stock["params grid"] is None:
-                algorithm.train(stock["data"])
-            else:
-                algorithm.train(stock["data"], False, stock["params grid"])
-
     def evaluate_new_point(self, stock_name: str,
                            new_point: pd.Series,
                            date: Union[str, pd.Timestamp],
@@ -206,8 +201,9 @@ class TradeManager:
         if add_point_to_the_data:
             stock["data"].loc[date] = new_point
 
-    def backtest(self, test_start_date: Union[str, pd.Timestamp],
-                 test_end_date: Optional[Union[str, pd.Timestamp]] = None):
+    def train(self, test_start_date: Union[str, pd.Timestamp],
+              test_end_date: Optional[Union[str, pd.Timestamp]] = None) -> Dict[str, Dict[Dict, pd.DataFrame]]:
+        self._train_results = {}
         test_start_date = pd.Timestamp(ts_input=test_start_date)
         for stock_name, stock in self.tracked_stocks.items():
             train_data: pd.DataFrame = stock["data"][:test_start_date]
@@ -216,11 +212,25 @@ class TradeManager:
                 test_data: pd.DataFrame = stock["data"][test_start_date:test_end_date]
             else:
                 test_data: pd.DataFrame = stock["data"][test_start_date:]
+
             algorithm: AbstractTradeAlgorithm = stock["trade algorithm"]
             if stock["params grid"] is None:
-                algorithm.train(train_data)
+                params_grid = algorithm.get_default_hyperparameters_grid()
             else:
-                algorithm.train(train_data, False, stock["params grid"])
-            for date, point in test_data.iterrows():
-                self.evaluate_new_point(stock_name, point, date, False)
-            print(self.trade_result)
+                params_grid = stock["params grid"]
+
+            best_params = params_grid[0]
+            max_earnings = 0
+            for params in params_grid:
+                self.clear_history()
+                algorithm.train(train_data, params)
+                for date, point in test_data.iterrows():
+                    self.evaluate_new_point(stock_name, point, date, False)
+                self._train_results[stock_name] = {params: self.trade_result.copy()}
+                earnings = self.trade_result.loc["Total"]["Earned Profit"]
+                if earnings > max_earnings:
+                    max_earnings = earnings
+                    best_params = params
+            algorithm.train(stock["data"], best_params)
+
+        return self._train_results

@@ -84,7 +84,7 @@ class RSI(AbstractIndicator):
         RS = np.divide(self._last_average_U, self._last_average_D)
         RSI = 100 - 100 / (1 + RS)
         self.data.loc[date] = new_point
-        self.RSI_val = self.RSI_val.append(to_append=pd.Series({date: RSI}))
+        self.RSI_val = pd.concat([self.RSI_val, pd.Series({date: RSI})])
         self.__make_trade_decision(new_point, date, RSI)
         return self
 

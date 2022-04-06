@@ -1,18 +1,19 @@
 import numpy as np
 import pandas as pd
-from AbstractTradeAlgorithm import AbstractTradeAlgorithm
-from MACDSuperTrendTradeAlgorithm import MACDSuperTrendTradeAlgorithm
 from typing import Optional, List, Dict, Union, Tuple
+
+from Trading.AbstractTradeAlgorithm import AbstractTradeAlgorithm
+from Trading.MACDSuperTrendTradeAlgorithm import MACDSuperTrendTradeAlgorithm
 
 
 class TradeManager:
     default_trade_algorithms_list: List[str] = ["MACD_SuperTrend", "Indicators_council", "Price_prediction"]
 
-    def __init__(self, days_to_keep_limit: Optional[int] = 14,
-                 use_limited_money: Optional[bool] = False,
-                 money_for_a_bid: Optional[float] = 10000,
-                 start_capital: Optional[float] = 0,
-                 risk_rate: Optional[float] = 0.05):
+    def __init__(self, days_to_keep_limit: int = 14,
+                 use_limited_money: bool = False,
+                 money_for_a_bid: float = 10000,
+                 start_capital: float = 0,
+                 risk_rate: float = 0.05):
         """
         Control:
          - stock market data,
@@ -39,10 +40,10 @@ class TradeManager:
         self.portfolio: List[Dict] = []
         self.tracked_stocks: Dict[str, Dict] = {}
         self.trade_result: pd.DataFrame = pd.DataFrame([{"Stock Name": "Total",
-                                                          "Earned Profit": 0.0,
-                                                          "Wins": 0,
-                                                          "Loses": 0,
-                                                          "Draws": 0}])
+                                                         "Earned Profit": 0.0,
+                                                         "Wins": 0,
+                                                         "Loses": 0,
+                                                         "Draws": 0}])
         self.trade_result = self.trade_result.set_index("Stock Name")
         self._train_results: Dict[str, Dict[Dict, pd.DataFrame]] = {}
         self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
@@ -69,11 +70,11 @@ class TradeManager:
                                            "Draws": 0}])
         self.trade_result = self.trade_result.set_index("Stock Name")
 
-    def set_manager_params(self, days_to_keep_limit: Optional[int] = 14,
-                           use_limited_money: Optional[bool] = False,
-                           money_for_a_bid: Optional[float] = 10000,
-                           start_capital: Optional[float] = 0,
-                           risk_rate: Optional[float] = 0.05):
+    def set_manager_params(self, days_to_keep_limit: int = 14,
+                           use_limited_money: bool = False,
+                           money_for_a_bid: float = 10000,
+                           start_capital: float = 0,
+                           risk_rate: float = 0.05):
         self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
         self._use_limited_money: bool = use_limited_money
         self._risk_rate: float = risk_rate
@@ -138,13 +139,12 @@ class TradeManager:
 
     def __manage_portfolio_assets(self, stock_name: str, new_point: pd.Series, date: pd.Timestamp):
         """IN PROGRESS"""
-        for i in range(len(self.portfolio)):
-            asset = self.portfolio[i]
+        indexes_to_remove = []
+        for asset in self.portfolio:
             if asset["Name"] == stock_name:
                 if asset["Type"] == "long bid":
                     if (new_point["Close"] >= asset["Take Profit Level"]) or \
                             (new_point["Close"] <= asset["Stop Loss Level"]):
-                        self.portfolio.pop(i)
                         price_diff = new_point["Close"] - asset["Price"]
                         self.trade_result.loc[stock_name]["Earned Profit"] += price_diff * asset["Amount"]
                         if price_diff > 0:
@@ -154,11 +154,11 @@ class TradeManager:
                         if self._use_limited_money:
                             self.available_money += new_point["Close"] * asset["Amount"]
                             self.account_money += price_diff * asset["Amount"]
+                        self.portfolio.remove(asset)
                         continue
                 else:
                     if (new_point["Close"] <= asset["Take Profit Level"]) or \
                             (new_point["Close"] >= asset["Stop Loss Level"]):
-                        self.portfolio.pop(i)
                         price_diff = asset["Price"] - new_point["Close"]
                         self.trade_result.loc[stock_name]["Earned Profit"] += price_diff * asset["Amount"]
                         if price_diff > 0:
@@ -168,11 +168,12 @@ class TradeManager:
                         if self._use_limited_money:
                             self.available_money += (asset["Price"] + price_diff) * asset["Amount"]
                             self.account_money += price_diff * asset["Amount"]
+                        self.portfolio.remove(asset)
                         continue
                 if (date - asset["Date"]) > self._days_to_keep_limit:
-                    self.portfolio.pop(i)
                     self.trade_result.loc[stock_name]["Draws"] += 1
                     self.available_money += new_point["Close"] * asset["Amount"]
+                    self.portfolio.remove(asset)
 
     def __evaluate_shares_amount_to_bid(self, price: float) -> int:
         shares_to_buy = 0
@@ -187,7 +188,7 @@ class TradeManager:
     def evaluate_new_point(self, stock_name: str,
                            new_point: pd.Series,
                            date: Union[str, pd.Timestamp],
-                           add_point_to_the_data: Optional[bool] = True):
+                           add_point_to_the_data: bool = True):
         date = pd.Timestamp(ts_input=date)
         self.__manage_portfolio_assets(stock_name, new_point, date)
         stock = self.tracked_stocks[stock_name]
@@ -226,7 +227,7 @@ class TradeManager:
                 algorithm.train(train_data, params)
                 for date, point in test_data.iterrows():
                     self.evaluate_new_point(stock_name, point, date, False)
-                self._train_results[stock_name] = {params: self.trade_result.copy()}
+                self._train_results[stock_name] = {str(params): self.trade_result.copy()}
                 earnings = self.trade_result.loc["Total"]["Earned Profit"]
                 if earnings > max_earnings:
                     max_earnings = earnings

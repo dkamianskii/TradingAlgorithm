@@ -1,5 +1,5 @@
 import pandas as pd
-from typing import Optional, Union, Dict
+from typing import Optional, Union, Dict, List
 
 from Trading.AbstractTradeAlgorithm import AbstractTradeAlgorithm
 from indicators.RSI import RSI
@@ -14,6 +14,9 @@ class RSITradeAlgorithm(AbstractTradeAlgorithm):
 
     def get_algorithm_name(self) -> str:
         return RSITradeAlgorithm.algorithm_name
+
+    def get_default_hyperparameters_grid(self) -> List[Dict]:
+        return [{"N": 8}, {"N": 10}, {"N": 12}, {"N": 14}, {"N": 16}]
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
         super().train(data, hyperparameters)

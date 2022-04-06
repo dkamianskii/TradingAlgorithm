@@ -18,7 +18,7 @@ class AbstractTradeAlgorithm(ABC):
 
     @abstractmethod
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
-        self.data = data
+        self.data = data.copy()
         pass
 
     @abstractmethod

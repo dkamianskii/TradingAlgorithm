@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import yfinance as yf
 import pandas as pd
 
@@ -7,13 +9,12 @@ from indicators.RSI import RSI
 from indicators.ATR import ATR
 from indicators.SuperTrend import SuperTrend
 
-
-
-data = yf.download("AMD", start="2021-01-01", end="2021-12-21")
-new_date = pd.Timestamp(ts_input="2021-12-20")
+data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
+new_date = pd.Timestamp(ts_input="2021-01-09")
+start_test = datetime.strptime("2021-01-10", "%Y-%m-%d")
+ee = data[start_test:]
 new_point = data.loc[new_date]
-train_data = data.iloc[0:-1]
-data[["Close", "Low"]] = 0
+# train_data = data.iloc[0:-1]
 print(data)
 # start_date = pd.Timestamp(ts_input="2021-10-01")
 # print(data["Close"][start_date])

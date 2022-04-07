@@ -2,16 +2,25 @@ import pandas as pd
 from abc import ABC, abstractmethod
 from typing import Optional, Union, Hashable
 
+from Helping.BaseEnum import BaseEnum
+
+
+class TradeAction(BaseEnum):
+    NONE = 0
+    BUY = 1
+    ACTIVELY_BUY = 2
+    SELL = 3
+    ACTIVELY_SELL = 4
+
 
 class AbstractIndicator(ABC):
     """
-    Abstract base class for complex indicators
+    Abstract base class for complex Indicators
     Abstract Methods: calculate, print_trade_points, plot
 
     Every indicator contains in itself data it is working with.
     So it has constructor that receives data, and method set_data for saving it.
     """
-    actions = {"actively buy", "buy", "none", "sell", "actively sell"}
 
     def __init__(self, data: Optional[pd.DataFrame] = None):
         """
@@ -37,7 +46,7 @@ class AbstractIndicator(ABC):
         self.trade_points = pd.DataFrame(columns=["date", "Price", "Action"])
         self.trade_points["date"] = pd.to_datetime(self.trade_points["date"])
         self.trade_points["Price"] = self.trade_points["Price"].astype("float")
-        self.trade_points["Action"] = self.trade_points["Action"].astype("str")
+        self.trade_points["Action"] = self.trade_points["Action"]
         self.trade_points = self.trade_points.set_index("date")
 
     @abstractmethod
@@ -60,15 +69,12 @@ class AbstractIndicator(ABC):
     def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
         pass
 
-    def add_trade_point(self, date: Union[pd.Timestamp, Hashable], price: float, action: str):
+    def add_trade_point(self, date: Union[pd.Timestamp, Hashable], price: float, action: TradeAction):
         """
         :param date: date for trade action
         :param price: price of purchase
-        :param action: "actively buy", "buy", "none", "sell", "actively sell" (one of the actions)
+        :param action: action to make at the moment
         """
-        if action not in AbstractIndicator.actions:
-            raise ValueError("unknown action was translated")
-
         self.trade_points.loc[date] = {"Price": price, "Action": action}
 
     def select_action_trade_points(self, start_date: Optional[pd.Timestamp] = None,
@@ -83,4 +89,4 @@ class AbstractIndicator(ABC):
             end_date = self.trade_points.index[-1]
 
         action_points = self.trade_points[start_date:end_date]
-        return action_points.copy()[action_points["Action"] != "none"]
+        return action_points.copy()[action_points["Action"] != TradeAction.NONE]

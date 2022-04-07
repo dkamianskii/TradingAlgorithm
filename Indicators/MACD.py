@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 from typing import Optional, Union
 
-import indicators.moving_averages as ma
-from indicators.AbstractIndicator import AbstractIndicator
+import Indicators.moving_averages as ma
+from Indicators.AbstractIndicator import AbstractIndicator, TradeAction
 
 import cufflinks as cf
 from plotly.subplots import make_subplots
@@ -127,24 +127,24 @@ class MACD(AbstractIndicator):
             if (self._prev_hist is not None) and ((histogram == 0) or (np.sign(self._prev_hist) != np.sign(histogram))):
                 if np.sign(self._prev_hist) > 0:
                     if MACD > 0:
-                        self.add_trade_point(date, new_point["Close"], "actively sell")
+                        self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_SELL)
                     else:
-                        self.add_trade_point(date, new_point["Close"], "sell")
+                        self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
                 else:
                     if MACD < 0:
-                        self.add_trade_point(date, new_point["Close"], "actively buy")
+                        self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_BUY)
                     else:
-                        self.add_trade_point(date, new_point["Close"], "buy")
+                        self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
             else:
-                self.add_trade_point(date, new_point["Close"], "none")
+                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
             self._prev_hist = histogram
         elif self._trade_strategy == "convergence":
             if (self._prev_hist is not None) and (self._pre_prev_hist is not None):
                 if (histogram == 0) or (np.sign(self._prev_hist) != np.sign(histogram)):
                     if np.sign(self._prev_hist) > 0:
-                        self.add_trade_point(date, new_point["Close"], "sell")
+                        self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
                     else:
-                        self.add_trade_point(date, new_point["Close"], "buy")
+                        self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
                     self._convergence_flag = False
                 else:
                     if not self._convergence_flag:
@@ -154,14 +154,14 @@ class MACD(AbstractIndicator):
                             self._hist_peak = self._pre_prev_hist
                     if self._convergence_flag and np.abs(histogram) <= 0.15 * np.abs(self._hist_peak):
                         if np.sign(self._prev_hist) > 0:
-                            self.add_trade_point(date, new_point["Close"], "actively sell")
+                            self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_SELL)
                         else:
-                            self.add_trade_point(date, new_point["Close"], "actively buy")
+                            self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_BUY)
                         self._convergence_flag = False
                     else:
-                        self.add_trade_point(date, new_point["Close"], "none")
+                        self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
             else:
-                self.add_trade_point(date, new_point["Close"], "none")
+                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
             self._pre_prev_hist = self._prev_hist
             self._prev_hist = histogram
 
@@ -227,13 +227,15 @@ class MACD(AbstractIndicator):
                             name="Price",
                             row=1, col=1)
 
-        buy_actions = ["buy", "actively buy"]
+        buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
+        bool_arr = selected_trade_points["Action"].isin(buy_actions)
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
                                  y=selected_trade_points["Price"],
                                  mode="markers",
                                  marker=dict(
-                                     color=np.where(selected_trade_points["Action"].isin(buy_actions), "green", "red"),
-                                     size=5),
+                                     color=np.where(bool_arr, "green", "red"),
+                                     size=7,
+                                     symbol=np.where(bool_arr, "triangle-up", "triangle-down")),
                                  name="Action points"),
                       row=1, col=1)
 

@@ -1,8 +1,8 @@
-import indicators.moving_averages as ma
+import Indicators.moving_averages as ma
 import numpy as np
 import pandas as pd
 from typing import Optional, List, Tuple, Dict
-from indicators.AbstractIndicator import AbstractIndicator
+from Indicators.AbstractIndicator import AbstractIndicator, TradeAction
 
 import plotly as py
 import plotly.express as px
@@ -31,7 +31,7 @@ class MASupportLevels(AbstractIndicator):
     default_ma_periods_for_test = [20, 30, 50, 75, 100, 150, 200]
 
     def __calculate_MAs(self, ma_periods) -> Dict:
-        MAs = {period: ma.EMA(self.price, N=period) for period in ma_periods if len(self.price) > period + 1}
+        MAs = {period: ma.EMA(self.data["Close"], N=period) for period in ma_periods if self.data.shape[0] > period + 1}
         for period in MAs.keys():
             m_a = MAs[period]
             MA_data = {"top border": m_a * 1.002, "main": m_a,
@@ -53,14 +53,14 @@ class MASupportLevels(AbstractIndicator):
 
         :param days_for_bounce: days range (from day when price cross MA line) in which price have to bounce
         """
-        if (self.MAs is None):
+        if self.MAs is None:
             raise SyntaxError("test_MAs_for_data can be called only after calculate method was called at least once")
         self.MA_test_results = []
         self.tested_MAs = {}
         for period in self.MAs.keys():
             result = self.__test_MA(self.MAs[period], days_for_bounce)
             self.MA_test_results.append((period, result))
-            if ((result["activations"] <= 3) or (result["successes"] / result["activations"] >= 0.45)):
+            if (result["activations"] <= 3) or (result["successes"] / result["activations"] >= 0.45):
                 self.tested_MAs[period] = self.MAs[period]
 
         return self.MA_test_results
@@ -89,31 +89,31 @@ class MASupportLevels(AbstractIndicator):
         days_counter = 0
         for date, MA_point in MA.iterrows():
             point = self.data.loc[date]
-            if (activation_flag):
-                if (days_counter == days_for_bounce):
+            if activation_flag:
+                if days_counter == days_for_bounce:
                     activation_points["results"].append("fail")
                     activation_flag = False
-                elif (activation_type == "support"):
-                    if (point["Close"] < activation_point["Close"]):
+                elif activation_type == "support":
+                    if point["Close"] < activation_point["Close"]:
                         activation_points["results"].append("fail")
                         activation_flag = False
-                    elif ((point["Close"] > activation_point["Close"]) and (point["Close"] > point["Open"])):
+                    elif (point["Close"] > activation_point["Close"]) and (point["Close"] > point["Open"]):
                         successes += 1
                         activation_points["results"].append("success")
                         activation_flag = False
                 else:
-                    if (point["Close"] > activation_point["Close"]):
+                    if point["Close"] > activation_point["Close"]:
                         activation_points["results"].append("fail")
                         activation_flag = False
-                    elif ((point["Close"] < activation_point["Close"]) and (point["Close"] < point["Open"])):
+                    elif (point["Close"] < activation_point["Close"]) and (point["Close"] < point["Open"]):
                         successes += 1
                         activation_points["results"].append("success")
                         activation_flag = False
                 days_counter += 1
 
-            if (not activation_flag):
+            if not activation_flag:
                 activation_flag, activation_type = self.__activation_point_check(point, MA_point)
-                if (activation_flag):
+                if activation_flag:
                     activations += 1
                     days_counter = 1
                     activation_points["Dates"].append(date)
@@ -131,19 +131,18 @@ class MASupportLevels(AbstractIndicator):
         :param MA_point: dict with fields "main", "top border", "bottom border". All fields are float numbers
         :return: tuple(is point activation:bool, activation type: "support" or "resistance")
         """
-        if ((point["Open"] > MA_point["main"]) and (point["Open"] > point["Close"])):  # support
-            if ((point["Close"] <= MA_point["top border"]) or (point["Low"] <= MA_point["top border"])):
-                return (True, "support")
-        elif ((point["Open"] < MA_point["main"]) and (point["Open"] < point["Close"])):  # resistance
-            if ((point["Close"] >= MA_point["bottom border"]) or (point["High"] >= MA_point["bottom border"])):
-                return (True, "resistance")
+        if (point["Open"] > MA_point["main"]) and (point["Open"] > point["Close"]):  # support
+            if (point["Close"] <= MA_point["top border"]) or (point["Low"] <= MA_point["top border"]):
+                return True, "support"
+        elif (point["Open"] < MA_point["main"]) and (point["Open"] < point["Close"]):  # resistance
+            if (point["Close"] >= MA_point["bottom border"]) or (point["High"] >= MA_point["bottom border"]):
+                return True, "resistance"
 
-        return (False, None)
+        return False, None
 
     def find_trade_points(self, use_tested_MAs: bool = False) -> pd.DataFrame:
-        self.clear_trade_points()
-        if (use_tested_MAs):
-            if (self.tested_MAs is None):
+        if use_tested_MAs:
+            if self.tested_MAs is None:
                 self.test_MAs_for_data()
             MAs_in_use = self.tested_MAs
         else:
@@ -152,38 +151,38 @@ class MASupportLevels(AbstractIndicator):
         for date, point in self.data[1:].iterrows():
             resistance, support = 0, 0
             activation_flag = False
-            if (date == pd.Timestamp(ts_input="2021-01-19")):
+            if date == pd.Timestamp(ts_input="2021-01-19"):
                 i = 1
             for period, MA in MAs_in_use.items():
                 MA_point = MA.loc[date]
                 is_activation, activation_type = self.__activation_point_check(point, MA_point)
-                if (is_activation):
+                if is_activation:
                     activation_flag = True
-                    if (activation_type == "resistance"):
+                    if activation_type == "resistance":
                         resistance += 1
                     else:
                         support += 1
 
-            if (activation_flag):
-                if ((resistance == 1) and (support == 0)):
-                    self.add_trade_point(date, "sell")
+            if activation_flag:
+                if (resistance == 1) and (support == 0):
+                    self.add_trade_point(date, TradeAction.SELL)
                     continue
-                if ((resistance == 0) and (support == 1)):
-                    self.add_trade_point(date, "buy")
+                if (resistance == 0) and (support == 1):
+                    self.add_trade_point(date, TradeAction.BUY)
                     continue
-                if (((resistance == 0) and (support == 0)) or (np.abs(resistance - support) <= 1)):
+                if ((resistance == 0) and (support == 0)) or (np.abs(resistance - support) <= 1):
                     continue
-                if (resistance - support == 2):
-                    self.add_trade_point(date, "sell")
+                if resistance - support == 2:
+                    self.add_trade_point(date, TradeAction.SELL)
                     continue
-                if (support - resistance == 2):
-                    self.add_trade_point(date, "buy")
+                if support - resistance == 2:
+                    self.add_trade_point(date, TradeAction.BUY)
                     continue
-                if (resistance - support >= 3):
-                    self.add_trade_point(date, "actively sell")
+                if resistance - support >= 3:
+                    self.add_trade_point(date, TradeAction.ACTIVELY_SELL)
                     continue
-                if (support - resistance >= 3):
-                    self.add_trade_point(date, "actively buy")
+                if support - resistance >= 3:
+                    self.add_trade_point(date, TradeAction.ACTIVELY_BUY)
                     continue
 
         return self.trade_points
@@ -192,9 +191,9 @@ class MASupportLevels(AbstractIndicator):
         """
         Plots the candle graph for data and MAs with highlighted trade points in specified time diapason
         """
-        if ((start_date is None) or (start_date < self.data.index[0])):
+        if (start_date is None) or (start_date < self.data.index[0]):
             start_date = self.data.index[0]
-        if ((end_date is None) or (end_date > self.data.index[-1])):
+        if (end_date is None) or (end_date > self.data.index[-1]):
             end_date = self.data.index[-1]
 
         selected_data = self.data[start_date:end_date]
@@ -218,16 +217,19 @@ class MASupportLevels(AbstractIndicator):
 
         selected_trade_points = self.select_action_trade_points(start_date=start_date, end_date=end_date)
 
-        buy_actions = ["buy", "actively buy"]
+        buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
+        bool_arr = selected_trade_points["Action"].isin(buy_actions)
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
-                                 y=selected_trade_points["This Day Close"],
+                                 y=selected_trade_points["Price"],
                                  mode="markers",
-                                 marker=dict(color=np.where(selected_trade_points["Action"].isin(buy_actions), "green", "red"),
-                                             size=5),
-                                 name="Action points"))
+                                 marker=dict(
+                                     color=np.where(bool_arr, "green", "red"),
+                                     size=7,
+                                     symbol=np.where(bool_arr, "triangle-up", "triangle-down")),
+                                 name="Action points"),
+                      row=1, col=1)
 
         fig.update_layout(title="Price with Moving Averages",
-                          xaxis_title="Date",
-                          yaxis_title="Price")
+                          xaxis_title="Date")
 
         fig.show()

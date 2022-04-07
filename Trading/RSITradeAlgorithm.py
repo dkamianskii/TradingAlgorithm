@@ -2,7 +2,7 @@ import pandas as pd
 from typing import Optional, Union, Dict, List
 
 from Trading.AbstractTradeAlgorithm import AbstractTradeAlgorithm
-from indicators.RSI import RSI
+from Indicators.RSI import RSI
 
 
 class RSITradeAlgorithm(AbstractTradeAlgorithm):

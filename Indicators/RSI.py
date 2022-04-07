@@ -9,8 +9,8 @@ import numpy as np
 import pandas as pd
 from typing import Optional, Dict, Union
 
-import indicators.moving_averages as ma
-from indicators.AbstractIndicator import AbstractIndicator
+import Indicators.moving_averages as ma
+from Indicators.AbstractIndicator import AbstractIndicator, TradeAction
 
 import cufflinks as cf
 from plotly.subplots import make_subplots
@@ -105,47 +105,47 @@ class RSI(AbstractIndicator):
                 """
         if (RSI < 70) and (RSI > 30):
             if self._prev_RSI is None:
-                self.add_trade_point(date, new_point["Close"], "none")
+                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
             else:
                 if (self._prev_RSI >= 70) and (RSI >= 67.5):
-                    self.add_trade_point(date, new_point["Close"], "sell")
+                    self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
                 elif (self._prev_RSI <= 30) and (RSI <= 32.5):
-                    self.add_trade_point(date, new_point["Close"], "buy")
+                    self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
                 else:
-                    self.add_trade_point(date, new_point["Close"], "none")
+                    self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
                 self._prev_RSI = None
             return
 
         if RSI > 80:
-            self.add_trade_point(date, new_point["Close"], "actively sell")
+            self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_SELL)
             self._prev_RSI = None
             return
         if RSI < 20:
-            self.add_trade_point(date, new_point["Close"], "actively buy")
+            self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_BUY)
             self._prev_RSI = None
             return
 
         if RSI >= 70:
             if self._prev_RSI is None:
                 self._prev_RSI = RSI
-                self.add_trade_point(date, new_point["Close"], "none")
+                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
                 return
             if (abs(RSI - self._prev_RSI) >= 5) or ((RSI < self._prev_RSI) and (RSI < 70.5)):
-                self.add_trade_point(date, new_point["Close"], "sell")
+                self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
                 self._prev_RSI = None
                 return
         if RSI <= 30:
             if self._prev_RSI is None:
                 self._prev_RSI = RSI
-                self.add_trade_point(date, new_point["Close"], "none")
+                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
                 return
             if (abs(RSI - self._prev_RSI) >= 5) or ((RSI > self._prev_RSI) and (RSI > 30.5)):
-                self.add_trade_point(date, new_point["Close"], "buy")
+                self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
                 self._prev_RSI = None
                 return
 
         self._prev_RSI = RSI
-        self.add_trade_point(date, new_point["Close"], "none")
+        self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         """
@@ -216,13 +216,15 @@ class RSI(AbstractIndicator):
                             name="Price",
                             row=1, col=1)
 
-        buy_actions = ["buy", "actively buy"]
+        buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
+        bool_arr = selected_trade_points["Action"].isin(buy_actions)
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
                                  y=selected_trade_points["Price"],
                                  mode="markers",
                                  marker=dict(
-                                     color=np.where(selected_trade_points["Action"].isin(buy_actions), "green", "red"),
-                                     size=5),
+                                     color=np.where(bool_arr, "green", "red"),
+                                     size=7,
+                                     symbol=np.where(bool_arr, "triangle-up", "triangle-down")),
                                  name="Action points"),
                       row=1, col=1)
 

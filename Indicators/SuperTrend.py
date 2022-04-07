@@ -1,10 +1,10 @@
-import indicators.moving_averages as ma
+import Indicators.moving_averages as ma
 import numpy as np
 import pandas as pd
 from typing import Optional, List, Tuple, Dict, Union
 
-from indicators.ATR import ATR, ATR_one_point
-from indicators.AbstractIndicator import AbstractIndicator
+from Indicators.ATR import ATR, ATR_one_point
+from Indicators.AbstractIndicator import AbstractIndicator, TradeAction
 
 import cufflinks as cf
 import plotly.graph_objects as go
@@ -88,16 +88,16 @@ class SuperTrend(AbstractIndicator):
     def __make_trade_decision(self, new_point, date, super_trend_color):
         if self._prev_color is None:
             self._prev_color = super_trend_color
-            self.add_trade_point(date, new_point["Close"], "none")
+            self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
             return
         if super_trend_color != self._prev_color:
             self._prev_color = super_trend_color
             if super_trend_color == "green":
-                self.add_trade_point(date, new_point["Close"], "buy")
+                self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
             else:
-                self.add_trade_point(date, new_point["Close"], "sell")
+                self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
         else:
-            self.add_trade_point(date, new_point["Close"], "none")
+            self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         super().calculate(data)
@@ -214,8 +214,9 @@ class SuperTrend(AbstractIndicator):
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
                                  y=selected_trade_points["Price"],
                                  mode="markers",
-                                 marker=dict(color=np.where(selected_trade_points["Action"] == "buy", "green", "red"),
-                                             size=5),
+                                 marker=dict(color=np.where(selected_trade_points["Action"] == TradeAction.BUY, "green", "red"),
+                                             size=7,
+                                             symbol=np.where(selected_trade_points["Action"] == TradeAction.BUY, "triangle-up", "triangle-down")),
                                  name="Action points"))
 
         fig.update_layout(title=f"Price with SuperTrend {self._lookback_period},{self._multiplier}",

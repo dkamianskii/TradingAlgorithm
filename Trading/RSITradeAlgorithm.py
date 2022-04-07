@@ -1,6 +1,7 @@
 import pandas as pd
 from typing import Optional, Union, Dict, List
 
+from Indicators.AbstractIndicator import TradeAction
 from Trading.AbstractTradeAlgorithm import AbstractTradeAlgorithm
 from Indicators.RSI import RSI
 
@@ -26,6 +27,6 @@ class RSITradeAlgorithm(AbstractTradeAlgorithm):
 
     def evaluate_new_point(self, new_point: pd.Series,
                            date: Union[str, pd.Timestamp],
-                           special_params: Optional[Dict] = None) -> str:
+                           special_params: Optional[Dict] = None) -> TradeAction:
         self._indicator.evaluate_new_point(new_point, date, special_params)
         return self._indicator.trade_points.iloc[-1]["Action"]

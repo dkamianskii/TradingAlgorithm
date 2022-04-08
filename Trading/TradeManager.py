@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import numpy as np
 import pandas as pd
 from typing import Optional, List, Dict, Union, Tuple
@@ -16,7 +14,6 @@ class BidType(BaseEnum):
 
 
 class TradeManager:
-
     class DefaultTradeAlgorithm(BaseEnum):
         MACD_SuperTrend = 1,
         Indicators_council = 2,
@@ -72,7 +69,7 @@ class TradeManager:
 
     def clear_history(self):
         self.portfolio = pd.DataFrame(columns=["Stock Name", "Price", "Type", "Amount",
-                                                             "Take Profit Level", "Stop Loss Level", "Date"])
+                                               "Take Profit Level", "Stop Loss Level", "Date"])
         self.available_money = self.start_capital
         self.account_money = self.start_capital
         self.trade_result["Earned Profit"] = 0.0
@@ -134,23 +131,24 @@ class TradeManager:
         stop_loss_lvl, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(price, action)
         if self._use_limited_money:
             self.available_money -= price * amount
-        self.portfolio = self.portfolio.append({"Stock Name": stock_name,
-                               "Price": price,
-                               "Type": bid_type,
-                               "Amount": amount,
-                               "Take Profit Level": take_profit_lvl,
-                               "Stop Loss Level": stop_loss_lvl,
-                               "Date": date}, ignore_index=True)
+        bid_to_append = pd.DataFrame([{"Stock Name": stock_name,
+                                       "Price": price,
+                                       "Type": bid_type,
+                                       "Amount": amount,
+                                       "Take Profit Level": take_profit_lvl,
+                                       "Stop Loss Level": stop_loss_lvl,
+                                       "Date": date}])
+        self.portfolio = pd.concat([self.portfolio, bid_to_append])
 
     def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[float, float]:
         """IN PROGRESS"""
-        if action == "buy":
+        if action == TradeAction.BUY:
             return price * 0.985, price * 1.025
-        elif action == "actively buy":
+        elif action == TradeAction.ACTIVELY_BUY:
             return price * 0.985, price * 1.05
-        elif action == "sell":
+        elif action == TradeAction.SELL:
             return price * 1.015, price * 0.975
-        elif action == "actively sell":
+        elif action == TradeAction.ACTIVELY_SELL:
             return price * 1.015, price * 0.95
 
     def __update_trade_results(self, stock_name: str, price_diff: float, amount: int):
@@ -160,41 +158,40 @@ class TradeManager:
         else:
             self.trade_result.loc[stock_name, "Loses"] += 1
 
-    def __manage_portfolio_assets(self, stock_name: str, assets_in_portfolio:pd.DataFrame,
+    def __manage_portfolio_assets(self, stock_name: str, assets_in_portfolio: pd.DataFrame,
                                   new_point: pd.Series, date: pd.Timestamp):
         """IN PROGRESS"""
         portfolio_changes_flag = False
         indexes_to_drop = []
         for index, asset in assets_in_portfolio.iterrows():
-            if asset["Name"] == stock_name:
-                if asset["Type"] == BidType.LONG:
-                    if (new_point["Close"] >= asset["Take Profit Level"]) or (
-                            new_point["Close"] <= asset["Stop Loss Level"]):
-                        portfolio_changes_flag = True
-                        price_diff = new_point["Close"] - asset["Price"]
-                        self.__update_trade_results(stock_name, price_diff, asset["Amount"])
-                        if self._use_limited_money:
-                            self.available_money += new_point["Close"] * asset["Amount"]
-                            self.account_money += price_diff * asset["Amount"]
-                        indexes_to_drop.append(index)
-                        continue
-                else:
-                    if (new_point["Close"] <= asset["Take Profit Level"]) or (
-                            new_point["Close"] >= asset["Stop Loss Level"]):
-                        portfolio_changes_flag = True
-                        price_diff = asset["Price"] - new_point["Close"]
-                        self.__update_trade_results(stock_name, price_diff, asset["Amount"])
-                        if self._use_limited_money:
-                            self.available_money += (asset["Price"] + price_diff) * asset["Amount"]
-                            self.account_money += price_diff * asset["Amount"]
-                        indexes_to_drop.append(index)
-                        continue
-                if (date - asset["Date"]) > self._days_to_keep_limit:
+            if asset["Type"] == BidType.LONG:
+                if (new_point["Close"] >= asset["Take Profit Level"]) or (
+                        new_point["Close"] <= asset["Stop Loss Level"]):
                     portfolio_changes_flag = True
-                    self.trade_result.loc[stock_name]["Draws"] += 1
+                    price_diff = new_point["Close"] - asset["Price"]
+                    self.__update_trade_results(stock_name, price_diff, asset["Amount"])
                     if self._use_limited_money:
                         self.available_money += new_point["Close"] * asset["Amount"]
+                        self.account_money += price_diff * asset["Amount"]
                     indexes_to_drop.append(index)
+                    continue
+            else:
+                if (new_point["Close"] <= asset["Take Profit Level"]) or (
+                        new_point["Close"] >= asset["Stop Loss Level"]):
+                    portfolio_changes_flag = True
+                    price_diff = asset["Price"] - new_point["Close"]
+                    self.__update_trade_results(stock_name, price_diff, asset["Amount"])
+                    if self._use_limited_money:
+                        self.available_money += (asset["Price"] + price_diff) * asset["Amount"]
+                        self.account_money += price_diff * asset["Amount"]
+                    indexes_to_drop.append(index)
+                    continue
+            if (date - asset["Date"]) > self._days_to_keep_limit:
+                portfolio_changes_flag = True
+                self.trade_result.loc[stock_name]["Draws"] += 1
+                if self._use_limited_money:
+                    self.available_money += new_point["Close"] * asset["Amount"]
+                indexes_to_drop.append(index)
         if portfolio_changes_flag:
             self.portfolio.drop(labels=indexes_to_drop, inplace=True)
             assets_in_portfolio.drop(labels=indexes_to_drop, inplace=True)
@@ -231,7 +228,7 @@ class TradeManager:
                 if date - last_bid_date < self._days_to_chill:
                     if add_point_to_the_data:
                         stock["data"].loc[date] = new_point
-                    return 
+                    return
             amount = self.__evaluate_shares_amount_to_bid(new_point["Close"])
             if amount == 0:
                 print(f"Not enough money to purchase {stock_name} at {date} by price {new_point['Close']}")

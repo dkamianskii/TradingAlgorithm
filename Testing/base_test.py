@@ -3,11 +3,11 @@ from datetime import datetime
 import yfinance as yf
 import pandas as pd
 
-from indicators import moving_averages as ma
-from indicators.MACD import MACD
-from indicators.RSI import RSI
-from indicators.ATR import ATR
-from indicators.SuperTrend import SuperTrend
+from Indicators import moving_averages as ma
+from Indicators.MACD import MACD
+from Indicators.RSI import RSI
+from Indicators.ATR import ATR
+from Indicators.SuperTrend import SuperTrend
 
 data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
 new_date = pd.Timestamp(ts_input="2021-01-09")

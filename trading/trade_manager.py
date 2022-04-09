@@ -56,7 +56,7 @@ class TradeManager:
                                                          "Wins": 0,
                                                          "Loses": 0,
                                                          "Draws": 0}])
-        self.trade_result = self.trade_result.set_index("Stock Name")
+        self.trade_result = self.trade_result.set_index("Stock Name") # todo переработать систему торговых результатов
         self._train_results: Dict[str, Dict[Dict, pd.DataFrame]] = {}
         self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
         self._days_to_chill: pd.Timedelta = pd.Timedelta(days=days_to_chill)
@@ -66,6 +66,7 @@ class TradeManager:
         self.available_money: float = start_capital
         self.account_money: float = start_capital
         self.start_capital: float = start_capital
+        # todo сохранять историю сделок
 
     def clear_history(self):
         self.portfolio = pd.DataFrame(columns=["Stock Name", "Price", "Type", "Amount",
@@ -140,7 +141,7 @@ class TradeManager:
                                        "Date": date}])
         self.portfolio = pd.concat([self.portfolio, bid_to_append])
 
-    def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[float, float]:
+    def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[float, float]:# todo Переработать систему стоп лосс - тейк профит
         """IN PROGRESS"""
         if action == TradeAction.BUY:
             return price * 0.985, price * 1.025
@@ -158,7 +159,7 @@ class TradeManager:
         else:
             self.trade_result.loc[stock_name, "Loses"] += 1
 
-    def __manage_portfolio_assets(self, stock_name: str, assets_in_portfolio: pd.DataFrame,
+    def __manage_portfolio_assets(self, stock_name: str, assets_in_portfolio: pd.DataFrame, # todo сохранять полученный доход по дням
                                   new_point: pd.Series, date: pd.Timestamp):
         """IN PROGRESS"""
         portfolio_changes_flag = False
@@ -270,3 +271,9 @@ class TradeManager:
             algorithm.train(stock["data"], best_params)
 
         return self._train_results
+
+    def plot_stock_history(self, stock_name: str): # todo Графики действий по стокам
+        pass
+
+    def plot_earnings_curve(self, stock_name: Optional[str] = None): # todo графики доходности, если stock_name = None, то рисуем total
+        pass

@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 cf.go_offline()
 
 
-class MASupportLevels(AbstractIndicator):
+class MASupportLevels(AbstractIndicator): # todo реворк индикатора под новый стандарт
 
     def __init__(self, data: Optional[pd.DataFrame] = None,
                  ma_periods: List = None):

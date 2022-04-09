@@ -1,8 +1,8 @@
-import Indicators.moving_averages as ma
+import indicators.moving_averages as ma
 import numpy as np
 import pandas as pd
 from typing import Optional, List, Tuple, Dict
-from Indicators.AbstractIndicator import AbstractIndicator, TradeAction
+from indicators.abstract_indicator import AbstractIndicator, TradeAction
 
 import plotly as py
 import plotly.express as px

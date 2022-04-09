@@ -2,10 +2,10 @@ import numpy as np
 import pandas as pd
 from typing import Optional, List, Dict, Union, Tuple
 
-from Helping.BaseEnum import BaseEnum
-from Indicators.AbstractIndicator import TradeAction
-from Trading.AbstractTradeAlgorithm import AbstractTradeAlgorithm
-from Trading.MACDSuperTrendTradeAlgorithm import MACDSuperTrendTradeAlgorithm
+from helping.base_enum import BaseEnum
+from indicators.abstract_indicator import TradeAction
+from trading.abstract_trade_algorithm import AbstractTradeAlgorithm
+from trading.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm
 
 
 class BidType(BaseEnum):

@@ -4,7 +4,7 @@ from typing import Union
 
 from numpy import double
 
-import Indicators.moving_averages as ma
+import indicators.moving_averages as ma
 
 
 def ATR(data: pd.DataFrame, N: int = 14) -> pd.Series:

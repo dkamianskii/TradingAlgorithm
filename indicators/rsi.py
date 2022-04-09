@@ -9,8 +9,8 @@ import numpy as np
 import pandas as pd
 from typing import Optional, Dict, Union
 
-import Indicators.moving_averages as ma
-from Indicators.AbstractIndicator import AbstractIndicator, TradeAction
+import indicators.moving_averages as ma
+from indicators.abstract_indicator import AbstractIndicator, TradeAction
 
 import cufflinks as cf
 from plotly.subplots import make_subplots

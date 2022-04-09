@@ -1,9 +1,9 @@
 import pandas as pd
 from typing import Optional, Union, Dict
 
-from Trading.AbstractTradeAlgorithm import AbstractTradeAlgorithm
-from Indicators.SuperTrend import SuperTrend
-from Indicators.MACD import MACD
+from trading.abstract_trade_algorithm import AbstractTradeAlgorithm
+from indicators.super_trend import SuperTrend
+from indicators.macd import MACD
 
 
 class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):

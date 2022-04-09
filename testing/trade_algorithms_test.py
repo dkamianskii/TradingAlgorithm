@@ -2,8 +2,8 @@ from datetime import datetime
 
 import yfinance as yf
 import pandas as pd
-from Trading.TradeManager import TradeManager
-from Trading.RSITradeAlgorithm import RSITradeAlgorithm
+from trading.trade_manager import TradeManager
+from trading.rsi_trade_algorithm import RSITradeAlgorithm
 
 start_date = "2000-01-01"
 end_date = "2021-12-31"

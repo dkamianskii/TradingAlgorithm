@@ -1,10 +1,10 @@
-import Indicators.moving_averages as ma
+import indicators.moving_averages as ma
 import numpy as np
 import pandas as pd
 from typing import Optional, List, Tuple, Dict, Union
 
-from Indicators.ATR import ATR, ATR_one_point
-from Indicators.AbstractIndicator import AbstractIndicator, TradeAction
+from indicators.atr import ATR, ATR_one_point
+from indicators.abstract_indicator import AbstractIndicator, TradeAction
 
 import cufflinks as cf
 import plotly.graph_objects as go

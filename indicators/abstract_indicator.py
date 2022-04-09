@@ -2,7 +2,7 @@ import pandas as pd
 from abc import ABC, abstractmethod
 from typing import Optional, Union, Hashable
 
-from Helping.BaseEnum import BaseEnum
+from helping.base_enum import BaseEnum
 
 
 class TradeAction(BaseEnum):
@@ -15,7 +15,7 @@ class TradeAction(BaseEnum):
 
 class AbstractIndicator(ABC):
     """
-    Abstract base class for complex Indicators
+    Abstract base class for complex indicators
     Abstract Methods: calculate, print_trade_points, plot
 
     Every indicator contains in itself data it is working with.

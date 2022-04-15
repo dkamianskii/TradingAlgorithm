@@ -9,13 +9,25 @@ from indicators.rsi import RSI
 from indicators.atr import ATR
 from indicators.super_trend import SuperTrend
 
-data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
-new_date = pd.Timestamp(ts_input="2021-01-09")
-start_test = datetime.strptime("2021-01-10", "%Y-%m-%d")
-ee = data[start_test:]
-new_point = data.loc[new_date]
+trade_result: pd.DataFrame = pd.DataFrame([{"Stock Name": "Total",
+                                            "Earned Profit": 0.0,
+                                            "Wins": 0,
+                                            "Loses": 0,
+                                            "Draws": 0}]).set_index("Stock Name")
+trade_result.loc["AMD"] = {"Earned Profit": 0.0, "Wins": 0, "Loses": 0, "Draws": 0}
+trade_result.loc["X"] = {"Earned Profit": 0.0, "Draws": 0}
+trade_result.loc[["AMD", "Total"], ["Earned Profit", "Wins"]] += [100.0, 1]
+e = trade_result.loc[["AMD", "Total"], ["Earned Profit", "Wins"]]
+e += [50.0, 1]
+
+print(trade_result)
+# data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
+
+# start_test = datetime.strptime("2021-01-10", "%Y-%m-%d")
+# ee = data[start_test:]
+# new_point = data.loc[new_date]
 # train_data = data.iloc[0:-1]
-print(data)
+
 # start_date = pd.Timestamp(ts_input="2021-10-01")
 # print(data["Close"][start_date])
 # test_df = pd.DataFrame(index=data.index[20:], columns=["Value", "Color"])
@@ -75,10 +87,3 @@ print(data)
 # super_trend.plot()
 
 dd = 1
-
-
-
-
-
-
-

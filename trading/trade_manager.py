@@ -6,6 +6,7 @@ from helping.base_enum import BaseEnum
 from indicators.abstract_indicator import TradeAction
 from trading.abstract_trade_algorithm import AbstractTradeAlgorithm
 from trading.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm
+from trading.trade_statistics_manager import TradeStatisticsManager
 
 
 class BidType(BaseEnum):
@@ -48,42 +49,34 @@ class TradeManager:
            currently managed assets
          - save information about profitability of made deals and current finance assets
         """
-        self.tracked_stocks: Dict[str, Dict] = {}
         self.portfolio: pd.DataFrame = pd.DataFrame(columns=["Stock Name", "Price", "Type", "Amount",
                                                              "Take Profit Level", "Stop Loss Level", "Date"])
-        self.trade_result: pd.DataFrame = pd.DataFrame([{"Stock Name": "Total",
-                                                         "Earned Profit": 0.0,
-                                                         "Wins": 0,
-                                                         "Loses": 0,
-                                                         "Draws": 0}])
-        self.trade_result = self.trade_result.set_index("Stock Name") # todo переработать систему торговых результатов
-        self._train_results: Dict[str, Dict[Dict, pd.DataFrame]] = {}
+
+        self.available_money: float = start_capital
+        self.account_money: float = start_capital
+        self.start_capital: float = start_capital
+
+        self._tracked_stocks: Dict[str, Dict] = {}
+        self._statistics_manager: TradeStatisticsManager = TradeStatisticsManager()
+        self._train_results: Dict[str, Dict[str, pd.DataFrame]] = {}
         self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
         self._days_to_chill: pd.Timedelta = pd.Timedelta(days=days_to_chill)
         self._use_limited_money: bool = use_limited_money
         self._risk_rate: float = risk_rate
         self._money_for_a_bid: float = money_for_a_bid
-        self.available_money: float = start_capital
-        self.account_money: float = start_capital
-        self.start_capital: float = start_capital
+
         # todo сохранять историю сделок
 
     def clear_history(self):
         self.portfolio = pd.DataFrame(columns=["Stock Name", "Price", "Type", "Amount",
                                                "Take Profit Level", "Stop Loss Level", "Date"])
+        self._statistics_manager.clear_history()
         self.available_money = self.start_capital
         self.account_money = self.start_capital
-        self.trade_result["Earned Profit"] = 0.0
-        self.trade_result[["Wins", "Loses", "Draws"]] = 0
 
     def clear_tracked_stocks_list(self):
-        self.tracked_stocks = {}
-        self.trade_result = pd.DataFrame([{"Stock Name": "Total",
-                                           "Earned Profit": 0.0,
-                                           "Wins": 0,
-                                           "Loses": 0,
-                                           "Draws": 0}])
-        self.trade_result = self.trade_result.set_index("Stock Name")
+        self._tracked_stocks = {}
+        self._statistics_manager = TradeStatisticsManager()
 
     def set_manager_params(self, days_to_keep_limit: int = 14,
                            days_to_chill: int = 4,
@@ -112,16 +105,13 @@ class TradeManager:
                     "algorithm must be one of default trade algorithms or user should provide custom trade algorithm")
         else:
             algorithm = trade_algorithm
-        new_stock = pd.DataFrame([{"Stock Name": stock_name,
-                                   "Earned Profit": 0.0,
-                                   "Wins": 0,
-                                   "Loses": 0,
-                                   "Draws": 0}]).set_index("Stock Name")
-        self.trade_result = pd.concat([new_stock, self.trade_result])
-        self.tracked_stocks[stock_name] = {
+
+        self._statistics_manager.set_tracked_stock(stock_name)
+        self._tracked_stocks[stock_name] = {
             "data": stock_data,
             "trade algorithm": algorithm,
-            "params grid": custom_params_grid}
+            "params grid": custom_params_grid,
+            "chosen params": None}
 
     def __add_to_portfolio(self, stock_name: str,
                            price: float,
@@ -140,8 +130,9 @@ class TradeManager:
                                        "Stop Loss Level": stop_loss_lvl,
                                        "Date": date}])
         self.portfolio = pd.concat([self.portfolio, bid_to_append])
+        self._statistics_manager.open_bid(stock_name, date, price, bid_type)
 
-    def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[float, float]:# todo Переработать систему стоп лосс - тейк профит
+    def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[float, float]:  # todo Переработать систему стоп лосс - тейк профит
         """IN PROGRESS"""
         if action == TradeAction.BUY:
             return price * 0.985, price * 1.025
@@ -152,51 +143,43 @@ class TradeManager:
         elif action == TradeAction.ACTIVELY_SELL:
             return price * 1.015, price * 0.95
 
-    def __update_trade_results(self, stock_name: str, price_diff: float, amount: int):
-        self.trade_result.loc[stock_name, "Earned Profit"] += price_diff * amount
-        if price_diff > 0:
-            self.trade_result.loc[stock_name, "Wins"] += 1
-        else:
-            self.trade_result.loc[stock_name, "Loses"] += 1
+    def __close_bid(self, stock_name: str, close_price: float,
+                    profit: Optional[float], cashback: float,
+                    open_date: pd.Timestamp, close_date: pd.Timestamp, draw: bool = False):
+        self._statistics_manager.update_trade_result(stock_name, profit, draw)
+        self._statistics_manager.close_bid(stock_name, open_date, close_date, close_price)
+        if self._use_limited_money:
+            self.available_money += cashback
+            self.account_money += profit
 
-    def __manage_portfolio_assets(self, stock_name: str, assets_in_portfolio: pd.DataFrame, # todo сохранять полученный доход по дням
+    def __manage_portfolio_assets(self, stock_name: str, assets_in_portfolio: pd.DataFrame,
                                   new_point: pd.Series, date: pd.Timestamp):
         """IN PROGRESS"""
-        portfolio_changes_flag = False
         indexes_to_drop = []
         for index, asset in assets_in_portfolio.iterrows():
             if asset["Type"] == BidType.LONG:
                 if (new_point["Close"] >= asset["Take Profit Level"]) or (
                         new_point["Close"] <= asset["Stop Loss Level"]):
-                    portfolio_changes_flag = True
                     price_diff = new_point["Close"] - asset["Price"]
-                    self.__update_trade_results(stock_name, price_diff, asset["Amount"])
-                    if self._use_limited_money:
-                        self.available_money += new_point["Close"] * asset["Amount"]
-                        self.account_money += price_diff * asset["Amount"]
+                    self.__close_bid(stock_name, new_point["Close"], price_diff * asset["Amount"],
+                                     new_point["Close"] * asset["Amount"], asset["Date"], date)
                     indexes_to_drop.append(index)
                     continue
             else:
                 if (new_point["Close"] <= asset["Take Profit Level"]) or (
                         new_point["Close"] >= asset["Stop Loss Level"]):
-                    portfolio_changes_flag = True
                     price_diff = asset["Price"] - new_point["Close"]
-                    self.__update_trade_results(stock_name, price_diff, asset["Amount"])
-                    if self._use_limited_money:
-                        self.available_money += (asset["Price"] + price_diff) * asset["Amount"]
-                        self.account_money += price_diff * asset["Amount"]
+                    self.__close_bid(stock_name, new_point["Close"], price_diff * asset["Amount"],
+                                     new_point["Close"] * asset["Amount"], asset["Date"], date)
                     indexes_to_drop.append(index)
                     continue
             if (date - asset["Date"]) > self._days_to_keep_limit:
-                portfolio_changes_flag = True
-                self.trade_result.loc[stock_name]["Draws"] += 1
-                if self._use_limited_money:
-                    self.available_money += new_point["Close"] * asset["Amount"]
+                self.__close_bid(stock_name, new_point["Close"], None,
+                                 new_point["Close"] * asset["Amount"], asset["Date"], date, True)
                 indexes_to_drop.append(index)
-        if portfolio_changes_flag:
+        if len(indexes_to_drop) > 0:
             self.portfolio.drop(labels=indexes_to_drop, inplace=True)
             assets_in_portfolio.drop(labels=indexes_to_drop, inplace=True)
-            self.trade_result.loc["Total"] = self.trade_result[:-1].sum()
 
     def __evaluate_shares_amount_to_bid(self, price: float) -> int:
         shares_to_buy = 0
@@ -216,7 +199,7 @@ class TradeManager:
         assets_in_portfolio = self.portfolio[self.portfolio["Stock Name"] == stock_name]
         self.__manage_portfolio_assets(stock_name, assets_in_portfolio, new_point, date)
 
-        stock = self.tracked_stocks[stock_name]
+        stock = self._tracked_stocks[stock_name]
         action = stock["trade algorithm"].evaluate_new_point(new_point, date)
         if action != TradeAction.NONE:
             if (action == TradeAction.BUY) or (action == TradeAction.ACTIVELY_BUY):
@@ -239,10 +222,10 @@ class TradeManager:
             stock["data"].loc[date] = new_point
 
     def train(self, test_start_date: Union[str, pd.Timestamp],
-              test_end_date: Optional[Union[str, pd.Timestamp]] = None) -> Dict[str, Dict[Dict, pd.DataFrame]]:
+              test_end_date: Optional[Union[str, pd.Timestamp]] = None) -> Dict[str, Dict[str, pd.DataFrame]]:
         self._train_results = {}
         test_start_date = pd.Timestamp(ts_input=test_start_date)
-        for stock_name, stock in self.tracked_stocks.items():
+        for stock_name, stock in self._tracked_stocks.items():
             train_data: pd.DataFrame = stock["data"][:test_start_date]
             if test_end_date is not None:
                 test_end_date = pd.Timestamp(ts_input=test_end_date)
@@ -257,23 +240,25 @@ class TradeManager:
                 params_grid = stock["params grid"]
 
             best_params = params_grid[0]
-            max_earnings = 0
+            max_earnings = None
             for params in params_grid:
                 self.clear_history()
                 algorithm.train(train_data, params)
                 for date, point in test_data.iterrows():
                     self.evaluate_new_point(stock_name, point, date, False)
-                self._train_results[stock_name] = {str(params): self.trade_result.copy()}
-                earnings = self.trade_result.loc["Total"]["Earned Profit"]
-                if earnings > max_earnings:
+                self._train_results[stock_name] = {str(params): self._statistics_manager.trade_result.copy()}
+                earnings = self._statistics_manager.trade_result.at["Total", "Earned Profit"]
+                if (max_earnings is None) and (earnings > max_earnings):
                     max_earnings = earnings
                     best_params = params
             algorithm.train(stock["data"], best_params)
 
         return self._train_results
 
-    def plot_stock_history(self, stock_name: str): # todo Графики действий по стокам
+    def plot_stock_history(self,
+                           stock_name: str):  # todo Графики действий (точку открытия сделки и закрытия соединять линией) по стокам
         pass
 
-    def plot_earnings_curve(self, stock_name: Optional[str] = None): # todo графики доходности, если stock_name = None, то рисуем total
+    def plot_earnings_curve(self, stock_name: Optional[
+        str] = None):  # todo графики доходности, если stock_name = None, то рисуем total
         pass

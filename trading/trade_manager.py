@@ -8,6 +8,11 @@ from trading.abstract_trade_algorithm import AbstractTradeAlgorithm
 from trading.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm
 from trading.trade_statistics_manager import TradeStatisticsManager
 
+import cufflinks as cf
+import plotly.graph_objects as go
+
+cf.go_offline()
+
 
 class BidType(BaseEnum):
     LONG = 1,
@@ -132,7 +137,8 @@ class TradeManager:
         self.portfolio = pd.concat([self.portfolio, bid_to_append])
         self._statistics_manager.open_bid(stock_name, date, price, bid_type)
 
-    def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[float, float]:  # todo Переработать систему стоп лосс - тейк профит
+    def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[
+        float, float]:  # todo Переработать систему стоп лосс - тейк профит
         """IN PROGRESS"""
         if action == TradeAction.BUY:
             return price * 0.985, price * 1.025
@@ -144,10 +150,11 @@ class TradeManager:
             return price * 1.015, price * 0.95
 
     def __close_bid(self, stock_name: str, close_price: float,
-                    profit: Optional[float], cashback: float,
-                    open_date: pd.Timestamp, close_date: pd.Timestamp, draw: bool = False):
+                    open_date: pd.Timestamp, close_date: pd.Timestamp,
+                    cashback: float, profit: float = 0, draw: bool = False):
         self._statistics_manager.update_trade_result(stock_name, profit, draw)
         self._statistics_manager.close_bid(stock_name, open_date, close_date, close_price)
+        self._statistics_manager.add_earnings(stock_name, profit, close_date)
         if self._use_limited_money:
             self.available_money += cashback
             self.account_money += profit
@@ -161,25 +168,27 @@ class TradeManager:
                 if (new_point["Close"] >= asset["Take Profit Level"]) or (
                         new_point["Close"] <= asset["Stop Loss Level"]):
                     price_diff = new_point["Close"] - asset["Price"]
-                    self.__close_bid(stock_name, new_point["Close"], price_diff * asset["Amount"],
-                                     new_point["Close"] * asset["Amount"], asset["Date"], date)
+                    self.__close_bid(stock_name, asset["Date"], date, new_point["Close"],
+                                     new_point["Close"] * asset["Amount"], price_diff * asset["Amount"])
                     indexes_to_drop.append(index)
                     continue
             else:
                 if (new_point["Close"] <= asset["Take Profit Level"]) or (
                         new_point["Close"] >= asset["Stop Loss Level"]):
                     price_diff = asset["Price"] - new_point["Close"]
-                    self.__close_bid(stock_name, new_point["Close"], price_diff * asset["Amount"],
-                                     new_point["Close"] * asset["Amount"], asset["Date"], date)
+                    self.__close_bid(stock_name, new_point["Close"], asset["Date"], date,
+                                     (asset["Price"] + price_diff) * asset["Amount"], price_diff * asset["Amount"])
                     indexes_to_drop.append(index)
                     continue
             if (date - asset["Date"]) > self._days_to_keep_limit:
-                self.__close_bid(stock_name, new_point["Close"], None,
-                                 new_point["Close"] * asset["Amount"], asset["Date"], date, True)
+                self.__close_bid(stock_name, new_point["Close"], asset["Date"], date,
+                                 new_point["Close"] * asset["Amount"], draw=True)
                 indexes_to_drop.append(index)
         if len(indexes_to_drop) > 0:
             self.portfolio.drop(labels=indexes_to_drop, inplace=True)
             assets_in_portfolio.drop(labels=indexes_to_drop, inplace=True)
+        else:
+            self._statistics_manager.add_earnings(stock_name, 0, date)
 
     def __evaluate_shares_amount_to_bid(self, price: float) -> int:
         shares_to_buy = 0
@@ -259,6 +268,24 @@ class TradeManager:
                            stock_name: str):  # todo Графики действий (точку открытия сделки и закрытия соединять линией) по стокам
         pass
 
-    def plot_earnings_curve(self, stock_name: Optional[
-        str] = None):  # todo графики доходности, если stock_name = None, то рисуем total
-        pass
+    def plot_earnings_curve(self, stock_name: Optional[str] = None):
+        if stock_name is None:
+            earnings_history = self._statistics_manager.total_earnings_history
+            name = "Total Earnings"
+        else:
+            earnings_history = self._statistics_manager.stocks_statistics[stock_name]["earnings history"]
+            name = f"Earnings on {stock_name}"
+
+        fig = go.Figure(go.Scatter(
+            x=earnings_history["Date"],
+            y=earnings_history.cumsum(),
+            mode='lines',
+            line_color="blue",
+            showlegend=False,
+        ))
+
+        fig.update_layout(title=name,
+                          xaxis_title="Date",
+                          yaxis_title="Total Profit")
+
+        fig.show()

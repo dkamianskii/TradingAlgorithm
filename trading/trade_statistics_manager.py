@@ -13,6 +13,7 @@ class TradeStatisticsManager:
                                                          "Loses": 0,
                                                          "Draws": 0}]).set_index("Stock Name")
         self.stocks_statistics: Dict[str, Dict[str, pd.DataFrame]] = {}
+        self.total_earnings_history: pd.DataFrame = pd.DataFrame(columns=["Date", "Value"]).set_index("Date")
 
     def set_tracked_stock(self, stock_name: str):
         if stock_name in self.stocks_statistics.keys():
@@ -25,15 +26,13 @@ class TradeStatisticsManager:
                                        "Draws": 0}]).set_index("Stock Name")
             self.trade_result = pd.concat([new_stock, self.trade_result])
 
-        self.stocks_statistics[stock_name]["earnings history"] = pd.DataFrame(columns=["Date", "Value"]).set_index(
-            "Date")
+        self.stocks_statistics[stock_name]["earnings history"] = pd.DataFrame(columns=["Date", "Value"]).set_index("Date")
         self.stocks_statistics[stock_name]["bids history"] = pd.DataFrame(columns=["Date Open",
                                                                                    "Open Price",
                                                                                    "Date Close",
                                                                                    "Close Price",
                                                                                    "Type",
-                                                                                   "Result color"]).set_index(
-            "Date Open")
+                                                                                   "Result color"]).set_index("Date Open")
 
     def clear_history(self):
         self.trade_result[self.trade_result.columns] = 0
@@ -57,6 +56,7 @@ class TradeStatisticsManager:
 
     def add_earnings(self, stock_name: str, earnings: float, date: pd.Timestamp):
         self.stocks_statistics[stock_name]["earnings history"].loc[date] = [earnings]
+        self.total_earnings_history.loc[date] = [earnings]
 
     def open_bid(self, stock_name: str, date_open: pd.Timestamp, open_price: float, bid_type: BidType):
         self.stocks_statistics[stock_name]["bids history"].loc[date_open] = {"Open Price": open_price, "Type": bid_type}

@@ -70,14 +70,14 @@ class TradeManager:
         self._risk_rate: float = risk_rate
         self._money_for_a_bid: float = money_for_a_bid
 
-        # todo сохранять историю сделок
-
     def clear_history(self):
         self.portfolio = pd.DataFrame(columns=["Stock Name", "Price", "Type", "Amount",
                                                "Take Profit Level", "Stop Loss Level", "Date"])
         self._statistics_manager.clear_history()
         self.available_money = self.start_capital
         self.account_money = self.start_capital
+        for _, stock in self._tracked_stocks.items():
+            stock["trading start date"] = None
 
     def clear_tracked_stocks_list(self):
         self._tracked_stocks = {}
@@ -116,7 +116,8 @@ class TradeManager:
             "data": stock_data,
             "trade algorithm": algorithm,
             "params grid": custom_params_grid,
-            "chosen params": None}
+            "chosen params": None,
+            "trading start date": None}
 
     def __add_to_portfolio(self, stock_name: str,
                            price: float,
@@ -229,6 +230,8 @@ class TradeManager:
                 self.__add_to_portfolio(stock_name, new_point["Close"], date, amount, action, bid_type)
         if add_point_to_the_data:
             stock["data"].loc[date] = new_point
+            if stock["trading start date"] is None:
+                stock["trading start date"] = date
 
     def train(self, test_start_date: Union[str, pd.Timestamp],
               test_end_date: Optional[Union[str, pd.Timestamp]] = None) -> Dict[str, Dict[str, pd.DataFrame]]:
@@ -265,8 +268,69 @@ class TradeManager:
         return self._train_results
 
     def plot_stock_history(self,
-                           stock_name: str):  # todo Графики действий (точку открытия сделки и закрытия соединять линией) по стокам
-        pass
+                           stock_name: str,
+                           show_full_stock_history: bool = False):
+        bids_history = self._statistics_manager.stocks_statistics[stock_name]["bids history"]
+        bids_history = bids_history[~bids_history["Date Close"].isna()]
+        fig = go.Figure(
+            [
+                go.Scatter(
+                    x=[date_open, bid["Date Close"]],
+                    y=[bid["Open Price"], bid["Close Price"]],
+                    mode='lines',
+                    line_color=bid["Result color"],
+                    line=dict(width=3),
+                    showlegend=False,
+                )
+                for date_open, bid in bids_history.iterrows()
+            ]
+        )
+
+        trading_start_date: pd.Timestamp = self._tracked_stocks[stock_name]["trading start date"]
+        if show_full_stock_history:
+            stock_data: pd.DataFrame = self._tracked_stocks[stock_name]["data"]
+            max = stock_data["High"].max()
+            min = stock_data["Low"].min()
+            fig.add_trace(go.Scatter(x=[trading_start_date, trading_start_date],
+                                     y=[min, max],
+                                     mode='lines',
+                                     line_color="red",
+                                     line=dict(width=2),
+                                     name="Start of trading"))
+        else:
+            stock_data: pd.DataFrame = self._tracked_stocks[stock_name]["data"][trading_start_date:]
+
+        fig.add_candlestick(x=stock_data.index,
+                            open=stock_data["Open"],
+                            close=stock_data["Close"],
+                            high=stock_data["High"],
+                            low=stock_data["Low"],
+                            name="Price")
+
+        fig.add_trace(go.Scatter(x=bids_history.index,
+                                 y=bids_history["Open Price"],
+                                 mode="markers",
+                                 marker=dict(
+                                     color=np.where(bids_history["Type"] == BidType.LONG, "green", "red"),
+                                     size=7,
+                                     symbol=np.where(bids_history["Type"] == BidType.LONG, "triangle-up",
+                                                     "triangle-down")),
+                                 name="Bids openings"))
+
+        fig.add_trace(go.Scatter(x=bids_history["Date Close"],
+                                 y=bids_history["Close Price"],
+                                 mode="markers",
+                                 marker=dict(
+                                     color=np.where(bids_history["Type"] == BidType.LONG, "green", "red"),
+                                     size=7,
+                                     symbol="square"),
+                                 name="Bids closures"))
+
+        fig.update_layout(title=f"{stock_name} Trading activity",
+                          xaxis_title="Date",
+                          yaxis_title="Price")
+
+        fig.show()
 
     def plot_earnings_curve(self, stock_name: Optional[str] = None):
         if stock_name is None:

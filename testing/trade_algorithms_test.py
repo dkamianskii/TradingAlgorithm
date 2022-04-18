@@ -13,11 +13,11 @@ test_start_date_ts = pd.Timestamp(ts_input=test_start_date)
 
 # Mega corps pack
 data_wmt = yf.download("WMT", start=start_date, end=end_date)
-data_aapl = yf.download("AAPL", start=start_date, end=end_date)
-data_msft = yf.download("MSFT", start=start_date, end=end_date)
+# data_aapl = yf.download("AAPL", start=start_date, end=end_date)
+# data_msft = yf.download("MSFT", start=start_date, end=end_date)
 data_jpm = yf.download("JPM", start=start_date, end=end_date)
-data_ko = yf.download("KO", start=start_date, end=end_date)
-data_pg = yf.download("PG", start=start_date, end=end_date)
+# data_ko = yf.download("KO", start=start_date, end=end_date)
+# data_pg = yf.download("PG", start=start_date, end=end_date)
 data_xom = yf.download("XOM", start=start_date, end=end_date)
 
 manager = TradeManager(days_to_chill=5)

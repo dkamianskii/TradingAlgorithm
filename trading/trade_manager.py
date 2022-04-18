@@ -194,21 +194,33 @@ class TradeManager:
                 if (new_point["Close"] >= asset[PortfolioColumn.TAKE_PROFIT_LEVEL]) or (
                         new_point["Close"] <= asset[PortfolioColumn.STOP_LOSS_LEVEL]):
                     price_diff = new_point["Close"] - asset[PortfolioColumn.PRICE]
-                    self.__close_bid(stock_name, asset[PortfolioColumn.DATE], date, new_point["Close"],
-                                     new_point["Close"] * asset[PortfolioColumn.AMOUNT], price_diff * asset[PortfolioColumn.AMOUNT])
+                    self.__close_bid(stock_name,
+                                     new_point["Close"],
+                                     asset[PortfolioColumn.DATE],
+                                     date, new_point["Close"],
+                                     new_point["Close"] * asset[PortfolioColumn.AMOUNT],
+                                     price_diff * asset[PortfolioColumn.AMOUNT])
                     indexes_to_drop.append(index)
                     continue
             else:
                 if (new_point["Close"] <= asset[PortfolioColumn.TAKE_PROFIT_LEVEL]) or (
                         new_point["Close"] >= asset[PortfolioColumn.STOP_LOSS_LEVEL]):
                     price_diff = asset[PortfolioColumn.PRICE] - new_point["Close"]
-                    self.__close_bid(stock_name, new_point["Close"], asset[PortfolioColumn.DATE], date,
-                                     (asset[PortfolioColumn.PRICE] + price_diff) * asset[PortfolioColumn.AMOUNT], price_diff * asset[PortfolioColumn.AMOUNT])
+                    self.__close_bid(stock_name,
+                                     new_point["Close"],
+                                     asset[PortfolioColumn.DATE],
+                                     date,
+                                     (asset[PortfolioColumn.PRICE] + price_diff) * asset[PortfolioColumn.AMOUNT],
+                                     price_diff * asset[PortfolioColumn.AMOUNT])
                     indexes_to_drop.append(index)
                     continue
             if (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit:
-                self.__close_bid(stock_name, new_point["Close"], asset[PortfolioColumn.DATE], date,
-                                 new_point["Close"] * asset[PortfolioColumn.AMOUNT], draw=True)
+                self.__close_bid(stock_name,
+                                 new_point["Close"],
+                                 asset[PortfolioColumn.DATE],
+                                 date,
+                                 new_point["Close"] * asset[PortfolioColumn.AMOUNT],
+                                 draw=True)
                 indexes_to_drop.append(index)
         if len(indexes_to_drop) > 0:
             self.portfolio.drop(labels=indexes_to_drop, inplace=True)
@@ -286,7 +298,7 @@ class TradeManager:
                 self._train_results[stock_name] = {str(params): self._statistics_manager.trade_result.copy()}
                 earnings = self._statistics_manager.trade_result.at[TradeResultColumn.TOTAL,
                                                                     TradeResultColumn.EARNED_PROFIT]
-                if (max_earnings is None) and (earnings > max_earnings):
+                if (max_earnings is None) or (earnings > max_earnings):
                     max_earnings = earnings
                     best_params = params
             stock[TrackedStocksColumn.CHOSEN_PARAMS] = best_params
@@ -335,7 +347,7 @@ class TradeManager:
                             close=stock_data["Close"],
                             high=stock_data["High"],
                             low=stock_data["Low"],
-                            name=PortfolioColumn.PRICE)
+                            name="Price")
 
         fig.add_trace(go.Scatter(x=bids_history.index,
                                  y=bids_history[BidsHistoryColumn.OPEN_PRICE],
@@ -371,8 +383,8 @@ class TradeManager:
             name = f"Earnings on {stock_name}"
 
         fig = go.Figure(go.Scatter(
-            x=earnings_history[EarningsHistoryColumn.DATE],
-            y=earnings_history.cumsum(),
+            x=earnings_history.index,
+            y=earnings_history.cumsum()[EarningsHistoryColumn.VALUE],
             mode='lines',
             line_color="blue",
             showlegend=False,

@@ -21,6 +21,9 @@ e = trade_result.loc[["AMD", "Total"], ["Earned Profit", "Wins"]]
 e += [50.0, 1]
 
 print(trade_result)
+
+ff = trade_result[~trade_result["Wins"].isna()]
+print(ff)
 # data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
 
 # start_test = datetime.strptime("2021-01-10", "%Y-%m-%d")

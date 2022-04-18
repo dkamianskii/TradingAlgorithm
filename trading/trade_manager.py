@@ -4,6 +4,7 @@ from typing import Optional, List, Dict, Union, Tuple
 
 from helping.base_enum import BaseEnum
 from indicators.abstract_indicator import TradeAction
+from trading.trading_enums import BidType
 from trading.abstract_trade_algorithm import AbstractTradeAlgorithm
 from trading.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm
 from trading.trade_statistics_manager import TradeStatisticsManager
@@ -12,11 +13,6 @@ import cufflinks as cf
 import plotly.graph_objects as go
 
 cf.go_offline()
-
-
-class BidType(BaseEnum):
-    LONG = 1,
-    SHORT = 2
 
 
 class TradeManager:
@@ -266,6 +262,9 @@ class TradeManager:
             algorithm.train(stock["data"], best_params)
 
         return self._train_results
+
+    def get_trade_results(self) -> pd.DataFrame:
+        return self._statistics_manager.trade_result
 
     def plot_stock_history(self,
                            stock_name: str,

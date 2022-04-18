@@ -42,5 +42,7 @@ for date in dates_test:
         point_xom = data_xom.loc[date]
         manager.evaluate_new_point("XOM", point_xom, date)
 
-print(manager.trade_result)
+print(manager.get_trade_results())
+manager.plot_earnings_curve()
+manager.plot_stock_history("WMT", True)
 

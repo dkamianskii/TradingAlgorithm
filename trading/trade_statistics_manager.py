@@ -1,7 +1,7 @@
 import pandas as pd
 from typing import Dict, Optional
 
-from trading.trade_manager import BidType
+from trading.trading_enums import BidType
 
 
 class TradeStatisticsManager:

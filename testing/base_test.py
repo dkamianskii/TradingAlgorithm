@@ -2,6 +2,7 @@ from datetime import datetime
 
 import yfinance as yf
 import pandas as pd
+import numpy as np
 
 from indicators import moving_averages as ma
 from indicators.macd import MACD
@@ -9,29 +10,41 @@ from indicators.rsi import RSI
 from indicators.atr import ATR
 from indicators.super_trend import SuperTrend
 
-trade_result: pd.DataFrame = pd.DataFrame([{"Stock Name": "Total",
-                                            "Earned Profit": 0.0,
-                                            "Wins": 0,
-                                            "Loses": 0,
-                                            "Draws": 0}]).set_index("Stock Name")
-trade_result.loc["AMD"] = {"Earned Profit": 0.0, "Wins": 0, "Loses": 0, "Draws": 0}
-trade_result.loc["X"] = {"Earned Profit": 0.0, "Draws": 0}
-trade_result.loc[["AMD", "Total"], ["Earned Profit", "Wins"]] += [100.0, 1]
-e = trade_result.loc[["AMD", "Total"], ["Earned Profit", "Wins"]]
-e += [50.0, 1]
+# trade_result: pd.DataFrame = pd.DataFrame([{"Name": "Total",
+#                                             "E": "xxx",
+#                                             "Wins": 0,
+#                                             "Loses": 0,
+#                                             "X": 2},
+#                                            {"Name": "WED",
+#                                             "E": "xxx",
+#                                             "Wins": 0,
+#                                             "Loses": 0,
+#                                             "X": 1},
+#                                            {"Name": "MMS",
+#                                             "E": "www",
+#                                             "Wins": 0,
+#                                             "Loses": 0,
+#                                             "X": 3}
+#                                            ])
+#
+# trade_result.loc[trade_result.index[-1] + 1] = {"Name": "RSN",
+#                                                  "E": "eee",
+#                                                  "Wins": 0,
+#                                                  "Loses": 0,
+#                                                  "X": 5}
+# print(trade_result)
+# trade_result.loc[(trade_result["E"] == "xxx") & (trade_result["X"] == 1), "Wins"] = 4
+# print(trade_result)
 
-print(trade_result)
-
-ff = trade_result[~trade_result["Wins"].isna()]
-print(ff)
-# data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
+data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
 
 # start_test = datetime.strptime("2021-01-10", "%Y-%m-%d")
 # ee = data[start_test:]
 # new_point = data.loc[new_date]
 # train_data = data.iloc[0:-1]
 
-# start_date = pd.Timestamp(ts_input="2021-10-01")
+start_date = pd.Timestamp(ts_input="2021-02-19")
+data.loc[start_date] += np.ones(data.shape[1])
 # print(data["Close"][start_date])
 # test_df = pd.DataFrame(index=data.index[20:], columns=["Value", "Color"])
 # print(test_df)

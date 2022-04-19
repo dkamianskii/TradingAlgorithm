@@ -90,6 +90,16 @@ class TradeManager:
         self._risk_rate: float = risk_rate
         self._money_for_a_bid: float = money_for_a_bid
 
+    def get_tracked_stocks(self) -> List[str]:
+        *stock_names, = self._tracked_stocks.keys()
+        return stock_names
+
+    def get_trade_results(self) -> pd.DataFrame:
+        return self._statistics_manager.trade_result
+
+    def get_bids_history(self, stock_name: Optional[str] = None):
+        return self._statistics_manager.get_bids_history(stock_name)
+
     def clear_history(self):
         self.portfolio = pd.DataFrame(columns=[PortfolioColumn.STOCK_NAME,
                                                PortfolioColumn.PRICE,
@@ -163,8 +173,7 @@ class TradeManager:
         self.portfolio = pd.concat([self.portfolio, bid_to_append])
         self._statistics_manager.open_bid(stock_name, date, price, bid_type)
 
-    def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[
-        float, float]:  # todo Переработать систему стоп лосс - тейк профит
+    def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[float, float]:  # todo Переработать систему стоп лосс - тейк профит
         """IN PROGRESS"""
         if action == TradeAction.BUY:
             return price * 0.985, price * 1.025
@@ -177,9 +186,9 @@ class TradeManager:
 
     def __close_bid(self, stock_name: str, close_price: float,
                     open_date: pd.Timestamp, close_date: pd.Timestamp,
-                    cashback: float, profit: float = 0, draw: bool = False):
-        self._statistics_manager.update_trade_result(stock_name, profit, draw)
-        self._statistics_manager.close_bid(stock_name, open_date, close_date, close_price)
+                    cashback: float, profit: float, result: BidResult):
+        self._statistics_manager.update_trade_result(stock_name, profit, result)
+        self._statistics_manager.close_bid(stock_name, open_date, close_date, close_price, result)
         self._statistics_manager.add_earnings(stock_name, profit, close_date)
         if self._use_limited_money:
             self.available_money += cashback
@@ -187,40 +196,39 @@ class TradeManager:
 
     def __manage_portfolio_assets(self, stock_name: str, assets_in_portfolio: pd.DataFrame,
                                   new_point: pd.Series, date: pd.Timestamp):
-        """IN PROGRESS"""
         indexes_to_drop = []
         for index, asset in assets_in_portfolio.iterrows():
+            close_flag = False
+            price_diff = 0
+            cashback = 0
             if asset[PortfolioColumn.TYPE] == BidType.LONG:
                 if (new_point["Close"] >= asset[PortfolioColumn.TAKE_PROFIT_LEVEL]) or (
-                        new_point["Close"] <= asset[PortfolioColumn.STOP_LOSS_LEVEL]):
+                        new_point["Close"] <= asset[PortfolioColumn.STOP_LOSS_LEVEL]) or (
+                        (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit):
+                    close_flag = True
                     price_diff = new_point["Close"] - asset[PortfolioColumn.PRICE]
-                    self.__close_bid(stock_name,
-                                     new_point["Close"],
-                                     asset[PortfolioColumn.DATE],
-                                     date, new_point["Close"],
-                                     new_point["Close"] * asset[PortfolioColumn.AMOUNT],
-                                     price_diff * asset[PortfolioColumn.AMOUNT])
-                    indexes_to_drop.append(index)
-                    continue
+                    cashback = new_point["Close"] * asset[PortfolioColumn.AMOUNT]
             else:
                 if (new_point["Close"] <= asset[PortfolioColumn.TAKE_PROFIT_LEVEL]) or (
-                        new_point["Close"] >= asset[PortfolioColumn.STOP_LOSS_LEVEL]):
+                        new_point["Close"] >= asset[PortfolioColumn.STOP_LOSS_LEVEL]) or (
+                        (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit):
+                    close_flag = True
                     price_diff = asset[PortfolioColumn.PRICE] - new_point["Close"]
-                    self.__close_bid(stock_name,
-                                     new_point["Close"],
-                                     asset[PortfolioColumn.DATE],
-                                     date,
-                                     (asset[PortfolioColumn.PRICE] + price_diff) * asset[PortfolioColumn.AMOUNT],
-                                     price_diff * asset[PortfolioColumn.AMOUNT])
-                    indexes_to_drop.append(index)
-                    continue
-            if (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit:
+                    cashback = (asset[PortfolioColumn.PRICE] + price_diff) * asset[PortfolioColumn.AMOUNT]
+            if close_flag:
+                if (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit:
+                    result = BidResult.DRAW
+                elif price_diff > 0:
+                    result = BidResult.WIN
+                else:
+                    result = BidResult.LOSE
                 self.__close_bid(stock_name,
                                  new_point["Close"],
                                  asset[PortfolioColumn.DATE],
                                  date,
-                                 new_point["Close"] * asset[PortfolioColumn.AMOUNT],
-                                 draw=True)
+                                 cashback,
+                                 price_diff * asset[PortfolioColumn.AMOUNT],
+                                 result)
                 indexes_to_drop.append(index)
         if len(indexes_to_drop) > 0:
             self.portfolio.drop(labels=indexes_to_drop, inplace=True)
@@ -291,7 +299,6 @@ class TradeManager:
             best_params = params_grid[0]
             max_earnings = None
             for params in params_grid:
-                self.clear_history()
                 algorithm.train(train_data, params)
                 for date, point in test_data.iterrows():
                     self.evaluate_new_point(stock_name, point, date, False)
@@ -301,40 +308,41 @@ class TradeManager:
                 if (max_earnings is None) or (earnings > max_earnings):
                     max_earnings = earnings
                     best_params = params
+
+                self.clear_history()
             stock[TrackedStocksColumn.CHOSEN_PARAMS] = best_params
             algorithm.train(stock[TrackedStocksColumn.DATA], best_params)
 
         return self._train_results
 
-    def get_trade_results(self) -> pd.DataFrame:
-        return self._statistics_manager.trade_result
-
     def plot_stock_history(self,
                            stock_name: str,
                            show_full_stock_history: bool = False):
-        bids_history = self._statistics_manager.stocks_statistics[stock_name][StocksStatisticsType.BIDS_HISTORY]
-        bids_history = bids_history[~bids_history[BidsHistoryColumn.DATE_CLOSE].isna()]
+        bids_history = self._statistics_manager.get_bids_history(stock_name)
+        color_map: Dict[BidResult, str] = {BidResult.WIN: "green",
+                                           BidResult.LOSE: "red",
+                                           BidResult.DRAW: "grey"}
         fig = go.Figure(
             [
                 go.Scatter(
-                    x=[date_open, bid[BidsHistoryColumn.DATE_CLOSE]],
+                    x=[bid[BidsHistoryColumn.DATE_OPEN], bid[BidsHistoryColumn.DATE_CLOSE]],
                     y=[bid[BidsHistoryColumn.OPEN_PRICE], bid[BidsHistoryColumn.CLOSE_PRICE]],
                     mode='lines',
-                    line_color=bid[BidsHistoryColumn.RESULT_COLOR],
+                    line_color=color_map[bid[BidsHistoryColumn.RESULT]],
                     line=dict(width=3),
                     showlegend=False,
                 )
-                for date_open, bid in bids_history.iterrows()
+                for _, bid in bids_history.iterrows()
             ]
         )
 
         trading_start_date: pd.Timestamp = self._tracked_stocks[stock_name][TrackedStocksColumn.TRADING_START_DATE]
         if show_full_stock_history:
             stock_data: pd.DataFrame = self._tracked_stocks[stock_name][TrackedStocksColumn.DATA]
-            max = stock_data["High"].max()
-            min = stock_data["Low"].min()
+            max_price = stock_data["High"].max()
+            min_price = stock_data["Low"].min()
             fig.add_trace(go.Scatter(x=[trading_start_date, trading_start_date],
-                                     y=[min, max],
+                                     y=[min_price, max_price],
                                      mode='lines',
                                      line_color="red",
                                      line=dict(width=2),
@@ -349,7 +357,7 @@ class TradeManager:
                             low=stock_data["Low"],
                             name="Price")
 
-        fig.add_trace(go.Scatter(x=bids_history.index,
+        fig.add_trace(go.Scatter(x=bids_history[BidsHistoryColumn.DATE_OPEN],
                                  y=bids_history[BidsHistoryColumn.OPEN_PRICE],
                                  mode="markers",
                                  marker=dict(
@@ -376,11 +384,11 @@ class TradeManager:
 
     def plot_earnings_curve(self, stock_name: Optional[str] = None):
         if stock_name is None:
-            earnings_history = self._statistics_manager.total_earnings_history
             name = "Total Earnings"
         else:
-            earnings_history = self._statistics_manager.stocks_statistics[stock_name][StocksStatisticsType.EARNINGS_HISTORY]
             name = f"Earnings on {stock_name}"
+
+        earnings_history = self._statistics_manager.get_earnings_history(stock_name)
 
         fig = go.Figure(go.Scatter(
             x=earnings_history.index,

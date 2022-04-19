@@ -6,9 +6,10 @@ class BidType(BaseEnum):
     SHORT = 2
 
 
-class StocksStatisticsType(BaseEnum):
-    EARNINGS_HISTORY = 1,
-    BIDS_HISTORY = 2
+class BidResult(BaseEnum):
+    WIN = 1,
+    LOSE = 2,
+    DRAW = 3
 
 
 class TradeResultColumn(BaseEnum):
@@ -21,6 +22,7 @@ class TradeResultColumn(BaseEnum):
 
 
 class EarningsHistoryColumn(BaseEnum):
+    TOTAL = 0,
     DATE = 1,
     VALUE = 2
 
@@ -31,4 +33,5 @@ class BidsHistoryColumn(BaseEnum):
     DATE_CLOSE = 3,
     CLOSE_PRICE = 4,
     TYPE = 5,
-    RESULT_COLOR = 6
+    RESULT = 6,
+    NAME = 7

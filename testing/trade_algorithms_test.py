@@ -43,6 +43,9 @@ for date in dates_test:
         manager.evaluate_new_point("XOM", point_xom, date)
 
 print(manager.get_trade_results())
+print(manager.get_bids_history())
 manager.plot_earnings_curve()
-manager.plot_stock_history("WMT", True)
+manager.plot_stock_history("WMT")
+manager.plot_stock_history("JPM")
+manager.plot_stock_history("XOM")
 

@@ -13,13 +13,19 @@ class TradeStatisticsManager:
                                                          TradeResultColumn.LOSES: 0,
                                                          TradeResultColumn.DRAWS: 0}]).set_index(
             TradeResultColumn.STOCK_NAME)
-        self.stocks_statistics: Dict[str, Dict[StocksStatisticsType, pd.DataFrame]] = {}
-        self.total_earnings_history: pd.DataFrame = pd.DataFrame(columns=[EarningsHistoryColumn.DATE,
-                                                                          EarningsHistoryColumn.VALUE]).set_index(
-            EarningsHistoryColumn.DATE)
+        self.bids_history: pd.DataFrame = pd.DataFrame(columns=[BidsHistoryColumn.NAME,
+                                                                BidsHistoryColumn.DATE_OPEN,
+                                                                BidsHistoryColumn.DATE_CLOSE,
+                                                                BidsHistoryColumn.OPEN_PRICE,
+                                                                BidsHistoryColumn.CLOSE_PRICE,
+                                                                BidsHistoryColumn.TYPE,
+                                                                BidsHistoryColumn.RESULT])
+        self.earnings_history: Dict[str, pd.DataFrame] = {str(EarningsHistoryColumn.TOTAL): pd.DataFrame(
+            columns=[EarningsHistoryColumn.DATE,
+                     EarningsHistoryColumn.VALUE]).set_index(EarningsHistoryColumn.DATE)}
 
     def set_tracked_stock(self, stock_name: str):
-        if stock_name in self.stocks_statistics.keys():
+        if stock_name in self.trade_result.index:
             self.trade_result.loc[stock_name] = {TradeResultColumn.EARNED_PROFIT: 0.0, TradeResultColumn.WINS: 0,
                                                  TradeResultColumn.LOSES: 0, TradeResultColumn.DRAWS: 0}
         else:
@@ -30,63 +36,67 @@ class TradeStatisticsManager:
                                        TradeResultColumn.DRAWS: 0}]).set_index(TradeResultColumn.STOCK_NAME)
             self.trade_result = pd.concat([new_stock, self.trade_result])
 
-        self.stocks_statistics[stock_name] = {}
-        self.stocks_statistics[stock_name][StocksStatisticsType.EARNINGS_HISTORY] = pd.DataFrame(
-            columns=[EarningsHistoryColumn.DATE,
-                     EarningsHistoryColumn.VALUE]).set_index(EarningsHistoryColumn.DATE)
-        self.stocks_statistics[stock_name][StocksStatisticsType.BIDS_HISTORY] = pd.DataFrame(
-            columns=[BidsHistoryColumn.DATE_OPEN,
-                     BidsHistoryColumn.OPEN_PRICE,
-                     BidsHistoryColumn.DATE_CLOSE,
-                     BidsHistoryColumn.CLOSE_PRICE,
-                     BidsHistoryColumn.TYPE,
-                     BidsHistoryColumn.RESULT_COLOR]).set_index(BidsHistoryColumn.DATE_OPEN)
+        self.earnings_history[stock_name] = pd.DataFrame(columns=[EarningsHistoryColumn.DATE,
+                                                                  EarningsHistoryColumn.VALUE]).set_index(
+            EarningsHistoryColumn.DATE)
+
+    def get_bids_history(self, stock_name: Optional[str] = None) -> pd.DataFrame:
+        if stock_name is None:
+            return self.bids_history
+        bids_history = self.bids_history[self.bids_history[BidsHistoryColumn.NAME] == stock_name]
+        bids_history = bids_history[~bids_history[BidsHistoryColumn.DATE_CLOSE].isna()]
+        return bids_history
+
+    def get_earnings_history(self, stock_name: Optional[str] = None) -> pd.DataFrame:
+        if stock_name is None:
+            return self.earnings_history[str(EarningsHistoryColumn.TOTAL)]
+        return self.earnings_history[stock_name]
 
     def clear_history(self):
         self.trade_result[self.trade_result.columns] = 0
-        for stock_name, stock_stat in self.stocks_statistics.items():
-            stock_stat[StocksStatisticsType.EARNINGS_HISTORY] = pd.DataFrame(
-                columns=[EarningsHistoryColumn.DATE,
-                         EarningsHistoryColumn.VALUE]).set_index(EarningsHistoryColumn.DATE)
-            stock_stat[StocksStatisticsType.BIDS_HISTORY] = pd.DataFrame(
-                columns=[BidsHistoryColumn.DATE_OPEN,
-                         BidsHistoryColumn.OPEN_PRICE,
-                         BidsHistoryColumn.DATE_CLOSE,
-                         BidsHistoryColumn.CLOSE_PRICE,
-                         BidsHistoryColumn.TYPE,
-                         BidsHistoryColumn.RESULT_COLOR]).set_index(BidsHistoryColumn.DATE_OPEN)
+        self.bids_history = pd.DataFrame(columns=[BidsHistoryColumn.NAME,
+                                                  BidsHistoryColumn.DATE_OPEN,
+                                                  BidsHistoryColumn.DATE_CLOSE,
+                                                  BidsHistoryColumn.OPEN_PRICE,
+                                                  BidsHistoryColumn.CLOSE_PRICE,
+                                                  BidsHistoryColumn.TYPE,
+                                                  BidsHistoryColumn.RESULT])
+        for stock_name in self.earnings_history.keys():
+            self.earnings_history[stock_name] = pd.DataFrame(columns=[EarningsHistoryColumn.DATE,
+                                                                      EarningsHistoryColumn.VALUE]).set_index(
+                EarningsHistoryColumn.DATE)
 
-    def update_trade_result(self, stock_name: str, profit: Optional[float], Draw=False):
-        if Draw:
-            self.trade_result.loc[[stock_name, TradeResultColumn.TOTAL], TradeResultColumn.DRAWS] += 1
+    def update_trade_result(self, stock_name: str, profit: Optional[float], result: BidResult):
+        if result == BidResult.DRAW:
+            self.trade_result.loc[[stock_name, TradeResultColumn.TOTAL],
+                                  [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.DRAWS]] += [profit, 1]
+        elif result == BidResult.WIN:
+            self.trade_result.loc[[stock_name, TradeResultColumn.TOTAL],
+                                  [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.WINS]] += [profit, 1]
         else:
-            if profit > 0:
-                self.trade_result.loc[
-                    [stock_name, TradeResultColumn.TOTAL], [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.WINS]] += [profit, 1]
-            else:
-                self.trade_result.loc[
-                    [stock_name, TradeResultColumn.TOTAL], [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.LOSES]] += [profit, 1]
+            self.trade_result.loc[[stock_name, TradeResultColumn.TOTAL],
+                                  [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.LOSES]] += [profit, 1]
 
     def add_earnings(self, stock_name: str, earnings: float, date: pd.Timestamp):
-        self.stocks_statistics[stock_name][StocksStatisticsType.EARNINGS_HISTORY].loc[date] = [earnings]
-        self.total_earnings_history.loc[date] = [earnings]
+        self.earnings_history[stock_name].loc[date] = [earnings]
+        if date in self.earnings_history[str(EarningsHistoryColumn.TOTAL)].index:
+            self.earnings_history[str(EarningsHistoryColumn.TOTAL)].loc[date] += [earnings]
+        else:
+            self.earnings_history[str(EarningsHistoryColumn.TOTAL)].loc[date] = [earnings]
 
     def open_bid(self, stock_name: str, date_open: pd.Timestamp, open_price: float, bid_type: BidType):
-        self.stocks_statistics[stock_name][StocksStatisticsType.BIDS_HISTORY].loc[date_open] = {
-            BidsHistoryColumn.OPEN_PRICE: open_price,
-            BidsHistoryColumn.TYPE: bid_type}
+        self.bids_history.loc[self.bids_history.shape[0] + 1] = {BidsHistoryColumn.NAME: stock_name,
+                                                                 BidsHistoryColumn.DATE_OPEN: date_open,
+                                                                 BidsHistoryColumn.OPEN_PRICE: open_price,
+                                                                 BidsHistoryColumn.TYPE: bid_type}
 
-    def close_bid(self, stock_name: str, date_open: pd.Timestamp, date_close: pd.Timestamp, close_price: float):
-        bid = self.stocks_statistics[stock_name][StocksStatisticsType.BIDS_HISTORY].loc[date_open]
-
-        if (bid[BidsHistoryColumn.TYPE] == BidType.LONG and bid[BidsHistoryColumn.OPEN_PRICE] < close_price) or (
-                bid[BidsHistoryColumn.TYPE] == BidType.SHORT and bid[BidsHistoryColumn.OPEN_PRICE] > close_price):
-            result_color = "green"
-        else:
-            result_color = "red"
-
-        self.stocks_statistics[stock_name][StocksStatisticsType.BIDS_HISTORY].loc[
-            date_open, [BidsHistoryColumn.DATE_CLOSE,
-                        BidsHistoryColumn.CLOSE_PRICE,
-                        BidsHistoryColumn.RESULT_COLOR]] = [date_close, close_price,
-                                                            result_color]
+    def close_bid(self, stock_name: str,
+                  date_open: pd.Timestamp,
+                  date_close: pd.Timestamp,
+                  close_price: float,
+                  result: BidResult):
+        self.bids_history.loc[(self.bids_history[BidsHistoryColumn.DATE_OPEN] == date_open) & (
+                    self.bids_history[BidsHistoryColumn.NAME] == stock_name),
+                              [BidsHistoryColumn.DATE_CLOSE,
+                               BidsHistoryColumn.CLOSE_PRICE,
+                               BidsHistoryColumn.RESULT]] = [date_close, close_price, result]

@@ -7,14 +7,10 @@ from indicators.rsi import RSI
 
 
 class RSITradeAlgorithm(AbstractTradeAlgorithm):
-    algorithm_name = "RSI indicator algorithm"
 
     def __init__(self):
         super().__init__()
         self._indicator: RSI = RSI()
-
-    def get_algorithm_name(self) -> str:
-        return RSITradeAlgorithm.algorithm_name
 
     def get_default_hyperparameters_grid(self) -> List[Dict]:
         return [{"N": 8}, {"N": 10}, {"N": 12}, {"N": 14}, {"N": 16}]

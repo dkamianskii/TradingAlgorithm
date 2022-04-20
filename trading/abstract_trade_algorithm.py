@@ -24,3 +24,7 @@ class AbstractTradeAlgorithm(ABC):
                            date: Union[str, pd.Timestamp],
                            special_params: Optional[Dict] = None) -> TradeAction:
         pass
+
+    @abstractmethod
+    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+        pass

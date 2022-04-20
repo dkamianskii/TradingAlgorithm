@@ -57,7 +57,6 @@ class MACD(AbstractIndicator):
         self.MACD_val: Optional[pd.DataFrame] = None
         self._last_short_ma: float = 0
         self._last_long_ma: float = 0
-        self._last_signal_ma: float = 0
         self._prev_hist: Optional[float] = None
         self._pre_prev_hist: Optional[float] = None
         self._hist_peak: float = 0
@@ -88,7 +87,6 @@ class MACD(AbstractIndicator):
         self.MACD_val: Optional[pd.DataFrame] = None
         self._last_short_ma: float = 0
         self._last_long_ma: float = 0
-        self._last_signal_ma: float = 0
         self._prev_hist: Optional[float] = None
         self._pre_prev_hist: Optional[float] = None
         self._hist_peak: float = 0
@@ -102,7 +100,7 @@ class MACD(AbstractIndicator):
                                               N=self._long_period)
         MACD = self._last_short_ma - self._last_long_ma
         signal = ma.EMA_one_point(prev_ema=self.MACD_val["signal"][-1], new_point=MACD, N=self._signal_period)
-        histogram = MACD - self._last_signal_ma
+        histogram = MACD - signal
         self.data.loc[date] = new_point
         self.MACD_val.loc[date] = {"MACD": MACD, "signal": signal, "histogram": histogram}
         self.__make_trade_decision(new_point, date, MACD, histogram)
@@ -250,7 +248,7 @@ class MACD(AbstractIndicator):
             color=np.where(selected_macd["histogram"] > 0, "green", "red")
         ), name="MACD signal difference", row=2, col=1)
 
-        fig.update_layout(title=f"Price with MACD",
+        fig.update_layout(title=f"Price with MACD {self._short_period}, {self._long_period}, {self._signal_period}",
                           xaxis_title="Date")
 
         fig.show()

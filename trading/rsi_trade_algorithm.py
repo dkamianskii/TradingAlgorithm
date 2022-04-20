@@ -13,7 +13,7 @@ class RSITradeAlgorithm(AbstractTradeAlgorithm):
         self._indicator: RSI = RSI()
 
     def get_default_hyperparameters_grid(self) -> List[Dict]:
-        return [{"N": 8}, {"N": 10}, {"N": 12}, {"N": 14}, {"N": 16}]
+        return [{"N": 8}, {"N": 10}, {"N": 12}, {"N": 14}]
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
         super().train(data, hyperparameters)
@@ -26,3 +26,6 @@ class RSITradeAlgorithm(AbstractTradeAlgorithm):
                            special_params: Optional[Dict] = None) -> TradeAction:
         self._indicator.evaluate_new_point(new_point, date, special_params)
         return self._indicator.trade_points.iloc[-1]["Action"]
+
+    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+        self._indicator.plot(start_date, end_date)

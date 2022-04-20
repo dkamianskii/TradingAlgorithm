@@ -238,7 +238,7 @@ class RSI(AbstractIndicator):
                                  line=dict(width=1, dash='dash', color="black"), showlegend=False),
                       row=2, col=1)
 
-        fig.update_layout(title=f"Price with RSI",
+        fig.update_layout(title=f"Price with RSI {self._N}",
                           xaxis_title="Date")
 
         fig.show()

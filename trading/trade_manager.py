@@ -94,6 +94,9 @@ class TradeManager:
         *stock_names, = self._tracked_stocks.keys()
         return stock_names
 
+    def get_chosen_params(self) -> List[Tuple[str, dict]]:
+        return [(stock_name, stock[TrackedStocksColumn.CHOSEN_PARAMS]) for stock_name, stock in self._tracked_stocks.items()]
+
     def get_trade_results(self) -> pd.DataFrame:
         return self._statistics_manager.trade_result
 
@@ -279,10 +282,12 @@ class TradeManager:
                 stock[TrackedStocksColumn.TRADING_START_DATE] = date
 
     def train(self, test_start_date: Union[str, pd.Timestamp],
-              test_end_date: Optional[Union[str, pd.Timestamp]] = None) -> Dict[str, Dict[str, pd.DataFrame]]:
+              test_end_date: Optional[Union[str, pd.Timestamp]] = None,
+              plot_test: bool = False) -> Dict[str, Dict[str, pd.DataFrame]]:
         self._train_results = {}
         test_start_date = pd.Timestamp(ts_input=test_start_date)
         for stock_name, stock in self._tracked_stocks.items():
+            self._train_results[stock_name] = {}
             train_data: pd.DataFrame = stock[TrackedStocksColumn.DATA][:test_start_date]
             if test_end_date is not None:
                 test_end_date = pd.Timestamp(ts_input=test_end_date)
@@ -296,19 +301,21 @@ class TradeManager:
             else:
                 params_grid = stock[TrackedStocksColumn.PARAMS_GRID]
 
-            best_params = params_grid[0]
+            best_params = None
             max_earnings = None
             for params in params_grid:
                 algorithm.train(train_data, params)
                 for date, point in test_data.iterrows():
                     self.evaluate_new_point(stock_name, point, date, False)
-                self._train_results[stock_name] = {str(params): self._statistics_manager.trade_result.copy()}
+                self._train_results[stock_name][str(params)] = self._statistics_manager.trade_result.copy()
                 earnings = self._statistics_manager.trade_result.at[TradeResultColumn.TOTAL,
                                                                     TradeResultColumn.EARNED_PROFIT]
                 if (max_earnings is None) or (earnings > max_earnings):
                     max_earnings = earnings
                     best_params = params
 
+                if plot_test:
+                    algorithm.plot(test_start_date, test_end_date)
                 self.clear_history()
             stock[TrackedStocksColumn.CHOSEN_PARAMS] = best_params
             algorithm.train(stock[TrackedStocksColumn.DATA], best_params)
@@ -317,7 +324,7 @@ class TradeManager:
 
     def plot_stock_history(self,
                            stock_name: str,
-                           show_full_stock_history: bool = False):
+                           show_full_stock_history: bool = False): # todo stop loss and take prifit level
         bids_history = self._statistics_manager.get_bids_history(stock_name)
         color_map: Dict[BidResult, str] = {BidResult.WIN: "green",
                                            BidResult.LOSE: "red",

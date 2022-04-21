@@ -17,43 +17,9 @@ cf.go_offline()
 
 data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
 
-fig = go.Figure()
-fig.add_candlestick(x=data.index,
-                    open=data["Open"],
-                    close=data["Close"],
-                    high=data["High"],
-                    low=data["Low"],
-                    name="Price")
-
 start_test = datetime.strptime("2021-01-18", "%Y-%m-%d")
 end_test = datetime.strptime("2021-01-26", "%Y-%m-%d")
 dates_test = pd.date_range(start_test, end_test)
-
-# fig.add_trace(go.Scatter(x=[start_test, start_test, end_test, end_test, start_test],
-#                            y=[100, 120, 120, 100, 100], fill="toself"))
-
-fig.add_shape(type="rect",
-              x0=start_test,
-              y0=100,
-              x1=end_test,
-              y1=120,
-              opacity=0.2,
-              fillcolor="orange",
-              line_color="orange",
-              )
-
-# fig.add_shape(type="rect",
-#     xref="paper", yref="paper",
-#     x0=start_test, y0=100,
-#     x1=end_test, y1=120,
-#     line=dict(
-#         color="LightSeaGreen",
-#         width=3,
-#     ),
-#     fillcolor="PaleTurquoise",
-# )
-
-fig.show()
 
 # start_test = datetime.strptime("2021-01-10", "%Y-%m-%d")
 # ee = data[start_test:]

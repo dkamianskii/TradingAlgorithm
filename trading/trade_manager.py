@@ -3,39 +3,16 @@ import pandas as pd
 from typing import Optional, List, Dict, Union, Tuple
 
 from indicators.abstract_indicator import TradeAction
-from trading.trading_enums import *
-from trading.abstract_trade_algorithm import AbstractTradeAlgorithm
-from trading.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm
+from trading.trade_statistics_manager_enums import *
+from trading.trade_manager_enums import *
+from trading.trade_algorithms.abstract_trade_algorithm import AbstractTradeAlgorithm
+from trading.trade_algorithms.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm
 from trading.trade_statistics_manager import TradeStatisticsManager
 
 import cufflinks as cf
 import plotly.graph_objects as go
 
 cf.go_offline()
-
-
-class DefaultTradeAlgorithmType(BaseEnum):
-    MACD_SuperTrend = 1,
-    Indicators_council = 2,
-    Price_prediction = 3
-
-
-class PortfolioColumn(BaseEnum):
-    STOCK_NAME = 1,
-    PRICE = 2,
-    TYPE = 3,
-    AMOUNT = 4,
-    TAKE_PROFIT_LEVEL = 5,
-    STOP_LOSS_LEVEL = 6,
-    DATE = 7
-
-
-class TrackedStocksColumn(BaseEnum):
-    DATA = 1,
-    TRADE_ALGORITHM = 2,
-    PARAMS_GRID = 3,
-    CHOSEN_PARAMS = 4,
-    TRADING_START_DATE = 5
 
 
 class TradeManager:

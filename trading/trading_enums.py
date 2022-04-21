@@ -34,4 +34,6 @@ class BidsHistoryColumn(BaseEnum):
     CLOSE_PRICE = 4,
     TYPE = 5,
     RESULT = 6,
-    NAME = 7
+    NAME = 7,
+    TAKE_PROFIT = 8,
+    STOP_LOSS = 9

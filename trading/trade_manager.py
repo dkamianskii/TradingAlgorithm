@@ -69,13 +69,7 @@ class TradeManager:
            currently managed assets
          - save information about profitability of made deals and current finance assets
         """
-        self.portfolio: pd.DataFrame = pd.DataFrame(columns=[PortfolioColumn.STOCK_NAME,
-                                                             PortfolioColumn.PRICE,
-                                                             PortfolioColumn.TYPE,
-                                                             PortfolioColumn.AMOUNT,
-                                                             PortfolioColumn.TAKE_PROFIT_LEVEL,
-                                                             PortfolioColumn.STOP_LOSS_LEVEL,
-                                                             PortfolioColumn.DATE])
+        self.portfolio: pd.DataFrame = pd.DataFrame(columns=PortfolioColumn.get_elements_list())
 
         self.available_money: float = start_capital
         self.account_money: float = start_capital
@@ -104,13 +98,7 @@ class TradeManager:
         return self._statistics_manager.get_bids_history(stock_name)
 
     def clear_history(self):
-        self.portfolio = pd.DataFrame(columns=[PortfolioColumn.STOCK_NAME,
-                                               PortfolioColumn.PRICE,
-                                               PortfolioColumn.TYPE,
-                                               PortfolioColumn.AMOUNT,
-                                               PortfolioColumn.TAKE_PROFIT_LEVEL,
-                                               PortfolioColumn.STOP_LOSS_LEVEL,
-                                               PortfolioColumn.DATE])
+        self.portfolio = pd.DataFrame(columns=PortfolioColumn.get_elements_list())
         self._statistics_manager.clear_history()
         self.available_money = self.start_capital
         self.account_money = self.start_capital
@@ -174,7 +162,7 @@ class TradeManager:
                                        PortfolioColumn.STOP_LOSS_LEVEL: stop_loss_lvl,
                                        PortfolioColumn.DATE: date}])
         self.portfolio = pd.concat([self.portfolio, bid_to_append])
-        self._statistics_manager.open_bid(stock_name, date, price, bid_type)
+        self._statistics_manager.open_bid(stock_name, date, price, bid_type, take_profit_lvl, stop_loss_lvl)
 
     def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[float, float]:  # todo Переработать систему стоп лосс - тейк профит
         """IN PROGRESS"""
@@ -343,17 +331,24 @@ class TradeManager:
             ]
         )
 
+        for _, bid in bids_history.iterrows():
+            fig.add_shape(type="rect",
+                          x0=bid[BidsHistoryColumn.DATE_OPEN], y0=bid[BidsHistoryColumn.OPEN_PRICE],
+                          x1=bid[BidsHistoryColumn.DATE_CLOSE], y1=bid[BidsHistoryColumn.TAKE_PROFIT],
+                          opacity=0.2,
+                          fillcolor="green",
+                          line_color="green")
+            fig.add_shape(type="rect",
+                          x0=bid[BidsHistoryColumn.DATE_OPEN], y0=bid[BidsHistoryColumn.OPEN_PRICE],
+                          x1=bid[BidsHistoryColumn.DATE_CLOSE], y1=bid[BidsHistoryColumn.STOP_LOSS],
+                          opacity=0.2,
+                          fillcolor="red",
+                          line_color="red")
+
         trading_start_date: pd.Timestamp = self._tracked_stocks[stock_name][TrackedStocksColumn.TRADING_START_DATE]
         if show_full_stock_history:
             stock_data: pd.DataFrame = self._tracked_stocks[stock_name][TrackedStocksColumn.DATA]
-            max_price = stock_data["High"].max()
-            min_price = stock_data["Low"].min()
-            fig.add_trace(go.Scatter(x=[trading_start_date, trading_start_date],
-                                     y=[min_price, max_price],
-                                     mode='lines',
-                                     line_color="red",
-                                     line=dict(width=2),
-                                     name="Start of trading"))
+            fig.add_vline(x=trading_start_date, line_width=3, line_dash="dash", line_color="red", name="Start of trading")
         else:
             stock_data: pd.DataFrame = self._tracked_stocks[stock_name][TrackedStocksColumn.DATA][trading_start_date:]
 
@@ -369,7 +364,7 @@ class TradeManager:
                                  mode="markers",
                                  marker=dict(
                                      color=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG, "green", "red"),
-                                     size=7,
+                                     size=8,
                                      symbol=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG, "triangle-up",
                                                      "triangle-down")),
                                  name="Bids openings"))
@@ -379,9 +374,16 @@ class TradeManager:
                                  mode="markers",
                                  marker=dict(
                                      color=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG, "green", "red"),
-                                     size=7,
+                                     size=5,
                                      symbol="square"),
                                  name="Bids closures"))
+
+        fig.add_bar(x=[stock_data.index[0]], y=[stock_data["Close"][0]],
+                    marker=dict(opacity=0.2, color="red"),
+                    name="Stop loss level", visible="legendonly")
+        fig.add_bar(x=[stock_data.index[0]], y=[stock_data["Close"][0]],
+                    marker=dict( opacity=0.2, color="green"),
+                    name="Take profit level", visible="legendonly")
 
         fig.update_layout(title=f"{stock_name} Trading activity",
                           xaxis_title="Date",

@@ -13,13 +13,7 @@ class TradeStatisticsManager:
                                                          TradeResultColumn.LOSES: 0,
                                                          TradeResultColumn.DRAWS: 0}]).set_index(
             TradeResultColumn.STOCK_NAME)
-        self.bids_history: pd.DataFrame = pd.DataFrame(columns=[BidsHistoryColumn.NAME,
-                                                                BidsHistoryColumn.DATE_OPEN,
-                                                                BidsHistoryColumn.DATE_CLOSE,
-                                                                BidsHistoryColumn.OPEN_PRICE,
-                                                                BidsHistoryColumn.CLOSE_PRICE,
-                                                                BidsHistoryColumn.TYPE,
-                                                                BidsHistoryColumn.RESULT])
+        self.bids_history: pd.DataFrame = pd.DataFrame(columns=BidsHistoryColumn.get_elements_list())
         self.earnings_history: Dict[str, pd.DataFrame] = {str(EarningsHistoryColumn.TOTAL): pd.DataFrame(
             columns=[EarningsHistoryColumn.DATE,
                      EarningsHistoryColumn.VALUE]).set_index(EarningsHistoryColumn.DATE)}
@@ -54,13 +48,7 @@ class TradeStatisticsManager:
 
     def clear_history(self):
         self.trade_result[self.trade_result.columns] = 0
-        self.bids_history = pd.DataFrame(columns=[BidsHistoryColumn.NAME,
-                                                  BidsHistoryColumn.DATE_OPEN,
-                                                  BidsHistoryColumn.DATE_CLOSE,
-                                                  BidsHistoryColumn.OPEN_PRICE,
-                                                  BidsHistoryColumn.CLOSE_PRICE,
-                                                  BidsHistoryColumn.TYPE,
-                                                  BidsHistoryColumn.RESULT])
+        self.bids_history = pd.DataFrame(columns=BidsHistoryColumn.get_elements_list())
         for stock_name in self.earnings_history.keys():
             self.earnings_history[stock_name] = pd.DataFrame(columns=[EarningsHistoryColumn.DATE,
                                                                       EarningsHistoryColumn.VALUE]).set_index(
@@ -84,11 +72,18 @@ class TradeStatisticsManager:
         else:
             self.earnings_history[str(EarningsHistoryColumn.TOTAL)].loc[date] = [earnings]
 
-    def open_bid(self, stock_name: str, date_open: pd.Timestamp, open_price: float, bid_type: BidType):
+    def open_bid(self, stock_name: str,
+                 date_open: pd.Timestamp,
+                 open_price: float,
+                 bid_type: BidType,
+                 take_profit: float,
+                 stop_loss: float):
         self.bids_history.loc[self.bids_history.shape[0] + 1] = {BidsHistoryColumn.NAME: stock_name,
                                                                  BidsHistoryColumn.DATE_OPEN: date_open,
                                                                  BidsHistoryColumn.OPEN_PRICE: open_price,
-                                                                 BidsHistoryColumn.TYPE: bid_type}
+                                                                 BidsHistoryColumn.TYPE: bid_type,
+                                                                 BidsHistoryColumn.TAKE_PROFIT: take_profit,
+                                                                 BidsHistoryColumn.STOP_LOSS: stop_loss}
 
     def close_bid(self, stock_name: str,
                   date_open: pd.Timestamp,

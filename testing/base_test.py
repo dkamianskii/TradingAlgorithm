@@ -10,41 +10,58 @@ from indicators.rsi import RSI
 from indicators.atr import ATR
 from indicators.super_trend import SuperTrend
 
-# trade_result: pd.DataFrame = pd.DataFrame([{"Name": "Total",
-#                                             "E": "xxx",
-#                                             "Wins": 0,
-#                                             "Loses": 0,
-#                                             "X": 2},
-#                                            {"Name": "WED",
-#                                             "E": "xxx",
-#                                             "Wins": 0,
-#                                             "Loses": 0,
-#                                             "X": 1},
-#                                            {"Name": "MMS",
-#                                             "E": "www",
-#                                             "Wins": 0,
-#                                             "Loses": 0,
-#                                             "X": 3}
-#                                            ])
-#
-# trade_result.loc[trade_result.index[-1] + 1] = {"Name": "RSN",
-#                                                  "E": "eee",
-#                                                  "Wins": 0,
-#                                                  "Loses": 0,
-#                                                  "X": 5}
-# print(trade_result)
-# trade_result.loc[(trade_result["E"] == "xxx") & (trade_result["X"] == 1), "Wins"] = 4
-# print(trade_result)
+import cufflinks as cf
+import plotly.graph_objects as go
+
+cf.go_offline()
 
 data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
+
+fig = go.Figure()
+fig.add_candlestick(x=data.index,
+                    open=data["Open"],
+                    close=data["Close"],
+                    high=data["High"],
+                    low=data["Low"],
+                    name="Price")
+
+start_test = datetime.strptime("2021-01-18", "%Y-%m-%d")
+end_test = datetime.strptime("2021-01-26", "%Y-%m-%d")
+dates_test = pd.date_range(start_test, end_test)
+
+# fig.add_trace(go.Scatter(x=[start_test, start_test, end_test, end_test, start_test],
+#                            y=[100, 120, 120, 100, 100], fill="toself"))
+
+fig.add_shape(type="rect",
+              x0=start_test,
+              y0=100,
+              x1=end_test,
+              y1=120,
+              opacity=0.2,
+              fillcolor="orange",
+              line_color="orange",
+              )
+
+# fig.add_shape(type="rect",
+#     xref="paper", yref="paper",
+#     x0=start_test, y0=100,
+#     x1=end_test, y1=120,
+#     line=dict(
+#         color="LightSeaGreen",
+#         width=3,
+#     ),
+#     fillcolor="PaleTurquoise",
+# )
+
+fig.show()
 
 # start_test = datetime.strptime("2021-01-10", "%Y-%m-%d")
 # ee = data[start_test:]
 # new_point = data.loc[new_date]
 # train_data = data.iloc[0:-1]
 
-start_date = pd.Timestamp(ts_input="2021-02-19")
-data.loc[start_date] += np.ones(data.shape[1])
+# start_date = pd.Timestamp(ts_input="2021-02-19")
+# data.loc[start_date] += np.ones(data.shape[1])
 # print(data["Close"][start_date])
 # test_df = pd.DataFrame(index=data.index[20:], columns=["Value", "Color"])
 # print(test_df)

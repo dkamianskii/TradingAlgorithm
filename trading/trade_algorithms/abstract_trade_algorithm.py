@@ -10,8 +10,9 @@ class AbstractTradeAlgorithm(ABC):
     def __init__(self):
         self.data: Optional[pd.DataFrame] = None
 
+    @staticmethod
     @abstractmethod
-    def get_default_hyperparameters_grid(self) -> List[Dict]:
+    def get_default_hyperparameters_grid() -> List[Dict]:
         pass
 
     @abstractmethod

@@ -289,7 +289,7 @@ class TradeManager:
 
     def plot_stock_history(self,
                            stock_name: str,
-                           show_full_stock_history: bool = False): # todo stop loss and take prifit level
+                           show_full_stock_history: bool = False):
         bids_history = self._statistics_manager.get_bids_history(stock_name)
         color_map: Dict[BidResult, str] = {BidResult.WIN: "green",
                                            BidResult.LOSE: "red",

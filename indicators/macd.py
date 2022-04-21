@@ -3,13 +3,34 @@ import pandas as pd
 from typing import Optional, Union
 
 import indicators.moving_averages as ma
-from indicators.abstract_indicator import AbstractIndicator, TradeAction
+from indicators.abstract_indicator import AbstractIndicator, TradeAction, TradePointColumn
+from helping.base_enum import BaseEnum
 
 import cufflinks as cf
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
 cf.go_offline()
+
+
+class MACDTradeStrategy(BaseEnum):
+    """
+    Trade strategy explanation:
+    * classic
+    Buy / Open long, when index line cross up through the signal, actively buy when MACD is below zero.
+    Sell / Open short, when index line cross down through the signal, actively sell when MACD is above zero.
+
+    * convergence
+    On the first step detecting whether there is a convergence in MACD lines.
+    We say that MACD lines converging if there are 2 sequential MACD hist downsizing.
+    Like cur hist < prev hist < pre-prev hist. By abs value.
+    Secondly, after convergence was established we take pre-prev hist value as a starting peak,
+    and waiting for a moment when hist value will be less then 15% of the starting peak or it will be different sign.
+    When it comes to the trade point by convergence and not by sign changing, it's a sign for active trade action,
+    because it is playing on the expectations and not just following trend when it might be already late.
+    """
+    CLASSIC = 1,
+    CONVERGENCE = 2
 
 
 class MACD(AbstractIndicator):
@@ -35,17 +56,16 @@ class MACD(AbstractIndicator):
         When it comes to the trade point by convergence and not by sign changing, it's a sign for active trade action,
         because it is playing on the expectations and not just following trend when it might be already late.
     """
-    supported_trade_strategies = ["classic", "convergence"]
 
     def __init__(self, data: Optional[pd.DataFrame] = None,
-                 short_period: Optional[int] = 12,
-                 long_period: Optional[int] = 26,
-                 signal_period: Optional[int] = 9,
-                 trade_strategy: Optional[str] = "classic"):
+                 short_period: int = 12,
+                 long_period: int = 26,
+                 signal_period: int = 9,
+                 trade_strategy: MACDTradeStrategy = MACDTradeStrategy.CLASSIC):
         """
         :param data: time series for computing MACD. Could be not specified with instantiation,
          but must be set before calculating
-        :param trade_strategy: "classic" or "convergence
+        :param trade_strategy: CLASSIC or CONVERGENCE
         """
         super().__init__(data)
         self._short_period: int = 0
@@ -76,10 +96,8 @@ class MACD(AbstractIndicator):
         self._long_period = long_period
         self._signal_period = signal_period
 
-    def set_trade_strategy(self, trade_strategy: str):
+    def set_trade_strategy(self, trade_strategy: MACDTradeStrategy):
         self.clear_vars()
-        if trade_strategy not in MACD.supported_trade_strategies:
-            raise ValueError("trade strategy must be one of supported trade strategies")
         self._trade_strategy = trade_strategy
 
     def clear_vars(self):
@@ -121,7 +139,7 @@ class MACD(AbstractIndicator):
         When it comes to the trade point by convergence and not by sign changing, it's a sign for active trade action,
         because it is playing on the expectations and not just following trend when it might be already late.
         """
-        if self._trade_strategy == "classic":
+        if self._trade_strategy == MACDTradeStrategy.CLASSIC:
             if (self._prev_hist is not None) and ((histogram == 0) or (np.sign(self._prev_hist) != np.sign(histogram))):
                 if np.sign(self._prev_hist) > 0:
                     if MACD > 0:
@@ -136,7 +154,7 @@ class MACD(AbstractIndicator):
             else:
                 self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
             self._prev_hist = histogram
-        elif self._trade_strategy == "convergence":
+        elif self._trade_strategy == MACDTradeStrategy.CONVERGENCE:
             if (self._prev_hist is not None) and (self._pre_prev_hist is not None):
                 if (histogram == 0) or (np.sign(self._prev_hist) != np.sign(histogram)):
                     if np.sign(self._prev_hist) > 0:
@@ -226,9 +244,9 @@ class MACD(AbstractIndicator):
                             row=1, col=1)
 
         buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
-        bool_arr = selected_trade_points["Action"].isin(buy_actions)
+        bool_arr = selected_trade_points[TradePointColumn.ACTION].isin(buy_actions)
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
-                                 y=selected_trade_points["Price"],
+                                 y=selected_trade_points[TradePointColumn.PRICE],
                                  mode="markers",
                                  marker=dict(
                                      color=np.where(bool_arr, "green", "red"),

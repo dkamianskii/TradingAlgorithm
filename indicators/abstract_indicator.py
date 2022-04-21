@@ -13,6 +13,12 @@ class TradeAction(BaseEnum):
     ACTIVELY_SELL = 4
 
 
+class TradePointColumn(BaseEnum):
+    DATE = 1,
+    PRICE = 2,
+    ACTION = 3
+
+
 class AbstractIndicator(ABC):
     """
     Abstract base class for complex indicators
@@ -43,11 +49,7 @@ class AbstractIndicator(ABC):
 
     @abstractmethod
     def clear_vars(self):
-        self.trade_points = pd.DataFrame(columns=["date", "Price", "Action"])
-        self.trade_points["date"] = pd.to_datetime(self.trade_points["date"])
-        self.trade_points["Price"] = self.trade_points["Price"].astype("float")
-        self.trade_points["Action"] = self.trade_points["Action"]
-        self.trade_points = self.trade_points.set_index("date")
+        self.trade_points = pd.DataFrame(columns=TradePointColumn.get_elements_list()).set_index(TradePointColumn.DATE)
 
     @abstractmethod
     def calculate(self, data: Optional[pd.DataFrame] = None):
@@ -75,7 +77,7 @@ class AbstractIndicator(ABC):
         :param price: price of purchase
         :param action: action to make at the moment
         """
-        self.trade_points.loc[date] = {"Price": price, "Action": action}
+        self.trade_points.loc[date] = {TradePointColumn.PRICE: price, TradePointColumn.ACTION: action}
 
     def select_action_trade_points(self, start_date: Optional[pd.Timestamp] = None,
                                    end_date: Optional[pd.Timestamp] = None) -> pd.DataFrame:
@@ -89,4 +91,4 @@ class AbstractIndicator(ABC):
             end_date = self.trade_points.index[-1]
 
         action_points = self.trade_points[start_date:end_date]
-        return action_points.copy()[action_points["Action"] != TradeAction.NONE]
+        return action_points.copy()[action_points[TradePointColumn.ACTION] != TradeAction.NONE]

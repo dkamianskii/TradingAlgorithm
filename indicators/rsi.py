@@ -10,7 +10,7 @@ import pandas as pd
 from typing import Optional, Dict, Union
 
 import indicators.moving_averages as ma
-from indicators.abstract_indicator import AbstractIndicator, TradeAction
+from indicators.abstract_indicator import AbstractIndicator, TradeAction, TradePointColumn
 
 import cufflinks as cf
 from plotly.subplots import make_subplots
@@ -217,9 +217,9 @@ class RSI(AbstractIndicator):
                             row=1, col=1)
 
         buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
-        bool_arr = selected_trade_points["Action"].isin(buy_actions)
+        bool_arr = selected_trade_points[TradePointColumn.ACTION].isin(buy_actions)
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
-                                 y=selected_trade_points["Price"],
+                                 y=selected_trade_points[TradePointColumn.PRICE],
                                  mode="markers",
                                  marker=dict(
                                      color=np.where(bool_arr, "green", "red"),

@@ -1,3 +1,5 @@
+from plotly.subplots import make_subplots
+
 import indicators.moving_averages as ma
 import numpy as np
 import pandas as pd
@@ -17,7 +19,7 @@ class MAsColumns(BaseEnum):
     BOTTOM_BORDER = 3
 
 
-class MASupportLevels(AbstractIndicator):  # todo реворк индикатора под новый стандарт
+class MASupportLevels(AbstractIndicator):
 
     default_ma_periods_for_test = [20, 30, 50, 75, 100, 150, 200]
 
@@ -41,7 +43,7 @@ class MASupportLevels(AbstractIndicator):  # todo реворк индикато�
         self._use_tested_MAs = use_tested_MAs
 
     def clear_vars(self):
-        pass
+        super().clear_vars()
 
     def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None):
         if self._use_tested_MAs:
@@ -62,7 +64,8 @@ class MASupportLevels(AbstractIndicator):  # todo реворк индикато�
                         resistance += 1
                     else:
                         support += 1
-            self.MAs[period][date] = new_MA_point
+            self.MAs[period].loc[date] = new_MA_point
+        self.data.loc[date] = new_point
         self.__make_trade_decision(activation_flag, resistance, support, new_point, date)
 
     @staticmethod
@@ -100,13 +103,18 @@ class MASupportLevels(AbstractIndicator):  # todo реворк индикато�
                 self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_SELL)
             elif support - resistance >= 3:
                 self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_BUY)
-        self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+            else:
+                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+        else:
+            self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         super().calculate(data)
         if self.ma_periods is None:
             self.ma_periods = MASupportLevels.default_ma_periods_for_test
         for period in self.ma_periods:
+            if self.data.shape[0] <= period:
+                continue
             m_a = ma.EMA(self.data["Close"], N=period)
             MA_data = {MAsColumns.TOP_BORDER: m_a * 1.002,
                        MAsColumns.MAIN: m_a,
@@ -188,11 +196,13 @@ class MASupportLevels(AbstractIndicator):  # todo реворк индикато�
                     activation_points["activation types"].append(activation_type)
                     activation_point = point
 
+        if len(activation_points["Dates"]) != len(activation_points["results"]):
+            activation_points["results"].append("none")
         return {"activations": activations, "successes": successes,
                 "activation_points": pd.DataFrame(activation_points)}
 
     def find_trade_points(self) -> pd.DataFrame:
-        intend = np.max(self.ma_periods)
+        intend = np.max([*self.MAs.keys()])
         for date, point in self.data[intend:].iterrows():
             resistance, support = 0, 0
             activation_flag = False
@@ -221,6 +231,7 @@ class MASupportLevels(AbstractIndicator):  # todo реворк индикато�
         selected_data = self.data[start_date:end_date]
 
         fig = go.Figure()
+
         fig.add_candlestick(x=selected_data.index,
                             open=selected_data["Open"],
                             close=selected_data["Close"],
@@ -240,16 +251,15 @@ class MASupportLevels(AbstractIndicator):  # todo реворк индикато�
         selected_trade_points = self.select_action_trade_points(start_date=start_date, end_date=end_date)
 
         buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
-        bool_arr = selected_trade_points["Action"].isin(buy_actions)
+        bool_arr = selected_trade_points[TradePointColumn.ACTION].isin(buy_actions)
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
-                                 y=selected_trade_points["Price"],
+                                 y=selected_trade_points[TradePointColumn.PRICE],
                                  mode="markers",
                                  marker=dict(
                                      color=np.where(bool_arr, "green", "red"),
                                      size=7,
                                      symbol=np.where(bool_arr, "triangle-up", "triangle-down")),
-                                 name="Action points"),
-                      row=1, col=1)
+                                 name="Action points"))
 
         fig.update_layout(title="Price with Moving Averages",
                           xaxis_title="Date")

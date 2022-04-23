@@ -4,7 +4,7 @@ import pandas as pd
 from typing import Optional, List, Tuple, Dict, Union
 
 from indicators.atr import ATR, ATR_one_point
-from indicators.abstract_indicator import AbstractIndicator, TradeAction
+from indicators.abstract_indicator import AbstractIndicator, TradeAction, TradePointColumn
 
 import cufflinks as cf
 import plotly.graph_objects as go
@@ -16,13 +16,13 @@ class SuperTrend(AbstractIndicator):
 
     def __init__(self, data: Optional[pd.DataFrame] = None,
                  lookback_period: Optional[int] = 10,
-                 multiplier: Optional[int] = 3):
+                 multiplier: Union[float, int] = 3):
         """
         :param lookback_period: lookback period is the number of data points to take into account for the calculation
         :param multiplier: _multiplier is the value used to multiply the ATR
         """
         super().__init__(data)
-        self._multiplier: int = multiplier
+        self._multiplier: Union[float, int] = multiplier
         self._lookback_period: int = lookback_period
         self.super_trend_value: Optional[pd.DataFrame] = None
         self._prev_atr: float = 0
@@ -30,7 +30,7 @@ class SuperTrend(AbstractIndicator):
         self._prev_flb: float = 0
         self._prev_color: Optional[str] = None
 
-    def set_params(self, lookback_period: Optional[int] = 10, multiplier: Optional[int] = 3):
+    def set_params(self, lookback_period: int = 10, multiplier: Union[float, int] = 3):
         """
         :param lookback_period: lookback period is the number of data points to take into account for the calculation
         :param multiplier: multiplier is the value used to multiply the ATR
@@ -81,6 +81,9 @@ class SuperTrend(AbstractIndicator):
         else:
             color = "green"
 
+        self._prev_atr = atr
+        self._prev_fub = fub
+        self._prev_flb = flb
         self.__make_trade_decision(new_point, date, color)
         self.data.loc[date] = new_point
         self.super_trend_value.loc[date] = {"Value": cur_st, "Color": color}
@@ -212,11 +215,13 @@ class SuperTrend(AbstractIndicator):
         selected_trade_points = self.select_action_trade_points(start_date=start_date, end_date=end_date)
 
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
-                                 y=selected_trade_points["Price"],
+                                 y=selected_trade_points[TradePointColumn.PRICE],
                                  mode="markers",
-                                 marker=dict(color=np.where(selected_trade_points["Action"] == TradeAction.BUY, "green", "red"),
+                                 marker=dict(color=np.where(selected_trade_points[TradePointColumn.ACTION] == TradeAction.BUY,
+                                                            "green", "red"),
                                              size=7,
-                                             symbol=np.where(selected_trade_points["Action"] == TradeAction.BUY, "triangle-up", "triangle-down")),
+                                             symbol=np.where(selected_trade_points[TradePointColumn.ACTION] == TradeAction.BUY,
+                                                             "triangle-up", "triangle-down")),
                                  name="Action points"))
 
         fig.update_layout(title=f"Price with SuperTrend {self._lookback_period},{self._multiplier}",

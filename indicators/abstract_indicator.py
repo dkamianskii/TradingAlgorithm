@@ -85,10 +85,12 @@ class AbstractIndicator(ABC):
         Select trade action points starting from the start date and to the end date.
         Actions are "actively buy", "buy", "sell", "actively sell"
         """
+        if self.trade_points.shape[0] == 0:
+            return self.trade_points.copy()
         if start_date is None:
             start_date = self.trade_points.index[0]
         if end_date is None:
             end_date = self.trade_points.index[-1]
 
         action_points = self.trade_points[start_date:end_date]
-        return action_points.copy()[action_points[TradePointColumn.ACTION] != TradeAction.NONE]
+        return action_points[action_points[TradePointColumn.ACTION] != TradeAction.NONE].copy()

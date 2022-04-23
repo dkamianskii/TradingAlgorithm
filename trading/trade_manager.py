@@ -230,7 +230,7 @@ class TradeManager:
             else:
                 bid_type = BidType.SHORT
 
-            if assets_in_portfolio.shape[0] != 0:
+            if assets_in_portfolio[assets_in_portfolio[PortfolioColumn.TYPE] == bid_type].shape[0] != 0:
                 last_bid_date = assets_in_portfolio[assets_in_portfolio[PortfolioColumn.TYPE] == bid_type][PortfolioColumn.DATE].max()
                 if date - last_bid_date < self._days_to_chill:
                     if add_point_to_the_data:

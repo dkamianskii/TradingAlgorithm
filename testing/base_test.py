@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 
 from indicators import moving_averages as ma
+from indicators.ma_support_levels import MASupportLevels
 from indicators.macd import MACD
 from indicators.rsi import RSI
 from indicators.atr import ATR
@@ -15,31 +16,36 @@ import plotly.graph_objects as go
 
 cf.go_offline()
 
-data = yf.download("AMD", start="2021-01-01", end="2021-02-21")
+data = yf.download("AMD", start="2021-01-01", end="2021-09-23")
 
 start_test = datetime.strptime("2021-01-18", "%Y-%m-%d")
 end_test = datetime.strptime("2021-01-26", "%Y-%m-%d")
 dates_test = pd.date_range(start_test, end_test)
 
-# start_test = datetime.strptime("2021-01-10", "%Y-%m-%d")
-# ee = data[start_test:]
+# new_date = data.index[-1]
 # new_point = data.loc[new_date]
 # train_data = data.iloc[0:-1]
 
-# start_date = pd.Timestamp(ts_input="2021-02-19")
-# data.loc[start_date] += np.ones(data.shape[1])
-# print(data["Close"][start_date])
-# test_df = pd.DataFrame(index=data.index[20:], columns=["Value", "Color"])
-# print(test_df)
+train_data = data[:100]
+test_data = data[100:]
 
-# support_levels = MASupportLevels(data=data)
+# MA Support Levels
+
+# support_levels_test = MASupportLevels(data=data)
+# support_levels_test.calculate()
+# support_levels_test.set_tested_MAs_usage(True)
+# support_levels_test.test_MAs_for_data()
+# support_levels_test.find_trade_points()
+# tp_1 = support_levels_test.select_action_trade_points()
+# support_levels_test.plot()
+#
+# support_levels = MASupportLevels(data=train_data)
 # support_levels.calculate()
+# support_levels.set_tested_MAs_usage(True)
 # support_levels.test_MAs_for_data()
-# support_levels.find_trade_points(use_tested_MAs=True)
-# tp = support_levels.trade_points
-
-# action_trade_points = support_levels.select_action_trade_points()
-# print(action_trade_points)
+# support_levels.find_trade_points()
+# support_levels.evaluate_new_point(new_point, new_date)
+# tp_2 = support_levels.select_action_trade_points()
 # support_levels.plot()
 
 # RSI
@@ -74,15 +80,17 @@ dates_test = pd.date_range(start_test, end_test)
 
 # Super Trend
 
-# super_trend = SuperTrend(data=data)
-# super_trend.calculate()
-# super_trend.find_trade_points()
-# super_trend.plot()
-#
-# super_trend = SuperTrend(data=train_data)
-# super_trend.calculate()
-# super_trend.find_trade_points()
-# super_trend.evaluate_new_point(new_point, new_date)
-# super_trend.plot()
+super_trend_test = SuperTrend(data=data)
+super_trend_test.set_params(8, 1.5)
+super_trend_test.calculate()
+super_trend_test.find_trade_points()
+super_trend_test.plot()
 
-dd = 1
+super_trend = SuperTrend(data=train_data)
+super_trend.set_params(8, 1.5)
+super_trend.calculate()
+super_trend.find_trade_points()
+for date, point in test_data.iterrows():
+    super_trend.evaluate_new_point(point, date)
+super_trend.plot()
+

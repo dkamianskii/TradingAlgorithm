@@ -64,7 +64,7 @@ class AbstractIndicator(ABC):
         pass
 
     @abstractmethod
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None):
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
         pass
 
     @abstractmethod

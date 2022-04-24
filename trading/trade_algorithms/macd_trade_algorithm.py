@@ -42,8 +42,7 @@ class MACDTradeAlgorithm(AbstractTradeAlgorithm):
 
     def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp],
                            special_params: Optional[Dict] = None) -> TradeAction:
-        self._indicator.evaluate_new_point(new_point, date, special_params)
-        return self._indicator.trade_points.iloc[-1][TradePointColumn.ACTION]
+        return self._indicator.evaluate_new_point(new_point, date, special_params)
 
     def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
         self._indicator.plot(start_date, end_date)

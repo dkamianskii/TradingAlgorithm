@@ -2,7 +2,7 @@ from typing import Optional, Union
 
 import pandas as pd
 
-from indicators.abstract_indicator import AbstractIndicator
+from indicators.abstract_indicator import AbstractIndicator, TradeAction
 
 
 class BollingerBands(AbstractIndicator):  # todo сделать индикатор Bollinger Bands (low priority)
@@ -15,7 +15,7 @@ class BollingerBands(AbstractIndicator):  # todo сделать индикато
     def find_trade_points(self) -> pd.DataFrame:
         pass
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None):
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
         pass
 
     def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):

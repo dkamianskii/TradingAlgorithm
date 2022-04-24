@@ -65,7 +65,7 @@ class RSI(AbstractIndicator):
         self._last_average_D = 0
         self._prev_RSI = None
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None):
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
         """
         Calculates RSI for provided date point
 
@@ -85,10 +85,9 @@ class RSI(AbstractIndicator):
         RSI = 100 - 100 / (1 + RS)
         self.data.loc[date] = new_point
         self.RSI_val = pd.concat([self.RSI_val, pd.Series({date: RSI})])
-        self.__make_trade_decision(new_point, date, RSI)
-        return self
+        return self.__make_trade_decision(new_point, date, RSI)
 
-    def __make_trade_decision(self, new_point, date, RSI):
+    def __make_trade_decision(self, new_point, date, RSI) -> TradeAction:
         """
                 Trade strategy explanation:
                 Key index values are 70 and 30.
@@ -105,47 +104,46 @@ class RSI(AbstractIndicator):
                 """
         if (RSI < 70) and (RSI > 30):
             if self._prev_RSI is None:
-                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+                trade_action = TradeAction.NONE
             else:
                 if (self._prev_RSI >= 70) and (RSI >= 67.5):
-                    self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
+                    trade_action = TradeAction.SELL
                 elif (self._prev_RSI <= 30) and (RSI <= 32.5):
-                    self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
+                    trade_action = TradeAction.BUY
                 else:
-                    self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+                    trade_action = TradeAction.NONE
                 self._prev_RSI = None
-            return
-
-        if RSI > 80:
-            self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_SELL)
+        elif RSI > 80:
+            trade_action = TradeAction.ACTIVELY_SELL
             self._prev_RSI = None
-            return
-        if RSI < 20:
-            self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_BUY)
+        elif RSI < 20:
+            trade_action = TradeAction.ACTIVELY_BUY
             self._prev_RSI = None
-            return
-
-        if RSI >= 70:
+        elif RSI >= 70:
             if self._prev_RSI is None:
                 self._prev_RSI = RSI
-                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
-                return
-            if (abs(RSI - self._prev_RSI) >= 5) or ((RSI < self._prev_RSI) and (RSI < 70.5)):
-                self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
+                trade_action = TradeAction.NONE
+            elif (abs(RSI - self._prev_RSI) >= 5) or ((RSI < self._prev_RSI) and (RSI < 70.5)):
+                trade_action = TradeAction.SELL
                 self._prev_RSI = None
-                return
-        if RSI <= 30:
+            else:
+                self._prev_RSI = RSI
+                trade_action = TradeAction.NONE
+        elif RSI <= 30:
             if self._prev_RSI is None:
                 self._prev_RSI = RSI
-                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
-                return
-            if (abs(RSI - self._prev_RSI) >= 5) or ((RSI > self._prev_RSI) and (RSI > 30.5)):
-                self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
+                trade_action = TradeAction.NONE
+            elif (abs(RSI - self._prev_RSI) >= 5) or ((RSI > self._prev_RSI) and (RSI > 30.5)):
+                trade_action = TradeAction.BUY
                 self._prev_RSI = None
-                return
-
-        self._prev_RSI = RSI
-        self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+            else:
+                self._prev_RSI = RSI
+                trade_action = TradeAction.NONE
+        else:
+            self._prev_RSI = RSI
+            trade_action = TradeAction.NONE
+        self.add_trade_point(date, new_point["Close"], trade_action)
+        return trade_action
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         """

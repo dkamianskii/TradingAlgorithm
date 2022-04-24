@@ -47,7 +47,7 @@ class SuperTrend(AbstractIndicator):
         self._prev_flb: float = 0
         self._prev_color: Optional[str] = None
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None):
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
         date = pd.Timestamp(ts_input=date)
         prev_close = self.data["Close"][-1]
         atr = ATR_one_point(self._prev_atr, prev_close, new_point, self._lookback_period)
@@ -84,23 +84,24 @@ class SuperTrend(AbstractIndicator):
         self._prev_atr = atr
         self._prev_fub = fub
         self._prev_flb = flb
-        self.__make_trade_decision(new_point, date, color)
         self.data.loc[date] = new_point
         self.super_trend_value.loc[date] = {"Value": cur_st, "Color": color}
+        return self.__make_trade_decision(new_point, date, color)
 
-    def __make_trade_decision(self, new_point, date, super_trend_color):
+    def __make_trade_decision(self, new_point, date, super_trend_color) -> TradeAction:
         if self._prev_color is None:
             self._prev_color = super_trend_color
-            self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
-            return
-        if super_trend_color != self._prev_color:
+            trade_action = TradeAction.NONE
+        elif super_trend_color != self._prev_color:
             self._prev_color = super_trend_color
             if super_trend_color == "green":
-                self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
+                trade_action = TradeAction.BUY
             else:
-                self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
+                trade_action = TradeAction.SELL
         else:
-            self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+            trade_action = TradeAction.NONE
+        self.add_trade_point(date, new_point["Close"], trade_action)
+        return trade_action
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         super().calculate(data)

@@ -110,7 +110,7 @@ class MACD(AbstractIndicator):
         self._hist_peak: float = 0
         self._convergence_flag: bool = False
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None):
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
         date = pd.Timestamp(ts_input=date)
         self._last_short_ma = ma.EMA_one_point(prev_ema=self._last_short_ma, new_point=new_point["Close"],
                                                N=self._short_period)
@@ -121,9 +121,9 @@ class MACD(AbstractIndicator):
         histogram = MACD - signal
         self.data.loc[date] = new_point
         self.MACD_val.loc[date] = {"MACD": MACD, "signal": signal, "histogram": histogram}
-        self.__make_trade_decision(new_point, date, MACD, histogram)
+        return self.__make_trade_decision(new_point, date, MACD, histogram)
 
-    def __make_trade_decision(self, new_point, date, MACD, histogram):
+    def __make_trade_decision(self, new_point, date, MACD, histogram) -> TradeAction:
         """
         Trade strategy explanation:
         * classic
@@ -143,24 +143,25 @@ class MACD(AbstractIndicator):
             if (self._prev_hist is not None) and ((histogram == 0) or (np.sign(self._prev_hist) != np.sign(histogram))):
                 if np.sign(self._prev_hist) > 0:
                     if MACD > 0:
-                        self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_SELL)
+                        trade_action = TradeAction.ACTIVELY_SELL
                     else:
-                        self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
+                        trade_action = TradeAction.SELL
                 else:
                     if MACD < 0:
-                        self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_BUY)
+                        trade_action = TradeAction.ACTIVELY_BUY
                     else:
-                        self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
+                        trade_action = TradeAction.BUY
             else:
-                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+                trade_action = TradeAction.NONE
             self._prev_hist = histogram
-        elif self._trade_strategy == MACDTradeStrategy.CONVERGENCE:
+        # elif self._trade_strategy == MACDTradeStrategy.CONVERGENCE:
+        else:
             if (self._prev_hist is not None) and (self._pre_prev_hist is not None):
                 if (histogram == 0) or (np.sign(self._prev_hist) != np.sign(histogram)):
                     if np.sign(self._prev_hist) > 0:
-                        self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
+                        trade_action = TradeAction.SELL
                     else:
-                        self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
+                        trade_action = TradeAction.BUY
                     self._convergence_flag = False
                 else:
                     if not self._convergence_flag:
@@ -170,16 +171,18 @@ class MACD(AbstractIndicator):
                             self._hist_peak = self._pre_prev_hist
                     if self._convergence_flag and np.abs(histogram) <= 0.15 * np.abs(self._hist_peak):
                         if np.sign(self._prev_hist) > 0:
-                            self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_SELL)
+                            trade_action = TradeAction.ACTIVELY_SELL
                         else:
-                            self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_BUY)
+                            trade_action = TradeAction.ACTIVELY_BUY
                         self._convergence_flag = False
                     else:
-                        self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+                        trade_action = TradeAction.NONE
             else:
-                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+                trade_action = TradeAction.NONE
             self._pre_prev_hist = self._prev_hist
             self._prev_hist = histogram
+        self.add_trade_point(date, new_point["Close"], trade_action)
+        return trade_action
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         """

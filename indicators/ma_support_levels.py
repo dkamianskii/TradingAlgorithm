@@ -45,7 +45,7 @@ class MASupportLevels(AbstractIndicator):
     def clear_vars(self):
         super().clear_vars()
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None):
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
         if self._use_tested_MAs:
             if self.tested_MAs is None:
                 self.test_MAs_for_data()
@@ -66,7 +66,7 @@ class MASupportLevels(AbstractIndicator):
                         support += 1
             self.MAs[period].loc[date] = new_MA_point
         self.data.loc[date] = new_point
-        self.__make_trade_decision(activation_flag, resistance, support, new_point, date)
+        return self.__make_trade_decision(activation_flag, resistance, support, new_point, date)
 
     @staticmethod
     def __activation_point_check(point, MA_point) -> Tuple[bool, Optional[str]]:
@@ -87,26 +87,28 @@ class MASupportLevels(AbstractIndicator):
         return False, None
 
     def __make_trade_decision(self, activation_flag: bool, resistance: int, support: int,
-                              new_point: pd.Series, date: Union[str, pd.Timestamp]):
+                              new_point: pd.Series, date: Union[str, pd.Timestamp]) -> TradeAction:
         if activation_flag:
             if (resistance == 1) and (support == 0):
-                self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
+                trade_action = TradeAction.SELL
             elif (resistance == 0) and (support == 1):
-                self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
+                trade_action = TradeAction.BUY
             elif ((resistance == 0) and (support == 0)) or (np.abs(resistance - support) <= 1):
-                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+                trade_action = TradeAction.NONE
             elif resistance - support == 2:
-                self.add_trade_point(date, new_point["Close"], TradeAction.SELL)
+                trade_action = TradeAction.SELL
             elif support - resistance == 2:
-                self.add_trade_point(date, new_point["Close"], TradeAction.BUY)
+                trade_action = TradeAction.BUY
             elif resistance - support >= 3:
-                self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_SELL)
+                trade_action = TradeAction.ACTIVELY_SELL
             elif support - resistance >= 3:
-                self.add_trade_point(date, new_point["Close"], TradeAction.ACTIVELY_BUY)
+                trade_action = TradeAction.ACTIVELY_BUY
             else:
-                self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+                trade_action = TradeAction.NONE
         else:
-            self.add_trade_point(date, new_point["Close"], TradeAction.NONE)
+            trade_action = TradeAction.NONE
+        self.add_trade_point(date, new_point["Close"], trade_action)
+        return trade_action
 
     def calculate(self, data: Optional[pd.DataFrame] = None):
         super().calculate(data)

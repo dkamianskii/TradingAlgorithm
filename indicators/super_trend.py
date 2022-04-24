@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from typing import Optional, List, Tuple, Dict, Union
 
+from helping.base_enum import BaseEnum
 from indicators.atr import ATR, ATR_one_point
 from indicators.abstract_indicator import AbstractIndicator, TradeAction, TradePointColumn
 
@@ -10,6 +11,11 @@ import cufflinks as cf
 import plotly.graph_objects as go
 
 cf.go_offline()
+
+
+class SuperTrendHyperparam(BaseEnum):
+    LOOKBACK_PERIOD = 1,
+    MULTIPLIER = 2
 
 
 class SuperTrend(AbstractIndicator):

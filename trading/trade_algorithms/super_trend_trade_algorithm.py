@@ -3,7 +3,7 @@ from typing import Optional, Union, Dict, List
 
 from indicators.abstract_indicator import TradeAction, TradePointColumn
 from trading.trade_algorithms.abstract_trade_algorithm import AbstractTradeAlgorithm
-from indicators.super_trend import SuperTrend
+from indicators.super_trend import SuperTrend, SuperTrendHyperparam
 
 
 class SuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
@@ -12,22 +12,22 @@ class SuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
         self._indicator: SuperTrend = SuperTrend()
 
     @staticmethod
-    def create_hyperparameters_dict(lookback_period: int = 10, multiplier: Union[float, int] = 3):
-        return {"lookback period": lookback_period, "multiplier": multiplier}
+    def create_hyperparameters_dict(lookback_period: int = 10, multiplier: Union[float, int] = 3) -> Dict:
+        return {SuperTrendHyperparam.LOOKBACK_PERIOD: lookback_period, SuperTrendHyperparam.MULTIPLIER: multiplier}
 
     @staticmethod
     def get_default_hyperparameters_grid() -> List[Dict]:
-        return [{"lookback period": 8, "multiplier": 3},
-                {"lookback period": 9, "multiplier": 3},
-                {"lookback period": 10, "multiplier": 3},
-                {"lookback period": 10, "multiplier": 2},
-                {"lookback period": 10, "multiplier": 1.5},
-                {"lookback period": 8, "multiplier": 1.5}]
+        return [{SuperTrendHyperparam.LOOKBACK_PERIOD: 8, SuperTrendHyperparam.MULTIPLIER: 3},
+                {SuperTrendHyperparam.LOOKBACK_PERIOD: 9, SuperTrendHyperparam.MULTIPLIER: 3},
+                {SuperTrendHyperparam.LOOKBACK_PERIOD: 10, SuperTrendHyperparam.MULTIPLIER: 3},
+                {SuperTrendHyperparam.LOOKBACK_PERIOD: 10, SuperTrendHyperparam.MULTIPLIER: 2},
+                {SuperTrendHyperparam.LOOKBACK_PERIOD: 10, SuperTrendHyperparam.MULTIPLIER: 1.5},
+                {SuperTrendHyperparam.LOOKBACK_PERIOD: 8, SuperTrendHyperparam.MULTIPLIER: 1.5}]
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
         super().train(data, hyperparameters)
-        self._indicator.set_params(lookback_period=hyperparameters["lookback period"],
-                                   multiplier=hyperparameters["multiplier"])
+        self._indicator.set_params(lookback_period=hyperparameters[SuperTrendHyperparam.LOOKBACK_PERIOD],
+                                   multiplier=hyperparameters[SuperTrendHyperparam.MULTIPLIER])
         self._indicator.clear_vars()
         self._indicator.calculate(self.data)
 

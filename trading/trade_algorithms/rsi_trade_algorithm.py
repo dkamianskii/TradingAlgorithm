@@ -13,7 +13,7 @@ class RSITradeAlgorithm(AbstractTradeAlgorithm):
         self._indicator: RSI = RSI()
 
     @staticmethod
-    def create_hyperparameters_dict(N: int = 14):
+    def create_hyperparameters_dict(N: int = 14) -> Dict:
         return {"N": N}
 
     @staticmethod

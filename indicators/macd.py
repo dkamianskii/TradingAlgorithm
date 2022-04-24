@@ -13,6 +13,13 @@ import plotly.graph_objects as go
 cf.go_offline()
 
 
+class MACDHyperparam(BaseEnum):
+    SHORT_PERIOD = 1,
+    LONG_PERIOD = 2,
+    SIGNAL_PERIOD = 3,
+    TRADE_STRATEGY = 4
+
+
 class MACDTradeStrategy(BaseEnum):
     """
     Trade strategy explanation:
@@ -110,7 +117,8 @@ class MACD(AbstractIndicator):
         self._hist_peak: float = 0
         self._convergence_flag: bool = False
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp],
+                           special_params: Optional = None) -> TradeAction:
         date = pd.Timestamp(ts_input=date)
         self._last_short_ma = ma.EMA_one_point(prev_ema=self._last_short_ma, new_point=new_point["Close"],
                                                N=self._short_period)
@@ -247,14 +255,16 @@ class MACD(AbstractIndicator):
                             row=1, col=1)
 
         buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
-        bool_arr = selected_trade_points[TradePointColumn.ACTION].isin(buy_actions)
+        active_actions = [TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL]
+        bool_buys = selected_trade_points[TradePointColumn.ACTION].isin(buy_actions)
+        bool_actives = selected_trade_points[TradePointColumn.ACTION].isin(active_actions)
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
                                  y=selected_trade_points[TradePointColumn.PRICE],
                                  mode="markers",
                                  marker=dict(
-                                     color=np.where(bool_arr, "green", "red"),
-                                     size=7,
-                                     symbol=np.where(bool_arr, "triangle-up", "triangle-down")),
+                                     color=np.where(bool_buys, "green", "red"),
+                                     size=np.where(bool_actives, 15, 10),
+                                     symbol=np.where(bool_buys, "triangle-up", "triangle-down")),
                                  name="Action points"),
                       row=1, col=1)
 

@@ -6,7 +6,7 @@ import numpy as np
 
 from indicators import moving_averages as ma
 from indicators.ma_support_levels import MASupportLevels
-from indicators.macd import MACD
+from indicators.macd import MACD, MACDTradeStrategy
 from indicators.rsi import RSI
 from indicators.atr import ATR
 from indicators.super_trend import SuperTrend
@@ -65,32 +65,31 @@ test_data = data[100:]
 
 # MACD
 
-# macd_test = MACD(data=data)
-# macd_test.calculate()
-# macd_test.find_trade_points()
-# macd_test.plot()
-#
-# macd_apple = MACD(data=train_data, trade_strategy=MACD.supported_trade_strategies[1])
-# macd_apple.calculate()
-# macd_apple.find_trade_points()
-# macd_apple.evaluate_new_point(new_point, new_date)
-# b3 = macd_apple.select_action_trade_points()
-# print(b3)
-# macd_apple.plot()
+macd_test = MACD(data=data)
+macd_test.calculate()
+macd_test.find_trade_points()
+macd_test.plot()
+
+macd = MACD(data=train_data, trade_strategy=MACDTradeStrategy.CLASSIC)
+macd.calculate()
+macd.find_trade_points()
+for date, point in test_data.iterrows():
+    macd.evaluate_new_point(point, date)
+macd.plot()
 
 # Super Trend
 
-super_trend_test = SuperTrend(data=data)
-super_trend_test.set_params(8, 1.5)
-super_trend_test.calculate()
-super_trend_test.find_trade_points()
-super_trend_test.plot()
-
-super_trend = SuperTrend(data=train_data)
-super_trend.set_params(8, 1.5)
-super_trend.calculate()
-super_trend.find_trade_points()
-for date, point in test_data.iterrows():
-    super_trend.evaluate_new_point(point, date)
-super_trend.plot()
+# super_trend_test = SuperTrend(data=data)
+# super_trend_test.set_params(8, 1.5)
+# super_trend_test.calculate()
+# super_trend_test.find_trade_points()
+# super_trend_test.plot()
+#
+# super_trend = SuperTrend(data=train_data)
+# super_trend.set_params(8, 1.5)
+# super_trend.calculate()
+# super_trend.find_trade_points()
+# for date, point in test_data.iterrows():
+#     super_trend.evaluate_new_point(point, date)
+# super_trend.plot()
 

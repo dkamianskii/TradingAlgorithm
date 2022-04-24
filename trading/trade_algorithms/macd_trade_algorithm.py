@@ -3,7 +3,7 @@ from typing import Optional, Union, Dict, List
 
 from indicators.abstract_indicator import TradeAction, TradePointColumn
 from trading.trade_algorithms.abstract_trade_algorithm import AbstractTradeAlgorithm
-from indicators.macd import MACD, MACDTradeStrategy
+from indicators.macd import MACD, MACDTradeStrategy, MACDHyperparam
 
 
 class MACDTradeAlgorithm(AbstractTradeAlgorithm):
@@ -16,27 +16,33 @@ class MACDTradeAlgorithm(AbstractTradeAlgorithm):
     def create_hyperparameters_dict(short_period: int = 12,
                                     long_period: int = 26,
                                     signal_period: int = 9,
-                                    trade_strategy: MACDTradeStrategy = MACDTradeStrategy.CLASSIC):
-        return {"short period": short_period,
-                "long period": long_period,
-                "signal period": signal_period,
-                "trade strategy": trade_strategy}
+                                    trade_strategy: MACDTradeStrategy = MACDTradeStrategy.CLASSIC) -> Dict:
+        return {MACDHyperparam.SHORT_PERIOD: short_period,
+                MACDHyperparam.LONG_PERIOD: long_period,
+                MACDHyperparam.SIGNAL_PERIOD: signal_period,
+                MACDHyperparam.TRADE_STRATEGY: trade_strategy}
 
     @staticmethod
     def get_default_hyperparameters_grid() -> List[Dict]:
-        return [{"short period": 8, "long period": 16, "signal period": 8, "trade strategy": MACDTradeStrategy.CLASSIC},
-                {"short period": 10, "long period": 20, "signal period": 9, "trade strategy": MACDTradeStrategy.CLASSIC},
-                {"short period": 12, "long period": 26, "signal period": 9, "trade strategy": MACDTradeStrategy.CLASSIC},
-                {"short period": 9, "long period": 18, "signal period": 8, "trade strategy": MACDTradeStrategy.CONVERGENCE},
-                {"short period": 10, "long period": 22, "signal period": 9, "trade strategy": MACDTradeStrategy.CONVERGENCE},
-                {"short period": 12, "long period": 26, "signal period": 9, "trade strategy": MACDTradeStrategy.CONVERGENCE}]
+        return [{MACDHyperparam.SHORT_PERIOD: 8, MACDHyperparam.LONG_PERIOD: 16,
+                 MACDHyperparam.SIGNAL_PERIOD: 8, MACDHyperparam.TRADE_STRATEGY: MACDTradeStrategy.CLASSIC},
+                {MACDHyperparam.SHORT_PERIOD: 10, MACDHyperparam.LONG_PERIOD: 20,
+                 MACDHyperparam.SIGNAL_PERIOD: 9, MACDHyperparam.TRADE_STRATEGY: MACDTradeStrategy.CLASSIC},
+                {MACDHyperparam.SHORT_PERIOD: 12, MACDHyperparam.LONG_PERIOD: 26,
+                 MACDHyperparam.SIGNAL_PERIOD: 9, MACDHyperparam.TRADE_STRATEGY: MACDTradeStrategy.CLASSIC},
+                {MACDHyperparam.SHORT_PERIOD: 9, MACDHyperparam.LONG_PERIOD: 18,
+                 MACDHyperparam.SIGNAL_PERIOD: 8, MACDHyperparam.TRADE_STRATEGY: MACDTradeStrategy.CONVERGENCE},
+                {MACDHyperparam.SHORT_PERIOD: 10, MACDHyperparam.LONG_PERIOD: 22,
+                 MACDHyperparam.SIGNAL_PERIOD: 9, MACDHyperparam.TRADE_STRATEGY: MACDTradeStrategy.CONVERGENCE},
+                {MACDHyperparam.SHORT_PERIOD: 12, MACDHyperparam.LONG_PERIOD: 26,
+                 MACDHyperparam.SIGNAL_PERIOD: 9, MACDHyperparam.TRADE_STRATEGY: MACDTradeStrategy.CONVERGENCE}]
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
         super().train(data, hyperparameters)
-        self._indicator.set_ma_periods(hyperparameters["short period"],
-                                       hyperparameters["long period"],
-                                       hyperparameters["signal period"])
-        self._indicator.set_trade_strategy(hyperparameters["trade strategy"])
+        self._indicator.set_ma_periods(hyperparameters[MACDHyperparam.SHORT_PERIOD],
+                                       hyperparameters[MACDHyperparam.LONG_PERIOD],
+                                       hyperparameters[MACDHyperparam.SIGNAL_PERIOD])
+        self._indicator.set_trade_strategy(hyperparameters[MACDHyperparam.TRADE_STRATEGY])
         self._indicator.clear_vars()
         self._indicator.calculate(self.data)
 

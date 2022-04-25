@@ -53,7 +53,8 @@ class SuperTrend(AbstractIndicator):
         self._prev_flb: float = 0
         self._prev_color: Optional[str] = None
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None,
+                           update_data: bool = True) -> TradeAction:
         date = pd.Timestamp(ts_input=date)
         prev_close = self.data["Close"][-1]
         atr = ATR_one_point(self._prev_atr, prev_close, new_point, self._lookback_period)
@@ -90,7 +91,8 @@ class SuperTrend(AbstractIndicator):
         self._prev_atr = atr
         self._prev_fub = fub
         self._prev_flb = flb
-        self.data.loc[date] = new_point
+        if update_data:
+            self.data.loc[date] = new_point
         self.super_trend_value.loc[date] = {"Value": cur_st, "Color": color}
         return self.__make_trade_decision(new_point, date, color)
 

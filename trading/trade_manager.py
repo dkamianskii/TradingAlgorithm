@@ -289,7 +289,8 @@ class TradeManager:
 
     def plot_stock_history(self,
                            stock_name: str,
-                           show_full_stock_history: bool = False):
+                           show_full_stock_history: bool = False,
+                           plot_algorithm_graph: bool = False):
         bids_history = self._statistics_manager.get_bids_history(stock_name)
         color_map: Dict[BidResult, str] = {BidResult.WIN: "green",
                                            BidResult.LOSE: "red",
@@ -323,6 +324,8 @@ class TradeManager:
                           line_color="red")
 
         trading_start_date: pd.Timestamp = self._tracked_stocks[stock_name][TrackedStocksColumn.TRADING_START_DATE]
+        if plot_algorithm_graph:
+            self._tracked_stocks[stock_name][TrackedStocksColumn.TRADE_ALGORITHM].plot(trading_start_date)
         if show_full_stock_history:
             stock_data: pd.DataFrame = self._tracked_stocks[stock_name][TrackedStocksColumn.DATA]
             fig.add_vline(x=trading_start_date, line_width=3, line_dash="dash", line_color="red", name="Start of trading")

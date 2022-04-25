@@ -45,7 +45,8 @@ class MASupportLevels(AbstractIndicator):
     def clear_vars(self):
         super().clear_vars()
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None,
+                           update_data: bool = True) -> TradeAction:
         if self._use_tested_MAs:
             if self.tested_MAs is None:
                 self.test_MAs_for_data()
@@ -65,7 +66,8 @@ class MASupportLevels(AbstractIndicator):
                     else:
                         support += 1
             self.MAs[period].loc[date] = new_MA_point
-        self.data.loc[date] = new_point
+        if update_data:
+            self.data.loc[date] = new_point
         return self.__make_trade_decision(activation_flag, resistance, support, new_point, date)
 
     @staticmethod

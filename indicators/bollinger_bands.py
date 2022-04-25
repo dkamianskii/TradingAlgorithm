@@ -15,7 +15,8 @@ class BollingerBands(AbstractIndicator):  # todo сделать индикато
     def find_trade_points(self) -> pd.DataFrame:
         pass
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None,
+                           update_data: bool = True) -> TradeAction:
         pass
 
     def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):

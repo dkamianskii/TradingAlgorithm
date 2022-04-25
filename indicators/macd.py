@@ -118,7 +118,7 @@ class MACD(AbstractIndicator):
         self._convergence_flag: bool = False
 
     def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp],
-                           special_params: Optional = None) -> TradeAction:
+                           special_params: Optional = None, update_data: bool = True) -> TradeAction:
         date = pd.Timestamp(ts_input=date)
         self._last_short_ma = ma.EMA_one_point(prev_ema=self._last_short_ma, new_point=new_point["Close"],
                                                N=self._short_period)
@@ -127,7 +127,8 @@ class MACD(AbstractIndicator):
         MACD = self._last_short_ma - self._last_long_ma
         signal = ma.EMA_one_point(prev_ema=self.MACD_val["signal"][-1], new_point=MACD, N=self._signal_period)
         histogram = MACD - signal
-        self.data.loc[date] = new_point
+        if update_data:
+            self.data.loc[date] = new_point
         self.MACD_val.loc[date] = {"MACD": MACD, "signal": signal, "histogram": histogram}
         return self.__make_trade_decision(new_point, date, MACD, histogram)
 

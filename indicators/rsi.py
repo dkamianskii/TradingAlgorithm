@@ -65,7 +65,8 @@ class RSI(AbstractIndicator):
         self._last_average_D = 0
         self._prev_RSI = None
 
-    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None) -> TradeAction:
+    def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None,
+                           update_data: bool = True) -> TradeAction:
         """
         Calculates RSI for provided date point
 
@@ -83,7 +84,8 @@ class RSI(AbstractIndicator):
         self._last_average_D = ma.SMMA_one_point(prev_smma=self._last_average_D, new_point=val_D, N=self._N)
         RS = np.divide(self._last_average_U, self._last_average_D)
         RSI = 100 - 100 / (1 + RS)
-        self.data.loc[date] = new_point
+        if update_data:
+            self.data.loc[date] = new_point
         self.RSI_val = pd.concat([self.RSI_val, pd.Series({date: RSI})])
         return self.__make_trade_decision(new_point, date, RSI)
 

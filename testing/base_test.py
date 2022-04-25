@@ -16,18 +16,18 @@ import plotly.graph_objects as go
 
 cf.go_offline()
 
-data = yf.download("AMD", start="2021-01-01", end="2021-09-23")
+data = yf.download("XOM", start="2019-01-01", end="2020-01-01")
 
-start_test = datetime.strptime("2021-01-18", "%Y-%m-%d")
-end_test = datetime.strptime("2021-01-26", "%Y-%m-%d")
+start_test = datetime.strptime("2019-01-18", "%Y-%m-%d")
+end_test = datetime.strptime("2019-01-26", "%Y-%m-%d")
 dates_test = pd.date_range(start_test, end_test)
 
 # new_date = data.index[-1]
 # new_point = data.loc[new_date]
 # train_data = data.iloc[0:-1]
 
-train_data = data[:100]
-test_data = data[100:]
+train_data = data[:140]
+test_data = data[140:]
 
 # MA Support Levels
 
@@ -65,31 +65,31 @@ test_data = data[100:]
 
 # MACD
 
-macd_test = MACD(data=data)
-macd_test.calculate()
-macd_test.find_trade_points()
-macd_test.plot()
-
-macd = MACD(data=train_data, trade_strategy=MACDTradeStrategy.CLASSIC)
-macd.calculate()
-macd.find_trade_points()
-for date, point in test_data.iterrows():
-    macd.evaluate_new_point(point, date)
-macd.plot()
+# macd_test = MACD(data=data)
+# macd_test.calculate()
+# macd_test.find_trade_points()
+# macd_test.plot()
+#
+# macd = MACD(data=train_data, trade_strategy=MACDTradeStrategy.CLASSIC)
+# macd.calculate()
+# macd.find_trade_points()
+# for date, point in test_data.iterrows():
+#     macd.evaluate_new_point(point, date)
+# macd.plot()
 
 # Super Trend
 
-# super_trend_test = SuperTrend(data=data)
-# super_trend_test.set_params(8, 1.5)
-# super_trend_test.calculate()
-# super_trend_test.find_trade_points()
-# super_trend_test.plot()
-#
-# super_trend = SuperTrend(data=train_data)
-# super_trend.set_params(8, 1.5)
-# super_trend.calculate()
-# super_trend.find_trade_points()
-# for date, point in test_data.iterrows():
-#     super_trend.evaluate_new_point(point, date)
-# super_trend.plot()
+super_trend_test = SuperTrend(data=data)
+super_trend_test.set_params(10, 3)
+super_trend_test.calculate()
+super_trend_test.find_trade_points()
+super_trend_test.plot()
+
+super_trend = SuperTrend(data=train_data)
+super_trend.set_params(10, 3)
+super_trend.calculate()
+super_trend.find_trade_points()
+for date, point in test_data.iterrows():
+    super_trend.evaluate_new_point(point, date)
+super_trend.plot()
 

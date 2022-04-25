@@ -5,7 +5,7 @@ from trading.trade_manager_enums import BidType, BidResult
 from trading.trade_statistics_manager_enums import *
 
 
-class TradeStatisticsManager:
+class TradeStatisticsManager: # todo Sharpe Ratio, Sortino Ratio
 
     def __init__(self):
         self.trade_result: pd.DataFrame = pd.DataFrame([{TradeResultColumn.STOCK_NAME: TradeResultColumn.TOTAL,

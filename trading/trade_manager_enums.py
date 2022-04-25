@@ -33,4 +33,5 @@ class TrackedStocksColumn(BaseEnum):
     TRADE_ALGORITHM = 2,
     PARAMS_GRID = 3,
     CHOSEN_PARAMS = 4,
-    TRADING_START_DATE = 5
+    TRADING_START_DATE = 5,
+    LAST_ATR = 6

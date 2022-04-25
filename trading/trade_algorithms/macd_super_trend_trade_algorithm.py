@@ -62,6 +62,7 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
     def get_default_hyperparameters_grid() -> List[Dict]:
         return [MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(),
                 MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(super_trend_multiplier=2),
+                MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(days_to_wait_for_st=0),
                 MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(days_to_wait_for_st=5),
                 MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(strict_macd=True),
                 MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(super_trend_multiplier=2, strict_macd=True),

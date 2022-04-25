@@ -3,6 +3,7 @@ import pandas as pd
 from typing import Optional, List, Dict, Union, Tuple
 
 from indicators.abstract_indicator import TradeAction
+from indicators.atr import ATR, ATR_one_point
 from trading.trade_statistics_manager_enums import *
 from trading.trade_manager_enums import *
 from trading.trade_algorithms.abstract_trade_algorithm import AbstractTradeAlgorithm
@@ -22,7 +23,12 @@ class TradeManager:
                  use_limited_money: bool = False,
                  money_for_a_bid: float = 10000,
                  start_capital: float = 0,
-                 risk_rate: float = 0.05):
+                 equity_risk_rate: float = 0.02,
+                 bid_risk_rate: float = 0.03,
+                 take_profit_multiplier: float = 2,
+                 active_action_multiplier: float = 1.5,
+                 use_atr: bool = False,
+                 atr_period: int = 14):
         """
         Control:
          - stock market data,
@@ -55,18 +61,27 @@ class TradeManager:
         self._tracked_stocks: Dict[str, Dict] = {}
         self._statistics_manager: TradeStatisticsManager = TradeStatisticsManager()
         self._train_results: Dict[str, Dict[str, pd.DataFrame]] = {}
+
         self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
         self._days_to_chill: pd.Timedelta = pd.Timedelta(days=days_to_chill)
+
         self._use_limited_money: bool = use_limited_money
-        self._risk_rate: float = risk_rate
         self._money_for_a_bid: float = money_for_a_bid
+
+        self._equity_risk_rate: float = equity_risk_rate
+        self._bid_risk_rate: float = bid_risk_rate
+        self._take_profit_multiplier: float = take_profit_multiplier
+        self._active_action_multiplier: float = active_action_multiplier
+        self._use_atr: bool = use_atr
+        self._atr_period: int = atr_period
 
     def get_tracked_stocks(self) -> List[str]:
         *stock_names, = self._tracked_stocks.keys()
         return stock_names
 
     def get_chosen_params(self) -> List[Tuple[str, dict]]:
-        return [(stock_name, stock[TrackedStocksColumn.CHOSEN_PARAMS]) for stock_name, stock in self._tracked_stocks.items()]
+        return [(stock_name, stock[TrackedStocksColumn.CHOSEN_PARAMS]) for stock_name, stock in
+                self._tracked_stocks.items()]
 
     def get_trade_results(self) -> pd.DataFrame:
         return self._statistics_manager.trade_result
@@ -91,15 +106,28 @@ class TradeManager:
                            use_limited_money: bool = False,
                            money_for_a_bid: float = 10000,
                            start_capital: float = 0,
-                           risk_rate: float = 0.05):
-        self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
-        self._days_to_chill: pd.Timedelta = pd.Timedelta(days=days_to_chill)
-        self._use_limited_money: bool = use_limited_money
-        self._risk_rate: float = risk_rate
-        self._money_for_a_bid: float = money_for_a_bid
+                           equity_risk_rate: float = 0.02,
+                           bid_risk_rate: float = 0.03,
+                           take_profit_multiplier: float = 2,
+                           active_action_multiplier: float = 1.5,
+                           use_atr: bool = False,
+                           atr_period: int = 14):
         self.available_money: float = start_capital
         self.account_money: float = start_capital
         self.start_capital: float = start_capital
+
+        self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
+        self._days_to_chill: pd.Timedelta = pd.Timedelta(days=days_to_chill)
+
+        self._use_limited_money: bool = use_limited_money
+        self._money_for_a_bid: float = money_for_a_bid
+
+        self._equity_risk_rate: float = equity_risk_rate
+        self._bid_risk_rate: float = bid_risk_rate
+        self._take_profit_multiplier: float = take_profit_multiplier
+        self._active_action_multiplier: float = active_action_multiplier
+        self._use_atr: bool = use_atr
+        self._atr_period: int = atr_period
 
     def set_tracked_stock(self, stock_name: str,
                           stock_data: pd.DataFrame,
@@ -120,37 +148,64 @@ class TradeManager:
             TrackedStocksColumn.TRADE_ALGORITHM: algorithm,
             TrackedStocksColumn.PARAMS_GRID: custom_params_grid,
             TrackedStocksColumn.CHOSEN_PARAMS: None,
-            TrackedStocksColumn.TRADING_START_DATE: None}
+            TrackedStocksColumn.TRADING_START_DATE: None,
+            TrackedStocksColumn.LAST_ATR: ATR(stock_data, self._atr_period)[-1]}
 
     def __add_to_portfolio(self, stock_name: str,
-                           price: float,
+                           new_point: pd.Series,
                            date: pd.Timestamp,
                            amount: int,
                            action: TradeAction,
                            bid_type: BidType):
-        stop_loss_lvl, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(price, action)
+        stop_loss_lvl, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(stock_name, new_point, action)
         if self._use_limited_money:
-            self.available_money -= price * amount
+            self.available_money -= new_point["Close"] * amount
         bid_to_append = pd.DataFrame([{PortfolioColumn.STOCK_NAME: stock_name,
-                                       PortfolioColumn.PRICE: price,
+                                       PortfolioColumn.PRICE: new_point["Close"],
                                        PortfolioColumn.TYPE: bid_type,
                                        PortfolioColumn.AMOUNT: amount,
                                        PortfolioColumn.TAKE_PROFIT_LEVEL: take_profit_lvl,
                                        PortfolioColumn.STOP_LOSS_LEVEL: stop_loss_lvl,
                                        PortfolioColumn.DATE: date}])
         self.portfolio = pd.concat([self.portfolio, bid_to_append])
-        self._statistics_manager.open_bid(stock_name, date, price, bid_type, take_profit_lvl, stop_loss_lvl)
+        self._statistics_manager.open_bid(stock_name, date, new_point["Close"], bid_type, take_profit_lvl,
+                                          stop_loss_lvl)
 
-    def __evaluate_stop_loss_and_take_profit(self, price: float, action: TradeAction) -> Tuple[float, float]:  # todo Переработать систему стоп лосс - тейк профит
+    def __evaluate_stop_loss_and_take_profit(self, stock_name: str,
+                                             new_point: pd.Series, action: TradeAction) -> Tuple[float, float]:  # todo Переработать систему стоп лосс - тейк профит
         """IN PROGRESS"""
-        if action == TradeAction.BUY:
-            return price * 0.985, price * 1.025
-        elif action == TradeAction.ACTIVELY_BUY:
-            return price * 0.985, price * 1.05
-        elif action == TradeAction.SELL:
-            return price * 1.015, price * 0.975
-        elif action == TradeAction.ACTIVELY_SELL:
-            return price * 1.015, price * 0.95
+        price = new_point["Close"]
+        if self._use_atr:
+            atr = self._tracked_stocks[stock_name][TrackedStocksColumn.LAST_ATR]
+            if action == TradeAction.BUY:
+                stop_loss = price - atr
+                take_profit = price + atr * self._take_profit_multiplier
+            elif action == TradeAction.ACTIVELY_BUY:
+                stop_loss = price - atr
+                take_profit = price + atr * self._take_profit_multiplier * self._active_action_multiplier
+            elif action == TradeAction.SELL:
+                stop_loss = price + atr
+                take_profit = price - atr * self._take_profit_multiplier
+            else:  # TradeAction.ACTIVELY_SELL
+                stop_loss = price + atr
+                take_profit = price - atr * self._take_profit_multiplier * self._active_action_multiplier
+        else:
+            if action == TradeAction.BUY:
+                stop_loss = price * (1 - self._bid_risk_rate)
+                take_profit = price * (1 + self._bid_risk_rate * self._take_profit_multiplier)
+            elif action == TradeAction.ACTIVELY_BUY:
+                stop_loss = price * (1 - self._bid_risk_rate)
+                take_profit = price * (
+                        1 + self._bid_risk_rate * self._take_profit_multiplier * self._active_action_multiplier)
+            elif action == TradeAction.SELL:
+                stop_loss = price * (1 + self._bid_risk_rate)
+                take_profit = price * (
+                        1 - self._bid_risk_rate * self._take_profit_multiplier)
+            else:  # TradeAction.ACTIVELY_SELL
+                stop_loss = price * (1 + self._bid_risk_rate)
+                take_profit = price * (
+                        1 - self._bid_risk_rate * self._take_profit_multiplier * self._active_action_multiplier)
+        return stop_loss, take_profit
 
     def __close_bid(self, stock_name: str, close_price: float,
                     open_date: pd.Timestamp, close_date: pd.Timestamp,
@@ -207,7 +262,7 @@ class TradeManager:
     def __evaluate_shares_amount_to_bid(self, price: float) -> int:
         shares_to_buy = 0
         if self._use_limited_money:
-            money_to_risk = self.account_money * self._risk_rate
+            money_to_risk = self.account_money * self._equity_risk_rate
             if self.available_money > money_to_risk:
                 shares_to_buy = np.floor(money_to_risk / price)
         else:
@@ -223,6 +278,11 @@ class TradeManager:
         self.__manage_portfolio_assets(stock_name, assets_in_portfolio, new_point, date)
 
         stock = self._tracked_stocks[stock_name]
+        atr = ATR_one_point(stock[TrackedStocksColumn.LAST_ATR],
+                            stock[TrackedStocksColumn.DATA]["Close"][-1],
+                            new_point,
+                            self._atr_period)
+        self._tracked_stocks[stock_name][TrackedStocksColumn.LAST_ATR] = atr
         action = stock[TrackedStocksColumn.TRADE_ALGORITHM].evaluate_new_point(new_point, date)
         if action != TradeAction.NONE:
             if (action == TradeAction.BUY) or (action == TradeAction.ACTIVELY_BUY):
@@ -231,7 +291,8 @@ class TradeManager:
                 bid_type = BidType.SHORT
 
             if assets_in_portfolio[assets_in_portfolio[PortfolioColumn.TYPE] == bid_type].shape[0] != 0:
-                last_bid_date = assets_in_portfolio[assets_in_portfolio[PortfolioColumn.TYPE] == bid_type][PortfolioColumn.DATE].max()
+                last_bid_date = assets_in_portfolio[assets_in_portfolio[PortfolioColumn.TYPE] == bid_type][
+                    PortfolioColumn.DATE].max()
                 if date - last_bid_date < self._days_to_chill:
                     if add_point_to_the_data:
                         stock[TrackedStocksColumn.DATA].loc[date] = new_point
@@ -240,7 +301,7 @@ class TradeManager:
             if amount == 0:
                 print(f"Not enough money to purchase {stock_name} at {date} by price {new_point['Close']}")
             else:
-                self.__add_to_portfolio(stock_name, new_point["Close"], date, amount, action, bid_type)
+                self.__add_to_portfolio(stock_name, new_point, date, amount, action, bid_type)
         if add_point_to_the_data:
             stock[TrackedStocksColumn.DATA].loc[date] = new_point
             if stock[TrackedStocksColumn.TRADING_START_DATE] is None:
@@ -328,7 +389,8 @@ class TradeManager:
             self._tracked_stocks[stock_name][TrackedStocksColumn.TRADE_ALGORITHM].plot(trading_start_date)
         if show_full_stock_history:
             stock_data: pd.DataFrame = self._tracked_stocks[stock_name][TrackedStocksColumn.DATA]
-            fig.add_vline(x=trading_start_date, line_width=3, line_dash="dash", line_color="red", name="Start of trading")
+            fig.add_vline(x=trading_start_date, line_width=3, line_dash="dash", line_color="red",
+                          name="Start of trading")
         else:
             stock_data: pd.DataFrame = self._tracked_stocks[stock_name][TrackedStocksColumn.DATA][trading_start_date:]
 
@@ -343,9 +405,11 @@ class TradeManager:
                                  y=bids_history[BidsHistoryColumn.OPEN_PRICE],
                                  mode="markers",
                                  marker=dict(
-                                     color=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG, "green", "red"),
+                                     color=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG, "green",
+                                                    "red"),
                                      size=8,
-                                     symbol=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG, "triangle-up",
+                                     symbol=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG,
+                                                     "triangle-up",
                                                      "triangle-down")),
                                  name="Bids openings"))
 
@@ -353,7 +417,8 @@ class TradeManager:
                                  y=bids_history[BidsHistoryColumn.CLOSE_PRICE],
                                  mode="markers",
                                  marker=dict(
-                                     color=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG, "green", "red"),
+                                     color=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG, "green",
+                                                    "red"),
                                      size=5,
                                      symbol="square"),
                                  name="Bids closures"))
@@ -362,7 +427,7 @@ class TradeManager:
                     marker=dict(opacity=0.2, color="red"),
                     name="Stop loss level", visible="legendonly")
         fig.add_bar(x=[stock_data.index[0]], y=[stock_data["Close"][0]],
-                    marker=dict( opacity=0.2, color="green"),
+                    marker=dict(opacity=0.2, color="green"),
                     name="Take profit level", visible="legendonly")
 
         fig.update_layout(title=f"{stock_name} Trading activity",

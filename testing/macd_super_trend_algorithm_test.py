@@ -24,7 +24,7 @@ dates_test = pd.date_range(start_test, end_test)
 # data_pg = yf.download("PG", start=start_date, end=end_date)
 data_xom = yf.download("XOM", start=start_date, end=end_date)
 
-manager = TradeManager(days_to_chill=5)
+manager = TradeManager(days_to_chill=5, use_atr=True)
 
 # manager.set_tracked_stock("WMT", data_wmt[:test_start_date_ts], MACDSuperTrendTradeAlgorithm())
 # manager.set_tracked_stock("JPM", data_jpm[:test_start_date_ts], MACDSuperTrendTradeAlgorithm())

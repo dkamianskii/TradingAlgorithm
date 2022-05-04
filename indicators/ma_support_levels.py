@@ -254,15 +254,15 @@ class MASupportLevels(AbstractIndicator):
 
         selected_trade_points = self.select_action_trade_points(start_date=start_date, end_date=end_date)
 
-        buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
-        bool_arr = selected_trade_points[TradePointColumn.ACTION].isin(buy_actions)
+        bool_buys = selected_trade_points[TradePointColumn.ACTION].isin(self.buy_actions)
+        bool_actives = selected_trade_points[TradePointColumn.ACTION].isin(self.active_actions)
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
                                  y=selected_trade_points[TradePointColumn.PRICE],
                                  mode="markers",
                                  marker=dict(
-                                     color=np.where(bool_arr, "green", "red"),
-                                     size=7,
-                                     symbol=np.where(bool_arr, "triangle-up", "triangle-down")),
+                                     color=np.where(bool_buys, "green", "red"),
+                                     size=np.where(bool_actives, 15, 10),
+                                     symbol=np.where(bool_buys, "triangle-up", "triangle-down")),
                                  name="Action points"))
 
         fig.update_layout(title="Price with Moving Averages",

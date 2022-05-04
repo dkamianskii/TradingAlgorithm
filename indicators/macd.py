@@ -255,10 +255,8 @@ class MACD(AbstractIndicator):
                             name="Price",
                             row=1, col=1)
 
-        buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
-        active_actions = [TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL]
-        bool_buys = selected_trade_points[TradePointColumn.ACTION].isin(buy_actions)
-        bool_actives = selected_trade_points[TradePointColumn.ACTION].isin(active_actions)
+        bool_buys = selected_trade_points[TradePointColumn.ACTION].isin(self.buy_actions)
+        bool_actives = selected_trade_points[TradePointColumn.ACTION].isin(self.active_actions)
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
                                  y=selected_trade_points[TradePointColumn.PRICE],
                                  mode="markers",

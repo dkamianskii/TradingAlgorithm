@@ -35,6 +35,8 @@ class AbstractIndicator(ABC):
         """
         self.data: Optional[pd.DataFrame] = None
         self.trade_points: Optional[pd.DataFrame] = None
+        self.buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
+        self.active_actions = [TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL]
         if data is not None:
             self.set_data(data)
 

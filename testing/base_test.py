@@ -10,6 +10,7 @@ from indicators.macd import MACD, MACDTradeStrategy
 from indicators.rsi import RSI
 from indicators.atr import ATR
 from indicators.super_trend import SuperTrend
+from indicators.bollinger_bands import BollingerBands
 
 import cufflinks as cf
 import plotly.graph_objects as go
@@ -79,17 +80,32 @@ test_data = data[140:]
 
 # Super Trend
 
-super_trend_test = SuperTrend(data=data)
-super_trend_test.set_params(10, 3)
-super_trend_test.calculate()
-super_trend_test.find_trade_points()
-super_trend_test.plot()
+# super_trend_test = SuperTrend(data=data)
+# super_trend_test.set_params(10, 3)
+# super_trend_test.calculate()
+# super_trend_test.find_trade_points()
+# super_trend_test.plot()
+#
+# super_trend = SuperTrend(data=train_data)
+# super_trend.set_params(10, 3)
+# super_trend.calculate()
+# super_trend.find_trade_points()
+# for date, point in test_data.iterrows():
+#     super_trend.evaluate_new_point(point, date)
+# super_trend.plot()
 
-super_trend = SuperTrend(data=train_data)
-super_trend.set_params(10, 3)
-super_trend.calculate()
-super_trend.find_trade_points()
+# Bollinger bands
+
+bollinger_bands_test = BollingerBands(data=data)
+bollinger_bands_test.calculate()
+bollinger_bands_test.find_trade_points()
+bollinger_bands_test.plot()
+
+bollinger_bands = BollingerBands(data=train_data)
+bollinger_bands.calculate()
+bollinger_bands.find_trade_points()
 for date, point in test_data.iterrows():
-    super_trend.evaluate_new_point(point, date)
-super_trend.plot()
+    bollinger_bands.evaluate_new_point(point, date)
+bollinger_bands.plot()
+
 

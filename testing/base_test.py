@@ -11,6 +11,7 @@ from indicators.rsi import RSI
 from indicators.atr import ATR
 from indicators.super_trend import SuperTrend
 from indicators.bollinger_bands import BollingerBands
+from indicators.cci import CCI
 
 import cufflinks as cf
 import plotly.graph_objects as go
@@ -96,16 +97,30 @@ test_data = data[140:]
 
 # Bollinger bands
 
-bollinger_bands_test = BollingerBands(data=data)
-bollinger_bands_test.calculate()
-bollinger_bands_test.find_trade_points()
-bollinger_bands_test.plot()
+# bollinger_bands_test = BollingerBands(data=data)
+# bollinger_bands_test.calculate()
+# bollinger_bands_test.find_trade_points()
+# bollinger_bands_test.plot()
+#
+# bollinger_bands = BollingerBands(data=train_data)
+# bollinger_bands.calculate()
+# bollinger_bands.find_trade_points()
+# for date, point in test_data.iterrows():
+#     bollinger_bands.evaluate_new_point(point, date)
+# bollinger_bands.plot()
 
-bollinger_bands = BollingerBands(data=train_data)
-bollinger_bands.calculate()
-bollinger_bands.find_trade_points()
-for date, point in test_data.iterrows():
-    bollinger_bands.evaluate_new_point(point, date)
-bollinger_bands.plot()
+# CCI
+
+# cci_test = CCI(data=data)
+# cci_test.calculate()
+# cci_test.find_trade_points()
+# cci_test.plot()
+#
+# cci_test = CCI(data=train_data)
+# cci_test.calculate()
+# cci_test.find_trade_points()
+# for date, point in test_data.iterrows():
+#     cci_test.evaluate_new_point(point, date)
+# cci_test.plot()
 
 

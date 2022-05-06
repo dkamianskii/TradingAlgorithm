@@ -108,3 +108,16 @@ def SMMA_one_point(prev_smma: Union[float, double, int],
                    new_point: Union[float, double, int],
                    N: int) -> float:
     return EMA_one_point(prev_smma, new_point, N, alpha=(1 / N))
+
+
+def RMAD(time_series: Union[pd.Series, Realization], N: int):
+    """
+    Rolling Mean Absolute Deviation
+    """
+    final_length = len(time_series) - N + 1
+    rmad = np.empty(final_length)
+
+    for i in range(final_length):
+        rmad[i] = time_series[i:(i + N)].mad()
+
+    return rmad

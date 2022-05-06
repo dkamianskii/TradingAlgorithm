@@ -25,4 +25,7 @@ class BidsHistoryColumn(BaseEnum):
     RESULT = 6,
     NAME = 7,
     TAKE_PROFIT = 8,
-    STOP_LOSS = 9
+    STOP_LOSS = 9,
+    AMOUNT = 10,
+    TRADE_ACTION = 11,
+    PROLONGATION = 12

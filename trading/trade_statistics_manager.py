@@ -1,6 +1,7 @@
 import pandas as pd
 from typing import Dict, Optional
 
+from indicators.abstract_indicator import TradeAction
 from trading.trade_manager_enums import BidType, BidResult
 from trading.trade_statistics_manager_enums import *
 
@@ -78,13 +79,19 @@ class TradeStatisticsManager: # todo Sharpe Ratio, Sortino Ratio
                  open_price: float,
                  bid_type: BidType,
                  take_profit: float,
-                 stop_loss: float):
+                 stop_loss: float,
+                 amount: int,
+                 trade_action: TradeAction,
+                 prolongation: bool):
         self.bids_history.loc[self.bids_history.shape[0] + 1] = {BidsHistoryColumn.NAME: stock_name,
                                                                  BidsHistoryColumn.DATE_OPEN: date_open,
                                                                  BidsHistoryColumn.OPEN_PRICE: open_price,
+                                                                 BidsHistoryColumn.AMOUNT: amount,
                                                                  BidsHistoryColumn.TYPE: bid_type,
+                                                                 BidsHistoryColumn.TRADE_ACTION: trade_action,
                                                                  BidsHistoryColumn.TAKE_PROFIT: take_profit,
-                                                                 BidsHistoryColumn.STOP_LOSS: stop_loss}
+                                                                 BidsHistoryColumn.STOP_LOSS: stop_loss,
+                                                                 BidsHistoryColumn.PROLONGATION: prolongation}
 
     def close_bid(self, stock_name: str,
                   date_open: pd.Timestamp,

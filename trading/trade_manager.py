@@ -28,7 +28,8 @@ class TradeManager:
                  take_profit_multiplier: float = 2,
                  active_action_multiplier: float = 1.5,
                  use_atr: bool = False,
-                 atr_period: int = 14):
+                 atr_period: int = 14,
+                 keep_holding_rate: float = 0.5):
         """
         Control:
          - stock market data,
@@ -74,6 +75,7 @@ class TradeManager:
         self._active_action_multiplier: float = active_action_multiplier
         self._use_atr: bool = use_atr
         self._atr_period: int = atr_period
+        self._keep_holding_rate = keep_holding_rate
 
     def get_tracked_stocks(self) -> List[str]:
         *stock_names, = self._tracked_stocks.keys()
@@ -111,7 +113,8 @@ class TradeManager:
                            take_profit_multiplier: float = 2,
                            active_action_multiplier: float = 1.5,
                            use_atr: bool = False,
-                           atr_period: int = 14):
+                           atr_period: int = 14,
+                           keep_holding_rate: float = 0.5):
         self.available_money: float = start_capital
         self.account_money: float = start_capital
         self.start_capital: float = start_capital
@@ -128,6 +131,13 @@ class TradeManager:
         self._active_action_multiplier: float = active_action_multiplier
         self._use_atr: bool = use_atr
         self._atr_period: int = atr_period
+        self._keep_holding_rate = keep_holding_rate
+
+    def set_manager_params_dict(self, params_dict):
+        for param, value in params_dict.items():
+            if param not in self.__dict__:
+                raise ValueError("Uknown parameter was provided")
+            setattr(self,"_"+param, value)
 
     def set_tracked_stock(self, stock_name: str,
                           stock_data: pd.DataFrame,
@@ -156,20 +166,27 @@ class TradeManager:
                            date: pd.Timestamp,
                            amount: int,
                            action: TradeAction,
-                           bid_type: BidType):
-        stop_loss_lvl, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(stock_name, new_point, action)
+                           bid_type: BidType,
+                           prolongation: bool,
+                           forced_stop_loss_lvl: float = 0):
+        if prolongation:
+            _, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(stock_name, new_point, action)
+            stop_loss_lvl = forced_stop_loss_lvl
+        else:
+            stop_loss_lvl, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(stock_name, new_point, action)
         if self._use_limited_money:
             self.available_money -= new_point["Close"] * amount
         bid_to_append = pd.DataFrame([{PortfolioColumn.STOCK_NAME: stock_name,
                                        PortfolioColumn.PRICE: new_point["Close"],
                                        PortfolioColumn.TYPE: bid_type,
+                                       PortfolioColumn.TRADE_ACTION: action,
                                        PortfolioColumn.AMOUNT: amount,
                                        PortfolioColumn.TAKE_PROFIT_LEVEL: take_profit_lvl,
                                        PortfolioColumn.STOP_LOSS_LEVEL: stop_loss_lvl,
                                        PortfolioColumn.DATE: date}])
         self.portfolio = pd.concat([self.portfolio, bid_to_append])
         self._statistics_manager.open_bid(stock_name, date, new_point["Close"], bid_type, take_profit_lvl,
-                                          stop_loss_lvl)
+                                          stop_loss_lvl, amount, action, prolongation)
 
     def __evaluate_stop_loss_and_take_profit(self, stock_name: str,
                                              new_point: pd.Series, action: TradeAction) -> Tuple[float, float]:  # todo Переработать систему стоп лосс - тейк профит
@@ -217,9 +234,25 @@ class TradeManager:
             self.available_money += cashback
             self.account_money += profit
 
+    def __prolongation(self, assets_for_prolongation: List, new_point: pd.Series, date: pd.Timestamp):
+        for asset in assets_for_prolongation:
+            if asset[PortfolioColumn.TYPE] == BidType.LONG:
+                action = TradeAction.BUY
+            else:
+                action = TradeAction.SELL
+            self.__add_to_portfolio(asset[PortfolioColumn.STOCK_NAME],
+                                    new_point,
+                                    date,
+                                    int(asset[PortfolioColumn.AMOUNT] * self._keep_holding_rate),
+                                    action,
+                                    asset[PortfolioColumn.TYPE],
+                                    prolongation=True,
+                                    forced_stop_loss_lvl=(new_point["Close"] + asset[PortfolioColumn.PRICE]) / 2)
+
     def __manage_portfolio_assets(self, stock_name: str, assets_in_portfolio: pd.DataFrame,
-                                  new_point: pd.Series, date: pd.Timestamp):
+                                  new_point: pd.Series, date: pd.Timestamp, new_action: TradeAction):
         indexes_to_drop = []
+        assets_for_prolongation = []
         for index, asset in assets_in_portfolio.iterrows():
             close_flag = False
             price_diff = 0
@@ -227,17 +260,25 @@ class TradeManager:
             if asset[PortfolioColumn.TYPE] == BidType.LONG:
                 if (new_point["Close"] >= asset[PortfolioColumn.TAKE_PROFIT_LEVEL]) or (
                         new_point["Close"] <= asset[PortfolioColumn.STOP_LOSS_LEVEL]) or (
-                        (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit):
+                        (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit) or (
+                        (new_action == TradeAction.ACTIVELY_SELL) or (new_action == TradeAction.SELL)):
                     close_flag = True
                     price_diff = new_point["Close"] - asset[PortfolioColumn.PRICE]
                     cashback = new_point["Close"] * asset[PortfolioColumn.AMOUNT]
+                    if (new_point["Close"] >= asset[PortfolioColumn.TAKE_PROFIT_LEVEL]) and (
+                            (new_action != TradeAction.ACTIVELY_SELL) and (new_action != TradeAction.SELL)):
+                        assets_for_prolongation.append(asset)
             else:
                 if (new_point["Close"] <= asset[PortfolioColumn.TAKE_PROFIT_LEVEL]) or (
                         new_point["Close"] >= asset[PortfolioColumn.STOP_LOSS_LEVEL]) or (
-                        (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit):
+                        (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit) or (
+                        (new_action == TradeAction.ACTIVELY_BUY) or (new_action == TradeAction.BUY)):
                     close_flag = True
                     price_diff = asset[PortfolioColumn.PRICE] - new_point["Close"]
                     cashback = (asset[PortfolioColumn.PRICE] + price_diff) * asset[PortfolioColumn.AMOUNT]
+                    if (new_point["Close"] <= asset[PortfolioColumn.TAKE_PROFIT_LEVEL]) and (
+                            (new_action != TradeAction.ACTIVELY_BUY) and (new_action != TradeAction.BUY)):
+                        assets_for_prolongation.append(asset)
             if close_flag:
                 if (date - asset[PortfolioColumn.DATE]) > self._days_to_keep_limit:
                     result = BidResult.DRAW
@@ -254,6 +295,7 @@ class TradeManager:
                                  result)
                 indexes_to_drop.append(index)
         if len(indexes_to_drop) > 0:
+            self.__prolongation(assets_for_prolongation, new_point, date)
             self.portfolio.drop(labels=indexes_to_drop, inplace=True)
             assets_in_portfolio.drop(labels=indexes_to_drop, inplace=True)
         else:
@@ -275,15 +317,15 @@ class TradeManager:
                            add_point_to_the_data: bool = True):
         date = pd.Timestamp(ts_input=date)
         assets_in_portfolio = self.portfolio[self.portfolio[PortfolioColumn.STOCK_NAME] == stock_name]
-        self.__manage_portfolio_assets(stock_name, assets_in_portfolio, new_point, date)
-
         stock = self._tracked_stocks[stock_name]
+
         atr = ATR_one_point(stock[TrackedStocksColumn.LAST_ATR],
                             stock[TrackedStocksColumn.DATA]["Close"][-1],
                             new_point,
                             self._atr_period)
         self._tracked_stocks[stock_name][TrackedStocksColumn.LAST_ATR] = atr
         action = stock[TrackedStocksColumn.TRADE_ALGORITHM].evaluate_new_point(new_point, date)
+        self.__manage_portfolio_assets(stock_name, assets_in_portfolio, new_point, date, action)
         if action != TradeAction.NONE:
             if (action == TradeAction.BUY) or (action == TradeAction.ACTIVELY_BUY):
                 bid_type = BidType.LONG
@@ -301,7 +343,7 @@ class TradeManager:
             if amount == 0:
                 print(f"Not enough money to purchase {stock_name} at {date} by price {new_point['Close']}")
             else:
-                self.__add_to_portfolio(stock_name, new_point, date, amount, action, bid_type)
+                self.__add_to_portfolio(stock_name, new_point, date, amount, action, bid_type, prolongation=False)
         if add_point_to_the_data:
             stock[TrackedStocksColumn.DATA].loc[date] = new_point
             if stock[TrackedStocksColumn.TRADING_START_DATE] is None:

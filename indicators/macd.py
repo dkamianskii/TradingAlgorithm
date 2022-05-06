@@ -79,8 +79,7 @@ class MACD(AbstractIndicator):
         self._long_period: int = 0
         self._signal_period: int = 0
         self.set_ma_periods(short_period, long_period, signal_period)
-        self._trade_strategy: str = ""
-        self.set_trade_strategy(trade_strategy)
+        self._trade_strategy: MACDTradeStrategy = trade_strategy
         self.MACD_val: Optional[pd.DataFrame] = None
         self._last_short_ma: float = 0
         self._last_long_ma: float = 0

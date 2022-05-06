@@ -25,7 +25,8 @@ class PortfolioColumn(BaseEnum):
     AMOUNT = 4,
     TAKE_PROFIT_LEVEL = 5,
     STOP_LOSS_LEVEL = 6,
-    DATE = 7
+    DATE = 7,
+    TRADE_ACTION = 8
 
 
 class TrackedStocksColumn(BaseEnum):

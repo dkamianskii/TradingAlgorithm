@@ -81,6 +81,10 @@ class TradeManager:
         *stock_names, = self._tracked_stocks.keys()
         return stock_names
 
+    def get_train_results(self, stock_name: str) -> List[Tuple[str, pd.DataFrame]]:
+        return [(params, result) for params, result in
+                self._train_results[stock_name].items()]
+
     def get_chosen_params(self) -> List[Tuple[str, dict]]:
         return [(stock_name, stock[TrackedStocksColumn.CHOSEN_PARAMS]) for stock_name, stock in
                 self._tracked_stocks.items()]
@@ -137,7 +141,7 @@ class TradeManager:
         for param, value in params_dict.items():
             if param not in self.__dict__:
                 raise ValueError("Uknown parameter was provided")
-            setattr(self,"_"+param, value)
+            setattr(self, "_" + param, value)
 
     def set_tracked_stock(self, stock_name: str,
                           stock_data: pd.DataFrame,
@@ -176,21 +180,19 @@ class TradeManager:
             stop_loss_lvl, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(stock_name, new_point, action)
         if self._use_limited_money:
             self.available_money -= new_point["Close"] * amount
-        bid_to_append = pd.DataFrame([{PortfolioColumn.STOCK_NAME: stock_name,
-                                       PortfolioColumn.PRICE: new_point["Close"],
-                                       PortfolioColumn.TYPE: bid_type,
-                                       PortfolioColumn.TRADE_ACTION: action,
-                                       PortfolioColumn.AMOUNT: amount,
-                                       PortfolioColumn.TAKE_PROFIT_LEVEL: take_profit_lvl,
-                                       PortfolioColumn.STOP_LOSS_LEVEL: stop_loss_lvl,
-                                       PortfolioColumn.DATE: date}])
-        self.portfolio = pd.concat([self.portfolio, bid_to_append])
+        self.portfolio.loc[self.portfolio.shape[0]] = {PortfolioColumn.STOCK_NAME: stock_name,
+                                                       PortfolioColumn.PRICE: new_point["Close"],
+                                                       PortfolioColumn.TYPE: bid_type,
+                                                       PortfolioColumn.TRADE_ACTION: action,
+                                                       PortfolioColumn.AMOUNT: amount,
+                                                       PortfolioColumn.TAKE_PROFIT_LEVEL: take_profit_lvl,
+                                                       PortfolioColumn.STOP_LOSS_LEVEL: stop_loss_lvl,
+                                                       PortfolioColumn.DATE: date}
         self._statistics_manager.open_bid(stock_name, date, new_point["Close"], bid_type, take_profit_lvl,
                                           stop_loss_lvl, amount, action, prolongation)
 
     def __evaluate_stop_loss_and_take_profit(self, stock_name: str,
-                                             new_point: pd.Series, action: TradeAction) -> Tuple[float, float]:  # todo Переработать систему стоп лосс - тейк профит
-        """IN PROGRESS"""
+                                             new_point: pd.Series, action: TradeAction) -> Tuple[float, float]:
         price = new_point["Close"]
         if self._use_atr:
             atr = self._tracked_stocks[stock_name][TrackedStocksColumn.LAST_ATR]
@@ -316,6 +318,12 @@ class TradeManager:
                            date: Union[str, pd.Timestamp],
                            add_point_to_the_data: bool = True):
         date = pd.Timestamp(ts_input=date)
+
+        date_test1 = pd.Timestamp(ts_input="2020-02-04")
+        date_test2 = pd.Timestamp(ts_input="2020-02-10")
+        if (date == date_test1) or (date == date_test2):
+            watch = True
+
         assets_in_portfolio = self.portfolio[self.portfolio[PortfolioColumn.STOCK_NAME] == stock_name]
         stock = self._tracked_stocks[stock_name]
 
@@ -395,6 +403,7 @@ class TradeManager:
                            show_full_stock_history: bool = False,
                            plot_algorithm_graph: bool = False):
         bids_history = self._statistics_manager.get_bids_history(stock_name)
+        stock = self._tracked_stocks[stock_name]
         color_map: Dict[BidResult, str] = {BidResult.WIN: "green",
                                            BidResult.LOSE: "red",
                                            BidResult.DRAW: "grey"}
@@ -426,15 +435,15 @@ class TradeManager:
                           fillcolor="red",
                           line_color="red")
 
-        trading_start_date: pd.Timestamp = self._tracked_stocks[stock_name][TrackedStocksColumn.TRADING_START_DATE]
+        trading_start_date: pd.Timestamp = stock[TrackedStocksColumn.TRADING_START_DATE]
         if plot_algorithm_graph:
-            self._tracked_stocks[stock_name][TrackedStocksColumn.TRADE_ALGORITHM].plot(trading_start_date)
+            stock[TrackedStocksColumn.TRADE_ALGORITHM].plot(trading_start_date)
         if show_full_stock_history:
-            stock_data: pd.DataFrame = self._tracked_stocks[stock_name][TrackedStocksColumn.DATA]
+            stock_data: pd.DataFrame = stock[TrackedStocksColumn.DATA]
             fig.add_vline(x=trading_start_date, line_width=3, line_dash="dash", line_color="red",
                           name="Start of trading")
         else:
-            stock_data: pd.DataFrame = self._tracked_stocks[stock_name][TrackedStocksColumn.DATA][trading_start_date:]
+            stock_data: pd.DataFrame = stock[TrackedStocksColumn.DATA][trading_start_date:]
 
         fig.add_candlestick(x=stock_data.index,
                             open=stock_data["Open"],
@@ -449,7 +458,9 @@ class TradeManager:
                                  marker=dict(
                                      color=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG, "green",
                                                     "red"),
-                                     size=8,
+                                     size=np.where(bids_history[BidsHistoryColumn.TRADE_ACTION].isin([TradeAction.BUY,
+                                                                                                      TradeAction.SELL]),
+                                                   8, 14),
                                      symbol=np.where(bids_history[BidsHistoryColumn.TYPE] == BidType.LONG,
                                                      "triangle-up",
                                                      "triangle-down")),
@@ -472,7 +483,7 @@ class TradeManager:
                     marker=dict(opacity=0.2, color="green"),
                     name="Take profit level", visible="legendonly")
 
-        fig.update_layout(title=f"{stock_name} Trading activity",
+        fig.update_layout(title=f"Trading activity on {stock_name} with {stock[TrackedStocksColumn.TRADE_ALGORITHM].get_algorithm_name()}",
                           xaxis_title="Date",
                           yaxis_title="Price")
 
@@ -482,7 +493,7 @@ class TradeManager:
         if stock_name is None:
             name = "Total Earnings"
         else:
-            name = f"Earnings on {stock_name}"
+            name = f"Earnings on {stock_name} with {self._tracked_stocks[stock_name][TrackedStocksColumn.TRADE_ALGORITHM].get_algorithm_name()}"
 
         earnings_history = self._statistics_manager.get_earnings_history(stock_name)
 

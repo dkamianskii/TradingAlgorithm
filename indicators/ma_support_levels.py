@@ -244,12 +244,13 @@ class MASupportLevels(AbstractIndicator):
                             name="Price")
 
         for period, MA in self.MAs.items():
+            selected_ma = MA[start_date:end_date]
             if ((self.tested_MAs is not None) and (len(self.tested_MAs.keys()) != 0) and (
                     period in self.tested_MAs.keys())):
-                fig.add_trace(go.Scatter(x=MA.index, y=MA[MAsColumns.MAIN], mode='lines',
+                fig.add_trace(go.Scatter(x=selected_ma.index, y=selected_ma[MAsColumns.MAIN], mode='lines',
                                          line=dict(width=2), name=f"{period} EMA tested"))
             else:
-                fig.add_trace(go.Scatter(x=MA.index, y=MA[MAsColumns.MAIN], mode='lines',
+                fig.add_trace(go.Scatter(x=selected_ma.index, y=selected_ma[MAsColumns.MAIN], mode='lines',
                                          line=dict(width=1, dash='dash'), name=f"{period} EMA"))
 
         selected_trade_points = self.select_action_trade_points(start_date=start_date, end_date=end_date)

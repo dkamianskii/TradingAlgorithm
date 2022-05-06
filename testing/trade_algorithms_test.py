@@ -34,6 +34,9 @@ manager_1 = TradeManager(days_to_chill=5)
 manager_1.set_tracked_stock("XOM", data_xom[:test_start_date_ts], RSITradeAlgorithm())
 
 train_result_1 = manager_1.train(back_test_start_date)
+for params, result in manager_1.get_train_results("XOM"):
+    print(params)
+    print(result)
 print(manager_1.get_chosen_params())
 
 for date in dates_test:
@@ -63,6 +66,9 @@ manager_2 = TradeManager(days_to_chill=5)
 manager_2.set_tracked_stock("XOM", data_xom[:test_start_date_ts], MACDTradeAlgorithm())
 
 train_result_2 = manager_2.train(back_test_start_date)
+for params, result in manager_2.get_train_results("XOM"):
+    print(params)
+    print(result)
 print(manager_2.get_chosen_params())
 
 for date in dates_test:
@@ -92,6 +98,9 @@ manager_3 = TradeManager(days_to_chill=5)
 manager_3.set_tracked_stock("XOM", data_xom[:test_start_date_ts], SuperTrendTradeAlgorithm())
 
 train_result_3 = manager_3.train(back_test_start_date)
+for params, result in manager_3.get_train_results("XOM"):
+    print(params)
+    print(result)
 print(manager_3.get_chosen_params())
 
 for date in dates_test:

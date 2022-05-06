@@ -7,10 +7,15 @@ from indicators.macd import MACD, MACDTradeStrategy, MACDHyperparam
 
 
 class MACDTradeAlgorithm(AbstractTradeAlgorithm):
+    name = "MACD trade algorithm"
 
     def __init__(self):
         super().__init__()
         self._indicator: MACD = MACD()
+
+    @staticmethod
+    def get_algorithm_name() -> str:
+        return MACDTradeAlgorithm.name
 
     @staticmethod
     def create_hyperparameters_dict(short_period: int = 12,

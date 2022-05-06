@@ -12,6 +12,11 @@ class AbstractTradeAlgorithm(ABC):
 
     @staticmethod
     @abstractmethod
+    def get_algorithm_name() -> str:
+        pass
+
+    @staticmethod
+    @abstractmethod
     def get_default_hyperparameters_grid() -> List[Dict]:
         pass
 

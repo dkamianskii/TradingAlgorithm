@@ -7,9 +7,15 @@ from indicators.super_trend import SuperTrend, SuperTrendHyperparam
 
 
 class SuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
+    name = "SuperTrend trade algorithm"
+
     def __init__(self):
         super().__init__()
         self._indicator: SuperTrend = SuperTrend()
+
+    @staticmethod
+    def get_algorithm_name() -> str:
+        return SuperTrendTradeAlgorithm.name
 
     @staticmethod
     def create_hyperparameters_dict(lookback_period: int = 10, multiplier: Union[float, int] = 3) -> Dict:

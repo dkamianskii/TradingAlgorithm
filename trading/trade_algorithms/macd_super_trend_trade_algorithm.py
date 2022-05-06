@@ -24,6 +24,7 @@ class MACDSuperTrendTradeAlgorithmHyperparam(BaseEnum):
 
 
 class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
+    name = "MACD+SuperTrend trade algorithm"
 
     def __init__(self):
         super().__init__()
@@ -36,6 +37,10 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
         self._macd_saved_action: TradeAction = TradeAction.NONE
         self.trade_points: Optional[pd.DataFrame] = None
         # self._EMA200: Optional[pd.Series] = None
+
+    @staticmethod
+    def get_algorithm_name() -> str:
+        return MACDSuperTrendTradeAlgorithm.name
 
     def __clear_vars(self):
         self.trade_points = pd.DataFrame(columns=TradePointColumn.get_elements_list()).set_index(TradePointColumn.DATE)

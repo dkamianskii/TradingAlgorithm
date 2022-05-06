@@ -18,18 +18,23 @@ import plotly.graph_objects as go
 
 cf.go_offline()
 
-data = yf.download("XOM", start="2019-01-01", end="2020-01-01")
-
-start_test = datetime.strptime("2019-01-18", "%Y-%m-%d")
-end_test = datetime.strptime("2019-01-26", "%Y-%m-%d")
+start_date = "2000-01-01"
+end_date = "2021-12-31"
+test_start_date = "2020-01-01"
+back_test_start_date = "2019-01-01"
+test_start_date_ts = pd.Timestamp(ts_input=test_start_date)
+start_test = datetime.strptime(test_start_date, "%Y-%m-%d")
+end_test = datetime.strptime(end_date, "%Y-%m-%d")
 dates_test = pd.date_range(start_test, end_test)
+
+data = yf.download("XOM", start=start_date, end=end_date)
 
 # new_date = data.index[-1]
 # new_point = data.loc[new_date]
 # train_data = data.iloc[0:-1]
 
-train_data = data[:140]
-test_data = data[140:]
+train_data = data.loc[:start_test]
+test_data = data[start_test:]
 
 # MA Support Levels
 
@@ -44,11 +49,12 @@ test_data = data[140:]
 # support_levels = MASupportLevels(data=train_data)
 # support_levels.calculate()
 # support_levels.set_tested_MAs_usage(True)
-# support_levels.test_MAs_for_data()
+# mas_test_result = support_levels.test_MAs_for_data()
+# print(mas_test_result)
 # support_levels.find_trade_points()
-# support_levels.evaluate_new_point(new_point, new_date)
-# tp_2 = support_levels.select_action_trade_points()
-# support_levels.plot()
+# for date, point in test_data.iterrows():
+#     support_levels.evaluate_new_point(point, date)
+# support_levels.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 
 # RSI
 
@@ -58,12 +64,12 @@ test_data = data[140:]
 # b1 = rsi_test.select_action_trade_points()
 # rsi_test.plot()
 #
-# rsi_apple = RSI(data=train_data)
-# rsi_apple.calculate()
-# rsi_apple.find_trade_points()
-# rsi_apple.evaluate_new_point(new_point, new_date)
-# b2 = rsi_apple.select_action_trade_points()
-# rsi_apple.plot()
+rsi = RSI(data=train_data)
+rsi.calculate()
+# rsi.find_trade_points()
+for date, point in test_data.iterrows():
+    rsi.evaluate_new_point(point, date)
+rsi.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 
 # MACD
 
@@ -72,12 +78,12 @@ test_data = data[140:]
 # macd_test.find_trade_points()
 # macd_test.plot()
 #
-# macd = MACD(data=train_data, trade_strategy=MACDTradeStrategy.CLASSIC)
-# macd.calculate()
+macd = MACD(data=train_data, trade_strategy=MACDTradeStrategy.CLASSIC)
+macd.calculate()
 # macd.find_trade_points()
-# for date, point in test_data.iterrows():
-#     macd.evaluate_new_point(point, date)
-# macd.plot()
+for date, point in test_data.iterrows():
+    macd.evaluate_new_point(point, date)
+macd.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 
 # Super Trend
 
@@ -87,13 +93,13 @@ test_data = data[140:]
 # super_trend_test.find_trade_points()
 # super_trend_test.plot()
 #
-# super_trend = SuperTrend(data=train_data)
-# super_trend.set_params(10, 3)
-# super_trend.calculate()
+super_trend = SuperTrend(data=train_data)
+super_trend.set_params(10, 3)
+super_trend.calculate()
 # super_trend.find_trade_points()
-# for date, point in test_data.iterrows():
-#     super_trend.evaluate_new_point(point, date)
-# super_trend.plot()
+for date, point in test_data.iterrows():
+    super_trend.evaluate_new_point(point, date)
+super_trend.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 
 # Bollinger bands
 
@@ -107,7 +113,7 @@ test_data = data[140:]
 # bollinger_bands.find_trade_points()
 # for date, point in test_data.iterrows():
 #     bollinger_bands.evaluate_new_point(point, date)
-# bollinger_bands.plot()
+# bollinger_bands.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 
 # CCI
 
@@ -121,6 +127,6 @@ test_data = data[140:]
 # cci_test.find_trade_points()
 # for date, point in test_data.iterrows():
 #     cci_test.evaluate_new_point(point, date)
-# cci_test.plot()
+# cci_test.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 
 

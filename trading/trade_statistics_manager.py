@@ -6,7 +6,7 @@ from trading.trade_manager_enums import BidType, BidResult
 from trading.trade_statistics_manager_enums import *
 
 
-class TradeStatisticsManager: # todo Sharpe Ratio, Sortino Ratio
+class TradeStatisticsManager:  # todo Sharpe Ratio, Sortino Ratio
 
     def __init__(self):
         self.trade_result: pd.DataFrame = pd.DataFrame([{TradeResultColumn.STOCK_NAME: TradeResultColumn.TOTAL,
@@ -83,15 +83,15 @@ class TradeStatisticsManager: # todo Sharpe Ratio, Sortino Ratio
                  amount: int,
                  trade_action: TradeAction,
                  prolongation: bool):
-        self.bids_history.loc[self.bids_history.shape[0] + 1] = {BidsHistoryColumn.NAME: stock_name,
-                                                                 BidsHistoryColumn.DATE_OPEN: date_open,
-                                                                 BidsHistoryColumn.OPEN_PRICE: open_price,
-                                                                 BidsHistoryColumn.AMOUNT: amount,
-                                                                 BidsHistoryColumn.TYPE: bid_type,
-                                                                 BidsHistoryColumn.TRADE_ACTION: trade_action,
-                                                                 BidsHistoryColumn.TAKE_PROFIT: take_profit,
-                                                                 BidsHistoryColumn.STOP_LOSS: stop_loss,
-                                                                 BidsHistoryColumn.PROLONGATION: prolongation}
+        self.bids_history.loc[self.bids_history.shape[0]] = {BidsHistoryColumn.NAME: stock_name,
+                                                             BidsHistoryColumn.DATE_OPEN: date_open,
+                                                             BidsHistoryColumn.OPEN_PRICE: open_price,
+                                                             BidsHistoryColumn.AMOUNT: amount,
+                                                             BidsHistoryColumn.TYPE: bid_type,
+                                                             BidsHistoryColumn.TRADE_ACTION: trade_action,
+                                                             BidsHistoryColumn.TAKE_PROFIT: take_profit,
+                                                             BidsHistoryColumn.STOP_LOSS: stop_loss,
+                                                             BidsHistoryColumn.PROLONGATION: prolongation}
 
     def close_bid(self, stock_name: str,
                   date_open: pd.Timestamp,
@@ -99,7 +99,7 @@ class TradeStatisticsManager: # todo Sharpe Ratio, Sortino Ratio
                   close_price: float,
                   result: BidResult):
         self.bids_history.loc[(self.bids_history[BidsHistoryColumn.DATE_OPEN] == date_open) & (
-                    self.bids_history[BidsHistoryColumn.NAME] == stock_name),
+                self.bids_history[BidsHistoryColumn.NAME] == stock_name),
                               [BidsHistoryColumn.DATE_CLOSE,
                                BidsHistoryColumn.CLOSE_PRICE,
                                BidsHistoryColumn.RESULT]] = [date_close, close_price, result]

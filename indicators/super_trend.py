@@ -20,6 +20,8 @@ class SuperTrendHyperparam(BaseEnum):
 
 class SuperTrend(AbstractIndicator):
 
+    name = "SuperTrend"
+
     def __init__(self, data: Optional[pd.DataFrame] = None,
                  lookback_period: Optional[int] = 10,
                  multiplier: Union[float, int] = 3):
@@ -103,9 +105,9 @@ class SuperTrend(AbstractIndicator):
         elif super_trend_color != self._prev_color:
             self._prev_color = super_trend_color
             if super_trend_color == "green":
-                trade_action = TradeAction.BUY
+                trade_action = TradeAction.ACTIVELY_BUY
             else:
-                trade_action = TradeAction.SELL
+                trade_action = TradeAction.ACTIVELY_SELL
         else:
             trade_action = TradeAction.NONE
         self.add_trade_point(date, new_point["Close"], trade_action)

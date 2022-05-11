@@ -55,7 +55,7 @@ print(manager_1.get_bids_history())
 manager_1.plot_earnings_curve()
 # manager_1.plot_stock_history("WMT")
 # manager_1.plot_stock_history("JPM")
-manager_1.plot_stock_history("XOM")
+manager_1.plot_stock_history("XOM", plot_algorithm_graph=True)
 
 print("MACD INDICATOR TRADING")
 
@@ -87,7 +87,7 @@ print(manager_2.get_bids_history())
 manager_2.plot_earnings_curve()
 # manager_2.plot_stock_history("WMT")
 # manager_2.plot_stock_history("JPM")
-manager_2.plot_stock_history("XOM")
+manager_2.plot_stock_history("XOM", plot_algorithm_graph=True)
 
 print("SUPER TREND INDICATOR TRADING")
 
@@ -119,4 +119,4 @@ print(manager_3.get_bids_history())
 manager_3.plot_earnings_curve()
 # manager_3.plot_stock_history("WMT")
 # manager_3.plot_stock_history("JPM")
-manager_3.plot_stock_history("XOM")
+manager_3.plot_stock_history("XOM", plot_algorithm_graph=True)

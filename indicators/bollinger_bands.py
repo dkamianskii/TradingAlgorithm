@@ -3,6 +3,7 @@ from typing import Optional, Union
 import pandas as pd
 import numpy as np
 
+from helping.base_enum import BaseEnum
 from indicators.abstract_indicator import AbstractIndicator, TradeAction, TradePointColumn
 from indicators.moving_averages import SMA
 
@@ -12,7 +13,14 @@ import plotly.graph_objects as go
 cf.go_offline()
 
 
+class BollingerBandsHyperparam(BaseEnum):
+    N = 1,
+    K = 2
+
+
 class BollingerBands(AbstractIndicator):
+
+    name = "BollingerBands"
 
     def __init__(self, data: Optional[pd.DataFrame] = None,
                  N: int = 20,
@@ -131,4 +139,3 @@ class BollingerBands(AbstractIndicator):
                           yaxis_title="Price")
 
         fig.show()
-

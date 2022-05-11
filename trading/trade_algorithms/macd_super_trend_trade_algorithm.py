@@ -6,7 +6,7 @@ from helping.base_enum import BaseEnum
 from indicators.abstract_indicator import TradePointColumn
 from trading.trade_algorithms.abstract_trade_algorithm import AbstractTradeAlgorithm, TradeAction
 from indicators.super_trend import SuperTrend, SuperTrendHyperparam
-from indicators.macd import MACD, MACDHyperparam
+from indicators.macd import MACD, MACDHyperparam, MACDTradeStrategy
 from indicators.moving_averages import EMA, EMA_one_point
 
 import cufflinks as cf
@@ -36,19 +36,14 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
         self._macd_crossing_flag: bool = False
         self._macd_saved_action: TradeAction = TradeAction.NONE
         self.trade_points: Optional[pd.DataFrame] = None
-        # self._EMA200: Optional[pd.Series] = None
 
     @staticmethod
     def get_algorithm_name() -> str:
         return MACDSuperTrendTradeAlgorithm.name
 
-    def __clear_vars(self):
-        self.trade_points = pd.DataFrame(columns=TradePointColumn.get_elements_list()).set_index(TradePointColumn.DATE)
-        self._MACD.clear_vars()
-        self._super_trend.clear_vars()
-
     @staticmethod
     def create_hyperparameters_dict(macd_short_period: int = 12, macd_long_period: int = 26, macd_signal_period: int = 9,
+                                    macd_trade_strategy: MACDTradeStrategy = MACDTradeStrategy.CLASSIC,
                                     super_trend_lookback_period: int = 10, super_trend_multiplier: float = 3,
                                     strict_macd: bool = False, days_to_wait_for_st: int = 3) -> Dict:
         return {MACDSuperTrendTradeAlgorithmHyperparam.STRICT_MACD: strict_macd,
@@ -56,7 +51,8 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
                 MACDSuperTrendTradeAlgorithmHyperparam.MACD_HYPERPARAMS: {
                     MACDHyperparam.SHORT_PERIOD: macd_short_period,
                     MACDHyperparam.LONG_PERIOD: macd_long_period,
-                    MACDHyperparam.SIGNAL_PERIOD: macd_signal_period
+                    MACDHyperparam.SIGNAL_PERIOD: macd_signal_period,
+                    MACDHyperparam.TRADE_STRATEGY: macd_trade_strategy
                 },
                 MACDSuperTrendTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: {
                     SuperTrendHyperparam.LOOKBACK_PERIOD: super_trend_lookback_period,
@@ -67,12 +63,18 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
     def get_default_hyperparameters_grid() -> List[Dict]:
         return [MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(),
                 MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(super_trend_multiplier=2),
-                MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(days_to_wait_for_st=0),
                 MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(days_to_wait_for_st=5),
                 MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(strict_macd=True),
                 MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(super_trend_multiplier=2, strict_macd=True),
                 MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(macd_short_period=10, macd_long_period=20,
-                                                                         super_trend_multiplier=2)]
+                                                                         super_trend_multiplier=2, super_trend_lookback_period=8),
+                MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(macd_short_period=10, macd_long_period=22,
+                                                                         macd_trade_strategy=MACDTradeStrategy.CONVERGENCE)]
+
+    def __clear_vars(self):
+        self.trade_points = pd.DataFrame(columns=TradePointColumn.get_elements_list()).set_index(TradePointColumn.DATE)
+        self._MACD.clear_vars()
+        self._super_trend.clear_vars()
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
         super().train(data, hyperparameters)
@@ -83,6 +85,8 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
             hyperparameters[MACDSuperTrendTradeAlgorithmHyperparam.MACD_HYPERPARAMS][MACDHyperparam.SHORT_PERIOD],
             hyperparameters[MACDSuperTrendTradeAlgorithmHyperparam.MACD_HYPERPARAMS][MACDHyperparam.LONG_PERIOD],
             hyperparameters[MACDSuperTrendTradeAlgorithmHyperparam.MACD_HYPERPARAMS][MACDHyperparam.SIGNAL_PERIOD])
+        self._MACD.set_trade_strategy(hyperparameters[MACDSuperTrendTradeAlgorithmHyperparam.MACD_HYPERPARAMS][
+                                          MACDHyperparam.TRADE_STRATEGY])
         self._super_trend.set_params(
             lookback_period=hyperparameters[MACDSuperTrendTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS][
                 SuperTrendHyperparam.LOOKBACK_PERIOD],
@@ -92,14 +96,12 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
         self.__clear_vars()
         self._MACD.calculate(self.data)
         self._super_trend.calculate(self.data)
-        # self._EMA200 = EMA(self.data["Close"], 200)
 
     def evaluate_new_point(self, new_point: pd.Series,
                            date: Union[str, pd.Timestamp],
                            special_params: Optional[Dict] = None) -> TradeAction:
         macd_action = self._MACD.evaluate_new_point(new_point, date, special_params, False)
         super_trend_action = self._super_trend.evaluate_new_point(new_point, date, special_params, False)
-        # self._EMA200[date] = EMA_one_point(self._EMA200[-1], new_point["Close"], 200)
         super_trend_color = self._super_trend.super_trend_value.iloc[-1]["Color"]
         if (not self._strict_macd and (macd_action != TradeAction.NONE)) or (self._strict_macd and (
                 (macd_action == TradeAction.ACTIVELY_BUY) or (macd_action == TradeAction.ACTIVELY_SELL))):
@@ -150,7 +152,7 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
                             shared_xaxes=True,
                             subplot_titles=[f"Price with SuperTrend {self._super_trend._lookback_period}, {self._super_trend._multiplier}",
                                             f"MACD {self._MACD._short_period}, {self._MACD._long_period}, {self._MACD._signal_period}"],
-                            vertical_spacing=0.2)
+                            vertical_spacing=0.25)
 
         fig.add_candlestick(x=selected_data.index,
                             open=selected_data["Open"],

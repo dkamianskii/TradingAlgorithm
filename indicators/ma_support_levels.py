@@ -21,7 +21,8 @@ class MAsColumns(BaseEnum):
 
 class MASupportLevels(AbstractIndicator):
 
-    default_ma_periods_for_test = [20, 30, 50, 75, 100, 150, 200]
+    name = "MASupportLevels"
+    default_ma_periods_for_test = [20, 30, 50, 100, 150, 200]
 
     def __init__(self, data: Optional[pd.DataFrame] = None,
                  ma_periods: Optional[List] = None,
@@ -34,6 +35,7 @@ class MASupportLevels(AbstractIndicator):
         self.tested_MAs: Optional[Dict] = None
         self.MAs: Dict[int, pd.DataFrame] = {}
         self.MA_test_results: Optional[List] = None
+        self._prev_trade_action = TradeAction.NONE
 
     def set_ma_periods(self, ma_periods: List[int]):
         self.ma_periods = ma_periods
@@ -109,6 +111,13 @@ class MASupportLevels(AbstractIndicator):
                 trade_action = TradeAction.NONE
         else:
             trade_action = TradeAction.NONE
+
+        if (trade_action != TradeAction.NONE) and (self._prev_trade_action != TradeAction.NONE):
+            if ((trade_action in self.buy_actions) and (self._prev_trade_action not in self.buy_actions) or (
+                    (trade_action not in self.buy_actions) and (self._prev_trade_action in self.buy_actions))):
+                trade_action = TradeAction.NONE
+        self._prev_trade_action = trade_action
+
         self.add_trade_point(date, new_point["Close"], trade_action)
         return trade_action
 
@@ -140,7 +149,7 @@ class MASupportLevels(AbstractIndicator):
         for period in self.MAs.keys():
             result = self.__test_MA(period, self.MAs[period], days_for_bounce)
             self.MA_test_results.append((period, result))
-            if (result["activations"] <= 3) or (result["successes"] / result["activations"] >= 0.45):
+            if (result["activations"] <= 3) or (result["successes"] / result["activations"] >= 0.5):
                 self.tested_MAs[period] = self.MAs[period]
 
         return self.MA_test_results

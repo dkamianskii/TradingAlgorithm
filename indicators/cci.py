@@ -14,6 +14,8 @@ import plotly.graph_objects as go
 
 class CCI(AbstractIndicator):
 
+    name = "CCI"
+
     def __init__(self, data: Optional[pd.DataFrame] = None,
                  N: int = 20):
         super().__init__(data)

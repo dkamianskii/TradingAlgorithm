@@ -3,7 +3,7 @@ from datetime import datetime
 import yfinance as yf
 import pandas as pd
 from trading.trade_manager import TradeManager
-from trading.trade_algorithms.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm, MACDTradeStrategy
+from trading.trade_algorithms.indicators_voting_trade_algorithm import IndicatorsVotingTradeAlgorithm
 
 
 start_date = "2000-01-01"
@@ -24,14 +24,11 @@ dates_test = pd.date_range(start_test, end_test)
 # data_pg = yf.download("PG", start=start_date, end=end_date)
 data_xom = yf.download("XOM", start=start_date, end=end_date)
 
-manager = TradeManager(days_to_chill=5, use_atr=True)
+manager = TradeManager(days_to_chill=5)
 
-# manager.set_tracked_stock("WMT", data_wmt[:test_start_date_ts], MACDSuperTrendTradeAlgorithm())
-# manager.set_tracked_stock("JPM", data_jpm[:test_start_date_ts], MACDSuperTrendTradeAlgorithm())
-manager.set_tracked_stock("XOM", data_xom[:test_start_date_ts], MACDSuperTrendTradeAlgorithm(),
-                          [MACDSuperTrendTradeAlgorithm.create_hyperparameters_dict(macd_short_period=10,
-                                                                                    macd_long_period=22,
-                                                                                    macd_trade_strategy=MACDTradeStrategy.CONVERGENCE)])
+# manager.set_tracked_stock("WMT", data_wmt[:test_start_date_ts], IndicatorsVotingTradeAlgorithm())
+# manager.set_tracked_stock("JPM", data_jpm[:test_start_date_ts], IndicatorsVotingTradeAlgorithm())
+manager.set_tracked_stock("XOM", data_xom[:test_start_date_ts], IndicatorsVotingTradeAlgorithm())
 
 train_result = manager.train(back_test_start_date, plot_test=False)
 print(manager.get_chosen_params())

@@ -28,6 +28,8 @@ class AbstractIndicator(ABC):
     So it has constructor that receives data, and method set_data for saving it.
     """
 
+    name = "AbstractIndicator"
+
     def __init__(self, data: Optional[pd.DataFrame] = None):
         """
         :param data: dataframe of stock prices. Dataframe has to be in format of yahoo finance.

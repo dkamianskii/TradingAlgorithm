@@ -32,6 +32,8 @@ class RSI(AbstractIndicator):
     Attributes: RSI_val, trade_points
     """
 
+    name = "RSI"
+
     def __init__(self, data: Optional[pd.DataFrame] = None,
                  N: Optional[int] = 14):
         """

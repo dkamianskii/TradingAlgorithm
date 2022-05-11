@@ -64,6 +64,8 @@ class MACD(AbstractIndicator):
         because it is playing on the expectations and not just following trend when it might be already late.
     """
 
+    name = "MACD"
+
     def __init__(self, data: Optional[pd.DataFrame] = None,
                  short_period: int = 12,
                  long_period: int = 26,

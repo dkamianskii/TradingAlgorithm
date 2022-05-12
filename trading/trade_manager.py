@@ -9,6 +9,7 @@ from trading.trade_manager_enums import *
 from trading.trade_algorithms.abstract_trade_algorithm import AbstractTradeAlgorithm
 from trading.trade_algorithms.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm
 from trading.trade_statistics_manager import TradeStatisticsManager
+from trading.risk_manager import RiskManager
 
 import cufflinks as cf
 import plotly.graph_objects as go
@@ -54,28 +55,24 @@ class TradeManager:
          - save information about profitability of made deals and current finance assets
         """
         self.portfolio: pd.DataFrame = pd.DataFrame(columns=PortfolioColumn.get_elements_list())
-
-        self.available_money: float = start_capital
-        self.account_money: float = start_capital
-        self.start_capital: float = start_capital
-
+        self.portfolio[PortfolioColumn.DATE] = pd.to_datetime(self.portfolio[PortfolioColumn.DATE])
         self._tracked_stocks: Dict[str, Dict] = {}
-        self._statistics_manager: TradeStatisticsManager = TradeStatisticsManager()
         self._train_results: Dict[str, Dict[str, pd.DataFrame]] = {}
 
+        self._atr_period: int = atr_period
         self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
         self._days_to_chill: pd.Timedelta = pd.Timedelta(days=days_to_chill)
-
-        self._use_limited_money: bool = use_limited_money
-        self._money_for_a_bid: float = money_for_a_bid
-
-        self._equity_risk_rate: float = equity_risk_rate
-        self._bid_risk_rate: float = bid_risk_rate
-        self._take_profit_multiplier: float = take_profit_multiplier
-        self._active_action_multiplier: float = active_action_multiplier
-        self._use_atr: bool = use_atr
-        self._atr_period: int = atr_period
         self._keep_holding_rate = keep_holding_rate
+
+        self._statistics_manager: TradeStatisticsManager = TradeStatisticsManager()
+        self._risk_manager: RiskManager = RiskManager(use_limited_money=use_limited_money,
+                                                      money_for_a_bid=money_for_a_bid,
+                                                      start_capital=start_capital,
+                                                      equity_risk_rate=equity_risk_rate,
+                                                      bid_risk_rate=bid_risk_rate,
+                                                      take_profit_multiplier=take_profit_multiplier,
+                                                      active_action_multiplier=active_action_multiplier,
+                                                      use_atr=use_atr)
 
     def get_tracked_stocks(self) -> List[str]:
         *stock_names, = self._tracked_stocks.keys()
@@ -95,11 +92,19 @@ class TradeManager:
     def get_bids_history(self, stock_name: Optional[str] = None):
         return self._statistics_manager.get_bids_history(stock_name)
 
+    def get_portfolio(self):
+        return self.portfolio
+
+    def get_equity_info(self):
+        return {"start capital": self._risk_manager.start_capital,
+                "account money": self._risk_manager.account_money,
+                "available money": self._risk_manager.available_money}
+
     def clear_history(self):
         self.portfolio = pd.DataFrame(columns=PortfolioColumn.get_elements_list())
+        self.portfolio[PortfolioColumn.DATE] = pd.to_datetime(self.portfolio[PortfolioColumn.DATE])
         self._statistics_manager.clear_history()
-        self.available_money = self.start_capital
-        self.account_money = self.start_capital
+        self._risk_manager.reset_money()
         for _, stock in self._tracked_stocks.items():
             stock[TrackedStocksColumn.TRADING_START_DATE] = None
 
@@ -119,29 +124,24 @@ class TradeManager:
                            use_atr: bool = False,
                            atr_period: int = 14,
                            keep_holding_rate: float = 0.5):
-        self.available_money: float = start_capital
-        self.account_money: float = start_capital
-        self.start_capital: float = start_capital
-
         self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
         self._days_to_chill: pd.Timedelta = pd.Timedelta(days=days_to_chill)
-
-        self._use_limited_money: bool = use_limited_money
-        self._money_for_a_bid: float = money_for_a_bid
-
-        self._equity_risk_rate: float = equity_risk_rate
-        self._bid_risk_rate: float = bid_risk_rate
-        self._take_profit_multiplier: float = take_profit_multiplier
-        self._active_action_multiplier: float = active_action_multiplier
-        self._use_atr: bool = use_atr
         self._atr_period: int = atr_period
         self._keep_holding_rate = keep_holding_rate
+        self._risk_manager.set_manager_params(use_limited_money=use_limited_money,
+                                              money_for_a_bid=money_for_a_bid,
+                                              start_capital=start_capital,
+                                              equity_risk_rate=equity_risk_rate,
+                                              bid_risk_rate=bid_risk_rate,
+                                              take_profit_multiplier=take_profit_multiplier,
+                                              active_action_multiplier=active_action_multiplier,
+                                              use_atr=use_atr)
 
-    def set_manager_params_dict(self, params_dict):
-        for param, value in params_dict.items():
-            if param not in self.__dict__:
-                raise ValueError("Uknown parameter was provided")
-            setattr(self, "_" + param, value)
+    # def set_manager_params_dict(self, params_dict):
+    #     for param, value in params_dict.items():
+    #         if param not in self.__dict__:
+    #             raise ValueError("Uknown parameter was provided")
+    #         setattr(self, "_" + param, value)
 
     def set_tracked_stock(self, stock_name: str,
                           stock_data: pd.DataFrame,
@@ -174,12 +174,17 @@ class TradeManager:
                            prolongation: bool,
                            forced_stop_loss_lvl: float = 0):
         if prolongation:
-            _, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(stock_name, new_point, action)
+            _, take_profit_lvl = self._risk_manager.evaluate_stop_loss_and_take_profit(new_point, action,
+                                                                                       self._tracked_stocks[stock_name][
+                                                                                           TrackedStocksColumn.LAST_ATR
+                                                                                       ])
             stop_loss_lvl = forced_stop_loss_lvl
         else:
-            stop_loss_lvl, take_profit_lvl = self.__evaluate_stop_loss_and_take_profit(stock_name, new_point, action)
-        if self._use_limited_money:
-            self.available_money -= new_point["Close"] * amount
+            stop_loss_lvl, take_profit_lvl = self._risk_manager.evaluate_stop_loss_and_take_profit(new_point, action,
+                                                                                       self._tracked_stocks[stock_name][
+                                                                                           TrackedStocksColumn.LAST_ATR
+                                                                                       ])
+        self._risk_manager.set_money_for_bid(new_point["Close"] * amount)
         self.portfolio.loc[self.portfolio.shape[0]] = {PortfolioColumn.STOCK_NAME: stock_name,
                                                        PortfolioColumn.PRICE: new_point["Close"],
                                                        PortfolioColumn.TYPE: bid_type,
@@ -191,50 +196,13 @@ class TradeManager:
         self._statistics_manager.open_bid(stock_name, date, new_point["Close"], bid_type, take_profit_lvl,
                                           stop_loss_lvl, amount, action, prolongation)
 
-    def __evaluate_stop_loss_and_take_profit(self, stock_name: str,
-                                             new_point: pd.Series, action: TradeAction) -> Tuple[float, float]:
-        price = new_point["Close"]
-        if self._use_atr:
-            atr = self._tracked_stocks[stock_name][TrackedStocksColumn.LAST_ATR]
-            if action == TradeAction.BUY:
-                stop_loss = price - atr
-                take_profit = price + atr * self._take_profit_multiplier
-            elif action == TradeAction.ACTIVELY_BUY:
-                stop_loss = price - atr
-                take_profit = price + atr * self._take_profit_multiplier * self._active_action_multiplier
-            elif action == TradeAction.SELL:
-                stop_loss = price + atr
-                take_profit = price - atr * self._take_profit_multiplier
-            else:  # TradeAction.ACTIVELY_SELL
-                stop_loss = price + atr
-                take_profit = price - atr * self._take_profit_multiplier * self._active_action_multiplier
-        else:
-            if action == TradeAction.BUY:
-                stop_loss = price * (1 - self._bid_risk_rate)
-                take_profit = price * (1 + self._bid_risk_rate * self._take_profit_multiplier)
-            elif action == TradeAction.ACTIVELY_BUY:
-                stop_loss = price * (1 - self._bid_risk_rate)
-                take_profit = price * (
-                        1 + self._bid_risk_rate * self._take_profit_multiplier * self._active_action_multiplier)
-            elif action == TradeAction.SELL:
-                stop_loss = price * (1 + self._bid_risk_rate)
-                take_profit = price * (
-                        1 - self._bid_risk_rate * self._take_profit_multiplier)
-            else:  # TradeAction.ACTIVELY_SELL
-                stop_loss = price * (1 + self._bid_risk_rate)
-                take_profit = price * (
-                        1 - self._bid_risk_rate * self._take_profit_multiplier * self._active_action_multiplier)
-        return stop_loss, take_profit
-
     def __close_bid(self, stock_name: str, close_price: float,
                     open_date: pd.Timestamp, close_date: pd.Timestamp,
                     cashback: float, profit: float, result: BidResult):
         self._statistics_manager.update_trade_result(stock_name, profit, result)
         self._statistics_manager.close_bid(stock_name, open_date, close_date, close_price, result)
         self._statistics_manager.add_earnings(stock_name, profit, close_date)
-        if self._use_limited_money:
-            self.available_money += cashback
-            self.account_money += profit
+        self._risk_manager.set_bid_returns(cashback, profit)
 
     def __prolongation(self, assets_for_prolongation: List, new_point: pd.Series, date: pd.Timestamp):
         for asset in assets_for_prolongation:
@@ -303,26 +271,11 @@ class TradeManager:
         else:
             self._statistics_manager.add_earnings(stock_name, 0, date)
 
-    def __evaluate_shares_amount_to_bid(self, price: float) -> int:
-        shares_to_buy = 0
-        if self._use_limited_money:
-            money_to_risk = self.account_money * self._equity_risk_rate
-            if self.available_money > money_to_risk:
-                shares_to_buy = np.floor(money_to_risk / price)
-        else:
-            shares_to_buy = np.floor(self._money_for_a_bid / price)
-        return shares_to_buy
-
     def evaluate_new_point(self, stock_name: str,
                            new_point: pd.Series,
                            date: Union[str, pd.Timestamp],
                            add_point_to_the_data: bool = True):
         date = pd.Timestamp(ts_input=date)
-
-        date_test1 = pd.Timestamp(ts_input="2020-02-04")
-        date_test2 = pd.Timestamp(ts_input="2020-02-10")
-        if (date == date_test1) or (date == date_test2):
-            watch = True
 
         assets_in_portfolio = self.portfolio[self.portfolio[PortfolioColumn.STOCK_NAME] == stock_name]
         stock = self._tracked_stocks[stock_name]
@@ -340,18 +293,14 @@ class TradeManager:
             else:
                 bid_type = BidType.SHORT
 
-            if assets_in_portfolio[assets_in_portfolio[PortfolioColumn.TYPE] == bid_type].shape[0] != 0:
-                last_bid_date = assets_in_portfolio[assets_in_portfolio[PortfolioColumn.TYPE] == bid_type][
-                    PortfolioColumn.DATE].max()
-                if date - last_bid_date < self._days_to_chill:
-                    if add_point_to_the_data:
-                        stock[TrackedStocksColumn.DATA].loc[date] = new_point
-                    return
-            amount = self.__evaluate_shares_amount_to_bid(new_point["Close"])
-            if amount == 0:
-                print(f"Not enough money to purchase {stock_name} at {date} by price {new_point['Close']}")
-            else:
-                self.__add_to_portfolio(stock_name, new_point, date, amount, action, bid_type, prolongation=False)
+            last_bid_date = assets_in_portfolio[assets_in_portfolio[PortfolioColumn.TYPE] == bid_type][
+                PortfolioColumn.DATE].max()
+            if not ((last_bid_date is not pd.NaT) and (date - last_bid_date <= self._days_to_chill)):
+                amount = self._risk_manager.evaluate_shares_amount_to_bid(new_point["Close"])
+                if amount == 0:
+                    print(f"Not enough money to purchase {stock_name} at {date} by price {new_point['Close']}")
+                else:
+                    self.__add_to_portfolio(stock_name, new_point, date, amount, action, bid_type, prolongation=False)
         if add_point_to_the_data:
             stock[TrackedStocksColumn.DATA].loc[date] = new_point
             if stock[TrackedStocksColumn.TRADING_START_DATE] is None:
@@ -483,9 +432,10 @@ class TradeManager:
                     marker=dict(opacity=0.2, color="green"),
                     name="Take profit level", visible="legendonly")
 
-        fig.update_layout(title=f"Trading activity on {stock_name} with {stock[TrackedStocksColumn.TRADE_ALGORITHM].get_algorithm_name()}",
-                          xaxis_title="Date",
-                          yaxis_title="Price")
+        fig.update_layout(
+            title=f"Trading activity on {stock_name} with {stock[TrackedStocksColumn.TRADE_ALGORITHM].get_algorithm_name()}",
+            xaxis_title="Date",
+            yaxis_title="Price")
 
         fig.show()
 

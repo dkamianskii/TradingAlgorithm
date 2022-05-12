@@ -35,7 +35,7 @@ class MASupportLevels(AbstractIndicator):
         self.tested_MAs: Optional[Dict] = None
         self.MAs: Dict[int, pd.DataFrame] = {}
         self.MA_test_results: Optional[List] = None
-        self._prev_trade_action = TradeAction.NONE
+        self._prev_trade_action: TradeAction = TradeAction.NONE
 
     def set_ma_periods(self, ma_periods: List[int]):
         self.ma_periods = ma_periods
@@ -46,6 +46,11 @@ class MASupportLevels(AbstractIndicator):
 
     def clear_vars(self):
         super().clear_vars()
+        self.MAs = {}
+        self.tested_MAs = None
+        self._prev_trade_action = TradeAction.NONE
+        self.tested_MAs = None
+        self.MA_test_results = None
 
     def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None,
                            update_data: bool = True) -> TradeAction:

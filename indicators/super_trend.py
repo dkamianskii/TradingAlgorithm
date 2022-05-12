@@ -14,7 +14,7 @@ cf.go_offline()
 
 
 class SuperTrendHyperparam(BaseEnum):
-    LOOKBACK_PERIOD = 1,
+    LOOKBACK_PERIOD = 1
     MULTIPLIER = 2
 
 

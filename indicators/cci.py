@@ -35,6 +35,8 @@ class CCI(AbstractIndicator):
 
     def clear_vars(self):
         super().clear_vars()
+        self._hit_low = False
+        self._hit_high = False
         self.CCI_value: Optional[pd.Series] = None
 
     def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp], special_params: Optional = None,

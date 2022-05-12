@@ -14,9 +14,9 @@ cf.go_offline()
 
 
 class MACDHyperparam(BaseEnum):
-    SHORT_PERIOD = 1,
-    LONG_PERIOD = 2,
-    SIGNAL_PERIOD = 3,
+    SHORT_PERIOD = 1
+    LONG_PERIOD = 2
+    SIGNAL_PERIOD = 3
     TRADE_STRATEGY = 4
 
 

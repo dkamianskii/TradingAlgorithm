@@ -14,7 +14,7 @@ cf.go_offline()
 
 
 class BollingerBandsHyperparam(BaseEnum):
-    N = 1,
+    N = 1
     K = 2
 
 

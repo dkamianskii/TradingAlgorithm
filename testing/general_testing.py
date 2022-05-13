@@ -3,6 +3,9 @@ from datetime import datetime
 import yfinance as yf
 import pandas as pd
 import numpy as np
+
+from indicators.abstract_indicator import TradeAction
+from indicators.atr import ATR
 from trading.trade_algorithms.one_indicator_trade_algorithms.rsi_trade_algorithm import RSITradeAlgorithm
 
 import cufflinks as cf
@@ -26,11 +29,11 @@ dates_test = pd.date_range(start_test, end_test)
 
 data = yf.download("XOM", start=start_date, end=end_date)
 
-df = pd.DataFrame(data={"F":data.index[0:4], "T":["a","a","b","b"]})
-print(df)
-
-e1 = df[df["T"] == "b"]["F"].max()
-e2 = df[df["T"] == "c"]["F"].max()
-m = e2 is pd.NaT
-print(e1, e2, m)
+m = pd.DataFrame(data={"Date": data.index}).set_index("Date")
+m["E"] = TradeAction.NONE
+print(m)
+# e = pd.DataFrame(data={"A": [1, 2, 6, 5]})
+# e.iloc[0, "A"] = 4
+#
+# print(e)
 

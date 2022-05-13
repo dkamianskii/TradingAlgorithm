@@ -3,7 +3,7 @@ from datetime import datetime
 import yfinance as yf
 import pandas as pd
 from trading.trade_manager import TradeManager
-from trading.trade_algorithms.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm, MACDTradeStrategy
+from trading.trade_algorithms.indicators_summary_trade_algorithms.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm, MACDTradeStrategy
 
 
 start_date = "2000-01-01"

@@ -2,7 +2,20 @@ from typing import Tuple
 
 import numpy as np
 import pandas as pd
+
+from helping.base_enum import BaseEnum
 from indicators.abstract_indicator import TradeAction
+
+
+class RiskManagerHyperparam(BaseEnum):
+    USE_LIMITED_MONEY = 1
+    MONEY_FOR_A_BID = 2
+    START_CAPITAL = 3
+    EQUITY_RISK_RATE = 4
+    BID_RISK_RATE = 5
+    TAKE_PROFIT_MULTIPLIER = 6
+    ACTIVE_ACTION_MULTIPLIER = 7
+    USE_ATR = 8
 
 
 class RiskManager:

@@ -17,6 +17,9 @@ import cufflinks as cf
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
+from trading.trade_algorithms.indicators_summary_trade_algorithms.indicators_summary_enums import \
+    IndicatorPermittedToVote
+
 cf.go_offline()
 
 
@@ -31,17 +34,8 @@ class IndicatorsVotingTradeAlgorithmHyperparam(BaseEnum):
     QUALIFICATION_BARRIER = 8
 
 
-class IndicatorPermittedToVote(BaseEnum):
-    RSI = 1
-    MACD = 2
-    SUPER_TREND = 3
-    CCI = 4
-    BOLLINGER_BANDS = 5
-    MA_SUPPORT_LEVELS = 6
-
-
 class IndicatorsVotingTradeAlgorithm(AbstractTradeAlgorithm):
-    name = "Indicators voting trade algorithm"
+    name = "Indicators Voting trade algorithm"
     color_map = {TradeAction.ACTIVELY_BUY: "green",
                  TradeAction.BUY: "lightgreen",
                  TradeAction.NONE: "grey",
@@ -172,8 +166,8 @@ class IndicatorsVotingTradeAlgorithm(AbstractTradeAlgorithm):
         self._ma_support_levels.set_tested_MAs_usage(use_tested_MAs=True)
 
         self.__clear_vars()
-        for indiator in self._indicators:
-            indiator.calculate(self.data)
+        for indicator in self._indicators:
+            indicator.calculate(self.data)
         self._ma_support_levels.test_MAs_for_data()
 
     def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp],

@@ -3,7 +3,7 @@ from datetime import datetime
 import yfinance as yf
 import pandas as pd
 from trading.trade_manager import TradeManager
-from trading.trade_algorithms.indicators_summary_trade_algorithms.indicators_voting_trade_algorithm import IndicatorsVotingTradeAlgorithm
+from trading.trade_algorithms.indicators_summary_trade_algorithms.decision_tree_trade_algorithm import DecisionTreeTradeAlgorithm
 
 
 start_date = "2000-01-01"
@@ -26,9 +26,9 @@ data_xom = yf.download("XOM", start=start_date, end=end_date)
 
 manager = TradeManager(days_to_chill=5)
 
-# manager.set_tracked_stock("WMT", data_wmt[:test_start_date_ts], IndicatorsVotingTradeAlgorithm())
-# manager.set_tracked_stock("JPM", data_jpm[:test_start_date_ts], IndicatorsVotingTradeAlgorithm())
-manager.set_tracked_stock("XOM", data_xom[:test_start_date_ts], IndicatorsVotingTradeAlgorithm())
+# manager.set_tracked_stock("WMT", data_wmt[:test_start_date_ts], DecisionTreeTradeAlgorithm())
+# manager.set_tracked_stock("JPM", data_jpm[:test_start_date_ts], DecisionTreeTradeAlgorithm())
+manager.set_tracked_stock("XOM", data_xom[:test_start_date_ts], DecisionTreeTradeAlgorithm())
 
 train_result = manager.train(back_test_start_date, plot_test=False)
 print(manager.get_chosen_params())
@@ -49,4 +49,4 @@ print(manager.get_bids_history())
 manager.plot_earnings_curve()
 # manager.plot_stock_history("WMT")
 # manager.plot_stock_history("JPM")
-manager.plot_stock_history("XOM", plot_algorithm_graph=True)
+manager.plot_stock_history("XOM")

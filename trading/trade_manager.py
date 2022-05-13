@@ -7,7 +7,8 @@ from indicators.atr import ATR, ATR_one_point
 from trading.trade_statistics_manager_enums import *
 from trading.trade_manager_enums import *
 from trading.trade_algorithms.abstract_trade_algorithm import AbstractTradeAlgorithm
-from trading.trade_algorithms.macd_super_trend_trade_algorithm import MACDSuperTrendTradeAlgorithm
+from trading.trade_algorithms.indicators_summary_trade_algorithms.macd_super_trend_trade_algorithm import \
+    MACDSuperTrendTradeAlgorithm
 from trading.trade_statistics_manager import TradeStatisticsManager
 from trading.risk_manager import RiskManager
 
@@ -163,7 +164,7 @@ class TradeManager:
             TrackedStocksColumn.PARAMS_GRID: custom_params_grid,
             TrackedStocksColumn.CHOSEN_PARAMS: None,
             TrackedStocksColumn.TRADING_START_DATE: None,
-            TrackedStocksColumn.LAST_ATR: ATR(stock_data, self._atr_period)[-1]}
+            TrackedStocksColumn.ATR: ATR(stock_data, self._atr_period)}
 
     def __add_to_portfolio(self, stock_name: str,
                            new_point: pd.Series,
@@ -173,17 +174,17 @@ class TradeManager:
                            bid_type: BidType,
                            prolongation: bool,
                            forced_stop_loss_lvl: float = 0):
+        atr: pd.Series = self._tracked_stocks[stock_name][TrackedStocksColumn.ATR]
+        if date < atr.index[0]:
+            curr_atr = atr[0]
+        else:
+            curr_atr = atr.loc[date]
         if prolongation:
-            _, take_profit_lvl = self._risk_manager.evaluate_stop_loss_and_take_profit(new_point, action,
-                                                                                       self._tracked_stocks[stock_name][
-                                                                                           TrackedStocksColumn.LAST_ATR
-                                                                                       ])
+            _, take_profit_lvl = self._risk_manager.evaluate_stop_loss_and_take_profit(new_point, action, curr_atr)
             stop_loss_lvl = forced_stop_loss_lvl
         else:
             stop_loss_lvl, take_profit_lvl = self._risk_manager.evaluate_stop_loss_and_take_profit(new_point, action,
-                                                                                       self._tracked_stocks[stock_name][
-                                                                                           TrackedStocksColumn.LAST_ATR
-                                                                                       ])
+                                                                                                   curr_atr)
         self._risk_manager.set_money_for_bid(new_point["Close"] * amount)
         self.portfolio.loc[self.portfolio.shape[0]] = {PortfolioColumn.STOCK_NAME: stock_name,
                                                        PortfolioColumn.PRICE: new_point["Close"],
@@ -280,11 +281,11 @@ class TradeManager:
         assets_in_portfolio = self.portfolio[self.portfolio[PortfolioColumn.STOCK_NAME] == stock_name]
         stock = self._tracked_stocks[stock_name]
 
-        atr = ATR_one_point(stock[TrackedStocksColumn.LAST_ATR],
+        atr = ATR_one_point(stock[TrackedStocksColumn.ATR][-1],
                             stock[TrackedStocksColumn.DATA]["Close"][-1],
                             new_point,
                             self._atr_period)
-        self._tracked_stocks[stock_name][TrackedStocksColumn.LAST_ATR] = atr
+        self._tracked_stocks[stock_name][TrackedStocksColumn.ATR].loc[date] = atr
         action = stock[TrackedStocksColumn.TRADE_ALGORITHM].evaluate_new_point(new_point, date)
         self.__manage_portfolio_assets(stock_name, assets_in_portfolio, new_point, date, action)
         if action != TradeAction.NONE:

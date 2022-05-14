@@ -24,6 +24,7 @@ class IndLeaf:
             if len(possible_trade_actions) == 1:
                 self._determinate_trade_action = possible_trade_actions[0]
             else:
+                self._stochastic_trade_action = {}
                 self._stochastic_base = data.shape[0]
                 lower_bound = 0
                 for trade_action in possible_trade_actions:
@@ -55,3 +56,13 @@ class IndLeaf:
         for trade_action, boounds in self._stochastic_trade_action.items():
             if (stochastic_result >= boounds[0]) and (stochastic_result <= boounds[1]):
                 return trade_action
+
+    def print(self, prev_brunch_to_print: List[str]):
+        brunch_to_print = prev_brunch_to_print.copy()
+        if self._determinate_trade_action is not None:
+            brunch_to_print.append(f"|{self._determinate_trade_action}|")
+        else:
+            brunch_to_print.append("|")
+            for action, bounds in self._stochastic_trade_action.items():
+                brunch_to_print.append(f"P({action})={(bounds[1] - bounds[0] + 1) / self._stochastic_base}|")
+        print("".join(brunch_to_print))

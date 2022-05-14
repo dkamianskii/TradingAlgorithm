@@ -6,6 +6,7 @@ import numpy as np
 
 from indicators.abstract_indicator import TradeAction
 from indicators.atr import ATR
+from trading.indicators_decision_tree.ind_tree import IndTree
 from trading.trade_algorithms.one_indicator_trade_algorithms.rsi_trade_algorithm import RSITradeAlgorithm
 
 import cufflinks as cf
@@ -25,15 +26,42 @@ start_test = datetime.strptime(test_start_date, "%Y-%m-%d")
 end_test = datetime.strptime("2024-02-01", "%Y-%m-%d")
 dates_test = pd.date_range(start_test, end_test)
 
+# data = yf.download("XOM", start=start_date, end=end_date)
 
+p = {"A": [TradeAction.BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.BUY,
+           TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL, TradeAction.NONE,
+           TradeAction.SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.NONE, TradeAction.SELL,
+           TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.ACTIVELY_SELL,
+           TradeAction.SELL, TradeAction.ACTIVELY_SELL, TradeAction.BUY, TradeAction.NONE, TradeAction.NONE,
+           TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.ACTIVELY_BUY,
+           TradeAction.ACTIVELY_BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.NONE],
+     "B": [TradeAction.NONE, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.BUY,
+           TradeAction.NONE, TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE,
+           TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.NONE, TradeAction.BUY,
+           TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.ACTIVELY_SELL,
+           TradeAction.SELL, TradeAction.BUY, TradeAction.BUY, TradeAction.NONE, TradeAction.NONE,
+           TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.ACTIVELY_BUY,
+           TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE, TradeAction.BUY],
+     "C": [TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.NONE,
+           TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.BUY, TradeAction.NONE,
+           TradeAction.NONE, TradeAction.BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.BUY,
+           TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.NONE,
+           TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.NONE,
+           TradeAction.SELL, TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.NONE,
+           TradeAction.NONE, TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE],
+     "label": [TradeAction.NONE, TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.BUY,
+               TradeAction.ACTIVELY_BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.NONE,
+               TradeAction.NONE, TradeAction.SELL, TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.NONE,
+               TradeAction.SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.ACTIVELY_BUY,
+               TradeAction.SELL, TradeAction.SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.NONE,
+               TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.NONE, TradeAction.BUY,
+               TradeAction.NONE, TradeAction.SELL, TradeAction.SELL, TradeAction.NONE]
+     }
 
-data = yf.download("XOM", start=start_date, end=end_date)
+df = pd.DataFrame(data=p)
 
-m = pd.DataFrame(data={"Date": data.index}).set_index("Date")
-m["E"] = TradeAction.NONE
-print(m)
-# e = pd.DataFrame(data={"A": [1, 2, 6, 5]})
-# e.iloc[0, "A"] = 4
-#
-# print(e)
-
+tree = IndTree(data=df, indicators=["A", "B", "C"])
+tree.print_tree()
+for i in range(10):
+    a = tree.get_trade_action(pd.Series(data={"A": TradeAction.BUY, "B": TradeAction.BUY, "C": TradeAction.NONE}))
+    print(a)

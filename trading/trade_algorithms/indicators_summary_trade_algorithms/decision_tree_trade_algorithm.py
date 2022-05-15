@@ -14,10 +14,16 @@ from indicators.ma_support_levels import MASupportLevels
 from indicators.macd import MACD, MACDHyperparam, MACDTradeStrategy
 from indicators.rsi import RSI
 from indicators.super_trend import SuperTrend, SuperTrendHyperparam
+from trading.indicators_decision_tree.ind_tree import IndTree
 from trading.trade_algorithms.abstract_trade_algorithm import AbstractTradeAlgorithm
 from trading.risk_manager import RiskManager, RiskManagerHyperparam
 from trading.trade_algorithms.indicators_summary_trade_algorithms.indicators_summary_enums import \
     IndicatorPermittedToVote
+
+import cufflinks as cf
+import plotly.graph_objects as go
+
+cf.go_offline()
 
 
 class DecisionTreeTradeAlgorithmHyperparam(BaseEnum):
@@ -39,6 +45,7 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
         super().__init__()
         self._risk_manager = RiskManager()
         self.trade_points: Optional[pd.DataFrame] = None
+        self._decision_tree: Optional[IndTree] = None
         self._indicators: List[AbstractIndicator] = []
         self._indicators_trade_points: Dict[str, pd.DataFrame] = {}
         self._dataframe: pd.DataFrame = pd.DataFrame()
@@ -142,6 +149,9 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
     def __create_train_dataset(self):
         index = 0
         self._dataframe["label"] = TradeAction.NONE
+        self._dataframe["take profit"] = 0.
+        self._dataframe["stop loss"] = 0.
+        self._dataframe["exit date"] = self.data.index
         for date, point in self.data.iterrows():
             label = TradeAction.NONE
             for indicator_name, trade_points in self._indicators_trade_points.items():
@@ -155,11 +165,30 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
                             atr = self._atr[0]
                         else:
                             atr = self._atr.loc[date]
-                        right_action = self.__evaluate_right_action(point, index, atr)
-                        self._dataframe.loc[date, "label"] = right_action
+                        right_action, take_profit, stop_loss, exit_date = self.__evaluate_right_action(point, index,
+                                                                                                       atr)
+                        self._dataframe.loc[date, ["label", "price", "take profit", "stop loss", "exit date"]] = [
+                            right_action,
+                            point["Close"],
+                            take_profit,
+                            stop_loss,
+                            exit_date]
             index += 1
 
-    def __evaluate_right_action(self, start_point: pd.Series, start_index: int, atr: float) -> TradeAction:
+        not_all_none = None
+        for indicator in self._indicators:
+            not_none = self._dataframe[indicator.name] != TradeAction.NONE
+            if not_all_none is None:
+                not_all_none = not_none
+            else:
+                not_all_none = np.logical_or(not_all_none, not_none)
+        self._dataframe = self._dataframe[not_all_none]
+
+    def __evaluate_right_action(self, start_point: pd.Series, start_index: int, atr: float) -> (
+    TradeAction, float, float, pd.Timestamp):
+        """
+        return trade action, take profit, stop loss, exit date
+        """
         buy_stop_loss, buy_take_profit = self._risk_manager.evaluate_stop_loss_and_take_profit(start_point,
                                                                                                TradeAction.BUY,
                                                                                                atr)
@@ -176,9 +205,11 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
         buy_stop_loss_triggered = False
         sell_stop_loss_triggered = False
         right_action = TradeAction.NONE
+        date_shift, final_take_profit, final_stop_loss = 0, 0., 0.
         for j in range(1, self._days_to_keep_limit):
             if (start_index + j) == self.data.shape[0]:
                 break
+            date_shift += 1
             cur_point = self.data.iloc[start_index + j]
             cur_price = cur_point["Close"]
             if cur_price <= buy_stop_loss:
@@ -191,23 +222,28 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
                 if not buy_stop_loss_triggered and (cur_price >= buy_take_profit):
                     first_action_happened = TradeAction.BUY
                     right_action = TradeAction.BUY
+                    final_take_profit, final_stop_loss = buy_take_profit, buy_stop_loss
                 elif not sell_stop_loss_triggered and (cur_price <= sell_take_profit):
                     first_action_happened = TradeAction.SELL
                     right_action = TradeAction.SELL
+                    final_take_profit, final_stop_loss = sell_take_profit, sell_stop_loss
             if first_action_happened == TradeAction.BUY:
                 if buy_stop_loss_triggered:
                     break
                 if cur_price >= actively_buy_take_profit:
                     right_action = TradeAction.ACTIVELY_BUY
+                    final_take_profit = actively_buy_take_profit
                     break
             elif first_action_happened == TradeAction.SELL:
                 if sell_stop_loss_triggered:
                     break
                 if cur_price <= actively_sell_take_profit:
                     right_action = TradeAction.ACTIVELY_SELL
+                    final_take_profit = actively_sell_take_profit
                     break
 
-        return right_action
+        exit_date = self.data.index[start_index + date_shift]
+        return right_action, final_take_profit, final_stop_loss, exit_date
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
         super().train(data, hyperparameters)
@@ -257,11 +293,61 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
             self._indicators_trade_points[indicator.name] = indicator.find_trade_points()
 
         self.__create_train_dataset()
-        e = 1
+        self._decision_tree = IndTree(self._dataframe, [indicator.name for indicator in self._indicators])
 
     def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp],
                            special_params: Optional[Dict] = None) -> TradeAction:
-        pass
+        indicators_results: Dict[str, TradeAction] = {}
+        for indicator in self._indicators:
+            indicators_results[indicator.name] = indicator.evaluate_new_point(new_point, date, special_params, False)
+        self.data.loc[date] = new_point
+
+        final_action = self._decision_tree.get_trade_action(pd.Series(data=indicators_results))
+        return final_action
 
     def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
-        pass
+        self._decision_tree.print_tree()
+
+        labels_to_plot = self._dataframe[self._dataframe["label"] != TradeAction.NONE]
+        data_to_plot = self.data[:labels_to_plot.iloc[-1]["exit date"]]
+
+        fig = go.Figure()
+
+        fig.add_candlestick(x=data_to_plot.index,
+                            open=data_to_plot["Open"],
+                            close=data_to_plot["Close"],
+                            high=data_to_plot["High"],
+                            low=data_to_plot["Low"],
+                            name="Price")
+
+        for date, row in labels_to_plot.iterrows():
+            fig.add_shape(type="rect",
+                          x0=date, y0=row["price"],
+                          x1=row["exit date"], y1=row["take profit"],
+                          opacity=0.2,
+                          fillcolor="green",
+                          line_color="green")
+            fig.add_shape(type="rect",
+                          x0=date, y0=row["price"],
+                          x1=row["exit date"], y1=row["stop loss"],
+                          opacity=0.2,
+                          fillcolor="red",
+                          line_color="red")
+
+        buy_points = labels_to_plot["label"].isin([TradeAction.BUY, TradeAction.ACTIVELY_BUY])
+        fig.add_trace(go.Scatter(x=labels_to_plot.index,
+                                 y=labels_to_plot["price"],
+                                 mode="markers",
+                                 marker=dict(
+                                     color=np.where(buy_points, "green", "red"),
+                                     size=np.where(labels_to_plot["label"].isin([TradeAction.BUY, TradeAction.SELL]),
+                                                   8, 14),
+                                     symbol=np.where(buy_points, "triangle-up", "triangle-down")),
+                                 name="marked action labels"))
+
+        fig.update_layout(
+            title="Decision tree dataset's evaluated labels",
+            xaxis_title="Date",
+            yaxis_title="Price")
+
+        fig.show()

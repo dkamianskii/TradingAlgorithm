@@ -52,7 +52,7 @@ class IndLeaf:
         if self._determinate_trade_action is not None:
             return self._determinate_trade_action
 
-        stochastic_result = random.randint(1, self._stochastic_base)
+        stochastic_result = random.randint(1, self._stochastic_base,)
         for trade_action, boounds in self._stochastic_trade_action.items():
             if (stochastic_result >= boounds[0]) and (stochastic_result <= boounds[1]):
                 return trade_action

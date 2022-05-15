@@ -8,6 +8,7 @@ from indicators.abstract_indicator import TradeAction
 from indicators.atr import ATR
 from trading.indicators_decision_tree.ind_tree import IndTree
 from trading.trade_algorithms.one_indicator_trade_algorithms.rsi_trade_algorithm import RSITradeAlgorithm
+from trading.trade_algorithms.indicators_summary_trade_algorithms.decision_tree_trade_algorithm import DecisionTreeTradeAlgorithm
 
 import cufflinks as cf
 from plotly.subplots import make_subplots
@@ -17,7 +18,7 @@ from helping.base_enum import BaseEnum
 
 cf.go_offline()
 
-start_date = "2021-12-01"
+start_date = "2021-06-01"
 end_date = "2021-12-31"
 test_start_date = "2015-01-03"
 back_test_start_date = "2019-01-01"
@@ -26,42 +27,58 @@ start_test = datetime.strptime(test_start_date, "%Y-%m-%d")
 end_test = datetime.strptime("2024-02-01", "%Y-%m-%d")
 dates_test = pd.date_range(start_test, end_test)
 
-# data = yf.download("XOM", start=start_date, end=end_date)
+data = yf.download("XOM", start=start_date, end=end_date)
 
-p = {"A": [TradeAction.BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.BUY,
-           TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL, TradeAction.NONE,
-           TradeAction.SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.NONE, TradeAction.SELL,
-           TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.ACTIVELY_SELL,
-           TradeAction.SELL, TradeAction.ACTIVELY_SELL, TradeAction.BUY, TradeAction.NONE, TradeAction.NONE,
-           TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.ACTIVELY_BUY,
-           TradeAction.ACTIVELY_BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.NONE],
-     "B": [TradeAction.NONE, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.BUY,
-           TradeAction.NONE, TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE,
-           TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.NONE, TradeAction.BUY,
-           TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.ACTIVELY_SELL,
-           TradeAction.SELL, TradeAction.BUY, TradeAction.BUY, TradeAction.NONE, TradeAction.NONE,
-           TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.ACTIVELY_BUY,
-           TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE, TradeAction.BUY],
-     "C": [TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.NONE,
-           TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.BUY, TradeAction.NONE,
-           TradeAction.NONE, TradeAction.BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.BUY,
-           TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.NONE,
-           TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.NONE,
-           TradeAction.SELL, TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.NONE,
-           TradeAction.NONE, TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE],
-     "label": [TradeAction.NONE, TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.BUY,
-               TradeAction.ACTIVELY_BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.NONE,
-               TradeAction.NONE, TradeAction.SELL, TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.NONE,
-               TradeAction.SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.ACTIVELY_BUY,
-               TradeAction.SELL, TradeAction.SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.NONE,
-               TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.NONE, TradeAction.BUY,
-               TradeAction.NONE, TradeAction.SELL, TradeAction.SELL, TradeAction.NONE]
-     }
+dstree = DecisionTreeTradeAlgorithm()
+hyperparams = dstree.get_default_hyperparameters_grid()
+dstree.train(data=data, hyperparameters=hyperparams[0])
+dstree.plot()
 
-df = pd.DataFrame(data=p)
-
-tree = IndTree(data=df, indicators=["A", "B", "C"])
-tree.print_tree()
-for i in range(10):
-    a = tree.get_trade_action(pd.Series(data={"A": TradeAction.BUY, "B": TradeAction.BUY, "C": TradeAction.NONE}))
-    print(a)
+# p = {"A": [TradeAction.BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.BUY,
+#            TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL, TradeAction.NONE,
+#            TradeAction.SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.NONE, TradeAction.SELL,
+#            TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.ACTIVELY_SELL,
+#            TradeAction.SELL, TradeAction.ACTIVELY_SELL, TradeAction.BUY, TradeAction.NONE, TradeAction.NONE,
+#            TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.ACTIVELY_BUY,
+#            TradeAction.ACTIVELY_BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.NONE],
+#      "B": [TradeAction.NONE, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.BUY,
+#            TradeAction.NONE, TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE,
+#            TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.NONE, TradeAction.BUY,
+#            TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.ACTIVELY_SELL,
+#            TradeAction.SELL, TradeAction.BUY, TradeAction.BUY, TradeAction.NONE, TradeAction.NONE,
+#            TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.ACTIVELY_BUY,
+#            TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE, TradeAction.BUY],
+#      "C": [TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.NONE,
+#            TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.BUY, TradeAction.NONE,
+#            TradeAction.NONE, TradeAction.BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.BUY,
+#            TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.NONE,
+#            TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.NONE,
+#            TradeAction.SELL, TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.NONE,
+#            TradeAction.NONE, TradeAction.ACTIVELY_SELL, TradeAction.SELL, TradeAction.NONE],
+#      "label": [TradeAction.NONE, TradeAction.SELL, TradeAction.NONE, TradeAction.NONE, TradeAction.BUY,
+#                TradeAction.ACTIVELY_BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.NONE,
+#                TradeAction.NONE, TradeAction.SELL, TradeAction.ACTIVELY_SELL, TradeAction.NONE, TradeAction.NONE,
+#                TradeAction.SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.ACTIVELY_BUY,
+#                TradeAction.SELL, TradeAction.SELL, TradeAction.NONE, TradeAction.BUY, TradeAction.NONE,
+#                TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.NONE, TradeAction.BUY,
+#                TradeAction.NONE, TradeAction.SELL, TradeAction.SELL, TradeAction.NONE]
+#      }
+#
+# df = pd.DataFrame(data=p)
+# aa = ["A", "B", "C"]
+# cum_bool = None
+# for a in aa:
+#     a_bool = df[a] != TradeAction.NONE
+#     if cum_bool is None:
+#         cum_bool = a_bool
+#     else:
+#         cum_bool = np.logical_or(cum_bool, a_bool)
+#
+#
+# df = df[cum_bool]
+#
+# tree = IndTree(data=df, indicators=["A", "B", "C"])
+# tree.print_tree()
+# for i in range(10):
+#     a = tree.get_trade_action(pd.Series(data={"A": TradeAction.BUY, "B": TradeAction.BUY, "C": TradeAction.NONE}))
+#     print(a)

@@ -8,7 +8,11 @@ from indicators.abstract_indicator import TradeAction
 from indicators.atr import ATR
 from trading.indicators_decision_tree.ind_tree import IndTree
 from trading.trade_algorithms.one_indicator_trade_algorithms.rsi_trade_algorithm import RSITradeAlgorithm
-from trading.trade_algorithms.indicators_summary_trade_algorithms.decision_tree_trade_algorithm import DecisionTreeTradeAlgorithm
+from trading.trade_algorithms.indicators_summary_trade_algorithms.decision_tree_trade_algorithm import \
+    DecisionTreeTradeAlgorithm
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import make_classification
 
 import cufflinks as cf
 from plotly.subplots import make_subplots
@@ -29,10 +33,30 @@ dates_test = pd.date_range(start_test, end_test)
 
 data = yf.download("XOM", start=start_date, end=end_date)
 
-dstree = DecisionTreeTradeAlgorithm()
-hyperparams = dstree.get_default_hyperparameters_grid()
-dstree.train(data=data, hyperparameters=hyperparams[0])
-dstree.plot()
+
+# df = pd.DataFrame(data={"Date": data.index})
+# df = df.set_index("Date")
+# df["A"] = data["Close"]
+# df["B"] = data[10:]["Open"]
+# print(df)
+# df = df.dropna()
+# print(df)
+df = pd.DataFrame()
+df["A"] = np.random.randint(1, 101, 1000)
+df["B"] = np.random.randint(1, 101, 1000)
+df["C"] = np.random.randint(1, 101, 1000)
+tr = TradeAction.get_elements_list()
+y = [str(tr[i]) for i in np.random.randint(0, 5, 1000)]
+
+clf = RandomForestClassifier(max_depth=2, random_state=0)
+clf.fit(df, y)
+p = clf.predict(pd.DataFrame({"A":[15],"B": [63],"C": [81]}))
+print(p)
+
+# dstree = DecisionTreeTradeAlgorithm()
+# hyperparams = dstree.get_default_hyperparameters_grid()
+# dstree.train(data=data, hyperparameters=hyperparams[0])
+# dstree.plot()
 
 # p = {"A": [TradeAction.BUY, TradeAction.NONE, TradeAction.NONE, TradeAction.SELL, TradeAction.BUY,
 #            TradeAction.NONE, TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL, TradeAction.NONE,

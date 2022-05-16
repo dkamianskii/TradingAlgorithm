@@ -34,7 +34,7 @@ class DecisionTreeTradeAlgorithmHyperparam(BaseEnum):
     BOLLINGER_BANDS_HYPERPARAMS = 5
     MA_SUPPORT_LEVELS_HYPERPARAMS = 6
     RISK_MANAGER_HYPERPARAMS = 7
-    DAYS_TO_KEEP_LIMIT = 8,
+    DAYS_TO_KEEP_LIMIT = 8
     ATR_PERIOD = 9
 
 
@@ -44,7 +44,7 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
     def __init__(self, indicators_permitted_to_vote: Optional[List[IndicatorPermittedToVote]] = None):
         super().__init__()
         self._risk_manager = RiskManager()
-        self.trade_points: Optional[pd.DataFrame] = None
+        # self.trade_points: Optional[pd.DataFrame] = None
         self._decision_tree: Optional[IndTree] = None
         self._indicators: List[AbstractIndicator] = []
         self._indicators_trade_points: Dict[str, pd.DataFrame] = {}
@@ -140,7 +140,7 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
                                                                        bollinger_bands_K=1.5)]
 
     def __clear_vars(self):
-        self.trade_points = pd.DataFrame(columns=TradePointColumn.get_elements_list()).set_index(TradePointColumn.DATE)
+        # self.trade_points = pd.DataFrame(columns=TradePointColumn.get_elements_list()).set_index(TradePointColumn.DATE)
         self._indicators_trade_points = {}
         self._dataframe = pd.DataFrame()
         for indicator in self._indicators:
@@ -185,7 +185,7 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
         self._dataframe = self._dataframe[not_all_none]
 
     def __evaluate_right_action(self, start_point: pd.Series, start_index: int, atr: float) -> (
-    TradeAction, float, float, pd.Timestamp):
+            TradeAction, float, float, pd.Timestamp):
         """
         return trade action, take profit, stop loss, exit date
         """

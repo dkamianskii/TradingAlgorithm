@@ -202,12 +202,7 @@ class IndicatorsVotingTradeAlgorithm(AbstractTradeAlgorithm):
         final_action = TradeAction.NONE
         if (buy_dir / len(self._indicators) >= self._qualification_barrier) or (
                 sell_dir / len(self._indicators) >= self._qualification_barrier):
-            if (poll_results[TradeAction.NONE] >= buy_dir) and (poll_results[TradeAction.NONE] >= sell_dir):
-                if buy_dir == 0:
-                    final_action = TradeAction.SELL
-                elif sell_dir == 0:
-                    final_action = TradeAction.BUY
-            elif buy_dir > sell_dir:
+            if buy_dir > sell_dir:
                 final_action = TradeAction.BUY
             elif sell_dir > buy_dir:
                 final_action = TradeAction.SELL

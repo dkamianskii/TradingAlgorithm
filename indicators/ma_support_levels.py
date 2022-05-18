@@ -140,7 +140,7 @@ class MASupportLevels(AbstractIndicator):
             self.MAs[period] = pd.DataFrame(data=MA_data, index=self.data.index)
         return self
 
-    def test_MAs_for_data(self, days_for_bounce: int = 4) -> List:
+    def test_MAs_for_data(self, days_for_bounce: int = 3) -> List:
         """
         Tests provided MAs for price response to crossing support/resistance borders
         and saves MAs that got more than 50% positive response (price bounce) to those cross points

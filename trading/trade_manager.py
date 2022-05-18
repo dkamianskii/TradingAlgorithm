@@ -56,6 +56,7 @@ class TradeManager:
          - save information about profitability of made deals and current finance assets
         """
         self.portfolio: pd.DataFrame = pd.DataFrame(columns=PortfolioColumn.get_elements_list())
+        self._last_bid_index: int = 0
         self.portfolio[PortfolioColumn.DATE] = pd.to_datetime(self.portfolio[PortfolioColumn.DATE])
         self._tracked_stocks: Dict[str, Dict] = {}
         self._train_results: Dict[str, Dict[str, pd.DataFrame]] = {}
@@ -103,6 +104,7 @@ class TradeManager:
 
     def clear_history(self):
         self.portfolio = pd.DataFrame(columns=PortfolioColumn.get_elements_list())
+        self._last_bid_index = 0
         self.portfolio[PortfolioColumn.DATE] = pd.to_datetime(self.portfolio[PortfolioColumn.DATE])
         self._statistics_manager.clear_history()
         self._risk_manager.reset_money()
@@ -112,6 +114,7 @@ class TradeManager:
     def clear_tracked_stocks_list(self):
         self._tracked_stocks = {}
         self._statistics_manager = TradeStatisticsManager()
+        self.clear_history()
 
     def set_manager_params(self, days_to_keep_limit: int = 14,
                            days_to_chill: int = 4,
@@ -186,14 +189,15 @@ class TradeManager:
             stop_loss_lvl, take_profit_lvl = self._risk_manager.evaluate_stop_loss_and_take_profit(new_point, action,
                                                                                                    curr_atr)
         self._risk_manager.set_money_for_bid(new_point["Close"] * amount)
-        self.portfolio.loc[self.portfolio.shape[0]] = {PortfolioColumn.STOCK_NAME: stock_name,
-                                                       PortfolioColumn.PRICE: new_point["Close"],
-                                                       PortfolioColumn.TYPE: bid_type,
-                                                       PortfolioColumn.TRADE_ACTION: action,
-                                                       PortfolioColumn.AMOUNT: amount,
-                                                       PortfolioColumn.TAKE_PROFIT_LEVEL: take_profit_lvl,
-                                                       PortfolioColumn.STOP_LOSS_LEVEL: stop_loss_lvl,
-                                                       PortfolioColumn.DATE: date}
+        self.portfolio.loc[self._last_bid_index] = {PortfolioColumn.STOCK_NAME: stock_name,
+                                                    PortfolioColumn.PRICE: new_point["Close"],
+                                                    PortfolioColumn.TYPE: bid_type,
+                                                    PortfolioColumn.TRADE_ACTION: action,
+                                                    PortfolioColumn.AMOUNT: amount,
+                                                    PortfolioColumn.TAKE_PROFIT_LEVEL: take_profit_lvl,
+                                                    PortfolioColumn.STOP_LOSS_LEVEL: stop_loss_lvl,
+                                                    PortfolioColumn.DATE: date}
+        self._last_bid_index += 1
         self._statistics_manager.open_bid(stock_name, date, new_point["Close"], bid_type, take_profit_lvl,
                                           stop_loss_lvl, amount, action, prolongation)
 
@@ -220,10 +224,11 @@ class TradeManager:
                                     prolongation=True,
                                     forced_stop_loss_lvl=(new_point["Close"] + asset[PortfolioColumn.PRICE]) / 2)
 
-    def __manage_portfolio_assets(self, stock_name: str, assets_in_portfolio: pd.DataFrame,
-                                  new_point: pd.Series, date: pd.Timestamp, new_action: TradeAction):
+    def __manage_portfolio_assets(self, stock_name: str, new_point: pd.Series,
+                                  date: pd.Timestamp, new_action: TradeAction):
         indexes_to_drop = []
         assets_for_prolongation = []
+        assets_in_portfolio = self.portfolio[self.portfolio[PortfolioColumn.STOCK_NAME] == stock_name]
         for index, asset in assets_in_portfolio.iterrows():
             close_flag = False
             price_diff = 0
@@ -268,7 +273,6 @@ class TradeManager:
         if len(indexes_to_drop) > 0:
             self.__prolongation(assets_for_prolongation, new_point, date)
             self.portfolio.drop(labels=indexes_to_drop, inplace=True)
-            assets_in_portfolio.drop(labels=indexes_to_drop, inplace=True)
         else:
             self._statistics_manager.add_earnings(stock_name, 0, date)
 
@@ -278,7 +282,6 @@ class TradeManager:
                            add_point_to_the_data: bool = True):
         date = pd.Timestamp(ts_input=date)
 
-        assets_in_portfolio = self.portfolio[self.portfolio[PortfolioColumn.STOCK_NAME] == stock_name]
         stock = self._tracked_stocks[stock_name]
 
         atr = ATR_one_point(stock[TrackedStocksColumn.ATR][-1],
@@ -287,19 +290,21 @@ class TradeManager:
                             self._atr_period)
         self._tracked_stocks[stock_name][TrackedStocksColumn.ATR].loc[date] = atr
         action = stock[TrackedStocksColumn.TRADE_ALGORITHM].evaluate_new_point(new_point, date)
-        self.__manage_portfolio_assets(stock_name, assets_in_portfolio, new_point, date, action)
+        self.__manage_portfolio_assets(stock_name, new_point, date, action)
         if action != TradeAction.NONE:
             if (action == TradeAction.BUY) or (action == TradeAction.ACTIVELY_BUY):
                 bid_type = BidType.LONG
             else:
                 bid_type = BidType.SHORT
 
+            assets_in_portfolio = self.portfolio[self.portfolio[PortfolioColumn.STOCK_NAME] == stock_name]
             last_bid_date = assets_in_portfolio[assets_in_portfolio[PortfolioColumn.TYPE] == bid_type][
                 PortfolioColumn.DATE].max()
             if not ((last_bid_date is not pd.NaT) and (date - last_bid_date <= self._days_to_chill)):
                 amount = self._risk_manager.evaluate_shares_amount_to_bid(new_point["Close"])
                 if amount == 0:
-                    print(f"Not enough money to purchase {stock_name} at {date} by price {new_point['Close']}")
+                    pass
+                    # print(f"Not enough money to purchase {stock_name} at {date} by price {new_point['Close']}")
                 else:
                     self.__add_to_portfolio(stock_name, new_point, date, amount, action, bid_type, prolongation=False)
         if add_point_to_the_data:

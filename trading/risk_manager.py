@@ -66,7 +66,7 @@ class RiskManager:
         self._use_atr: bool = use_atr
 
     def reset_money(self):
-        self.available_money = self.start_capital
+        self.account_money = self.start_capital
         self.available_money = self.start_capital
 
     def set_manager_params_dict(self, params_dict):
@@ -126,6 +126,8 @@ class RiskManager:
             money_to_risk = self.account_money * self._equity_risk_rate
             if self.available_money > money_to_risk:
                 shares_to_buy = np.floor(money_to_risk / price)
+            else:
+                shares_to_buy = np.floor(self.available_money / price)
         else:
             shares_to_buy = np.floor(self._money_for_a_bid / price)
         return shares_to_buy

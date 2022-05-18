@@ -224,14 +224,15 @@ class SuperTrend(AbstractIndicator):
                             name="Price")
 
         selected_trade_points = self.select_action_trade_points(start_date=start_date, end_date=end_date)
+        bool_actives = selected_trade_points[TradePointColumn.ACTION].isin(self.active_actions)
 
         fig.add_trace(go.Scatter(x=selected_trade_points.index,
                                  y=selected_trade_points[TradePointColumn.PRICE],
                                  mode="markers",
-                                 marker=dict(color=np.where(selected_trade_points[TradePointColumn.ACTION] == TradeAction.BUY,
+                                 marker=dict(color=np.where(selected_trade_points[TradePointColumn.ACTION] == TradeAction.ACTIVELY_BUY,
                                                             "green", "red"),
-                                             size=7,
-                                             symbol=np.where(selected_trade_points[TradePointColumn.ACTION] == TradeAction.BUY,
+                                             size=np.where(bool_actives, 15, 10),
+                                             symbol=np.where(selected_trade_points[TradePointColumn.ACTION] == TradeAction.ACTIVELY_BUY,
                                                              "triangle-up", "triangle-down")),
                                  name="Action points"))
 

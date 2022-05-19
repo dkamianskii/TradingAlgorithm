@@ -198,6 +198,7 @@ class RandomForestTradeAlgorithm(AbstractTradeAlgorithm):
         return right_action
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
+        # print(f"Start train with hyperparameters {hyperparameters}")
         super().train(data, hyperparameters)
         self._risk_manager.set_manager_params(
             bid_risk_rate=hyperparameters[RandomForestTradeAlgorithmHyperparam.RISK_MANAGER_HYPERPARAMS][
@@ -235,11 +236,15 @@ class RandomForestTradeAlgorithm(AbstractTradeAlgorithm):
         for indicator in self._indicators:
             indicator.calculate(self.data)
 
+        # print("finished indicators calculation")
+
         self.__create_train_dataset()
+        # print("created dataset")
         grid_search_cross_val = GridSearchCV(estimator=RandomForestClassifier(),
                                              param_grid=RandomForestTradeAlgorithm.random_forest_grid,
                                              cv=5)
         grid_search_cross_val.fit(self._dataframe, self._trade_actions_train)
+        # print("cross validation finished")
         self._best_score = grid_search_cross_val.best_score_
         self._best_params = grid_search_cross_val.best_params_
         self._random_forest_cls = RandomForestClassifier(n_estimators=self._best_params['n_estimators'],

@@ -33,6 +33,8 @@ dates_test = pd.date_range(start_test, end_test)
 
 data = yf.download("XOM", start=start_date, end=end_date)
 
+e = (0, 1, 4)
+print(e[0])
 
 # df = pd.DataFrame(data={"Date": data.index})
 # df = df.set_index("Date")
@@ -41,17 +43,17 @@ data = yf.download("XOM", start=start_date, end=end_date)
 # print(df)
 # df = df.dropna()
 # print(df)
-df = pd.DataFrame()
-df["A"] = np.random.randint(1, 101, 1000)
-df["B"] = np.random.randint(1, 101, 1000)
-df["C"] = np.random.randint(1, 101, 1000)
-tr = TradeAction.get_elements_list()
-y = [str(tr[i]) for i in np.random.randint(0, 5, 1000)]
-
-clf = RandomForestClassifier(max_depth=2, random_state=0)
-clf.fit(df, y)
-p = clf.predict(pd.DataFrame({"A":[15],"B": [63],"C": [81]}))
-print(p)
+# df = pd.DataFrame()
+# df["A"] = np.random.randint(1, 101, 1000)
+# df["B"] = np.random.randint(1, 101, 1000)
+# df["C"] = np.random.randint(1, 101, 1000)
+# tr = TradeAction.get_elements_list()
+# y = [str(tr[i]) for i in np.random.randint(0, 5, 1000)]
+#
+# clf = RandomForestClassifier(max_depth=2, random_state=0)
+# clf.fit(df, y)
+# p = clf.predict(pd.DataFrame({"A":[15],"B": [63],"C": [81]}))
+# print(p)
 
 # dstree = DecisionTreeTradeAlgorithm()
 # hyperparams = dstree.get_default_hyperparameters_grid()

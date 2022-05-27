@@ -32,14 +32,11 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
         self._prediction_period: int = 0
         self._take_action_barrier: float = 0
         self._active_action_multiplier: float = 0
-        self._test_size: int = 0
+        self._test_period_size: int = 0
 
         self._use_refit: bool = False
         self._fit_size: int = 0
         self._refit_add_size: int = 0
-
-        self._train_data: Optional[pd.DataFrame] = None
-        self._test_data: Optional[pd.DataFrame] = None
 
         self._model: Optional[ARIMA] = None
         self.best_model_order: Optional[Set] = None
@@ -95,20 +92,20 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
         self._use_refit = hyperparameters[ARIMATradeAlgorithmHyperparam.USE_REFIT]
         self._fit_size = hyperparameters[ARIMATradeAlgorithmHyperparam.FIT_SIZE]
         self._refit_add_size = hyperparameters[ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE]
-        self._test_size = hyperparameters[ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE]
+        self._test_period_size = hyperparameters[ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE]
 
-        self._train_data = self.data[:-self._test_size]
-        self._test_data = self.data[-self._test_size:]
+        train_data = self.data[:-self._test_period_size]
+        test_data = self.data[-self._test_period_size:]
 
         if self._use_refit:
-            self._train_data = self.data[-self._fit_size:]
+            train_data = self.data[-self._fit_size:]
 
-        train_closes = self._train_data["Close"]
+        train_closes = train_data["Close"]
         self._model: ARIMA = auto_arima(y=train_closes, start_p=6, start_q=6, max_p=10, max_q=10,
                                         seasonal=False, max_order=21, max_d=1, error_action="ignore")
         self.best_model_order = self._model.order
 
-        test_closes = self._test_data["Close"]
+        test_closes = test_data["Close"]
         cum_sum = 0
         cur_close = train_closes[-1]
         for close in test_closes:
@@ -117,7 +114,7 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
             cum_sum += abs_relative_diff
             cur_close = close
             self._model.update(y=[close])
-        self.mean_absolute_prediction_error = cum_sum / self._test_size
+        self.mean_absolute_prediction_error = cum_sum / self._test_period_size
 
         if self._use_refit:
             self._model.fit(y=self.data["Close"][-self._fit_size:])
@@ -130,12 +127,12 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
             self.predictions.append(prediction)
 
     def __refit_model(self):
-        train_closes = self.data[-(self._fit_size + self._test_size):-self._test_size]["Close"]
-        test_closes = self.data[-self._test_size:]["Close"]
+        train_closes = self.data[-(self._fit_size + self._test_period_size):-self._test_period_size]["Close"]
+        test_closes = self.data[-self._test_period_size:]["Close"]
 
         self._model: ARIMA = auto_arima(y=train_closes, start_p=6, start_q=6, max_p=10, max_q=10,
                                         seasonal=False, max_order=21, max_d=1, error_action="ignore")
-        self.best_model_order = self._model.order 
+        self.best_model_order = self._model.order
 
         cum_sum = 0
         cur_close = train_closes[-1]
@@ -145,7 +142,7 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
             cum_sum += abs_relative_diff
             cur_close = close
             self._model.update(y=[close])
-        self.mean_absolute_prediction_error = cum_sum / self._test_size
+        self.mean_absolute_prediction_error = cum_sum / self._test_period_size
         self._model.fit(y=self.data["Close"][-self._fit_size:])
 
     def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp],
@@ -194,10 +191,10 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
         self.refit_points.loc[date] = {"price": price}
 
     def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
-        start_index = self._last_train_date_index - self._test_size
+        start_index = self._last_train_date_index - self._test_period_size
         selected_data = self.data[start_index:]
         if self._use_refit:
-            selected_predictions = self.predictions[(self._fit_size - self._test_size):-self._prediction_period]
+            selected_predictions = self.predictions[(self._fit_size - self._test_period_size):-self._prediction_period]
         else:
             selected_predictions = self.predictions[start_index:-self._prediction_period]
 

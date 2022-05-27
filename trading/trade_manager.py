@@ -335,6 +335,7 @@ class TradeManager:
             best_params = None
             max_earnings = None
             for params in params_grid:
+                params["DATA_NAME"] = stock_name
                 algorithm.train(train_data, params)
                 for date, point in test_data.iterrows():
                     self.evaluate_new_point(stock_name, point, date, False)

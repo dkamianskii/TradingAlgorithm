@@ -40,26 +40,14 @@ data = yf.download("WMT", start=start_date, end=end_date)
 train_data = data.loc[:start_test]
 test_data = data[start_test:]
 
-m = LSTMTradeAlgorithm()
-h = LSTMTradeAlgorithm.create_hyperparameters_dict()
+m = FFNTradeAlgorithm()
+h = FFNTradeAlgorithm.create_hyperparameters_dict()
 h["DATA_NAME"] = "TEST"
 m.train(train_data, hyperparameters=h)
 for date, point in test_data.iterrows():
     m.evaluate_new_point(point, date)
 m.plot(show_full=True)
 
-data = yf.download("AAPL", start=start_date, end=end_date)
 
-
-train_data = data.loc[:start_test]
-test_data = data[start_test:]
-
-m = LSTMTradeAlgorithm()
-h = LSTMTradeAlgorithm.create_hyperparameters_dict()
-h["DATA_NAME"] = "TEST"
-m.train(train_data, hyperparameters=h)
-for date, point in test_data.iterrows():
-    m.evaluate_new_point(point, date)
-m.plot(show_full=True)
 
 

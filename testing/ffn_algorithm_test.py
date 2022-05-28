@@ -59,6 +59,9 @@ for date in dates_test:
 print(manager.get_trade_results())
 # print(manager.get_bids_history())
 manager.plot_earnings_curve()
-manager.plot_stock_history("WMT", plot_algorithm_graph=True)
-manager.plot_stock_history("JPM", plot_algorithm_graph=True)
-manager.plot_stock_history("XOM", plot_algorithm_graph=True)
+for company in companies_names:
+    manager.plot_stock_history(company, plot_algorithm_graph=True)
+    manager.plot_stock_history(company, plot_algorithm_graph=True, plot_algorithm_graph_full=True)
+# manager.plot_stock_history("WMT", plot_algorithm_graph=True)
+# manager.plot_stock_history("JPM", plot_algorithm_graph=True)
+# manager.plot_stock_history("XOM", plot_algorithm_graph=True)

@@ -454,7 +454,8 @@ class TradeManager:
             xaxis_title="Date",
             yaxis_title="Price")
 
-        fig.show()
+        # fig.show()
+        fig.write_image(f"../images/{stock_name}_trading.png", scale=1, width=1400, height=900)
 
     def plot_earnings_curve(self, stock_name: Optional[str] = None):
         if stock_name is None:
@@ -476,4 +477,5 @@ class TradeManager:
                           xaxis_title="Date",
                           yaxis_title="Total Profit")
 
-        fig.show()
+        # fig.show()
+        fig.write_image(f"../images/{name}.png", scale=1, width=1400, height=900)

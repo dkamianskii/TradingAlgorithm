@@ -21,7 +21,7 @@ cf.go_offline()
 class TradeManager:
 
     def __init__(self, days_to_keep_limit: int = 14,
-                 days_to_chill: int = 4,
+                 days_to_chill: int = 5,
                  use_limited_money: bool = False,
                  money_for_a_bid: float = 10000,
                  start_capital: float = 0,
@@ -102,6 +102,14 @@ class TradeManager:
                 "account money": self._risk_manager.account_money,
                 "available money": self._risk_manager.available_money}
 
+    def get_sharpe_ratio(self):
+        earnings_history = self._statistics_manager.get_earnings_history()
+        return self._risk_manager.evaluate_sharpe_ratio(earnings_history)
+
+    def get_sortino_ratio(self):
+        earnings_history = self._statistics_manager.get_earnings_history()
+        return self._risk_manager.evaluate_sortino_ratio(earnings_history)
+
     def clear_history(self):
         self.portfolio = pd.DataFrame(columns=PortfolioColumn.get_elements_list())
         self._last_bid_index = 0
@@ -117,7 +125,7 @@ class TradeManager:
         self.clear_history()
 
     def set_manager_params(self, days_to_keep_limit: int = 14,
-                           days_to_chill: int = 4,
+                           days_to_chill: int = 5,
                            use_limited_money: bool = False,
                            money_for_a_bid: float = 10000,
                            start_capital: float = 0,

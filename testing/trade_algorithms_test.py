@@ -59,9 +59,10 @@ for indicator_trade_algorithm in one_indicator_trade_algorithms:
 
     print(manager.get_equity_info())
     print(manager.get_trade_results())
-    print(manager.get_bids_history())
     manager.plot_earnings_curve()
-    # manager_1.plot_stock_history("WMT")
-    # manager_1.plot_stock_history("JPM")
-    manager.plot_stock_history("WMT", plot_algorithm_graph=True)
+    print(manager.get_sharpe_ratio())
+    print(manager.get_sortino_ratio())
+    # manager.plot_stock_history("WMT", plot_algorithm_graph=True)
+    # manager.plot_stock_history("JPM", plot_algorithm_graph=True)
+    # manager.plot_stock_history("WMT", plot_algorithm_graph=True)
 

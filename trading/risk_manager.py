@@ -5,6 +5,7 @@ import pandas as pd
 
 from helping.base_enum import BaseEnum
 from indicators.abstract_indicator import TradeAction
+from trading.trade_statistics_manager_enums import EarningsHistoryColumn
 
 
 class RiskManagerHyperparam(BaseEnum):
@@ -19,6 +20,7 @@ class RiskManagerHyperparam(BaseEnum):
 
 
 class RiskManager:
+    risk_free_rate = 0.0154
 
     def __init__(self,
                  use_limited_money: bool = False,
@@ -131,3 +133,24 @@ class RiskManager:
         else:
             shares_to_buy = np.floor(self._money_for_a_bid / price)
         return shares_to_buy
+
+    def evaluate_sharpe_ratio(self, earnings_history: pd.DataFrame) -> float:
+        return_of_portfolio = (self.account_money - self.start_capital) / self.start_capital
+        gain = return_of_portfolio - RiskManager.risk_free_rate
+        std_of_excess = earnings_history[EarningsHistoryColumn.VALUE].std()
+        if gain >= 0:
+            sharpe_ratio = gain / std_of_excess
+        else:
+            sharpe_ratio = gain * std_of_excess
+        return sharpe_ratio
+
+    def evaluate_sortino_ratio(self, earnings_history: pd.DataFrame) -> float:
+        return_of_portfolio = (self.account_money - self.start_capital) / self.start_capital
+        downsides = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] < 0]
+        std_of_downside = downsides[EarningsHistoryColumn.VALUE].std()
+        gain = return_of_portfolio - RiskManager.risk_free_rate
+        if gain >= 0:
+            sortino_ratio = gain / std_of_downside
+        else:
+            sortino_ratio = gain * std_of_downside
+        return sortino_ratio

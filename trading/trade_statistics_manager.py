@@ -45,7 +45,7 @@ class TradeStatisticsManager:  # todo Sharpe Ratio, Sortino Ratio
 
     def get_earnings_history(self, stock_name: Optional[str] = None) -> pd.DataFrame:
         if stock_name is None:
-            return self.earnings_history[str(EarningsHistoryColumn.TOTAL)]
+            return self.earnings_history[EarningsHistoryColumn.TOTAL.name]
         return self.earnings_history[stock_name]
 
     def clear_history(self):

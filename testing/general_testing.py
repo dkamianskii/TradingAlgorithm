@@ -12,6 +12,7 @@ from trading.trade_algorithms.one_indicator_trade_algorithms.rsi_trade_algorithm
 from trading.trade_algorithms.indicators_summary_trade_algorithms.decision_tree_trade_algorithm import \
     DecisionTreeTradeAlgorithm
 from trading.trade_algorithms.predictive_trade_algorithms.ffn_trade_algorithm import ModelGridColumns, FFNTradeAlgorithm
+from trading.trade_algorithms.predictive_trade_algorithms.lstm_trade_algorithm import LSTMTradeAlgorithm
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import make_classification
@@ -26,24 +27,39 @@ from helping.base_enum import BaseEnum
 
 cf.go_offline()
 
-start_date = "2000-01-01"
+start_date = "2008-01-01"
 end_date = "2021-12-31"
-test_start_date = "2020-01-03"
+test_start_date = "2019-01-01"
 back_test_start_date = "2019-01-01"
 test_start_date_ts = pd.Timestamp(ts_input=test_start_date)
 start_test = datetime.strptime(test_start_date, "%Y-%m-%d")
 
-data = yf.download("XOM", start=start_date, end=end_date)
+data = yf.download("WMT", start=start_date, end=end_date)
+
 
 train_data = data.loc[:start_test]
 test_data = data[start_test:]
 
-m = FFNTradeAlgorithm()
-h = FFNTradeAlgorithm.create_hyperparameters_dict()
+m = LSTMTradeAlgorithm()
+h = LSTMTradeAlgorithm.create_hyperparameters_dict()
 h["DATA_NAME"] = "TEST"
 m.train(train_data, hyperparameters=h)
 for date, point in test_data.iterrows():
     m.evaluate_new_point(point, date)
-m.plot()
+m.plot(show_full=True)
+
+data = yf.download("AAPL", start=start_date, end=end_date)
+
+
+train_data = data.loc[:start_test]
+test_data = data[start_test:]
+
+m = LSTMTradeAlgorithm()
+h = LSTMTradeAlgorithm.create_hyperparameters_dict()
+h["DATA_NAME"] = "TEST"
+m.train(train_data, hyperparameters=h)
+for date, point in test_data.iterrows():
+    m.evaluate_new_point(point, date)
+m.plot(show_full=True)
 
 

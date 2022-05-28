@@ -334,8 +334,10 @@ class TradeManager:
 
             best_params = None
             max_earnings = None
+            print(f"Train for {stock_name}")
             for params in params_grid:
                 params["DATA_NAME"] = stock_name
+                print(params)
                 algorithm.train(train_data, params)
                 for date, point in test_data.iterrows():
                     self.evaluate_new_point(stock_name, point, date, False)
@@ -345,7 +347,6 @@ class TradeManager:
                 if (max_earnings is None) or (earnings > max_earnings):
                     max_earnings = earnings
                     best_params = params
-
                 if plot_test:
                     algorithm.plot(test_start_date, test_end_date)
                 self.clear_history()
@@ -357,7 +358,8 @@ class TradeManager:
     def plot_stock_history(self,
                            stock_name: str,
                            show_full_stock_history: bool = False,
-                           plot_algorithm_graph: bool = False):
+                           plot_algorithm_graph: bool = False,
+                           plot_algorithm_graph_full: bool = False):
         bids_history = self._statistics_manager.get_bids_history(stock_name)
         stock = self._tracked_stocks[stock_name]
         color_map: Dict[BidResult, str] = {BidResult.WIN: "green",
@@ -393,7 +395,7 @@ class TradeManager:
 
         trading_start_date: pd.Timestamp = stock[TrackedStocksColumn.TRADING_START_DATE]
         if plot_algorithm_graph:
-            stock[TrackedStocksColumn.TRADE_ALGORITHM].plot(trading_start_date)
+            stock[TrackedStocksColumn.TRADE_ALGORITHM].plot(trading_start_date, plot_algorithm_graph_full)
         if show_full_stock_history:
             stock_data: pd.DataFrame = stock[TrackedStocksColumn.DATA]
             fig.add_vline(x=trading_start_date, line_width=3, line_dash="dash", line_color="red",

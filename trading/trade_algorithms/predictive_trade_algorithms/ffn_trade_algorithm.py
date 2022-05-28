@@ -6,6 +6,7 @@ import json
 from os.path import exists
 import random
 
+from keras.callbacks import EarlyStopping
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_absolute_error
 
@@ -54,12 +55,12 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
     min_max_window = 10
 
     model_grid = {ModelGridColumns.LEARNING_RATE: [0.1, 0.01, 0.001, 0.0001],
-                  ModelGridColumns.RANDOM_SEED: [42, 766, 5555],
+                  ModelGridColumns.RANDOM_SEED: [42, 766, 1144, 5555],
                   ModelGridColumns.LAYER_1: [1, 1.25, 1.5, 1.75, 2, 2.25, 2.5],
                   ModelGridColumns.NUM_OF_ADD_LAYERS: [0, 1, 2],
                   ModelGridColumns.LAYER_2: [0.5, 1, 1.25, 1.5],
                   ModelGridColumns.LAYER_3: [.33, 0.5, 0.66, 1]}
-    random_grid_search_attempts = 30
+    random_grid_search_attempts = 20
     batch_size = 100
     epochs = 500
 
@@ -153,6 +154,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         input_shape = self._dataframe.shape[1] - 1
         model_grid = FFNTradeAlgorithm.model_grid
         bias_initializer = Zeros()
+        es = EarlyStopping(min_delta=1e-8, patience=15, verbose=0)
         best_model: Optional[Sequential] = None
         best_model_params: Optional[Dict] = None
         best_val_loss = 0
@@ -192,23 +194,23 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
                 model.add(Dense(layer_1_n, input_shape=(input_shape,), activation="relu",
                                 kernel_initializer=weight_initializer,
                                 bias_initializer=bias_initializer,
-                                kernel_regularizer=L2(1e-5), bias_regularizer=L2(1e-4)))
+                                kernel_regularizer=L2(1e-4), bias_regularizer=L2(1e-4)))
                 if num_of_add_layers >= 1:
                     model.add(Dense(layer_2_n, activation="relu", kernel_initializer=weight_initializer,
-                                    bias_initializer=bias_initializer, kernel_regularizer=L2(1e-5),
+                                    bias_initializer=bias_initializer, kernel_regularizer=L2(1e-4),
                                     bias_regularizer=L2(1e-4)))
                     if num_of_add_layers == 2:
                         model.add(Dense(layer_3_n, activation="relu", kernel_initializer=weight_initializer,
-                                        bias_initializer=bias_initializer, kernel_regularizer=L2(1e-5),
+                                        bias_initializer=bias_initializer, kernel_regularizer=L2(1e-4),
                                         bias_regularizer=L2(1e-4)))
                 model.add(Dense(1, kernel_initializer=weight_initializer,
-                                bias_initializer=bias_initializer, kernel_regularizer=L2(1e-5),
+                                bias_initializer=bias_initializer, kernel_regularizer=L2(1e-4),
                                 bias_regularizer=L2(1e-4)))
                 model.compile(optimizer=optimizer, loss=MeanSquaredError(),
                               metrics=["mse", "mae"])
                 history = model.fit(x=x_train, y=y_train, epochs=FFNTradeAlgorithm.epochs,
                                     batch_size=FFNTradeAlgorithm.batch_size, shuffle=False,
-                                    validation_split=0.075, verbose=0)
+                                    validation_split=0.15, callbacks=[es], verbose=0)
                 model_loss = history.history['val_mse'][-1]
 
                 print(f"MSE = {history.history['mse'][-1]} Val MSE ={model_loss}")
@@ -219,7 +221,6 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
 
         self._model = best_model
         self._model_params = best_model_params
-        print(f"Best val mse = {best_val_loss}")
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
         super().train(data, hyperparameters)
@@ -264,8 +265,10 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         x = self._dataframe.drop(f"target t + {self._prediction_period}", axis=1)
         x = self._input_scaler.transform(x)
         y = self._dataframe[f"target t + {self._prediction_period}"]
-        self._model.fit(x=x, y=y, epochs=FFNTradeAlgorithm.epochs,
-                        batch_size=FFNTradeAlgorithm.batch_size, shuffle=False, verbose=0)
+        es = EarlyStopping(min_delta=1e-8, patience=10, verbose=0)
+        history = self._model.fit(x=x, y=y, epochs=FFNTradeAlgorithm.epochs, batch_size=FFNTradeAlgorithm.batch_size,
+                                  validation_split=0.15, shuffle=False, callbacks=[es], verbose=0)
+        print(f"Loss of best model {history.history['val_mse'][-1]}")
         self.__save_model()
 
         print(self._model.weights[0][0])
@@ -292,9 +295,11 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
 
         for min_max_period in FFNTradeAlgorithm.min_max_periods:
             new_point_dict[f"Max Close t - {min_max_period}"] = \
-                self.data[-(min_max_period + FFNTradeAlgorithm.min_max_window + index - 1):-min_max_period]["Close"].max()
+                self.data[-(min_max_period + FFNTradeAlgorithm.min_max_window + index - 1):-min_max_period][
+                    "Close"].max()
             new_point_dict[f"Min Close t - {min_max_period}"] = \
-                self.data[-(min_max_period + FFNTradeAlgorithm.min_max_window + index - 1):-min_max_period]["Close"].min()
+                self.data[-(min_max_period + FFNTradeAlgorithm.min_max_window + index - 1):-min_max_period][
+                    "Close"].min()
 
         new_point_dataframe = pd.DataFrame([new_point_dict])
         new_point_scaled = self._input_scaler.transform(new_point_dataframe)
@@ -331,21 +336,38 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
     def __add_trade_point(self, date: Union[pd.Timestamp, Hashable], price: float, action: TradeAction):
         self.trade_points.loc[date] = {TradePointColumn.PRICE: price, TradePointColumn.ACTION: action}
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None,
+             show_full: bool = False):
         intend = FFNTradeAlgorithm.min_max_periods[-1] + FFNTradeAlgorithm.min_max_window + self._prediction_period - 1
         selected_data = self.data[intend:]
         selected_predictions = self.predictions[:-self._prediction_period - 1]
-        watch_intend = selected_data.shape[0] - 600
-        selected_data = selected_data[watch_intend:]
-        selected_predictions = selected_predictions[watch_intend:]
+        if not show_full:
+            watch_intend = selected_data.shape[0] - 600
+            selected_data = selected_data[watch_intend:]
+            selected_predictions = selected_predictions[watch_intend:]
 
         fig = go.Figure()
+
+        title = f"FFN model with params LR={self._model_params[ModelGridColumns.LEARNING_RATE.name]}, L1={self._model_params[ModelGridColumns.LAYER_1.name]}"
+        if self._model_params[ModelGridColumns.NUM_OF_ADD_LAYERS.name] > 0:
+            title += f", L2={self._model_params[ModelGridColumns.LAYER_2.name]}"
+            if self._model_params[ModelGridColumns.NUM_OF_ADD_LAYERS.name] == 2:
+                title += f", L2={self._model_params[ModelGridColumns.LAYER_3.name]}"
+        fig.update_layout(
+            title=title,
+            xaxis_title="Date")
 
         fig.add_trace(go.Scatter(x=selected_data.index, y=selected_data["Close"], mode='lines',
                                  line=dict(width=2, color="blue"), name="Real close price"))
 
         fig.add_trace(go.Scatter(x=selected_data.index, y=selected_predictions, mode='lines',
                                  line=dict(width=2, color="orange"), name="Predicted close price"))
+
+        d_max, d_min = selected_data["Close"].max(), selected_data["Close"].min()
+        fig.add_trace(go.Scatter(x=[self._last_train_date, self._last_train_date], y=[d_max, d_min], mode='lines',
+                                 line=dict(width=1, dash="dash", color="red"), name="Start of trading"))
+
+        fig.show()
 
         buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
         active_actions = [TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL]
@@ -363,7 +385,8 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
 
         trade_point_index = 0
         for i in range(0, selected_data.shape[0]):
-            if (trade_point_index == self.trade_points.shape[0]) or (i + self._prediction_period == len(selected_predictions)):
+            if (trade_point_index == self.trade_points.shape[0]) or (
+                    i + self._prediction_period == len(selected_predictions)):
                 break
             if selected_data.index[i] == self.trade_points.index[trade_point_index]:
                 prediction = selected_predictions[i + self._prediction_period]
@@ -375,20 +398,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
                     color = "red"
                 fig.add_trace(go.Scatter(x=[self.trade_points.index[trade_point_index], prediction_date],
                                          y=[trade_point[TradePointColumn.PRICE], prediction], mode='lines',
-                                         line=dict(width=3, color=color), showlegend=False))
+                                         line=dict(width=1, color=color), showlegend=False))
                 trade_point_index += 1
-
-        d_max, d_min = selected_data["Close"].max(), selected_data["Close"].min()
-        fig.add_trace(go.Scatter(x=[self._last_train_date, self._last_train_date], y=[d_max, d_min], mode='lines',
-                                 line=dict(width=1, dash="dash", color="red"), name="Start of trading"))
-
-        title = f"FFN model with params LR={self._model_params[ModelGridColumns.LEARNING_RATE.name]}, L1={self._model_params[ModelGridColumns.LAYER_1.name]}"
-        if self._model_params[ModelGridColumns.NUM_OF_ADD_LAYERS.name] > 0:
-            title += f", L2={self._model_params[ModelGridColumns.LAYER_2.name]}"
-            if self._model_params[ModelGridColumns.NUM_OF_ADD_LAYERS.name] == 2:
-                title += f", L2={self._model_params[ModelGridColumns.LAYER_3.name]}"
-        fig.update_layout(
-            title=title,
-            xaxis_title="Date")
 
         fig.show()

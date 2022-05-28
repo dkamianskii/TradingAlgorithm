@@ -30,6 +30,7 @@ import plotly.graph_objects as go
 
 cf.go_offline()
 
+
 class LSTMTradeAlgorithmHyperparam(BaseEnum):
     TEST_PERIOD_SIZE = 1
     PREDICTION_PERIOD = 2
@@ -42,6 +43,7 @@ class ModelGridColumns(BaseEnum):
     RANDOM_SEED = 2
     HIDDEN = 3
     WINDOW_SIZE = 4
+    DROPOUT = 5
 
 
 class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
@@ -50,9 +52,11 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
 
     model_grid = {ModelGridColumns.WINDOW_SIZE: [20, 40, 60],
                   ModelGridColumns.LEARNING_RATE: [0.01, 0.001, 0.0001],
-                  ModelGridColumns.HIDDEN: [1, 2, 3],
+                  ModelGridColumns.DROPOUT: [0.0, 0.01, 0.05],
+                  ModelGridColumns.HIDDEN: [2, 2.5, 3, 3.5, 4],
                   ModelGridColumns.RANDOM_SEED: [42, 766, 1144, 5555]}
     epochs = 500
+    random_grid_search_attempts = 10
 
     def __init__(self):
         super().__init__()
@@ -81,7 +85,7 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
 
     @staticmethod
     def create_hyperparameters_dict(test_period_size: int = 60, prediction_period: int = 3,
-                                    take_action_barrier: float = 0.01, active_action_multiplier: float = 1.5):
+                                    take_action_barrier: float = 0.01, active_action_multiplier: float = 2):
         return {
             LSTMTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: test_period_size,
             LSTMTradeAlgorithmHyperparam.PREDICTION_PERIOD: prediction_period,
@@ -92,8 +96,7 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
     @staticmethod
     def get_default_hyperparameters_grid() -> List[Dict]:
         return [LSTMTradeAlgorithm.create_hyperparameters_dict(),
-                LSTMTradeAlgorithm.create_hyperparameters_dict(prediction_period=2),
-                LSTMTradeAlgorithm.create_hyperparameters_dict(prediction_period=4)]
+                LSTMTradeAlgorithm.create_hyperparameters_dict(prediction_period=5)]
 
     def __clear_vars(self):
         self._dataframe = pd.DataFrame()
@@ -140,44 +143,52 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
         best_model_params: Optional[Dict] = None
         best_val_loss = 0
         es = EarlyStopping(min_delta=1e-8, patience=15, verbose=0)
+        random.seed(1666)
 
         for window_size in model_grid[ModelGridColumns.WINDOW_SIZE]:
             x, y = self.__create_train_dataset(window_size)
             x_train = x[:-self._test_period_size]
             y_train = y[:-self._test_period_size]
-            model_params = {ModelGridColumns.WINDOW_SIZE.name: window_size}
-            for hidden_coef in model_grid[ModelGridColumns.HIDDEN]:
-                hidden = hidden_coef * 5
+            for i in range(0, LSTMTradeAlgorithm.random_grid_search_attempts):
+                model_params = {ModelGridColumns.WINDOW_SIZE.name: window_size}
+                learning_rate = model_grid[ModelGridColumns.LEARNING_RATE][
+                    random.randint(0, len(model_grid[ModelGridColumns.LEARNING_RATE]) - 1)]
+                model_params[ModelGridColumns.LEARNING_RATE.name] = learning_rate
+                hidden_coef = model_grid[ModelGridColumns.HIDDEN][
+                    random.randint(0, len(model_grid[ModelGridColumns.HIDDEN]) - 1)]
+                hidden = int(hidden_coef * 5)
                 model_params[ModelGridColumns.HIDDEN.name] = hidden
-                for learning_rate in model_grid[ModelGridColumns.LEARNING_RATE]:
-                    print(learning_rate)
-                    model_params[ModelGridColumns.LEARNING_RATE.name] = learning_rate
-                    print(model_params)
-                    for random_seed in model_grid[ModelGridColumns.RANDOM_SEED]:
-                        optimizer = Adam(learning_rate=learning_rate)
-                        kernel_initializer = GlorotUniform(seed=random_seed)
-                        recurrent_initializer = Orthogonal(seed=random_seed)
-                        weight_initializer = RandomNormal(seed=random_seed)
-                        model = Sequential()
-                        model.add(LSTM(units=hidden, kernel_initializer=kernel_initializer,
-                                       recurrent_initializer=recurrent_initializer,
-                                       activation="relu",
-                                       kernel_regularizer=L2(1e-4),
-                                       recurrent_regularizer=L2(1e-4),
-                                       bias_regularizer=L2(1e-4),
-                                       dropout=0.01))
-                        model.add(Dense(1, kernel_initializer=weight_initializer, kernel_regularizer=L2(1e-5),
-                                        bias_regularizer=L2(1e-4)))
-                        model.compile(optimizer=optimizer, loss=MeanSquaredError(),
-                                      metrics=["mse", "mae"])
-                        history = model.fit(x=x_train, y=y_train, epochs=LSTMTradeAlgorithm.epochs, shuffle=False,
-                                            validation_split=0.15, callbacks=[es], verbose=0)
-                        model_loss = history.history['val_mse'][-1]
-                        print(f"MSE = {history.history['mse'][-1]} Val MSE ={model_loss}")
-                        if (best_model is None) or model_loss < best_val_loss:
-                            best_model = model
-                            best_val_loss = model_loss
-                            best_model_params = model_params
+                dropout = model_grid[ModelGridColumns.DROPOUT][
+                    random.randint(0, len(model_grid[ModelGridColumns.DROPOUT]) - 1)]
+                model_params[ModelGridColumns.DROPOUT.name] = dropout
+                print(model_params)
+                random_seed = model_grid[ModelGridColumns.RANDOM_SEED][
+                    random.randint(0, len(model_grid[ModelGridColumns.RANDOM_SEED]) - 1)]
+
+                optimizer = Adam(learning_rate=learning_rate)
+                kernel_initializer = GlorotUniform(seed=random_seed)
+                recurrent_initializer = Orthogonal(seed=random_seed)
+                weight_initializer = RandomNormal(seed=random_seed)
+                model = Sequential()
+                model.add(LSTM(units=hidden, kernel_initializer=kernel_initializer,
+                               recurrent_initializer=recurrent_initializer,
+                               activation="relu",
+                               kernel_regularizer=L2(1e-4),
+                               recurrent_regularizer=L2(1e-4),
+                               bias_regularizer=L2(1e-4),
+                               dropout=dropout))
+                model.add(Dense(1, kernel_initializer=weight_initializer, kernel_regularizer=L2(1e-4),
+                                bias_regularizer=L2(1e-4)))
+                model.compile(optimizer=optimizer, loss=MeanSquaredError(),
+                              metrics=["mse", "mae"])
+                history = model.fit(x=x_train, y=y_train, epochs=LSTMTradeAlgorithm.epochs, shuffle=False,
+                                    validation_split=0.15, callbacks=[es], verbose=0)
+                model_loss = history.history['val_mse'][-1]
+                print(f"MSE = {history.history['mse'][-1]} Val MSE ={model_loss}")
+                if (best_model is None) or model_loss < best_val_loss:
+                    best_model = model
+                    best_val_loss = model_loss
+                    best_model_params = model_params
 
         self._model = best_model
         self._model_params = best_model_params
@@ -217,11 +228,11 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
         self.mean_absolute_prediction_error = cum_sum / len(predictions)
 
         print(f"MARGE = {self.mean_absolute_prediction_error}")
-        es = EarlyStopping(min_delta=1e-8, patience=10, verbose=0)
+        es = EarlyStopping(min_delta=1e-8, patience=5, verbose=0)
         history = self._model.fit(x=x, y=y, epochs=LSTMTradeAlgorithm.epochs, validation_split=0.15,
                                   shuffle=False, callbacks=[es], verbose=0)
-        print(f"Loss of best model {history.history['val_mse'][-1]}")
-        #self.__save_model()
+        print(f"Best model MSE = {history.history['mse'][-1]}, Val MSE = {history.history['val_mse'][-1]}")
+        self.__save_model()
 
         predictions = self._model.predict(x=x)
         self.predictions = predictions.flatten().tolist()
@@ -250,11 +261,10 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
         self.predictions.append(prediction)
         relative_diff = (prediction - last_close) / last_close
 
-        if np.abs(relative_diff) >= 0.2:
-            return final_action
-
         if relative_diff > 0:
             relative_diff -= self.mean_absolute_prediction_error
+            if np.abs(relative_diff) >= 0.15:
+                return final_action
             if relative_diff >= self._take_action_barrier:
                 if relative_diff >= self._take_action_barrier * self._active_action_multiplier:
                     final_action = TradeAction.ACTIVELY_BUY
@@ -262,6 +272,8 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
                     final_action = TradeAction.BUY
         else:
             relative_diff += self.mean_absolute_prediction_error
+            if np.abs(relative_diff) >= 0.15:
+                return final_action
             if relative_diff <= -self._take_action_barrier:
                 if relative_diff <= -self._take_action_barrier * self._active_action_multiplier:
                     final_action = TradeAction.ACTIVELY_SELL

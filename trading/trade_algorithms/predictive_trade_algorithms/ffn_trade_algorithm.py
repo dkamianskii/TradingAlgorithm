@@ -60,6 +60,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
                   ModelGridColumns.NUM_OF_ADD_LAYERS: [0, 1, 2],
                   ModelGridColumns.LAYER_2: [0.5, 1, 1.25, 1.5],
                   ModelGridColumns.LAYER_3: [.33, 0.5, 0.66, 1]}
+
     random_grid_search_attempts = 20
     batch_size = 100
     epochs = 500
@@ -91,7 +92,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
 
     @staticmethod
     def create_hyperparameters_dict(test_period_size: int = 60, prediction_period: int = 3,
-                                    take_action_barrier: float = 0.01, active_action_multiplier: float = 1.5):
+                                    take_action_barrier: float = 0.01, active_action_multiplier: float = 2):
         return {
             FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: test_period_size,
             FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: prediction_period,
@@ -102,8 +103,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
     @staticmethod
     def get_default_hyperparameters_grid() -> List[Dict]:
         return [FFNTradeAlgorithm.create_hyperparameters_dict(),
-                FFNTradeAlgorithm.create_hyperparameters_dict(prediction_period=2),
-                FFNTradeAlgorithm.create_hyperparameters_dict(prediction_period=4)]
+                FFNTradeAlgorithm.create_hyperparameters_dict(prediction_period=5)]
 
     def __clear_vars(self):
         self._dataframe = pd.DataFrame()
@@ -265,13 +265,11 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         x = self._dataframe.drop(f"target t + {self._prediction_period}", axis=1)
         x = self._input_scaler.transform(x)
         y = self._dataframe[f"target t + {self._prediction_period}"]
-        es = EarlyStopping(min_delta=1e-8, patience=10, verbose=0)
+        es = EarlyStopping(min_delta=1e-8, patience=5, verbose=0)
         history = self._model.fit(x=x, y=y, epochs=FFNTradeAlgorithm.epochs, batch_size=FFNTradeAlgorithm.batch_size,
                                   validation_split=0.15, shuffle=False, callbacks=[es], verbose=0)
         print(f"Loss of best model {history.history['val_mse'][-1]}")
         self.__save_model()
-
-        print(self._model.weights[0][0])
 
         predictions = self._model.predict(x=x, batch_size=FFNTradeAlgorithm.batch_size)
         self.predictions = predictions.flatten().tolist()
@@ -312,9 +310,13 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         final_action = TradeAction.NONE
         new_point_scaled = self.__transform_point()
         prediction = self._model.predict(new_point_scaled, verbose=0)[0][0]
+        self.predictions.append(prediction)
         relative_diff = (prediction - last_close) / last_close
+
         if relative_diff > 0:
             relative_diff -= self.mean_absolute_prediction_error
+            if np.abs(relative_diff) >= 0.15:
+                return final_action
             if relative_diff >= self._take_action_barrier:
                 if relative_diff >= self._take_action_barrier * self._active_action_multiplier:
                     final_action = TradeAction.ACTIVELY_BUY
@@ -322,13 +324,14 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
                     final_action = TradeAction.BUY
         else:
             relative_diff += self.mean_absolute_prediction_error
+            if np.abs(relative_diff) >= 0.15:
+                return final_action
             if relative_diff <= -self._take_action_barrier:
                 if relative_diff <= -self._take_action_barrier * self._active_action_multiplier:
                     final_action = TradeAction.ACTIVELY_SELL
                 else:
                     final_action = TradeAction.SELL
 
-        self.predictions.append(prediction)
         if final_action != TradeAction.NONE:
             self.__add_trade_point(date, new_point["Close"], final_action)
         return final_action
@@ -367,7 +370,8 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         fig.add_trace(go.Scatter(x=[self._last_train_date, self._last_train_date], y=[d_max, d_min], mode='lines',
                                  line=dict(width=1, dash="dash", color="red"), name="Start of trading"))
 
-        fig.show()
+        #fig.show()
+        fig.write_image(f"../images/{self._data_name}_img1.png", scale=1, width=1400, height=900)
 
         buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
         active_actions = [TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL]
@@ -401,4 +405,5 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
                                          line=dict(width=1, color=color), showlegend=False))
                 trade_point_index += 1
 
-        fig.show()
+        #fig.show()
+        fig.write_image(f"../images/{self._data_name}_img2.png", scale=1, width=1400, height=900)

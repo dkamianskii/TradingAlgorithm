@@ -18,6 +18,6 @@ class IndTree:
     def get_trade_action(self, indicators_values: Union[Dict[str, TradeAction], pd.Series]) -> TradeAction:
         return self.root.get_trade_action(indicators_values)
 
-    def print_tree(self):
-        self.root.print([])
+    def print_tree(self, file_path: str):
+        self.root.print([], file_path)
 

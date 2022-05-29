@@ -36,6 +36,7 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
         self._macd_crossing_flag: bool = False
         self._macd_saved_action: TradeAction = TradeAction.NONE
         self.trade_points: Optional[pd.DataFrame] = None
+        self._stock_name = ""
 
     @staticmethod
     def get_algorithm_name() -> str:
@@ -92,6 +93,7 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
                 SuperTrendHyperparam.LOOKBACK_PERIOD],
             multiplier=hyperparameters[MACDSuperTrendTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS][
                 SuperTrendHyperparam.MULTIPLIER])
+        self._stock_name = hyperparameters["DATA_NAME"]
 
         self.__clear_vars()
         self._MACD.calculate(self.data)
@@ -137,7 +139,8 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
     def __add_trade_point(self, date: Union[pd.Timestamp, Hashable], price: float, action: TradeAction):
         self.trade_points.loc[date] = {TradePointColumn.PRICE: price, TradePointColumn.ACTION: action}
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
         if (start_date is None) or (start_date < self.data.index[0]):
             start_date = self.data.index[0]
         if (end_date is None) or (end_date > self.data.index[-1]):
@@ -150,7 +153,7 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
 
         fig = make_subplots(rows=2, cols=1,
                             shared_xaxes=True,
-                            subplot_titles=[f"Price with SuperTrend {self._super_trend._lookback_period}, {self._super_trend._multiplier}",
+                            subplot_titles=[f"{self._stock_name} price with SuperTrend {self._super_trend._lookback_period}, {self._super_trend._multiplier}",
                                             f"MACD {self._MACD._short_period}, {self._MACD._long_period}, {self._MACD._signal_period}"],
                             vertical_spacing=0.25)
 
@@ -212,4 +215,5 @@ class MACDSuperTrendTradeAlgorithm(AbstractTradeAlgorithm):
             color=np.where(selected_macd["histogram"] > 0, "green", "red")
         ), name="MACD signal difference", row=2, col=1)
 
-        fig.show()
+        # fig.show()
+        fig.write_image(f"{img_dir}/{self._stock_name}.png", scale=1, width=1400, height=900)

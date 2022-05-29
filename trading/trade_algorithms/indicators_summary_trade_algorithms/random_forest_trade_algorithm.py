@@ -1,3 +1,5 @@
+import json
+from os.path import exists
 from typing import Optional, Union, Dict, List, Any
 
 import pandas as pd
@@ -41,16 +43,17 @@ class RandomForestTradeAlgorithm(AbstractTradeAlgorithm):
     def __init__(self):
         super().__init__()
         self._risk_manager = RiskManager()
-        # self.trade_points: Optional[pd.DataFrame] = None
         self._random_forest_cls: Optional[RandomForestClassifier] = None
         self._indicators: List[AbstractIndicator] = []
         self._dataframe: pd.DataFrame = pd.DataFrame()
         self._trade_actions_train: pd.Series = pd.Series(dtype='float64')
         self._best_params: Optional[Dict] = None
         self._best_score: Any = None
+        self._data_name: str = ""
+        self._model_name: str = ""
 
         self._days_to_keep_limit: int = 0
-        self._atr_period: int = 10
+        self._atr_period: int = 14
         self._atr: Optional[pd.Series] = None
         self._MACD: MACD = MACD()
         self._indicators.append(self._MACD)
@@ -128,6 +131,27 @@ class RandomForestTradeAlgorithm(AbstractTradeAlgorithm):
         for indicator in self._indicators:
             indicator.clear_vars()
 
+    def __define_model_name(self, bid_risk_rate: float, take_profit_multiplier: float,
+                            active_action_multiplier: float, use_atr: bool,
+                            days_to_keep_limit: int, atr_period: int,
+                            rsi_N: int, macd_short_period: int,
+                            macd_long_period: int, macd_signal_period: int,
+                            macd_trade_strategy: MACDTradeStrategy,
+                            super_trend_lookback_period: int, super_trend_multiplier: float,
+                            cci_N: int, bollinger_bands_N: int, bollinger_bands_K: float):
+        base_name = f"{self._data_name} {bid_risk_rate} {take_profit_multiplier} {active_action_multiplier} {use_atr} {days_to_keep_limit}"
+        base_name += f" {atr_period} {rsi_N} {macd_short_period} {macd_long_period} {macd_signal_period} {macd_trade_strategy} {super_trend_lookback_period}"
+        base_name += f" {super_trend_multiplier} {cci_N} {bollinger_bands_N} {bollinger_bands_K}"
+        self._model_name = RandomForestTradeAlgorithm.model_directory + base_name
+
+    def __save_model(self):
+        m = self._model_name + ".sav"
+        pickle.dump(self._random_forest_cls, open(m, 'wb'))
+
+    def __load_model(self):
+        m = self._model_name + ".sav"
+        self._random_forest_cls = pickle.load(open(m, 'rb'))
+
     def __create_train_dataset(self):
         self._dataframe["RSI"] = self._RSI.RSI_val
         self._dataframe["MACD hist"] = self._MACD.MACD_val["histogram"]
@@ -201,7 +225,6 @@ class RandomForestTradeAlgorithm(AbstractTradeAlgorithm):
         return right_action
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
-        # print(f"Start train with hyperparameters {hyperparameters}")
         super().train(data, hyperparameters)
         self._risk_manager.set_manager_params(
             bid_risk_rate=hyperparameters[RandomForestTradeAlgorithmHyperparam.RISK_MANAGER_HYPERPARAMS][
@@ -230,31 +253,61 @@ class RandomForestTradeAlgorithm(AbstractTradeAlgorithm):
                 BollingerBandsHyperparam.N],
             hyperparameters[RandomForestTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS][
                 BollingerBandsHyperparam.K])
-
-        self.__clear_vars()
-
         self._days_to_keep_limit = hyperparameters[RandomForestTradeAlgorithmHyperparam.DAYS_TO_KEEP_LIMIT]
         self._atr_period = hyperparameters[RandomForestTradeAlgorithmHyperparam.ATR_PERIOD]
+
+        self._data_name = hyperparameters["DATA_NAME"]
+        self.__define_model_name(hyperparameters[RandomForestTradeAlgorithmHyperparam.RISK_MANAGER_HYPERPARAMS][
+                                     RiskManagerHyperparam.BID_RISK_RATE],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.RISK_MANAGER_HYPERPARAMS][
+                                     RiskManagerHyperparam.TAKE_PROFIT_MULTIPLIER],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.RISK_MANAGER_HYPERPARAMS][
+                                     RiskManagerHyperparam.ACTIVE_ACTION_MULTIPLIER],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.RISK_MANAGER_HYPERPARAMS][
+                                     RiskManagerHyperparam.USE_ATR],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.DAYS_TO_KEEP_LIMIT],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.ATR_PERIOD],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.RSI_HYPERPARAMS]["N"],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.MACD_HYPERPARAMS][
+                                     MACDHyperparam.SHORT_PERIOD],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.MACD_HYPERPARAMS][
+                                     MACDHyperparam.LONG_PERIOD],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.MACD_HYPERPARAMS][
+                                     MACDHyperparam.SIGNAL_PERIOD],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.MACD_HYPERPARAMS][
+                                     MACDHyperparam.TRADE_STRATEGY],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS][
+                                     SuperTrendHyperparam.LOOKBACK_PERIOD],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS][
+                                     SuperTrendHyperparam.MULTIPLIER],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.CCI_HYPERPARAMS]["N"],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS][
+                                     BollingerBandsHyperparam.N],
+                                 hyperparameters[RandomForestTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS][
+                                     BollingerBandsHyperparam.K])
+
+        self.__clear_vars()
         self._atr = ATR(self.data, self._atr_period)
+
         for indicator in self._indicators:
             indicator.calculate(self.data)
-
-        # print("finished indicators calculation")
-
         self.__create_train_dataset()
-        # print("created dataset")
-        grid_search_cross_val = GridSearchCV(estimator=RandomForestClassifier(),
-                                             param_grid=RandomForestTradeAlgorithm.random_forest_grid,
-                                             cv=5)
-        grid_search_cross_val.fit(self._dataframe, self._trade_actions_train)
-        # print("cross validation finished")
-        self._best_score = grid_search_cross_val.best_score_
-        self._best_params = grid_search_cross_val.best_params_
-        self._random_forest_cls = RandomForestClassifier(n_estimators=self._best_params['n_estimators'],
-                                                         max_depth=self._best_params['max_depth'],
-                                                         max_features=self._best_params['max_features'],
-                                                         random_state=self._best_params['random_state'])
+
+        if exists(self._model_name + ".sav"):
+            self.__load_model()
+        else:
+            grid_search_cross_val = GridSearchCV(estimator=RandomForestClassifier(),
+                                                 param_grid=RandomForestTradeAlgorithm.random_forest_grid,
+                                                 cv=3)
+            grid_search_cross_val.fit(self._dataframe, self._trade_actions_train)
+            self._best_score = grid_search_cross_val.best_score_
+            self._best_params = grid_search_cross_val.best_params_
+            self._random_forest_cls = RandomForestClassifier(n_estimators=self._best_params['n_estimators'],
+                                                             max_depth=self._best_params['max_depth'],
+                                                             max_features=self._best_params['max_features'],
+                                                             random_state=self._best_params['random_state'])
         self._random_forest_cls.fit(self._dataframe, self._trade_actions_train)
+        self.__save_model()
 
     def evaluate_new_point(self, new_point: pd.Series, date: Union[str, pd.Timestamp],
                            special_params: Optional[Dict] = None) -> TradeAction:
@@ -283,7 +336,10 @@ class RandomForestTradeAlgorithm(AbstractTradeAlgorithm):
         final_action = TradeAction[trade_action[0]]
         return final_action
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
+        self._best_score = self._random_forest_cls.score(self._dataframe, self._trade_actions_train)
+        self._best_params = self._random_forest_cls.get_params()
+        print(f"Params of random forest on {self._data_name}")
         print(self._best_params)
-        print(self._best_score)
-
+        print(f"Score on train = {self._best_score}")

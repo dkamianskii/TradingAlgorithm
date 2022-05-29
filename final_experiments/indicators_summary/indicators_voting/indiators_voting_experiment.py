@@ -7,14 +7,14 @@ from trading.trade_algorithms.indicators_summary_trade_algorithms.indicators_vot
 from final_experiments import experiment_base as eb
 from final_experiments.experiment_base import TradeManagerGrid
 
-random.seed(4466)
+random.seed(7744)
 
 best_trade_manager: Optional[TradeManager] = None
 best_trade_manager_result = 0
 best_trade_manager_params = None
 
 trade_manager_params_used = []
-for i in range(eb.random_grid_search_attempts):
+for i in range(eb.random_grid_search_attempts - 2):
     trade_manager_params = {}
     days_to_keep_limit = eb.trade_manager_grid[TradeManagerGrid.DAYS_TO_KEEP_LIMIT][
         random.randint(0, len(eb.trade_manager_grid[TradeManagerGrid.DAYS_TO_KEEP_LIMIT]) - 1)]

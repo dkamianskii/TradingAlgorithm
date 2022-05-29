@@ -2,8 +2,6 @@ from typing import Optional, Union, Dict, List
 
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import cross_val_score
-from sklearn.tree import DecisionTreeClassifier
 
 from helping.base_enum import BaseEnum
 from indicators.abstract_indicator import TradeAction, AbstractIndicator, TradePointColumn
@@ -44,13 +42,13 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
     def __init__(self, indicators_permitted_to_vote: Optional[List[IndicatorPermittedToVote]] = None):
         super().__init__()
         self._risk_manager = RiskManager()
-        # self.trade_points: Optional[pd.DataFrame] = None
+        self._stock_name = ""
         self._decision_tree: Optional[IndTree] = None
         self._indicators: List[AbstractIndicator] = []
         self._indicators_trade_points: Dict[str, pd.DataFrame] = {}
         self._dataframe: pd.DataFrame = pd.DataFrame()
         self._days_to_keep_limit: int = 0
-        self._atr_period: int = 10
+        self._atr_period: int = 14
         self._atr: Optional[pd.Series] = None
         self._MACD: MACD = MACD()
         if (indicators_permitted_to_vote is None) or (IndicatorPermittedToVote.MACD in indicators_permitted_to_vote):
@@ -277,13 +275,14 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
         self._ma_support_levels.set_ma_periods(
             hyperparameters[DecisionTreeTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS]["ma_periods"])
         self._ma_support_levels.set_tested_MAs_usage(use_tested_MAs=True)
+        self._days_to_keep_limit = hyperparameters[DecisionTreeTradeAlgorithmHyperparam.DAYS_TO_KEEP_LIMIT]
+        self._atr_period = hyperparameters[DecisionTreeTradeAlgorithmHyperparam.ATR_PERIOD]
+        self._stock_name = hyperparameters["DATA_NAME"]
 
         self.__clear_vars()
 
         self._dataframe["Date"] = self.data.index
         self._dataframe = self._dataframe.set_index("Date")
-        self._days_to_keep_limit = hyperparameters[DecisionTreeTradeAlgorithmHyperparam.DAYS_TO_KEEP_LIMIT]
-        self._atr_period = hyperparameters[DecisionTreeTradeAlgorithmHyperparam.ATR_PERIOD]
         self._atr = ATR(self.data, self._atr_period)
         for indicator in self._indicators:
             self._dataframe[indicator.name] = TradeAction.NONE
@@ -305,49 +304,52 @@ class DecisionTreeTradeAlgorithm(AbstractTradeAlgorithm):
         final_action = self._decision_tree.get_trade_action(pd.Series(data=indicators_results))
         return final_action
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
-        self._decision_tree.print_tree()
+    def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
+        tree_file = img_dir
+        tree_file += f"/Decision tree on {self._stock_name}.txt"
+        self._decision_tree.print_tree(tree_file)
 
-        labels_to_plot = self._dataframe[self._dataframe["label"] != TradeAction.NONE]
-        data_to_plot = self.data[:labels_to_plot.iloc[-1]["exit date"]]
-
-        fig = go.Figure()
-
-        fig.add_candlestick(x=data_to_plot.index,
-                            open=data_to_plot["Open"],
-                            close=data_to_plot["Close"],
-                            high=data_to_plot["High"],
-                            low=data_to_plot["Low"],
-                            name="Price")
-
-        for date, row in labels_to_plot.iterrows():
-            fig.add_shape(type="rect",
-                          x0=date, y0=row["price"],
-                          x1=row["exit date"], y1=row["take profit"],
-                          opacity=0.2,
-                          fillcolor="green",
-                          line_color="green")
-            fig.add_shape(type="rect",
-                          x0=date, y0=row["price"],
-                          x1=row["exit date"], y1=row["stop loss"],
-                          opacity=0.2,
-                          fillcolor="red",
-                          line_color="red")
-
-        buy_points = labels_to_plot["label"].isin([TradeAction.BUY, TradeAction.ACTIVELY_BUY])
-        fig.add_trace(go.Scatter(x=labels_to_plot.index,
-                                 y=labels_to_plot["price"],
-                                 mode="markers",
-                                 marker=dict(
-                                     color=np.where(buy_points, "green", "red"),
-                                     size=np.where(labels_to_plot["label"].isin([TradeAction.BUY, TradeAction.SELL]),
-                                                   8, 14),
-                                     symbol=np.where(buy_points, "triangle-up", "triangle-down")),
-                                 name="marked action labels"))
-
-        fig.update_layout(
-            title="Decision tree dataset's evaluated labels",
-            xaxis_title="Date",
-            yaxis_title="Price")
-
-        fig.show()
+        # labels_to_plot = self._dataframe[self._dataframe["label"] != TradeAction.NONE]
+        # data_to_plot = self.data[:labels_to_plot.iloc[-1]["exit date"]]
+        #
+        # fig = go.Figure()
+        #
+        # fig.add_candlestick(x=data_to_plot.index,
+        #                     open=data_to_plot["Open"],
+        #                     close=data_to_plot["Close"],
+        #                     high=data_to_plot["High"],
+        #                     low=data_to_plot["Low"],
+        #                     name="Price")
+        #
+        # for date, row in labels_to_plot.iterrows():
+        #     fig.add_shape(type="rect",
+        #                   x0=date, y0=row["price"],
+        #                   x1=row["exit date"], y1=row["take profit"],
+        #                   opacity=0.2,
+        #                   fillcolor="green",
+        #                   line_color="green")
+        #     fig.add_shape(type="rect",
+        #                   x0=date, y0=row["price"],
+        #                   x1=row["exit date"], y1=row["stop loss"],
+        #                   opacity=0.2,
+        #                   fillcolor="red",
+        #                   line_color="red")
+        #
+        # buy_points = labels_to_plot["label"].isin([TradeAction.BUY, TradeAction.ACTIVELY_BUY])
+        # fig.add_trace(go.Scatter(x=labels_to_plot.index,
+        #                          y=labels_to_plot["price"],
+        #                          mode="markers",
+        #                          marker=dict(
+        #                              color=np.where(buy_points, "green", "red"),
+        #                              size=np.where(labels_to_plot["label"].isin([TradeAction.BUY, TradeAction.SELL]),
+        #                                            8, 14),
+        #                              symbol=np.where(buy_points, "triangle-up", "triangle-down")),
+        #                          name="marked action labels"))
+        #
+        # fig.update_layout(
+        #     title="Decision tree dataset's evaluated labels",
+        #     xaxis_title="Date",
+        #     yaxis_title="Price")
+        #
+        # fig.show()

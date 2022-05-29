@@ -35,8 +35,8 @@ class IndBrunch:
         indicator_action = indicators_values[self.indicator]
         return self.children[indicator_action].get_trade_action(indicators_values)
 
-    def print(self, prev_brunch_to_print: List[str]):
+    def print(self, prev_brunch_to_print: List[str], file_path: str):
         for action, child in self.children.items():
             brunch_to_print = prev_brunch_to_print.copy()
             brunch_to_print.append(f"{self.indicator}|{action} -> ")
-            child.print(brunch_to_print)
+            child.print(brunch_to_print, file_path)

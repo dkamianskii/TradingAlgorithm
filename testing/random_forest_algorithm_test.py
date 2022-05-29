@@ -30,7 +30,9 @@ manager = TradeManager(days_to_chill=5)
 # manager.set_tracked_stock("JPM", data_jpm[:test_start_date_ts], DecisionTreeTradeAlgorithm())
 manager.set_tracked_stock("XOM", data_xom[:test_start_date_ts], RandomForestTradeAlgorithm())
 
-train_result = manager.train(back_test_start_date, plot_test=False)
+manager.train(back_test_start_date, plot_test=False)
+print(manager.get_chosen_params())
+manager.train(back_test_start_date, plot_test=False)
 print(manager.get_chosen_params())
 
 for date in dates_test:
@@ -45,8 +47,8 @@ for date in dates_test:
         manager.evaluate_new_point("XOM", point_xom, date)
 
 print(manager.get_trade_results())
-print(manager.get_bids_history())
-manager.plot_earnings_curve()
+# print(manager.get_bids_history())
+# manager.plot_earnings_curve("testing")
 # manager.plot_stock_history("WMT")
 # manager.plot_stock_history("JPM")
-manager.plot_stock_history("XOM", plot_algorithm_graph=True)
+# manager.plot_stock_history("XOM", "testing", plot_algorithm_graph=True)

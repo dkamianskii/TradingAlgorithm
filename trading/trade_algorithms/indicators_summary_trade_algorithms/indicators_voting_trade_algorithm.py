@@ -44,6 +44,7 @@ class IndicatorsVotingTradeAlgorithm(AbstractTradeAlgorithm):
 
     def __init__(self, indicators_permitted_to_vote: Optional[List[IndicatorPermittedToVote]] = None):
         super().__init__()
+        self._stock_name = ""
         self._indicators: List[AbstractIndicator] = []
         self._MACD: MACD = MACD()
         if (indicators_permitted_to_vote is None) or (IndicatorPermittedToVote.MACD in indicators_permitted_to_vote):
@@ -164,6 +165,7 @@ class IndicatorsVotingTradeAlgorithm(AbstractTradeAlgorithm):
         self._ma_support_levels.set_ma_periods(
             hyperparameters[IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS]["ma_periods"])
         self._ma_support_levels.set_tested_MAs_usage(use_tested_MAs=True)
+        self._stock_name = hyperparameters["DATA_NAME"]
 
         self.__clear_vars()
         for indicator in self._indicators:
@@ -222,7 +224,8 @@ class IndicatorsVotingTradeAlgorithm(AbstractTradeAlgorithm):
     def __add_trade_point(self, date: Union[pd.Timestamp, Hashable], price: float, action: TradeAction):
         self.trade_points.loc[date] = {TradePointColumn.PRICE: price, TradePointColumn.ACTION: action}
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
         if (start_date is None) or (start_date < self.data.index[0]):
             start_date = self.data.index[0]
         if (end_date is None) or (end_date > self.data.index[-1]):
@@ -234,7 +237,7 @@ class IndicatorsVotingTradeAlgorithm(AbstractTradeAlgorithm):
         fig = make_subplots(rows=2, cols=1,
                             shared_xaxes=True,
                             subplot_titles=[
-                                "Price with Indicators votes",
+                                f"{self._stock_name} price with Indicators votes",
                                 "Indicators polls"],
                             vertical_spacing=0.25)
         fig.add_candlestick(x=selected_data.index,
@@ -276,4 +279,5 @@ class IndicatorsVotingTradeAlgorithm(AbstractTradeAlgorithm):
                                          symbol="square"),
                                      name=action.name),
                           row=2, col=1)
-        fig.show()
+        # fig.show()
+        fig.write_image(f"{img_dir}/{self._stock_name}.png", scale=1, width=1400, height=900)

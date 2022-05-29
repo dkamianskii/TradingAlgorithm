@@ -57,7 +57,7 @@ class IndLeaf:
             if (stochastic_result >= boounds[0]) and (stochastic_result <= boounds[1]):
                 return trade_action
 
-    def print(self, prev_brunch_to_print: List[str]):
+    def print(self, prev_brunch_to_print: List[str], file_path: str):
         brunch_to_print = prev_brunch_to_print.copy()
         if self._determinate_trade_action is not None:
             brunch_to_print.append(f"|{self._determinate_trade_action}|")
@@ -65,4 +65,7 @@ class IndLeaf:
             brunch_to_print.append("|")
             for action, bounds in self._stochastic_trade_action.items():
                 brunch_to_print.append(f"P({action})={(bounds[1] - bounds[0] + 1) / self._stochastic_base}|")
-        print("".join(brunch_to_print))
+        str_to_write = "".join(brunch_to_print)
+        with open(file_path, "a") as f:
+            f.write(str_to_write)
+            f.write("\n")

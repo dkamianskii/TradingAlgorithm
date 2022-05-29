@@ -3,7 +3,7 @@ from typing import Optional
 
 from trading.trade_manager import TradeManager
 
-from trading.trade_algorithms.indicators_summary_trade_algorithms.decision_tree_trade_algorithm import DecisionTreeTradeAlgorithm
+from trading.trade_algorithms.indicators_summary_trade_algorithms.decision_tree_trade_algorithm import DecisionTreeTradeAlgorithm, DecisionTreeTradeAlgorithmHyperparam, RiskManagerHyperparam
 from final_experiments import experiment_base as eb
 from final_experiments.experiment_base import TradeManagerGrid
 
@@ -44,6 +44,15 @@ for i in range(eb.random_grid_search_attempts - 2):
     print("TRADE MANAGER PARAMS")
     print(trade_manager_params)
 
+    ds_tree_hyperparams_grid = DecisionTreeTradeAlgorithm.get_default_hyperparameters_grid()
+    for ds_tree_hyperparams in ds_tree_hyperparams_grid:
+        ds_tree_hyperparams[DecisionTreeTradeAlgorithmHyperparam.DAYS_TO_KEEP_LIMIT] = days_to_keep_limit
+        rs_params = {RiskManagerHyperparam.BID_RISK_RATE: bid_risk_rate,
+                     RiskManagerHyperparam.USE_ATR: use_atr,
+                     RiskManagerHyperparam.ACTIVE_ACTION_MULTIPLIER: active_action_multiplier,
+                     RiskManagerHyperparam.TAKE_PROFIT_MULTIPLIER: take_profit_multiplier}
+        ds_tree_hyperparams[DecisionTreeTradeAlgorithmHyperparam.RISK_MANAGER_HYPERPARAMS] = rs_params
+
     manager = TradeManager(days_to_keep_limit=days_to_keep_limit,
                            use_limited_money=True,
                            start_capital=eb.start_capital,
@@ -53,7 +62,8 @@ for i in range(eb.random_grid_search_attempts - 2):
                            use_atr=use_atr,
                            keep_holding_rate=keep_holding_rate)
     for company in eb.companies_names:
-        manager.set_tracked_stock(company, eb.companies_data[company]["train data"], DecisionTreeTradeAlgorithm())
+        manager.set_tracked_stock(company, eb.companies_data[company]["train data"],
+                                  DecisionTreeTradeAlgorithm(), ds_tree_hyperparams_grid)
 
     print("TRAINING PHASE")
 

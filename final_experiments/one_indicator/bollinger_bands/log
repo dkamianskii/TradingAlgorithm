@@ -6,77 +6,943 @@
 [*********************100%***********************]  1 of 1 completed
 [*********************100%***********************]  1 of 1 completed
 TRADE MANAGER PARAMS
-{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2)}
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
 TRAINING PHASE
 Train for WMT
-{'N': 8, 'DATA_NAME': 'WMT'}
-Earnings = -173.6995391845703
-{'N': 10, 'DATA_NAME': 'WMT'}
-Earnings = 123.60016632080078
-{'N': 12, 'DATA_NAME': 'WMT'}
-Earnings = 160.1901626586914
-{'N': 14, 'DATA_NAME': 'WMT'}
-Earnings = 163.01956939697266
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 425.1901168823242
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 94.13983917236328
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 240.80992889404297
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 370.36031341552734
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 189.1197509765625
 Train for AAPL
-{'N': 8, 'DATA_NAME': 'AAPL'}
-Earnings = -1648.1709060668945
-{'N': 10, 'DATA_NAME': 'AAPL'}
-Earnings = -1379.6313514709473
-{'N': 12, 'DATA_NAME': 'AAPL'}
-Earnings = -974.7297630310059
-{'N': 14, 'DATA_NAME': 'AAPL'}
-Earnings = -274.1055221557617
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -373.0454292297363
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 277.52957916259766
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -892.303092956543
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -1360.3667602539062
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = -200.35764694213867
 Train for MSFT
-{'N': 8, 'DATA_NAME': 'MSFT'}
-Earnings = -527.3687515258789
-{'N': 10, 'DATA_NAME': 'MSFT'}
-Earnings = -162.9093780517578
-{'N': 12, 'DATA_NAME': 'MSFT'}
-Earnings = -4.300018310546875
-{'N': 14, 'DATA_NAME': 'MSFT'}
-Earnings = -81.80009460449219
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -23.780471801757812
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -121.220458984375
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -18.16021728515625
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -796.4394073486328
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = -21.160293579101562
 Train for JPM
-{'N': 8, 'DATA_NAME': 'JPM'}
-Earnings = 210.05046844482422
-{'N': 10, 'DATA_NAME': 'JPM'}
-Earnings = 37.36024475097656
-{'N': 12, 'DATA_NAME': 'JPM'}
-Earnings = -343.5490493774414
-{'N': 14, 'DATA_NAME': 'JPM'}
-Earnings = -270.8398742675781
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 85.01944732666016
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 196.38953399658203
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -281.10033416748047
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = -357.5215835571289
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -110.10012817382812
 Train for KO
-{'N': 8, 'DATA_NAME': 'KO'}
-Earnings = 114.4602279663086
-{'N': 10, 'DATA_NAME': 'KO'}
-Earnings = 249.77005004882812
-{'N': 12, 'DATA_NAME': 'KO'}
-Earnings = 19.690471649169922
-{'N': 14, 'DATA_NAME': 'KO'}
-Earnings = 55.54036331176758
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 388.94998931884766
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 281.9302444458008
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 495.9104347229004
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 1454.2302207946777
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = 37.08006286621094
 Train for PG
-{'N': 8, 'DATA_NAME': 'PG'}
-Earnings = -25.82946014404297
-{'N': 10, 'DATA_NAME': 'PG'}
-Earnings = -48.06976318359375
-{'N': 12, 'DATA_NAME': 'PG'}
-Earnings = -43.950172424316406
-{'N': 14, 'DATA_NAME': 'PG'}
-Earnings = 64.8602294921875
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 305.38024139404297
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 305.38024139404297
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 199.61001586914062
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 202.3192596435547
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 189.42011260986328
 Train for XOM
-{'N': 8, 'DATA_NAME': 'XOM'}
-Earnings = 151.44918823242188
-{'N': 10, 'DATA_NAME': 'XOM'}
-Earnings = -93.22116088867188
-{'N': 12, 'DATA_NAME': 'XOM'}
-Earnings = 180.84994506835938
-{'N': 14, 'DATA_NAME': 'XOM'}
-Earnings = 43.110450744628906
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 766.5099868774414
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 175.2595977783203
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 794.0602569580078
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = 1.34002685546875
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = -150.15033721923828
 TRADING PHASE
-Final account money = 198112.00992965698
+Final account money = 194857.87949371338
 TRADE MANAGER PARAMS
-{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'USE_ATR': True}
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
 TRAINING PHASE
 Train for WMT
-{'N': 8, 'DATA_NAME': 'WMT'}
-Earnings = -13.849441528320312
-{'N': 10, 'DATA_NAME': 'WMT'}
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 563.0698852539062
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 165.82964324951172
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 378.689697265625
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 395.3402328491211
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 189.1197509765625
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -152.54589080810547
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 464.24682235717773
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -636.7684135437012
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -708.1175422668457
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = -200.35764694213867
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -144.7408447265625
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -242.1808319091797
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -139.12059020996094
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -1036.3806076049805
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = -21.160293579101562
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 98.37947845458984
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 209.74956512451172
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -416.85034942626953
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = -219.70082092285156
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -140.44039916992188
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -323.67988204956055
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -114.14950942993164
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 4.450675964355469
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 771.1202583312988
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = 37.08006286621094
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 54.67011260986328
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 54.67011260986328
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = -51.10011291503906
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -39.110755920410156
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 199.48009490966797
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 676.8593673706055
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 185.46934509277344
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 693.6390151977539
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -138.92058563232422
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = -116.35005950927734
+TRADING PHASE
+Final account money = 199756.4962158203
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 494.57007598876953
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 97.329833984375
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 345.80970764160156
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 514.7504272460938
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 189.1197509765625
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -146.76263809204102
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 386.4522247314453
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -437.9176902770996
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -747.6622695922852
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = -162.1049346923828
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -154.0206298828125
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -251.4606170654297
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -148.40037536621094
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -1003.0001678466797
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = -21.160293579101562
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -21.210304260253906
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 90.15978240966797
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -387.33008575439453
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = -70.92119598388672
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -288.2600402832031
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 339.3401679992676
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 144.77016067504883
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 464.29048919677734
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 1365.3600883483887
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = 37.08006286621094
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 288.2201461791992
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 288.2201461791992
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 182.44992065429688
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 68.15923309326172
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 189.42011260986328
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 634.9901123046875
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 124.13973236083984
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 850.2799530029297
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -293.7398681640625
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = -150.15033721923828
+TRADING PHASE
+Final account money = 199349.57735443115
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 128.33965301513672
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 57.599212646484375
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 112.76980590820312
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 184.4695053100586
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 196.31982421875
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 170.45784759521484
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 341.8027648925781
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -245.4469871520996
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -513.0671272277832
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = 23.540130615234375
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 71.44996643066406
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 108.41017150878906
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 18.239952087402344
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -307.48876190185547
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = 0.319854736328125
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 49.64922332763672
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 358.10938262939453
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -124.15064239501953
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 407.30934143066406
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -226.2504119873047
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -147.51953506469727
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 3.380096435546875
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 55.88031005859375
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 816.529426574707
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = -39.14011001586914
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 437.21009826660156
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 437.21009826660156
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 363.50980377197266
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 680.2294616699219
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 213.33006286621094
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 1111.26904296875
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 621.4990921020508
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 1020.7287979125977
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = 585.3294448852539
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = 118.29998016357422
+TRADING PHASE
+Final account money = 197707.321559906
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 544.2298889160156
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 165.82964324951172
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 359.8497009277344
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 376.50023651123047
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 189.1197509765625
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -152.54589080810547
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 464.24682235717773
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -636.7684135437012
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -708.1175422668457
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = -200.35764694213867
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -144.7408447265625
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -242.1808319091797
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -139.12059020996094
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -1005.1505966186523
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = -21.160293579101562
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -3.4005126953125
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 107.96957397460938
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -416.85034942626953
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = -228.2808074951172
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -140.44039916992188
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -299.2999382019043
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -87.6994743347168
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 28.83061981201172
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 804.300235748291
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = 37.08006286621094
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 113.38008880615234
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 113.38008880615234
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 7.60986328125
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 7.019187927246094
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 182.50003814697266
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 593.1393127441406
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 181.27923583984375
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 629.9990081787109
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -154.59056854248047
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = -116.35005950927734
+TRADING PHASE
+Final account money = 200366.91577911377
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 425.1901168823242
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 94.13983917236328
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 240.80992889404297
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 370.36031341552734
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 189.1197509765625
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -373.0454292297363
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 277.52957916259766
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -892.303092956543
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -1286.0668258666992
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = -200.35764694213867
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -23.780471801757812
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -121.220458984375
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -18.16021728515625
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -796.4394073486328
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = -21.160293579101562
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 85.01944732666016
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 196.38953399658203
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -281.10033416748047
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = -357.5215835571289
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -110.10012817382812
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 388.94998931884766
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 281.9302444458008
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 495.9104347229004
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 1454.2302207946777
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = 37.08006286621094
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 305.38024139404297
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 305.38024139404297
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 199.61001586914062
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 202.3192596435547
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 189.42011260986328
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 766.5099868774414
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 175.2595977783203
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 794.0602569580078
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = 1.34002685546875
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = -150.15033721923828
+TRADING PHASE
+Final account money = 195921.89938735962
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 425.1901168823242
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 94.13983917236328
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 240.80992889404297
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 370.36031341552734
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 189.1197509765625
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -373.0454292297363
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 203.22964477539062
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -892.303092956543
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -1360.3667602539062
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = -200.35764694213867
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -23.780471801757812
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -121.220458984375
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -18.16021728515625
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -796.4394073486328
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = -21.160293579101562
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 85.01944732666016
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 196.38953399658203
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -281.10033416748047
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = -357.5215835571289
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -110.10012817382812
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 388.94998931884766
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 281.9302444458008
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 495.9104347229004
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 1454.2302207946777
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = 37.08006286621094
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 305.38024139404297
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 305.38024139404297
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 199.61001586914062
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 202.3192596435547
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 189.42011260986328
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 766.5099868774414
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 175.2595977783203
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 794.0602569580078
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = 1.34002685546875
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = -150.15033721923828
+TRADING PHASE
+Final account money = 195047.82946395874
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 129.29959106445312
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 58.55915069580078
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 113.72974395751953
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 256.5596466064453
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 196.31982421875
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 211.8255386352539
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 325.8206901550293
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -204.07929611206055
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -936.6742973327637
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = 23.540130615234375
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 88.71945190429688
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 125.67965698242188
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 35.509437561035156
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -234.04931640625
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = 0.319854736328125
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 49.80951690673828
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 358.2696762084961
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -123.99034881591797
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 501.84960174560547
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -219.48983764648438
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -29.51943588256836
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 3.380096435546875
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 55.88031005859375
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 831.51953125
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = -39.14011001586914
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 543.7300720214844
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 543.7300720214844
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 470.02977752685547
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 786.7494354248047
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 300.5300750732422
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 1082.1592102050781
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 670.189208984375
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 856.7489547729492
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = 503.5894775390625
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = 118.29998016357422
+TRADING PHASE
+Final account money = 200504.03888702393
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 153.46973419189453
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 82.72929382324219
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 137.89988708496094
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 249.94935607910156
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 196.31982421875
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 72.4481430053711
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 242.79306030273438
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -343.45669174194336
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -378.3537406921387
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = 23.540130615234375
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 77.98970031738281
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 114.94990539550781
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 24.779685974121094
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -38.509033203125
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = 0.319854736328125
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 68.08951568603516
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 376.54967498779297
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -105.7103500366211
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 423.7600326538086
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -201.09011840820312
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -29.51943588256836
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 3.380096435546875
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 55.88031005859375
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 866.8693771362305
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = -39.14011001586914
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 443.6902847290039
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 443.6902847290039
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 369.989990234375
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 686.7096481323242
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 200.49028778076172
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 1120.919189453125
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 708.9491882324219
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 895.5089340209961
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = 524.5194778442383
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = 118.29998016357422
+TRADING PHASE
+Final account money = 198673.76565933228
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 129.29959106445312
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 58.55915069580078
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 113.72974395751953
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 256.5596466064453
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 196.31982421875
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 95.79058074951172
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 283.1107749938965
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -320.11425399780273
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -614.5316352844238
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = 23.540130615234375
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 77.98970031738281
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 114.94990539550781
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = 24.779685974121094
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -244.77906799316406
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = 0.319854736328125
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 74.80951690673828
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 383.2696762084961
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -98.99034881591797
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 519.0095748901367
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -219.48983764648438
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -29.51943588256836
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 3.380096435546875
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 55.88031005859375
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 849.0194549560547
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = -39.14011001586914
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 443.6902847290039
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 443.6902847290039
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 369.989990234375
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 686.7096481323242
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 200.49028778076172
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 1162.319107055664
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 708.9491882324219
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 936.9088516235352
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = 542.3494567871094
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = 118.29998016357422
+TRADING PHASE
+Final account money = 198977.63250732422
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 458.4600830078125
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 97.329833984375
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 274.07989501953125
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 443.02061462402344
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'WMT'}
+Earnings = 189.1197509765625
+Train for AAPL
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -123.78747940063477
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 408.0224151611328
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = -203.32527542114258
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = -925.3823623657227
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'AAPL'}
+Earnings = -162.1049346923828
+Train for MSFT
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -93.71044921875
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -191.1504364013672
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -88.09019470214844
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -942.6899871826172
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'MSFT'}
+Earnings = -21.160293579101562
+Train for JPM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -59.11040496826172
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 52.259681701660156
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = -398.8302536010742
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = -130.74124908447266
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'JPM'}
+Earnings = -288.2600402832031
+Train for KO
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 275.7301445007324
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 134.06020736694336
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = 418.3906059265137
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = 1312.1603202819824
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'KO'}
+Earnings = 37.08006286621094
+Train for PG
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 411.0900573730469
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 411.0900573730469
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 305.31983184814453
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = 191.02914428710938
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'PG'}
+Earnings = 300.5300750732422
+Train for XOM
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 542.8500137329102
+{<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 33.01946258544922
+{<BollingerBandsHyperparam.N: 1>: 22, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 758.1398544311523
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -384.8601379394531
+{<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2.5, 'DATA_NAME': 'XOM'}
+Earnings = -150.15033721923828
+TRADING PHASE
+Final account money = 198939.18529891968
+BEST TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+CHOSEN PARAMS
+[('WMT', {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'WMT'}), ('AAPL', {<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'AAPL'}), ('MSFT', {<BollingerBandsHyperparam.N: 1>: 18, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'MSFT'}), ('JPM', {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'JPM'}), ('KO', {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'KO'}), ('PG', {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 1.5, 'DATA_NAME': 'PG'}), ('XOM', {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2, 'DATA_NAME': 'XOM'})]
+            EARNED_PROFIT  WINS  LOSES  DRAWS
+STOCK_NAME                                   
+XOM            -45.950306     6     12      6
+PG             294.299507     5      8     26
+KO           -1217.061390     9     18     28
+JPM            845.368950    12     23     23
+MSFT          -154.509628     3      9      5
+AAPL          -378.857727     2      8      5
+WMT           1160.749481     4     13     30
+TOTAL          504.038887    41     91    123
+WIN RATE = 0.1607843137254902
+LOSE RATE = 0.3568627450980392
+RETURN ON START CAPITAL = 0.002520194435119629
+MAX DROWDOWN = 2405.1623039245605
+AVG WIN / AVG LOSE = 1.335463997564235
+Sharpe ratio = 1.4800578907546623e-05
+Calmar ratio = 1.4648512892672463e-05
+With respect to 2020 corona crisis
+            EARNED_PROFIT         WINS        LOSES        DRAWS
+STOCK_NAME                                                      
+XOM            503.789913   555.740219   561.740219   555.740219
+PG            -881.300629 -1170.600136 -1167.600136 -1149.600136
+KO            -245.091148   980.970242   989.970242   999.970242
+JPM           1098.939186   265.570236   276.570236   276.570236
+MSFT          -187.619858   -30.110229   -24.110229   -28.110229
+AAPL          -401.542755   -20.685028   -14.685028   -17.685028
+WMT           -142.299942 -1299.049423 -1290.049423 -1273.049423
+TOTAL         -255.125233  -718.164120  -668.164120  -636.164120
+WIN RATE = 0.3550886689224599
+LOSE RATE = 0.3303666966620888
+RETURN ON START CAPITAL = -0.001275626163482666
+MAX DROWDOWN = 2405.1623039245605
+AVG WIN / AVG LOSE = 1.215413836590117
+Sharpe ratio = 2.9514854555399466e-06
+Calmar ratio = 2.919378295139238e-06

@@ -103,7 +103,7 @@ def print_best_manager_results(best_trade_manager: TradeManager, best_trade_mana
                 tr_total[TradeResultColumn.DRAWS])
 
     print(f"WIN RATE = {win_rate}")
-    print(f"WIN RATE = {lose_rate}")
+    print(f"LOSE RATE = {lose_rate}")
 
     print(f"RETURN ON START CAPITAL = {best_trade_manager.get_traiding_gain(ignore_crisis=False)}")
 

@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
+import pickle
 
 from helping.base_enum import BaseEnum
 from indicators.abstract_indicator import TradeAction, AbstractIndicator, TradePointColumn
@@ -30,6 +31,8 @@ class RandomForestTradeAlgorithmHyperparam(BaseEnum):
 
 class RandomForestTradeAlgorithm(AbstractTradeAlgorithm):
     name = "Random Forest trade algorithm"
+    model_directory = "../models/random_forest/"
+
     random_forest_grid = {'n_estimators': [100, 200, 300, 400],
                           'max_features': [4, 6, 8, 10],
                           'max_depth': [4, 5, 6, 7, 8],

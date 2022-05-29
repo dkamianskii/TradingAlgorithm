@@ -135,22 +135,49 @@ class RiskManager:
         return shares_to_buy
 
     def evaluate_sharpe_ratio(self, earnings_history: pd.DataFrame) -> float:
-        return_of_portfolio = earnings_history[EarningsHistoryColumn.VALUE].sum() / self.start_capital
-        gain = return_of_portfolio - RiskManager.risk_free_rate
-        std_of_excess = earnings_history[EarningsHistoryColumn.VALUE].std()
-        if gain >= 0:
-            sharpe_ratio = gain / std_of_excess
+        earnings: pd.Series = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] != 0][EarningsHistoryColumn.VALUE]
+        return_rates: pd.Series = earnings / self.start_capital
+        expected_return = return_rates.mean()
+        std_of_return = return_rates.std()
+        if expected_return >= 0:
+            sharpe_ratio = expected_return / std_of_return
         else:
-            sharpe_ratio = gain * std_of_excess
+            sharpe_ratio = expected_return * std_of_return
         return sharpe_ratio
 
     def evaluate_sortino_ratio(self, earnings_history: pd.DataFrame) -> float:
-        return_of_portfolio = earnings_history[EarningsHistoryColumn.VALUE].sum() / self.start_capital
-        downsides = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] < 0]
-        std_of_downside = downsides[EarningsHistoryColumn.VALUE].std()
-        gain = return_of_portfolio - RiskManager.risk_free_rate
-        if gain >= 0:
-            sortino_ratio = gain / std_of_downside
+        downsides = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] < 0][EarningsHistoryColumn.VALUE]
+        earnings: pd.Series = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] != 0][
+            EarningsHistoryColumn.VALUE]
+        return_rates: pd.Series = earnings / self.start_capital
+        expected_return = return_rates.mean()
+        std_of_downside = downsides.std()
+        if expected_return >= 0:
+            sharpe_ratio = expected_return / std_of_downside
         else:
-            sortino_ratio = gain * std_of_downside
-        return sortino_ratio
+            sharpe_ratio = expected_return * std_of_downside
+        return sharpe_ratio
+
+    def evaluate_calmar_ratio(self, earnings_history: pd.DataFrame) -> float:
+        earnings = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] != 0][EarningsHistoryColumn.VALUE]
+        drowdown = self.evaluate_max_drowdown(earnings_history)
+        return_rates: pd.Series = earnings / self.start_capital
+        expected_return = return_rates.mean()
+        if expected_return > 0:
+            return expected_return / (1 + drowdown / self.start_capital)
+        else:
+            return expected_return * (1 + drowdown / self.start_capital)
+
+    def evaluate_max_drowdown(self, earnings_history: pd.DataFrame) -> float:
+        earnings = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] != 0][EarningsHistoryColumn.VALUE]
+        drowdown, max_drowdown = 0, 0
+        for earning in earnings:
+            drowdown -= earning
+            if drowdown < 0:
+                drowdown = 0
+            elif drowdown > max_drowdown:
+                max_drowdown = drowdown
+        return max_drowdown
+
+
+

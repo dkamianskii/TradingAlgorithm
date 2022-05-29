@@ -95,6 +95,10 @@ class TradeManager:
         trade_results = self._statistics_manager.get_trade_results(ignore_crisis)
         return trade_results.loc[TradeResultColumn.TOTAL][TradeResultColumn.EARNED_PROFIT] / self._risk_manager.start_capital
 
+    def get_max_drowdown(self, ignore_crisis: bool = True):
+        earnings_history = self._statistics_manager.get_earnings_history(ignore_crisis=ignore_crisis)
+        return self._risk_manager.evaluate_max_drowdown(earnings_history)
+
     def get_bids_history(self, stock_name: Optional[str] = None):
         return self._statistics_manager.get_bids_history(stock_name)
 
@@ -113,6 +117,18 @@ class TradeManager:
     def get_sortino_ratio(self, ignore_crisis: bool = True):
         earnings_history = self._statistics_manager.get_earnings_history(ignore_crisis=ignore_crisis)
         return self._risk_manager.evaluate_sortino_ratio(earnings_history)
+
+    def get_calmar_ratio(self, ignore_crisis: bool = True):
+        earnings_history = self._statistics_manager.get_earnings_history(ignore_crisis=ignore_crisis)
+        return self._risk_manager.evaluate_calmar_ratio(earnings_history)
+
+    def get_avg_win_to_avg_lose(self, ignore_crisis: bool = True):
+        earnings_history = self._statistics_manager.get_earnings_history(ignore_crisis=ignore_crisis)
+        avg_win = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] > 0][
+            EarningsHistoryColumn.VALUE].mean()
+        avg_lose = -earnings_history[earnings_history[EarningsHistoryColumn.VALUE] < 0][
+            EarningsHistoryColumn.VALUE].mean()
+        return avg_win / avg_lose
 
     def clear_history(self):
         self.portfolio = pd.DataFrame(columns=PortfolioColumn.get_elements_list())

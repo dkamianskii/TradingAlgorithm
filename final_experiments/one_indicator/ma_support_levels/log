@@ -6,137 +6,627 @@
 [*********************100%***********************]  1 of 1 completed
 [*********************100%***********************]  1 of 1 completed
 TRADE MANAGER PARAMS
-{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2)}
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
 TRAINING PHASE
 Train for WMT
-{'N': 8, 'DATA_NAME': 'WMT'}
-Earnings = -173.6995391845703
-{'N': 10, 'DATA_NAME': 'WMT'}
-Earnings = 123.60016632080078
-{'N': 12, 'DATA_NAME': 'WMT'}
-Earnings = 160.1901626586914
-{'N': 14, 'DATA_NAME': 'WMT'}
-Earnings = 163.01956939697266
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 261.8197250366211
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 261.8197250366211
 Train for AAPL
-{'N': 8, 'DATA_NAME': 'AAPL'}
-Earnings = -1648.1709060668945
-{'N': 10, 'DATA_NAME': 'AAPL'}
-Earnings = -1379.6313514709473
-{'N': 12, 'DATA_NAME': 'AAPL'}
-Earnings = -974.7297630310059
-{'N': 14, 'DATA_NAME': 'AAPL'}
-Earnings = -274.1055221557617
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = 78.61918640136719
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
 Train for MSFT
-{'N': 8, 'DATA_NAME': 'MSFT'}
-Earnings = -527.3687515258789
-{'N': 10, 'DATA_NAME': 'MSFT'}
-Earnings = -162.9093780517578
-{'N': 12, 'DATA_NAME': 'MSFT'}
-Earnings = -4.300018310546875
-{'N': 14, 'DATA_NAME': 'MSFT'}
-Earnings = -81.80009460449219
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -475.69043731689453
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 627.3603286743164
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 653.2808151245117
 Train for JPM
-{'N': 8, 'DATA_NAME': 'JPM'}
-Earnings = 210.05046844482422
-{'N': 10, 'DATA_NAME': 'JPM'}
-Earnings = 37.36024475097656
-{'N': 12, 'DATA_NAME': 'JPM'}
-Earnings = -343.5490493774414
-{'N': 14, 'DATA_NAME': 'JPM'}
-Earnings = -270.8398742675781
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1303.4313278198242
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -2001.589973449707
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -781.4217987060547
 Train for KO
-{'N': 8, 'DATA_NAME': 'KO'}
-Earnings = 114.4602279663086
-{'N': 10, 'DATA_NAME': 'KO'}
-Earnings = 249.77005004882812
-{'N': 12, 'DATA_NAME': 'KO'}
-Earnings = 19.690471649169922
-{'N': 14, 'DATA_NAME': 'KO'}
-Earnings = 55.54036331176758
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = 191.47951126098633
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = 191.47951126098633
 Train for PG
-{'N': 8, 'DATA_NAME': 'PG'}
-Earnings = -25.82946014404297
-{'N': 10, 'DATA_NAME': 'PG'}
-Earnings = -48.06976318359375
-{'N': 12, 'DATA_NAME': 'PG'}
-Earnings = -43.950172424316406
-{'N': 14, 'DATA_NAME': 'PG'}
-Earnings = 64.8602294921875
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 293.16014099121094
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 293.16014099121094
 Train for XOM
-{'N': 8, 'DATA_NAME': 'XOM'}
-Earnings = 151.44918823242188
-{'N': 10, 'DATA_NAME': 'XOM'}
-Earnings = -93.22116088867188
-{'N': 12, 'DATA_NAME': 'XOM'}
-Earnings = 180.84994506835938
-{'N': 14, 'DATA_NAME': 'XOM'}
-Earnings = 43.110450744628906
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -1607.6295013427734
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -143.34984588623047
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -826.339729309082
 TRADING PHASE
-Final account money = 198112.00992965698
+Final account money = 197603.28381729126
 TRADE MANAGER PARAMS
-{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'USE_ATR': True}
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
 TRAINING PHASE
 Train for WMT
-{'N': 8, 'DATA_NAME': 'WMT'}
-Earnings = -13.849441528320312
-{'N': 10, 'DATA_NAME': 'WMT'}
-Earnings = 117.75028228759766
-{'N': 12, 'DATA_NAME': 'WMT'}
-Earnings = 144.89032745361328
-{'N': 14, 'DATA_NAME': 'WMT'}
-Earnings = 163.01956939697266
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 89.04978942871094
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 89.04978942871094
 Train for AAPL
-{'N': 8, 'DATA_NAME': 'AAPL'}
-Earnings = -1405.1911010742188
-{'N': 10, 'DATA_NAME': 'AAPL'}
-Earnings = -1123.9140968322754
-{'N': 12, 'DATA_NAME': 'AAPL'}
-Earnings = -329.0721778869629
-{'N': 14, 'DATA_NAME': 'AAPL'}
-Earnings = -191.04531860351562
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = 78.61918640136719
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
 Train for MSFT
-{'N': 8, 'DATA_NAME': 'MSFT'}
-Earnings = -421.42884826660156
-{'N': 10, 'DATA_NAME': 'MSFT'}
-Earnings = -144.0393524169922
-{'N': 12, 'DATA_NAME': 'MSFT'}
-Earnings = -127.5299072265625
-{'N': 14, 'DATA_NAME': 'MSFT'}
-Earnings = -62.93006896972656
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -397.64012908935547
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 705.4106369018555
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 469.9003219604492
 Train for JPM
-{'N': 8, 'DATA_NAME': 'JPM'}
-Earnings = 220.2408447265625
-{'N': 10, 'DATA_NAME': 'JPM'}
-Earnings = 37.36024475097656
-{'N': 12, 'DATA_NAME': 'JPM'}
-Earnings = -339.9488296508789
-{'N': 14, 'DATA_NAME': 'JPM'}
-Earnings = -279.6293182373047
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1264.1312408447266
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -1738.3702545166016
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -742.121711730957
 Train for KO
-{'N': 8, 'DATA_NAME': 'KO'}
-Earnings = 59.26001739501953
-{'N': 10, 'DATA_NAME': 'KO'}
-Earnings = 193.9698371887207
-{'N': 12, 'DATA_NAME': 'KO'}
-Earnings = 19.690471649169922
-{'N': 14, 'DATA_NAME': 'KO'}
-Earnings = -14.139842987060547
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = 211.2297592163086
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = 211.2297592163086
 Train for PG
-{'N': 8, 'DATA_NAME': 'PG'}
-Earnings = -25.82946014404297
-{'N': 10, 'DATA_NAME': 'PG'}
-Earnings = -48.06976318359375
-{'N': 12, 'DATA_NAME': 'PG'}
-Earnings = -43.950172424316406
-{'N': 14, 'DATA_NAME': 'PG'}
-Earnings = 64.8602294921875
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 129.99005126953125
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 129.99005126953125
 Train for XOM
-{'N': 8, 'DATA_NAME': 'XOM'}
-Earnings = 253.33956146240234
-{'N': 10, 'DATA_NAME': 'XOM'}
-Earnings = -114.79129791259766
-{'N': 12, 'DATA_NAME': 'XOM'}
-Earnings = 138.84951782226562
-{'N': 14, 'DATA_NAME': 'XOM'}
-Earnings = 332.20972442626953
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -1329.0395736694336
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -284.5498046875
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -711.0497817993164
 TRADING PHASE
+Final account money = 198521.96767807007
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 142.6097640991211
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 142.6097640991211
+Train for AAPL
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 221.5894432067871
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = -54.52316665649414
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 221.5894432067871
+Train for MSFT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -577.0999374389648
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 505.45105743408203
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 299.1104431152344
+Train for JPM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1017.6912536621094
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -1614.4204635620117
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -495.4417266845703
+Train for KO
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = 140.33950805664062
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = 140.33950805664062
+Train for PG
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 129.99005126953125
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 129.99005126953125
+Train for XOM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -1190.4104080200195
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -120.17992401123047
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -614.1204299926758
+TRADING PHASE
+Final account money = 199056.74085235596
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 38.15966033935547
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 38.15966033935547
+Train for AAPL
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 279.11137771606445
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = -200.23342895507812
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 279.11137771606445
+Train for MSFT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -179.3702163696289
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 523.130485534668
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 638.389778137207
+Train for JPM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1050.3206329345703
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -1020.4303588867188
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -926.5510177612305
+Train for KO
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = 58.90996551513672
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = 58.90996551513672
+Train for PG
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 253.2601089477539
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 253.2601089477539
+Train for XOM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -814.3087615966797
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -184.16949462890625
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -619.8793106079102
+TRADING PHASE
+Final account money = 199507.67287826538
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 116.86978149414062
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 116.86978149414062
+Train for AAPL
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = 78.61918640136719
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
+Train for MSFT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -417.3201370239258
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 685.7306289672852
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 415.91024017333984
+Train for JPM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1264.1312408447266
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -1738.3702545166016
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -742.121711730957
+Train for KO
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = 222.20980834960938
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = 222.20980834960938
+Train for PG
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 164.20005798339844
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 164.20005798339844
+Train for XOM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -1347.139533996582
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -346.84973907470703
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -729.1497421264648
+TRADING PHASE
+Final account money = 198808.24411392212
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 261.8197250366211
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 261.8197250366211
+Train for AAPL
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = 78.61918640136719
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
+Train for MSFT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -475.69043731689453
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 627.3603286743164
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 653.2808151245117
+Train for JPM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1303.4313278198242
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -2001.589973449707
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -781.4217987060547
+Train for KO
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = 191.47951126098633
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = 191.47951126098633
+Train for PG
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 293.16014099121094
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 293.16014099121094
+Train for XOM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -1607.6295013427734
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -143.34984588623047
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -826.339729309082
+TRADING PHASE
+Final account money = 197266.71634674072
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 261.8197250366211
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 261.8197250366211
+Train for AAPL
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = 78.61918640136719
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 265.22951889038086
+Train for MSFT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -475.69043731689453
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 627.3603286743164
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 644.9809494018555
+Train for JPM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1303.4313278198242
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -2001.589973449707
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -781.4217987060547
+Train for KO
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = 191.47951126098633
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = 191.47951126098633
+Train for PG
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 293.16014099121094
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 293.16014099121094
+Train for XOM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -1607.6295013427734
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -143.34984588623047
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -826.339729309082
+TRADING PHASE
+Final account money = 197830.7286643982
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 38.15966033935547
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 38.15966033935547
+Train for AAPL
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 405.576717376709
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = -132.36832427978516
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 405.576717376709
+Train for MSFT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -447.4395446777344
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 151.69113159179688
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 127.80985260009766
+Train for JPM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1075.8007888793945
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -998.9906692504883
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -952.0311737060547
+Train for KO
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = -49.28999710083008
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = -49.28999710083008
+Train for PG
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 304.9200897216797
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 304.9200897216797
+Train for XOM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -820.1401519775391
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -87.4297103881836
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -562.2100296020508
+TRADING PHASE
+Final account money = 197569.68995666504
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 38.15966033935547
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 38.15966033935547
+Train for AAPL
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 279.11137771606445
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = -200.23342895507812
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 279.11137771606445
+Train for MSFT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 65.01952362060547
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 759.5601425170898
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 993.8401565551758
+Train for JPM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1089.620719909668
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -1004.2103271484375
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -965.8511047363281
+Train for KO
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = -108.08974075317383
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = -108.08974075317383
+Train for PG
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 304.9200897216797
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 304.9200897216797
+Train for XOM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -947.8492736816406
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = 1.2605743408203125
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -583.4992294311523
+TRADING PHASE
+Final account money = 196588.46088409424
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 38.15966033935547
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 38.15966033935547
+Train for AAPL
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 342.7466697692871
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = -254.86832427978516
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 342.7466697692871
+Train for MSFT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -408.9395446777344
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 190.19113159179688
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 220.40979766845703
+Train for JPM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1083.3908309936523
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -998.9906692504883
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -959.6212158203125
+Train for KO
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = -49.28999710083008
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = -49.28999710083008
+Train for PG
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 285.6001281738281
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 285.6001281738281
+Train for XOM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -857.5401000976562
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -124.82965850830078
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -599.609977722168
+TRADING PHASE
+Final account money = 197401.4854812622
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}
+Earnings = 170.65966033935547
+{'ma periods': [20, 50], 'DATA_NAME': 'WMT'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'WMT'}
+Earnings = 170.65966033935547
+Train for AAPL
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 578.3792610168457
+{'ma periods': [20, 50], 'DATA_NAME': 'AAPL'}
+Earnings = -21.35821533203125
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'AAPL'}
+Earnings = 578.3792610168457
+Train for MSFT
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'MSFT'}
+Earnings = -751.4197082519531
+{'ma periods': [20, 50], 'DATA_NAME': 'MSFT'}
+Earnings = 218.26119995117188
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}
+Earnings = 91.5304183959961
+Train for JPM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'JPM'}
+Earnings = -1187.901252746582
+{'ma periods': [20, 50], 'DATA_NAME': 'JPM'}
+Earnings = -1614.4204635620117
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}
+Earnings = -665.651725769043
+Train for KO
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}
+Earnings = 207.04933166503906
+{'ma periods': [20, 50], 'DATA_NAME': 'KO'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'KO'}
+Earnings = 207.04933166503906
+Train for PG
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}
+Earnings = 304.9200897216797
+{'ma periods': [20, 50], 'DATA_NAME': 'PG'}
+Earnings = 0
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'PG'}
+Earnings = 304.9200897216797
+Train for XOM
+{'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'XOM'}
+Earnings = -1113.2305221557617
+{'ma periods': [20, 50], 'DATA_NAME': 'XOM'}
+Earnings = -74.68000793457031
+{'ma periods': [50, 100, 200], 'DATA_NAME': 'XOM'}
+Earnings = -536.940544128418
+TRADING PHASE
+Final account money = 198414.27307128906
+BEST TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
+CHOSEN PARAMS
+[('WMT', {'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'WMT'}), ('AAPL', {'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'AAPL'}), ('MSFT', {'ma periods': [50, 100, 200], 'DATA_NAME': 'MSFT'}), ('JPM', {'ma periods': [50, 100, 200], 'DATA_NAME': 'JPM'}), ('KO', {'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'KO'}), ('PG', {'ma periods': [20, 30, 50, 100, 150, 200], 'DATA_NAME': 'PG'}), ('XOM', {'ma periods': [20, 50], 'DATA_NAME': 'XOM'})]
+            EARNED_PROFIT  WINS  LOSES  DRAWS
+STOCK_NAME                                   
+XOM           1049.240265     8     12      9
+PG             569.539162    25     31     29
+KO             978.151913    19     18     15
+JPM          -1035.450378     1      5      2
+MSFT            98.169861    15     20     11
+AAPL         -1243.867958    18     32     18
+WMT           -908.109985     4     10     11
+TOTAL         -492.327122    90    128     95
+RETURN ON START CAPITAL = -0.0024616356086730956
+Sharpe ratio = -2.84760554045268
+Sortino ratio = -2.8599134862959743
+With respect to 2020 corona crisis
+            EARNED_PROFIT        WINS       LOSES       DRAWS
+STOCK_NAME                                                   
+XOM           1154.020355  112.780090  116.780090  113.780090
+PG              37.429764 -507.109398 -501.109398 -503.109398
+KO            1151.191959  192.040047  191.040047  188.040047
+JPM          -1035.450378    1.000000    5.000000    2.000000
+MSFT          -429.020187 -512.190048 -507.190048 -516.190048
+AAPL         -1550.857483 -288.989525 -274.989525 -288.989525
+WMT           -195.769997  716.339989  722.339989  723.339989
+TOTAL         -868.455967 -286.128845 -248.128845 -281.128845
+RETURN ON START CAPITAL = -0.004342279834747315
+Sharpe ratio = -2.7337156095649813
+Sortino ratio = -3.264045649220368

@@ -6,69 +6,1089 @@
 [*********************100%***********************]  1 of 1 completed
 [*********************100%***********************]  1 of 1 completed
 TRADE MANAGER PARAMS
-{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2)}
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
 TRAINING PHASE
 Train for WMT
-{'N': 8, 'DATA_NAME': 'WMT'}
-Earnings = -173.6995391845703
-{'N': 10, 'DATA_NAME': 'WMT'}
-Earnings = 123.60016632080078
-{'N': 12, 'DATA_NAME': 'WMT'}
-Earnings = 160.1901626586914
-{'N': 14, 'DATA_NAME': 'WMT'}
-Earnings = 163.01956939697266
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 43.59986877441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 43.59986877441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 43.59986877441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 433.0398254394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 383.1090316772461
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 383.1090316772461
 Train for AAPL
-{'N': 8, 'DATA_NAME': 'AAPL'}
-Earnings = -1648.1709060668945
-{'N': 10, 'DATA_NAME': 'AAPL'}
-Earnings = -1379.6313514709473
-{'N': 12, 'DATA_NAME': 'AAPL'}
-Earnings = -974.7297630310059
-{'N': 14, 'DATA_NAME': 'AAPL'}
-Earnings = -274.1055221557617
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 794.1850509643555
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1526069641113
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 727.6176643371582
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 733.5624771118164
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1954536437988
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1954536437988
 Train for MSFT
-{'N': 8, 'DATA_NAME': 'MSFT'}
-Earnings = -527.3687515258789
-{'N': 10, 'DATA_NAME': 'MSFT'}
-Earnings = -162.9093780517578
-{'N': 12, 'DATA_NAME': 'MSFT'}
-Earnings = -4.300018310546875
-{'N': 14, 'DATA_NAME': 'MSFT'}
-Earnings = -81.80009460449219
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 166.6404571533203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 175.12005615234375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 175.12005615234375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -124.6412124633789
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -698.508659362793
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -694.5788497924805
 Train for JPM
-{'N': 8, 'DATA_NAME': 'JPM'}
-Earnings = 210.05046844482422
-{'N': 10, 'DATA_NAME': 'JPM'}
-Earnings = 37.36024475097656
-{'N': 12, 'DATA_NAME': 'JPM'}
-Earnings = -343.5490493774414
-{'N': 14, 'DATA_NAME': 'JPM'}
-Earnings = -270.8398742675781
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 570.400505065918
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 629.8306045532227
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 629.8306045532227
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 895.620475769043
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1088.630973815918
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1088.630973815918
 Train for KO
-{'N': 8, 'DATA_NAME': 'KO'}
-Earnings = 114.4602279663086
-{'N': 10, 'DATA_NAME': 'KO'}
-Earnings = 249.77005004882812
-{'N': 12, 'DATA_NAME': 'KO'}
-Earnings = 19.690471649169922
-{'N': 14, 'DATA_NAME': 'KO'}
-Earnings = 55.54036331176758
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -394.0701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -394.0701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -411.2399482727051
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -538.3102798461914
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -450.74930572509766
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -450.74930572509766
 Train for PG
-{'N': 8, 'DATA_NAME': 'PG'}
-Earnings = -25.82946014404297
-{'N': 10, 'DATA_NAME': 'PG'}
-Earnings = -48.06976318359375
-{'N': 12, 'DATA_NAME': 'PG'}
-Earnings = -43.950172424316406
-{'N': 14, 'DATA_NAME': 'PG'}
-Earnings = 64.8602294921875
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -817.8288879394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -817.8288879394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -940.4791412353516
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 34.44007110595703
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -355.76055908203125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -445.1200942993164
 Train for XOM
-{'N': 8, 'DATA_NAME': 'XOM'}
-Earnings = 151.44918823242188
-{'N': 10, 'DATA_NAME': 'XOM'}
-Earnings = -93.22116088867188
-{'N': 12, 'DATA_NAME': 'XOM'}
-Earnings = 180.84994506835938
-{'N': 14, 'DATA_NAME': 'XOM'}
-Earnings = 43.110450744628906
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 490.8595886230469
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 490.8595886230469
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 533.0900192260742
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 958.8815231323242
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -764.9796905517578
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -764.9796905517578
 TRADING PHASE
+Final account money = 198191.7042427063
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 173.0698471069336
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 173.0698471069336
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 201.38982391357422
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 386.61964416503906
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 353.30895233154297
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 353.30895233154297
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 794.1850509643555
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1526069641113
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 477.5776786804199
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 733.5624771118164
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 932.9251670837402
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 932.9251670837402
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 55.84089660644531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -187.6793975830078
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -187.6793975830078
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -241.02103424072266
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -817.778450012207
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -813.8486404418945
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 725.5105056762695
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 745.4604187011719
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 745.4604187011719
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 930.4905700683594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1087.620750427246
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1087.620750427246
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -398.7700614929199
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -398.7700614929199
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -415.9398765563965
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -676.1101722717285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -950.3196411132812
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -950.3196411132812
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -365.0795364379883
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -365.0795364379883
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -535.2598876953125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = -331.70013427734375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -533.0401840209961
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -712.9600296020508
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 507.7000732421875
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 507.7000732421875
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 641.3503570556641
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 594.861572265625
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -106.18971252441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -100.60993957519531
+TRADING PHASE
+Final account money = 194823.2702102661
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 65.599609375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 65.599609375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 65.599609375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 433.0398254394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 383.1090316772461
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 383.1090316772461
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 626.9524726867676
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 649.9200286865234
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 310.34510040283203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 795.7502098083496
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 1009.0079689025879
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 1009.0079689025879
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 55.84089660644531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -187.6793975830078
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -187.6793975830078
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -213.32080841064453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -775.8082962036133
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -771.8784866333008
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 803.4906921386719
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 823.4406051635742
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 823.4406051635742
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 946.2303771972656
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1131.510841369629
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1131.510841369629
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -464.5701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -464.5701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -481.7399482727051
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -469.91016387939453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -445.899169921875
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -445.899169921875
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -631.9696807861328
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -631.9696807861328
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -720.1799468994141
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 34.44007110595703
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -355.76055908203125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -445.1200942993164
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 277.80977630615234
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 277.80977630615234
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 299.0399932861328
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 613.0511932373047
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -556.5602951049805
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -556.5602951049805
+TRADING PHASE
+Final account money = 199276.60063934326
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 33.350013732910156
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = -64.63074493408203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = -64.63074493408203
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 864.6228065490723
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 841.3453636169434
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 477.8003349304199
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 713.9525451660156
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 364.9722480773926
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 364.9722480773926
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -251.05911254882812
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -405.8393859863281
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -405.8393859863281
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -458.36043548583984
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -677.138557434082
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -559.1789703369141
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 392.06005859375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 360.0996856689453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 360.0996856689453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 547.4905319213867
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 827.0207748413086
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 827.0207748413086
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = 6.78009033203125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = 6.78009033203125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -421.4596939086914
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -308.69908905029297
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -906.9286880493164
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -906.9286880493164
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -323.4294891357422
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -323.4294891357422
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -315.05980682373047
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = -112.94953155517578
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -318.7101821899414
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -510.68994903564453
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 77.2096176147461
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 77.2096176147461
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 99.9798355102539
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 345.62097930908203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -361.96048736572266
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -361.96048736572266
+TRADING PHASE
+Final account money = 195907.4267463684
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 169.96987915039062
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 169.96987915039062
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 195.52981567382812
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 462.1896743774414
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 428.8789825439453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 428.8789825439453
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 794.1850509643555
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1526069641113
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 477.5776786804199
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 733.5624771118164
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 877.5401496887207
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 877.5401496887207
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 55.84089660644531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -187.6793975830078
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -187.6793975830078
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -218.42093658447266
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -800.4783401489258
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -796.5485305786133
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 673.2905044555664
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 693.2404174804688
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 693.2404174804688
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 935.0005569458008
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1041.6808013916016
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1041.6808013916016
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -398.7700614929199
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -398.7700614929199
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -415.9398765563965
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -676.1101722717285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -950.3196411132812
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -950.3196411132812
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -340.5794906616211
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -340.5794906616211
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -535.2598876953125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = -305.6301040649414
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -465.7202377319336
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -645.6400833129883
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 547.730224609375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 547.730224609375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 681.3805084228516
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 517.9016494750977
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -96.91967010498047
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -99.33989715576172
+TRADING PHASE
+Final account money = 195354.7130279541
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 43.59986877441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 43.59986877441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 43.59986877441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 433.0398254394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 383.1090316772461
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 383.1090316772461
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 794.1850509643555
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1526069641113
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 727.6176643371582
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 866.5250244140625
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1954536437988
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1954536437988
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 166.6404571533203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 175.12005615234375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 175.12005615234375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -124.6412124633789
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -698.508659362793
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -694.5788497924805
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 570.400505065918
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 629.8306045532227
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 629.8306045532227
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 895.620475769043
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1088.630973815918
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1088.630973815918
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -394.0701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -394.0701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -411.2399482727051
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -538.3102798461914
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -450.74930572509766
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -450.74930572509766
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -817.8288879394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -817.8288879394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -940.4791412353516
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 34.44007110595703
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -355.76055908203125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -445.1200942993164
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 490.8595886230469
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 490.8595886230469
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 533.0900192260742
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 958.8815231323242
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -764.9796905517578
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -764.9796905517578
+TRADING PHASE
+Final account money = 195787.0349998474
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 43.59986877441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 43.59986877441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 43.59986877441406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 433.0398254394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 383.1090316772461
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 383.1090316772461
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 794.1850509643555
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1526069641113
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 727.6176643371582
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 733.5624771118164
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1954536437988
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 817.1954536437988
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 166.6404571533203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 175.12005615234375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 175.12005615234375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -124.6412124633789
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -698.508659362793
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -694.5788497924805
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 570.400505065918
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 629.8306045532227
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 629.8306045532227
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 895.620475769043
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1088.630973815918
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1088.630973815918
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -394.0701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -394.0701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -411.2399482727051
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -538.3102798461914
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -450.74930572509766
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -450.74930572509766
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -817.8288879394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -817.8288879394531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -940.4791412353516
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 34.44007110595703
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -355.76055908203125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -445.1200942993164
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 490.8595886230469
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 490.8595886230469
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 533.0900192260742
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 958.8815231323242
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -764.9796905517578
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -764.9796905517578
+TRADING PHASE
+Final account money = 198123.8118057251
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 33.350013732910156
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 26.999267578125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 26.999267578125
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 1071.154872894287
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 1047.8774299621582
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 684.3324012756348
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 691.9675674438477
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 354.6452293395996
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 354.6452293395996
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -251.05911254882812
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -405.8393859863281
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -405.8393859863281
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -521.7103500366211
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -689.2483291625977
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -571.2887420654297
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 392.06005859375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 360.0996856689453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 360.0996856689453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 547.4905319213867
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 910.6807174682617
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 910.6807174682617
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -59.019981384277344
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -59.019981384277344
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -487.259765625
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -193.32888412475586
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -588.2782402038574
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -588.2782402038574
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -378.1496124267578
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -378.1496124267578
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -499.97986602783203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 53.51036834716797
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -99.69052124023438
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -211.67010498046875
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 32.179725646972656
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 32.179725646972656
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 33.05027770996094
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 369.2109909057617
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -590.7806396484375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -590.7806396484375
+TRADING PHASE
+Final account money = 197346.5510520935
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 33.350013732910156
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = -91.5107192993164
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = -91.5107192993164
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 864.6228065490723
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 841.3453636169434
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 627.4952201843262
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 713.9525451660156
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 364.9722480773926
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 364.9722480773926
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -169.85946655273438
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -330.5896759033203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -330.5896759033203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -488.67037200927734
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -544.8778915405273
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -426.9183044433594
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 392.06005859375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 360.0996856689453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 360.0996856689453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 547.4905319213867
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 827.0207748413086
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 827.0207748413086
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = 23.700119018554688
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = 23.700119018554688
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -404.53966522216797
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -167.40884017944336
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -510.0383110046387
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -510.0383110046387
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -423.0691680908203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -423.0691680908203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -579.3394088745117
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 53.51036834716797
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -99.69052124023438
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -211.67010498046875
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 39.979408264160156
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 39.979408264160156
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 40.84996032714844
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 328.8011474609375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -923.5003433227539
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -923.5003433227539
+TRADING PHASE
+Final account money = 199117.7260246277
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 124.89036560058594
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 33.350013732910156
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = -91.5107192993164
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = -91.5107192993164
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 864.6228065490723
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 841.3453636169434
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 477.8003349304199
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 587.5424156188965
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 203.04723358154297
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 203.04723358154297
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -251.05911254882812
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -405.8393859863281
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -405.8393859863281
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -521.7103500366211
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -700.1682815551758
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -582.2086944580078
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 392.06005859375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 360.0996856689453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 360.0996856689453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 547.4905319213867
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 827.0207748413086
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 827.0207748413086
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -59.019981384277344
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -59.019981384277344
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -487.259765625
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -193.32888412475586
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -588.2782402038574
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -588.2782402038574
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -378.1496124267578
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -378.1496124267578
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -499.97986602783203
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 53.51036834716797
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -99.69052124023438
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -211.67010498046875
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 32.179725646972656
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 32.179725646972656
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 33.05027770996094
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 369.2109909057617
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -786.0306396484375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -786.0306396484375
+TRADING PHASE
+Final account money = 195395.93828582764
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 34.10969543457031
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 34.10969543457031
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'WMT'}
+Earnings = 34.10969543457031
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'WMT'}
+Earnings = 537.7597045898438
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 565.2288818359375
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}
+Earnings = 565.2288818359375
+Train for AAPL
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 1124.0523376464844
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 1147.0198936462402
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}
+Earnings = 807.4449653625488
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'AAPL'}
+Earnings = 768.5578384399414
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 1047.3151473999023
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'AAPL'}
+Earnings = 1047.3151473999023
+Train for MSFT
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = 55.84089660644531
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -187.6793975830078
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}
+Earnings = -187.6793975830078
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'MSFT'}
+Earnings = -283.9107131958008
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -753.9080276489258
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'MSFT'}
+Earnings = -849.4481582641602
+Train for JPM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 645.0303039550781
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 664.9802169799805
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'JPM'}
+Earnings = 664.9802169799805
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'JPM'}
+Earnings = 960.5105438232422
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1194.1708221435547
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}
+Earnings = 1194.1708221435547
+Train for KO
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -464.5701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -464.5701332092285
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'KO'}
+Earnings = -481.7399482727051
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'KO'}
+Earnings = -469.91016387939453
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -445.899169921875
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}
+Earnings = -445.899169921875
+Train for PG
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -631.9696807861328
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -631.9696807861328
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'PG'}
+Earnings = -720.1799468994141
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}
+Earnings = 34.44007110595703
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -355.76055908203125
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'PG'}
+Earnings = -445.1200942993164
+Train for XOM
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 277.80977630615234
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 277.80977630615234
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'XOM'}
+Earnings = 299.0399932861328
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'}
+Earnings = 633.3512573242188
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -235.06031799316406
+{<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'XOM'}
+Earnings = -235.06031799316406
+TRADING PHASE
+Final account money = 200779.0096206665
+BEST TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+CHOSEN PARAMS
+[('WMT', {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'WMT'}), ('AAPL', {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 9, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'AAPL'}), ('MSFT', {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 3, 'DATA_NAME': 'MSFT'}), ('JPM', {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'JPM'}), ('KO', {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 1.5, 'DATA_NAME': 'KO'}), ('PG', {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'PG'}), ('XOM', {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 2, 'DATA_NAME': 'XOM'})]
+            EARNED_PROFIT  WINS  LOSES  DRAWS
+STOCK_NAME                                   
+XOM           -105.590702    13     21      2
+PG            -673.519089     4     18     13
+KO            1770.940632     8     16     16
+JPM           -643.830231    16     35      7
+MSFT            86.010544     4     11      4
+AAPL          1327.255791     3      6      6
+WMT           -982.257324     7     25     14
+TOTAL          779.009621    55    132     62
+RETURN ON START CAPITAL = 0.0038950481033325195
+Sharpe ratio = -2.000363244112603
+Sortino ratio = -1.7292056883345168
+With respect to 2020 corona crisis
+            EARNED_PROFIT        WINS       LOSES       DRAWS
+STOCK_NAME                                                   
+XOM           -528.460594 -409.869892 -401.869892 -420.869892
+PG            -373.269272  304.249817  318.249817  313.249817
+KO             932.260685 -830.679947 -822.679947 -822.679947
+JPM           -562.370430   97.459801  116.459801   88.459801
+MSFT          -282.579651 -364.590195 -357.590195 -364.590195
+AAPL           914.200729 -410.055061 -407.055061 -407.055061
+WMT           -209.117905  780.139420  798.139420  787.139420
+TOTAL         -109.336437 -833.346058 -756.346058 -826.346058
+RETURN ON START CAPITAL = -0.000546682186126709
+Sharpe ratio = -1.9982788421505424
+Sortino ratio = -1.8368862108549127

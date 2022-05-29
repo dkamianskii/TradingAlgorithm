@@ -4,6 +4,8 @@ import yfinance as yf
 import pandas as pd
 
 from helping.base_enum import BaseEnum
+from trading.trade_manager import TradeManager
+from trading.trade_statistics_manager_enums import TradeResultColumn
 
 
 class TradeManagerGrid(BaseEnum):
@@ -45,3 +47,72 @@ for company in companies_names:
     companies_data[company] = {"full data": full_data,
                                "train data": train_data,
                                "trade data": trade_data}
+
+
+def print_best_manager_results(best_trade_manager: TradeManager, best_trade_manager_params: dict):
+    print("BEST TRADE MANAGER PARAMS")
+    print(best_trade_manager_params)
+
+    print("CHOSEN PARAMS")
+    print(best_trade_manager.get_chosen_params())
+
+    trade_results = best_trade_manager.get_trade_results()
+    tr_total = trade_results.loc[TradeResultColumn.TOTAL]
+
+    print(trade_results)
+
+    win_rate = tr_total[TradeResultColumn.WINS] / (
+                tr_total[TradeResultColumn.WINS] + tr_total[TradeResultColumn.LOSES] +
+                tr_total[TradeResultColumn.DRAWS])
+    lose_rate = tr_total[TradeResultColumn.LOSES] / (
+                tr_total[TradeResultColumn.WINS] + tr_total[TradeResultColumn.LOSES] +
+                tr_total[TradeResultColumn.DRAWS])
+
+    print(f"WIN RATE = {win_rate}")
+    print(f"LOSE RATE = {lose_rate}")
+
+    print(f"RETURN ON START CAPITAL = {best_trade_manager.get_traiding_gain()}")
+
+    print(f"MAX DROWDOWN = {best_trade_manager.get_max_drowdown()}")
+
+    print(f"AVG WIN / AVG LOSE = {best_trade_manager.get_avg_win_to_avg_lose()}")
+
+    print(f"Sharpe ratio = {best_trade_manager.get_sharpe_ratio()}")
+    # print(f"Sortino ratio = {best_trade_manager.get_sortino_ratio()}")
+    print(f"Calmar ratio = {best_trade_manager.get_calmar_ratio()}")
+
+    best_trade_manager.plot_earnings_curve(img_dir=img_dir)
+
+    for company in companies_names:
+        best_trade_manager.plot_stock_history(company, plot_algorithm_graph=True, img_dir=img_dir)
+        best_trade_manager.plot_stock_history(company, plot_algorithm_graph=True, plot_algorithm_graph_full=True,
+                                              img_dir=img_dir)
+
+    print("With respect to 2020 corona crisis")
+
+    trade_results = best_trade_manager.get_trade_results(ignore_crisis=False)
+    tr_total = trade_results.loc[TradeResultColumn.TOTAL]
+
+    print(trade_results)
+
+    win_rate = tr_total[TradeResultColumn.WINS] / (
+                tr_total[TradeResultColumn.WINS] + tr_total[TradeResultColumn.LOSES] +
+                tr_total[TradeResultColumn.DRAWS])
+    lose_rate = tr_total[TradeResultColumn.LOSES] / (
+                tr_total[TradeResultColumn.WINS] + tr_total[TradeResultColumn.LOSES] +
+                tr_total[TradeResultColumn.DRAWS])
+
+    print(f"WIN RATE = {win_rate}")
+    print(f"WIN RATE = {lose_rate}")
+
+    print(f"RETURN ON START CAPITAL = {best_trade_manager.get_traiding_gain(ignore_crisis=False)}")
+
+    print(f"MAX DROWDOWN = {best_trade_manager.get_max_drowdown(ignore_crisis=False)}")
+
+    print(f"AVG WIN / AVG LOSE = {best_trade_manager.get_avg_win_to_avg_lose(ignore_crisis=False)}")
+
+    print(f"Sharpe ratio = {best_trade_manager.get_sharpe_ratio(ignore_crisis=False)}")
+    # print(f"Sortino ratio = {best_trade_manager.get_sortino_ratio(ignore_crisis=False)}")
+    print(f"Calmar ratio = {best_trade_manager.get_calmar_ratio()}")
+
+    best_trade_manager.plot_earnings_curve(img_dir=img_dir, ignore_crisis=False)

@@ -75,35 +75,6 @@ for i in range(eb.random_grid_search_attempts):
         best_trade_manager_result = result
         best_trade_manager_params = trade_manager_params
 
-print("BEST TRADE MANAGER PARAMS")
-print(best_trade_manager_params)
-
-print("CHOSEN PARAMS")
-print(best_trade_manager.get_chosen_params())
-
-print(best_trade_manager.get_trade_results())
-
-print(f"RETURN ON START CAPITAL = {best_trade_manager.get_traiding_gain()}")
-
-print(f"Sharpe ratio = {best_trade_manager.get_sharpe_ratio()}")
-print(f"Sortino ratio = {best_trade_manager.get_sortino_ratio()}")
-
-best_trade_manager.plot_earnings_curve(img_dir=eb.img_dir)
-
-for company in eb.companies_names:
-    best_trade_manager.plot_stock_history(company, plot_algorithm_graph=True, img_dir=eb.img_dir)
-    best_trade_manager.plot_stock_history(company, plot_algorithm_graph=True, plot_algorithm_graph_full=True,
-                                          img_dir=eb.img_dir)
-
-print("With respect to 2020 corona crisis")
-
-print(best_trade_manager.get_trade_results(ignore_crisis=False))
-
-print(f"RETURN ON START CAPITAL = {best_trade_manager.get_traiding_gain(ignore_crisis=False)}")
-
-print(f"Sharpe ratio = {best_trade_manager.get_sharpe_ratio(ignore_crisis=False)}")
-print(f"Sortino ratio = {best_trade_manager.get_sortino_ratio(ignore_crisis=False)}")
-
-best_trade_manager.plot_earnings_curve(img_dir=eb.img_dir, ignore_crisis=False)
+eb.print_best_manager_results(best_trade_manager, best_trade_manager_params)
 
 

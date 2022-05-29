@@ -73,7 +73,8 @@ class AbstractIndicator(ABC):
         pass
 
     @abstractmethod
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, img_dir: str, name: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None):
         pass
 
     def add_trade_point(self, date: Union[pd.Timestamp, Hashable], price: float, action: TradeAction):

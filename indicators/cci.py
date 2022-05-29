@@ -94,7 +94,8 @@ class CCI(AbstractIndicator):
             self.__make_trade_decision(point, date, cci)
         return self.trade_points
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, img_dir: str, name: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None):
         if (start_date is None) or (start_date < self.CCI_value.index[0]):
             start_date = self.CCI_value.index[0]
         if (end_date is None) or (end_date > self.CCI_value.index[-1]):
@@ -138,7 +139,8 @@ class CCI(AbstractIndicator):
                                  line=dict(width=1, dash='dash', color="black"), showlegend=False),
                       row=2, col=1)
 
-        fig.update_layout(title=f"Price with CCI {self._N}",
+        fig.update_layout(title=f"{name} with CCI {self._N}",
                           xaxis_title="Date")
 
-        fig.show()
+        # fig.show()
+        fig.write_image(f"{img_dir}/{name}.png", scale=1, width=1400, height=900)

@@ -11,6 +11,7 @@ class MASupportLevelsTradeAlgorithm(AbstractTradeAlgorithm):
 
     def __init__(self):
         super().__init__()
+        self._stock_name = ""
         self._indicator: MASupportLevels = MASupportLevels()
 
     @staticmethod
@@ -30,6 +31,7 @@ class MASupportLevelsTradeAlgorithm(AbstractTradeAlgorithm):
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
         super().train(data, hyperparameters)
+        self._stock_name = hyperparameters["DATA_NAME"]
         self._indicator.set_ma_periods(hyperparameters["ma periods"])
         self._indicator.set_tested_MAs_usage(use_tested_MAs=True)
         self._indicator.clear_vars()
@@ -40,5 +42,9 @@ class MASupportLevelsTradeAlgorithm(AbstractTradeAlgorithm):
                            special_params: Optional[Dict] = None) -> TradeAction:
         return self._indicator.evaluate_new_point(new_point, date, special_params)
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
-        self._indicator.plot(start_date, end_date)
+    def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
+        if show_full:
+            self._indicator.plot(img_dir, (self._stock_name + " full history"))
+        else:
+            self._indicator.plot(img_dir, self._stock_name, start_date, end_date)

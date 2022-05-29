@@ -32,6 +32,6 @@ class AbstractTradeAlgorithm(ABC):
         pass
 
     @abstractmethod
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None,
+    def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None,
              show_full: bool = False):
         pass

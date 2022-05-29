@@ -231,7 +231,8 @@ class MACD(AbstractIndicator):
             self.__make_trade_decision(point, date, MACD, histogram)
         return self.trade_points
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, img_dir: str, name: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None):
         """
         Plots the MACD graphic with highlighted trade points in specified time diapason
         """
@@ -279,7 +280,8 @@ class MACD(AbstractIndicator):
             color=np.where(selected_macd["histogram"] > 0, "green", "red")
         ), name="MACD signal difference", row=2, col=1)
 
-        fig.update_layout(title=f"Price with MACD {self._short_period}, {self._long_period}, {self._signal_period}",
+        fig.update_layout(title=f"{name} with MACD {self._short_period}, {self._long_period}, {self._signal_period}",
                           xaxis_title="Date")
 
-        fig.show()
+        # fig.show()
+        fig.write_image(f"{img_dir}/{name}.png", scale=1, width=1400, height=900)

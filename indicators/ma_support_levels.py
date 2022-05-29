@@ -237,7 +237,8 @@ class MASupportLevels(AbstractIndicator):
             self.__make_trade_decision(activation_flag, resistance, support, point, date)
         return self.trade_points
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, img_dir: str, name: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None):
         """
         Plots the candle graph for data and MAs with highlighted trade points in specified time diapason
         """
@@ -280,7 +281,8 @@ class MASupportLevels(AbstractIndicator):
                                      symbol=np.where(bool_buys, "triangle-up", "triangle-down")),
                                  name="Action points"))
 
-        fig.update_layout(title="Price with Moving Averages",
+        fig.update_layout(title=f"{name} with Moving Averages",
                           xaxis_title="Date")
 
-        fig.show()
+        # fig.show()
+        fig.write_image(f"{img_dir}/{name}.png", scale=1, width=1400, height=900)

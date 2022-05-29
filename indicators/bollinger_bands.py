@@ -96,7 +96,8 @@ class BollingerBands(AbstractIndicator):
             self.__make_trade_decision(point, date, upper_band, lower_band)
         return self.trade_points
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, img_dir: str, name: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None):
         """
         Plots the candle graph for data and Bollinger bands with highlighted trade points in specified time diapason
         """
@@ -134,8 +135,9 @@ class BollingerBands(AbstractIndicator):
                                      symbol=np.where(bool_buys, "triangle-up", "triangle-down")),
                                  name="Action points"))
 
-        fig.update_layout(title=f"Price with Bollinger bands {self._N},{self._K}",
+        fig.update_layout(title=f"{name} with Bollinger bands {self._N},{self._K}",
                           xaxis_title="Date",
                           yaxis_title="Price")
 
-        fig.show()
+        # fig.show()
+        fig.write_image(f"{img_dir}/{name}.png", scale=1, width=1400, height=900)

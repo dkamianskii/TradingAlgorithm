@@ -135,7 +135,7 @@ class RiskManager:
         return shares_to_buy
 
     def evaluate_sharpe_ratio(self, earnings_history: pd.DataFrame) -> float:
-        return_of_portfolio = (self.account_money - self.start_capital) / self.start_capital
+        return_of_portfolio = earnings_history[EarningsHistoryColumn.VALUE].sum() / self.start_capital
         gain = return_of_portfolio - RiskManager.risk_free_rate
         std_of_excess = earnings_history[EarningsHistoryColumn.VALUE].std()
         if gain >= 0:
@@ -145,7 +145,7 @@ class RiskManager:
         return sharpe_ratio
 
     def evaluate_sortino_ratio(self, earnings_history: pd.DataFrame) -> float:
-        return_of_portfolio = (self.account_money - self.start_capital) / self.start_capital
+        return_of_portfolio = earnings_history[EarningsHistoryColumn.VALUE].sum() / self.start_capital
         downsides = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] < 0]
         std_of_downside = downsides[EarningsHistoryColumn.VALUE].std()
         gain = return_of_portfolio - RiskManager.risk_free_rate

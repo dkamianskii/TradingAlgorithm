@@ -25,7 +25,7 @@ class TradeManager:
                  use_limited_money: bool = False,
                  money_for_a_bid: float = 10000,
                  start_capital: float = 0,
-                 equity_risk_rate: float = 0.02,
+                 equity_risk_rate: float = 0.025,
                  bid_risk_rate: float = 0.03,
                  take_profit_multiplier: float = 2,
                  active_action_multiplier: float = 1.5,
@@ -88,8 +88,12 @@ class TradeManager:
         return [(stock_name, stock[TrackedStocksColumn.CHOSEN_PARAMS]) for stock_name, stock in
                 self._tracked_stocks.items()]
 
-    def get_trade_results(self) -> pd.DataFrame:
-        return self._statistics_manager.trade_result
+    def get_trade_results(self, ignore_crisis: bool = True) -> pd.DataFrame:
+        return self._statistics_manager.get_trade_results(ignore_crisis)
+
+    def get_traiding_gain(self, ignore_crisis: bool = True):
+        trade_results = self._statistics_manager.get_trade_results(ignore_crisis)
+        return trade_results.loc[TradeResultColumn.TOTAL][TradeResultColumn.EARNED_PROFIT] / self._risk_manager.start_capital
 
     def get_bids_history(self, stock_name: Optional[str] = None):
         return self._statistics_manager.get_bids_history(stock_name)
@@ -102,12 +106,12 @@ class TradeManager:
                 "account money": self._risk_manager.account_money,
                 "available money": self._risk_manager.available_money}
 
-    def get_sharpe_ratio(self):
-        earnings_history = self._statistics_manager.get_earnings_history()
+    def get_sharpe_ratio(self, ignore_crisis: bool = True):
+        earnings_history = self._statistics_manager.get_earnings_history(ignore_crisis=ignore_crisis)
         return self._risk_manager.evaluate_sharpe_ratio(earnings_history)
 
-    def get_sortino_ratio(self):
-        earnings_history = self._statistics_manager.get_earnings_history()
+    def get_sortino_ratio(self, ignore_crisis: bool = True):
+        earnings_history = self._statistics_manager.get_earnings_history(ignore_crisis=ignore_crisis)
         return self._risk_manager.evaluate_sortino_ratio(earnings_history)
 
     def clear_history(self):
@@ -129,7 +133,7 @@ class TradeManager:
                            use_limited_money: bool = False,
                            money_for_a_bid: float = 10000,
                            start_capital: float = 0,
-                           equity_risk_rate: float = 0.02,
+                           equity_risk_rate: float = 0.025,
                            bid_risk_rate: float = 0.03,
                            take_profit_multiplier: float = 2,
                            active_action_multiplier: float = 1.5,
@@ -352,6 +356,7 @@ class TradeManager:
                 self._train_results[stock_name][str(params)] = self._statistics_manager.trade_result.copy()
                 earnings = self._statistics_manager.trade_result.at[TradeResultColumn.TOTAL,
                                                                     TradeResultColumn.EARNED_PROFIT]
+                print(f"Earnings = {earnings}")
                 if (max_earnings is None) or (earnings > max_earnings):
                     max_earnings = earnings
                     best_params = params
@@ -365,6 +370,7 @@ class TradeManager:
 
     def plot_stock_history(self,
                            stock_name: str,
+                           img_dir: str,
                            show_full_stock_history: bool = False,
                            plot_algorithm_graph: bool = False,
                            plot_algorithm_graph_full: bool = False):
@@ -403,7 +409,8 @@ class TradeManager:
 
         trading_start_date: pd.Timestamp = stock[TrackedStocksColumn.TRADING_START_DATE]
         if plot_algorithm_graph:
-            stock[TrackedStocksColumn.TRADE_ALGORITHM].plot(trading_start_date, plot_algorithm_graph_full)
+            stock[TrackedStocksColumn.TRADE_ALGORITHM].plot(img_dir=img_dir, start_date=trading_start_date,
+                                                            show_full=plot_algorithm_graph_full)
         if show_full_stock_history:
             stock_data: pd.DataFrame = stock[TrackedStocksColumn.DATA]
             fig.add_vline(x=trading_start_date, line_width=3, line_dash="dash", line_color="red",
@@ -455,15 +462,18 @@ class TradeManager:
             yaxis_title="Price")
 
         # fig.show()
-        fig.write_image(f"../images/{stock_name}_trading.png", scale=1, width=1400, height=900)
+        fig.write_image(f"{img_dir}/{stock_name}_trading.png", scale=1, width=1400, height=900)
 
-    def plot_earnings_curve(self, stock_name: Optional[str] = None):
+    def plot_earnings_curve(self, img_dir: str, stock_name: Optional[str] = None, ignore_crisis: bool = True):
         if stock_name is None:
             name = "Total Earnings"
         else:
             name = f"Earnings on {stock_name} with {self._tracked_stocks[stock_name][TrackedStocksColumn.TRADE_ALGORITHM].get_algorithm_name()}"
 
-        earnings_history = self._statistics_manager.get_earnings_history(stock_name)
+        if not ignore_crisis:
+            name += " Out of crisis"
+
+        earnings_history = self._statistics_manager.get_earnings_history(stock_name, ignore_crisis)
 
         fig = go.Figure(go.Scatter(
             x=earnings_history.index,
@@ -478,4 +488,4 @@ class TradeManager:
                           yaxis_title="Total Profit")
 
         # fig.show()
-        fig.write_image(f"../images/{name}.png", scale=1, width=1400, height=900)
+        fig.write_image(f"{img_dir}/{name}.png", scale=1, width=1400, height=900)

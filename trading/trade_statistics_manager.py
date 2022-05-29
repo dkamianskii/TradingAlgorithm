@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import pandas as pd
 from typing import Dict, Optional
 
@@ -6,7 +8,8 @@ from trading.trade_manager_enums import BidType, BidResult
 from trading.trade_statistics_manager_enums import *
 
 
-class TradeStatisticsManager:  # todo Sharpe Ratio, Sortino Ratio
+class TradeStatisticsManager:
+    end_crisis = datetime.strptime("2020-04-01", "%Y-%m-%d")
 
     def __init__(self):
         self.trade_result: pd.DataFrame = pd.DataFrame([{TradeResultColumn.STOCK_NAME: TradeResultColumn.TOTAL,
@@ -43,10 +46,29 @@ class TradeStatisticsManager:  # todo Sharpe Ratio, Sortino Ratio
         bids_history = bids_history[~bids_history[BidsHistoryColumn.DATE_CLOSE].isna()]
         return bids_history
 
-    def get_earnings_history(self, stock_name: Optional[str] = None) -> pd.DataFrame:
-        if stock_name is None:
-            return self.earnings_history[EarningsHistoryColumn.TOTAL.name]
-        return self.earnings_history[stock_name]
+    def get_earnings_history(self, stock_name: Optional[str] = None, ignore_crisis: bool = True) -> pd.DataFrame:
+        if ignore_crisis:
+            if stock_name is None:
+                return self.earnings_history[EarningsHistoryColumn.TOTAL.name]
+            return self.earnings_history[stock_name]
+        else:
+            if stock_name is None:
+                return self.earnings_history[EarningsHistoryColumn.TOTAL.name][TradeStatisticsManager.end_crisis:]
+            return self.earnings_history[stock_name][TradeStatisticsManager.end_crisis:]
+
+    def get_trade_results(self, ignore_crisis: bool = True):
+        if ignore_crisis:
+            return self.trade_result
+        else:
+            out_crisis_trade_result = self.trade_result.copy()
+            total_crisis_earnings = 0
+            for name in self.trade_result.index[:-1]:
+                crisis_earnings_history = self.earnings_history[name][:TradeStatisticsManager.end_crisis]
+                crisis_earnings = crisis_earnings_history[EarningsHistoryColumn.VALUE].sum()
+                out_crisis_trade_result.loc[name] -= crisis_earnings
+                total_crisis_earnings += crisis_earnings
+            out_crisis_trade_result.loc[TradeResultColumn.TOTAL] -= total_crisis_earnings
+            return out_crisis_trade_result
 
     def clear_history(self):
         self.trade_result[self.trade_result.columns] = 0

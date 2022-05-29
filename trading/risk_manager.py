@@ -140,9 +140,9 @@ class RiskManager:
         expected_return = return_rates.mean()
         std_of_return = return_rates.std()
         if expected_return >= 0:
-            sharpe_ratio = expected_return / std_of_return
+            sharpe_ratio = expected_return / (1 + std_of_return)
         else:
-            sharpe_ratio = expected_return * std_of_return
+            sharpe_ratio = expected_return * (1 + std_of_return)
         return sharpe_ratio
 
     def evaluate_sortino_ratio(self, earnings_history: pd.DataFrame) -> float:
@@ -153,9 +153,9 @@ class RiskManager:
         expected_return = return_rates.mean()
         std_of_downside = downsides.std()
         if expected_return >= 0:
-            sharpe_ratio = expected_return / std_of_downside
+            sharpe_ratio = expected_return / (1 + std_of_downside)
         else:
-            sharpe_ratio = expected_return * std_of_downside
+            sharpe_ratio = expected_return * (1 + std_of_downside)
         return sharpe_ratio
 
     def evaluate_calmar_ratio(self, earnings_history: pd.DataFrame) -> float:
@@ -168,7 +168,8 @@ class RiskManager:
         else:
             return expected_return * (1 + drowdown / self.start_capital)
 
-    def evaluate_max_drowdown(self, earnings_history: pd.DataFrame) -> float:
+    @staticmethod
+    def evaluate_max_drowdown(earnings_history: pd.DataFrame) -> float:
         earnings = earnings_history[earnings_history[EarningsHistoryColumn.VALUE] != 0][EarningsHistoryColumn.VALUE]
         drowdown, max_drowdown = 0, 0
         for earning in earnings:

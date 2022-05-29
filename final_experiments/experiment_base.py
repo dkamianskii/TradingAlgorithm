@@ -113,6 +113,6 @@ def print_best_manager_results(best_trade_manager: TradeManager, best_trade_mana
 
     print(f"Sharpe ratio = {best_trade_manager.get_sharpe_ratio(ignore_crisis=False)}")
     # print(f"Sortino ratio = {best_trade_manager.get_sortino_ratio(ignore_crisis=False)}")
-    print(f"Calmar ratio = {best_trade_manager.get_calmar_ratio()}")
+    print(f"Calmar ratio = {best_trade_manager.get_calmar_ratio(ignore_crisis=False)}")
 
     best_trade_manager.plot_earnings_curve(img_dir=img_dir, ignore_crisis=False)

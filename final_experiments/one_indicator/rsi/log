@@ -1,0 +1,786 @@
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = 120.6707992553711
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 370.24036407470703
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 381.06007385253906
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 391.86962890625
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -2395.9851150512695
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1545.2330741882324
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -539.7775001525879
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -190.2170753479004
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -240.21926879882812
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -375.6703338623047
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -232.639892578125
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -56.8897705078125
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 71.7103042602539
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 280.98057556152344
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -447.0091018676758
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -232.31958770751953
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = -79.12941360473633
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 94.80052185058594
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = -111.97946548461914
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = 43.260093688964844
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -229.8995361328125
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -170.74964904785156
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -61.770347595214844
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 59.22010040283203
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 289.10987091064453
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = 273.20909118652344
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = -62.75029754638672
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = -265.10973358154297
+TRADING PHASE
+Final account money = 195200.7478904724
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = 360.4108657836914
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 268.79039764404297
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 543.8105926513672
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 267.7497100830078
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -2370.9778633117676
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1594.9206848144531
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -263.15490341186523
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -27.607120513916016
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -522.0799102783203
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -423.47023010253906
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -216.28981018066406
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -180.23001098632812
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 318.430419921875
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 283.6706314086914
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -429.2589416503906
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -291.53929901123047
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = 60.97061538696289
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 196.28043746948242
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = -223.27960968017578
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = -129.37989044189453
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -229.8995361328125
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -170.74964904785156
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -61.770347595214844
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 59.22010040283203
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 275.0497512817383
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = 8.118705749511719
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = 122.18966674804688
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = -72.28983306884766
+TRADING PHASE
+Final account money = 197000.27615356445
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = 211.0408935546875
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 476.6102066040039
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 504.5400924682617
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 361.1296920776367
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -2285.7105598449707
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1791.0207328796387
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -1040.9148406982422
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -303.1172981262207
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -522.6897811889648
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -394.48985290527344
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -220.30943298339844
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -184.2496337890625
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 93.39059448242188
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 297.6904830932617
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -275.80948638916016
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -255.6602020263672
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = 78.45048904418945
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 214.14030838012695
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = -223.27960968017578
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = 43.260093688964844
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -266.10948944091797
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -206.95960235595703
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -61.770347595214844
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 59.22010040283203
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = -60.76020050048828
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = -232.82083129882812
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = -80.01026916503906
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = -131.15980529785156
+TRADING PHASE
+Final account money = 199305.21035385132
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = -99.52947998046875
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 117.75028228759766
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 144.89032745361328
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 163.01956939697266
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -1405.1911010742188
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1123.9140968322754
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -329.0721778869629
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -191.04531860351562
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -421.42884826660156
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -144.0393524169922
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -98.9898681640625
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -62.93006896972656
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 235.6509780883789
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 37.36024475097656
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -339.9488296508789
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -279.6293182373047
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = 61.560157775878906
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 196.86997985839844
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = 19.690471649169922
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = -14.139842987060547
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -25.82946014404297
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -48.06976318359375
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -43.950172424316406
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 64.8602294921875
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 312.0295104980469
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = -127.67120361328125
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = 140.24954986572266
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = 141.10975646972656
+TRADING PHASE
+Final account money = 197247.50897598267
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = 330.5708694458008
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 249.95040130615234
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 486.4105987548828
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 236.6297149658203
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -2370.9778633117676
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1594.9206848144531
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -263.15490341186523
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -72.54715347290039
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -461.95997619628906
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -363.3502960205078
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -156.1698760986328
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -180.23001098632812
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 363.53035736083984
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 273.4406280517578
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -429.2589416503906
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -291.53929901123047
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = 87.42065048217773
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 222.73047256469727
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = -223.27960968017578
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = -129.37989044189453
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -229.8995361328125
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -170.74964904785156
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -61.770347595214844
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 59.22010040283203
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 212.02965545654297
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = -43.331298828125
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = 118.76962280273438
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = -103.42989349365234
+TRADING PHASE
+Final account money = 197595.9204788208
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = 120.6707992553711
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 370.24036407470703
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 381.06007385253906
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 391.86962890625
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -2395.9851150512695
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1545.2330741882324
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -539.7775001525879
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -190.2170753479004
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -240.21926879882812
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -375.6703338623047
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -232.639892578125
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -56.8897705078125
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 71.7103042602539
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 280.98057556152344
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -447.0091018676758
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -232.31958770751953
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = -79.12941360473633
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 94.80052185058594
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = -111.97946548461914
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = 43.260093688964844
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -229.8995361328125
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -170.74964904785156
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -61.770347595214844
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 59.22010040283203
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 289.10987091064453
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = 273.20909118652344
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = -62.75029754638672
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = -265.10973358154297
+TRADING PHASE
+Final account money = 196263.22758102417
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = 120.6707992553711
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 370.24036407470703
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 381.06007385253906
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 391.86962890625
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -2395.9851150512695
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1545.2330741882324
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -539.7775001525879
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -233.28460693359375
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -240.21926879882812
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -375.6703338623047
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -232.639892578125
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -56.8897705078125
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 71.7103042602539
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 280.98057556152344
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -447.0091018676758
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -232.31958770751953
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = -79.12941360473633
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 94.80052185058594
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = -111.97946548461914
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = 43.260093688964844
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -229.8995361328125
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -170.74964904785156
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -61.770347595214844
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 59.22010040283203
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 289.10987091064453
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = 273.20909118652344
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = -62.75029754638672
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = -265.10973358154297
+TRADING PHASE
+Final account money = 194971.217918396
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = -173.6995391845703
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 123.60016632080078
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 160.1901626586914
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 163.01956939697266
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -1648.1709060668945
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1379.6313514709473
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -974.7297630310059
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -191.04531860351562
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -527.3687515258789
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -162.9093780517578
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -4.300018310546875
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -81.80009460449219
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 235.05046844482422
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 37.36024475097656
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -343.5490493774414
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -270.8398742675781
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = 114.4602279663086
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 249.77005004882812
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = 19.690471649169922
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = 55.54036331176758
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -25.82946014404297
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -48.06976318359375
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -43.950172424316406
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 64.8602294921875
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 217.40875244140625
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = -93.22116088867188
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = 138.84951782226562
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = 1.1100234985351562
+TRADING PHASE
+Final account money = 198516.87049865723
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = -182.72976684570312
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 123.60016632080078
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 160.1901626586914
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 163.01956939697266
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -1583.8809432983398
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1231.4639739990234
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -350.24951553344727
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -219.62255859375
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -147.58912658691406
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -192.5095977783203
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -120.70008850097656
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -81.80009460449219
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 206.02117919921875
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 39.18077850341797
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -319.37876892089844
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -297.81922912597656
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = 138.84017944335938
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 249.77005004882812
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = 19.690471649169922
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = 55.54036331176758
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -25.82946014404297
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -48.06976318359375
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -43.950172424316406
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 64.8602294921875
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 279.33863067626953
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = -93.22116088867188
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = 41.32991027832031
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = 43.110450744628906
+TRADING PHASE
+Final account money = 197834.43454742432
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = -173.6995391845703
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 123.60016632080078
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 160.1901626586914
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 163.01956939697266
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -1648.1709060668945
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1379.6313514709473
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -974.7297630310059
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -61.45044708251953
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -527.3687515258789
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -162.9093780517578
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -117.85989379882812
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -81.80009460449219
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 236.3704833984375
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 37.36024475097656
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -343.5490493774414
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -270.8398742675781
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = 114.4602279663086
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 249.77005004882812
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = 19.690471649169922
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = 55.54036331176758
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -25.82946014404297
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -48.06976318359375
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -43.950172424316406
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 64.8602294921875
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 262.96888732910156
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = -93.22116088867188
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = 180.84994506835938
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = 43.110450744628906
+TRADING PHASE
+Final account money = 198109.20184326172
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = 139.3110809326172
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 400.3203353881836
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 454.1801071166992
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 391.86962890625
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -2285.7105598449707
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1791.0207328796387
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -1040.9148406982422
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -426.5071334838867
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -409.02991485595703
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -280.9299774169922
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -106.74955749511719
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -184.2496337890625
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 169.01041412353516
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 243.80044555664062
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -375.31951904296875
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -358.78023529052734
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = -38.849300384521484
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 94.80052185058594
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = -223.27960968017578
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = 43.260093688964844
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -266.10948944091797
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -206.95960235595703
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -61.770347595214844
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 59.22010040283203
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = -49.200584411621094
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = -265.8006134033203
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = -134.6101837158203
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = -185.7597198486328
+TRADING PHASE
+Final account money = 198880.58179473877
+BEST TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.025}
+CHOSEN PARAMS
+[('WMT', {'N': 12, 'DATA_NAME': 'WMT'}), ('AAPL', {'N': 14, 'DATA_NAME': 'AAPL'}), ('MSFT', {'N': 14, 'DATA_NAME': 'MSFT'}), ('JPM', {'N': 10, 'DATA_NAME': 'JPM'}), ('KO', {'N': 10, 'DATA_NAME': 'KO'}), ('PG', {'N': 14, 'DATA_NAME': 'PG'}), ('XOM', {'N': 8, 'DATA_NAME': 'XOM'})]
+            EARNED_PROFIT  WINS  LOSES  DRAWS
+STOCK_NAME                                   
+XOM          -1124.539936     7     24      7
+PG            -236.391296     1      3      2
+KO             159.119141     4      7      6
+JPM            148.949112     5     12      5
+MSFT           216.519455     4      7      4
+AAPL          -434.345139     5     13      2
+WMT            575.899017     2      2      5
+TOTAL         -694.789646    28     68     31
+RETURN ON START CAPITAL = -0.003473948230743408
+Sharpe ratio = -2.076707170242404
+Sortino ratio = -2.267888050449832
+With respect to 2020 corona crisis
+            EARNED_PROFIT         WINS        LOSES        DRAWS
+STOCK_NAME                                                      
+XOM           1221.159824  2352.699760  2369.699760  2352.699760
+PG            -236.391296     1.000000     3.000000     2.000000
+KO             160.939819     5.820679     8.820679     7.820679
+JPM            435.069382   291.120270   298.120270   291.120270
+MSFT           119.949539   -92.569916   -89.569916   -92.569916
+AAPL          -284.564865   154.780273   162.780273   151.780273
+WMT            575.899017     2.000000     2.000000     5.000000
+TOTAL         1992.061420  2714.851067  2754.851067  2717.851067
+RETURN ON START CAPITAL = 0.009960307102203369
+Sharpe ratio = -0.5129237865761269
+Sortino ratio = -0.4352509623067493

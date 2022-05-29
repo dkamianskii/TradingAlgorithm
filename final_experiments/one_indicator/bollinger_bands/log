@@ -1,0 +1,82 @@
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2)}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = -173.6995391845703
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 123.60016632080078
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 160.1901626586914
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 163.01956939697266
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -1648.1709060668945
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1379.6313514709473
+{'N': 12, 'DATA_NAME': 'AAPL'}
+Earnings = -974.7297630310059
+{'N': 14, 'DATA_NAME': 'AAPL'}
+Earnings = -274.1055221557617
+Train for MSFT
+{'N': 8, 'DATA_NAME': 'MSFT'}
+Earnings = -527.3687515258789
+{'N': 10, 'DATA_NAME': 'MSFT'}
+Earnings = -162.9093780517578
+{'N': 12, 'DATA_NAME': 'MSFT'}
+Earnings = -4.300018310546875
+{'N': 14, 'DATA_NAME': 'MSFT'}
+Earnings = -81.80009460449219
+Train for JPM
+{'N': 8, 'DATA_NAME': 'JPM'}
+Earnings = 210.05046844482422
+{'N': 10, 'DATA_NAME': 'JPM'}
+Earnings = 37.36024475097656
+{'N': 12, 'DATA_NAME': 'JPM'}
+Earnings = -343.5490493774414
+{'N': 14, 'DATA_NAME': 'JPM'}
+Earnings = -270.8398742675781
+Train for KO
+{'N': 8, 'DATA_NAME': 'KO'}
+Earnings = 114.4602279663086
+{'N': 10, 'DATA_NAME': 'KO'}
+Earnings = 249.77005004882812
+{'N': 12, 'DATA_NAME': 'KO'}
+Earnings = 19.690471649169922
+{'N': 14, 'DATA_NAME': 'KO'}
+Earnings = 55.54036331176758
+Train for PG
+{'N': 8, 'DATA_NAME': 'PG'}
+Earnings = -25.82946014404297
+{'N': 10, 'DATA_NAME': 'PG'}
+Earnings = -48.06976318359375
+{'N': 12, 'DATA_NAME': 'PG'}
+Earnings = -43.950172424316406
+{'N': 14, 'DATA_NAME': 'PG'}
+Earnings = 64.8602294921875
+Train for XOM
+{'N': 8, 'DATA_NAME': 'XOM'}
+Earnings = 151.44918823242188
+{'N': 10, 'DATA_NAME': 'XOM'}
+Earnings = -93.22116088867188
+{'N': 12, 'DATA_NAME': 'XOM'}
+Earnings = 180.84994506835938
+{'N': 14, 'DATA_NAME': 'XOM'}
+Earnings = 43.110450744628906
+TRADING PHASE
+Final account money = 198112.00992965698
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = -13.849441528320312
+{'N': 10, 'DATA_NAME': 'WMT'}

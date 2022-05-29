@@ -7,7 +7,7 @@ from trading.trade_algorithms.one_indicator_trade_algorithms.rsi_trade_algorithm
 from final_experiments import experiment_base as eb
 from final_experiments.experiment_base import TradeManagerGrid
 
-random.seed(42)
+random.seed(4466)
 
 best_trade_manager: Optional[TradeManager] = None
 best_trade_manager_result = 0
@@ -35,6 +35,7 @@ for i in range(eb.random_grid_search_attempts):
     else:
         bid_risk_rate = eb.trade_manager_grid[TradeManagerGrid.BID_RISK_RATE][
             random.randint(0, len(eb.trade_manager_grid[TradeManagerGrid.BID_RISK_RATE]) - 1)]
+        trade_manager_params[TradeManagerGrid.BID_RISK_RATE.name] = bid_risk_rate
 
     if trade_manager_params in trade_manager_params_used:
         i -= 1

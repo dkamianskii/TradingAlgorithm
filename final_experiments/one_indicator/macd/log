@@ -1,0 +1,25 @@
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2)}
+TRAINING PHASE
+Train for WMT
+{'N': 8, 'DATA_NAME': 'WMT'}
+Earnings = -173.6995391845703
+{'N': 10, 'DATA_NAME': 'WMT'}
+Earnings = 123.60016632080078
+{'N': 12, 'DATA_NAME': 'WMT'}
+Earnings = 160.1901626586914
+{'N': 14, 'DATA_NAME': 'WMT'}
+Earnings = 163.01956939697266
+Train for AAPL
+{'N': 8, 'DATA_NAME': 'AAPL'}
+Earnings = -1648.1709060668945
+{'N': 10, 'DATA_NAME': 'AAPL'}
+Earnings = -1379.6313514709473
+{'N': 12, 'DATA_NAME': 'AAPL'}

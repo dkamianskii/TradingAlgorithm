@@ -59,7 +59,7 @@ class TradeManager:
         self._last_bid_index: int = 0
         self.portfolio[PortfolioColumn.DATE] = pd.to_datetime(self.portfolio[PortfolioColumn.DATE])
         self._tracked_stocks: Dict[str, Dict] = {}
-        self._train_results: Dict[str, Dict[str, pd.DataFrame]] = {}
+        self._train_results: float = 0
 
         self._atr_period: int = atr_period
         self._days_to_keep_limit: pd.Timedelta = pd.Timedelta(days=days_to_keep_limit)
@@ -136,6 +136,7 @@ class TradeManager:
         self.portfolio[PortfolioColumn.DATE] = pd.to_datetime(self.portfolio[PortfolioColumn.DATE])
         self._statistics_manager.clear_history()
         self._risk_manager.reset_money()
+        self._train_results = 0
         for _, stock in self._tracked_stocks.items():
             stock[TrackedStocksColumn.TRADING_START_DATE] = None
 
@@ -190,7 +191,7 @@ class TradeManager:
 
         self._statistics_manager.set_tracked_stock(stock_name)
         self._tracked_stocks[stock_name] = {
-            TrackedStocksColumn.DATA: stock_data,
+            TrackedStocksColumn.DATA: stock_data.copy(),
             TrackedStocksColumn.TRADE_ALGORITHM: algorithm,
             TrackedStocksColumn.PARAMS_GRID: custom_params_grid,
             TrackedStocksColumn.CHOSEN_PARAMS: None,
@@ -342,11 +343,10 @@ class TradeManager:
 
     def train(self, test_start_date: Union[str, pd.Timestamp],
               test_end_date: Optional[Union[str, pd.Timestamp]] = None,
-              plot_test: bool = False) -> Dict[str, Dict[str, pd.DataFrame]]:
-        self._train_results = {}
+              plot_test: bool = False) -> float:
+        self._train_results = 0
         test_start_date = pd.Timestamp(ts_input=test_start_date)
         for stock_name, stock in self._tracked_stocks.items():
-            self._train_results[stock_name] = {}
             train_data: pd.DataFrame = stock[TrackedStocksColumn.DATA][:test_start_date]
             if test_end_date is not None:
                 test_end_date = pd.Timestamp(ts_input=test_end_date)
@@ -369,12 +369,12 @@ class TradeManager:
                 algorithm.train(train_data, params)
                 for date, point in test_data.iterrows():
                     self.evaluate_new_point(stock_name, point, date, False)
-                self._train_results[stock_name][str(params)] = self._statistics_manager.trade_result.copy()
                 earnings = self._statistics_manager.trade_result.at[TradeResultColumn.TOTAL,
                                                                     TradeResultColumn.EARNED_PROFIT]
                 print(f"Earnings = {earnings}")
                 if (max_earnings is None) or (earnings > max_earnings):
                     max_earnings = earnings
+                    self._train_results += earnings
                     best_params = params
                 if plot_test:
                     algorithm.plot(test_start_date, test_end_date)

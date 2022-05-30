@@ -100,14 +100,14 @@ test_data = data[start_test:]
 # super_trend_test.find_trade_points()
 # super_trend_test.plot()
 #
-super_trend = SuperTrend(data=train_data)
-super_trend.set_params(10, 3)
-super_trend.calculate()
-# super_trend.find_trade_points()
-for date, point in test_data.iterrows():
-    super_trend.evaluate_new_point(point, date, update_data=False)
-    train_data.loc[date] = point
-super_trend.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
+# super_trend = SuperTrend(data=train_data)
+# super_trend.set_params(10, 3)
+# super_trend.calculate()
+# # super_trend.find_trade_points()
+# for date, point in test_data.iterrows():
+#     super_trend.evaluate_new_point(point, date, update_data=False)
+#     train_data.loc[date] = point
+# super_trend.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 
 # Bollinger bands
 
@@ -123,18 +123,18 @@ super_trend.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 #     bollinger_bands.evaluate_new_point(point, date, update_data=False)
 # bollinger_bands.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 
-# CCI
+#CCI
 
 # cci_test = CCI(data=data)
 # cci_test.calculate()
 # cci_test.find_trade_points()
 # cci_test.plot()
-#
-# cci_test = CCI(data=train_data)
-# cci_test.calculate()
-# # cci_test.find_trade_points()
-# for date, point in test_data.iterrows():
-#     cci_test.evaluate_new_point(point, date, update_data=False)
+
+cci_test = CCI(data=train_data, N=20)
+cci_test.calculate()
+# cci_test.find_trade_points()
+for date, point in test_data.iterrows():
+    cci_test.evaluate_new_point(point, date, update_data=False)
 # cci_test.plot(pd.Timestamp(start_test), pd.Timestamp(end_test))
 
 

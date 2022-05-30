@@ -34,19 +34,29 @@ back_test_start_date = "2019-01-01"
 test_start_date_ts = pd.Timestamp(ts_input=test_start_date)
 start_test = datetime.strptime(test_start_date, "%Y-%m-%d")
 
-data = yf.download("WMT", start=start_date, end=end_date)
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+b = [5, 7, 1, 2, 3, 4, 5, 6, 7, 8]
 
+cor_1 = np.corrcoef(a, b)
+print(cor_1)
+print(a[:-2])
+print(b[2:])
+cor_2 = np.corrcoef(a[:-2], b[2:])
+print(cor_2)
 
-train_data = data.loc[:start_test]
-test_data = data[start_test:]
-
-m = FFNTradeAlgorithm()
-h = FFNTradeAlgorithm.create_hyperparameters_dict()
-h["DATA_NAME"] = "TEST"
-m.train(train_data, hyperparameters=h)
-for date, point in test_data.iterrows():
-    m.evaluate_new_point(point, date)
-m.plot(show_full=True)
+# data = yf.download("WMT", start=start_date, end=end_date)
+#
+#
+# train_data = data.loc[:start_test]
+# test_data = data[start_test:]
+#
+# m = FFNTradeAlgorithm()
+# h = FFNTradeAlgorithm.create_hyperparameters_dict()
+# h["DATA_NAME"] = "TEST"
+# m.train(train_data, hyperparameters=h)
+# for date, point in test_data.iterrows():
+#     m.evaluate_new_point(point, date)
+# m.plot(show_full=True)
 
 
 

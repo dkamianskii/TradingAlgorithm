@@ -190,7 +190,8 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
     def __add_refit_point(self, date: Union[pd.Timestamp, Hashable], price: float):
         self.refit_points.loc[date] = {"price": price}
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None):
+    def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
         start_index = self._last_train_date_index - self._test_period_size
         selected_data = self.data[start_index:]
         if self._use_refit:

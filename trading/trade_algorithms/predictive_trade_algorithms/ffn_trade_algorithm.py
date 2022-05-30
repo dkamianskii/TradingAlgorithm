@@ -48,7 +48,7 @@ class ModelGridColumns(BaseEnum):
 
 class FFNTradeAlgorithm(AbstractTradeAlgorithm):
     name = "FFN trade algorithm"
-    model_directory = "../models/ffn/"
+    model_directory = "../../../models/ffn/"
 
     look_back_period = 3
     min_max_periods = [20, 30, 40, 50]
@@ -339,23 +339,36 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
     def __add_trade_point(self, date: Union[pd.Timestamp, Hashable], price: float, action: TradeAction):
         self.trade_points.loc[date] = {TradePointColumn.PRICE: price, TradePointColumn.ACTION: action}
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None,
-             show_full: bool = False):
+    def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
         intend = FFNTradeAlgorithm.min_max_periods[-1] + FFNTradeAlgorithm.min_max_window + self._prediction_period - 1
         selected_data = self.data[intend:]
         selected_predictions = self.predictions[:-self._prediction_period - 1]
+        base_file_name = f"{img_dir}/{self._data_name}"
         if not show_full:
-            watch_intend = selected_data.shape[0] - 600
+            watch_intend = (self._last_train_date_index - intend) - 150
             selected_data = selected_data[watch_intend:]
             selected_predictions = selected_predictions[watch_intend:]
 
+            corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_predictions[self._prediction_period:])
+            print(f"{self._data_name} Correlation last known close and prediction on train = {corr[0][1]}")
+            auto_corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_data[self._prediction_period:]["Close"])
+            print(f"{self._data_name} Autocorrelation last known close and prediction on train = {auto_corr[0][1]}")
+        else:
+            base_file_name += " full data"
+            corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_predictions[self._prediction_period:])
+            print(f"{self._data_name} Correlation last known close and prediction on full = {corr[0][1]}")
+            auto_corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"],
+                                    selected_data[self._prediction_period:]["Close"])
+            print(f"{self._data_name} Autocorrelation last known close and prediction on full = {auto_corr[0][1]}")
+
         fig = go.Figure()
 
-        title = f"FFN model with params LR={self._model_params[ModelGridColumns.LEARNING_RATE.name]}, L1={self._model_params[ModelGridColumns.LAYER_1.name]}"
+        title = f"{self._data_name} FFN model with params LR={self._model_params[ModelGridColumns.LEARNING_RATE.name]}, L1={self._model_params[ModelGridColumns.LAYER_1.name]}"
         if self._model_params[ModelGridColumns.NUM_OF_ADD_LAYERS.name] > 0:
             title += f", L2={self._model_params[ModelGridColumns.LAYER_2.name]}"
             if self._model_params[ModelGridColumns.NUM_OF_ADD_LAYERS.name] == 2:
-                title += f", L2={self._model_params[ModelGridColumns.LAYER_3.name]}"
+                title += f", L3={self._model_params[ModelGridColumns.LAYER_3.name]}"
         fig.update_layout(
             title=title,
             xaxis_title="Date")
@@ -371,7 +384,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
                                  line=dict(width=1, dash="dash", color="red"), name="Start of trading"))
 
         #fig.show()
-        fig.write_image(f"../images/{self._data_name}_img1.png", scale=1, width=1400, height=900)
+        fig.write_image((base_file_name + " without marks.png"), scale=1, width=1400, height=900)
 
         buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
         active_actions = [TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL]
@@ -406,4 +419,4 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
                 trade_point_index += 1
 
         #fig.show()
-        fig.write_image(f"../images/{self._data_name}_img2.png", scale=1, width=1400, height=900)
+        fig.write_image((base_file_name + ".png"), scale=1, width=1400, height=900)

@@ -48,7 +48,7 @@ class ModelGridColumns(BaseEnum):
 
 class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
     name = "LSTM trade algorithm"
-    model_directory = "../models/lstm/"
+    model_directory = "../../../models/lstm/"
 
     model_grid = {ModelGridColumns.WINDOW_SIZE: [20, 40, 60],
                   ModelGridColumns.LEARNING_RATE: [0.01, 0.001, 0.0001],
@@ -287,23 +287,32 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
     def __add_trade_point(self, date: Union[pd.Timestamp, Hashable], price: float, action: TradeAction):
         self.trade_points.loc[date] = {TradePointColumn.PRICE: price, TradePointColumn.ACTION: action}
 
-    def plot(self, start_date: Optional[pd.Timestamp] = None, end_date: Optional[pd.Timestamp] = None,
-             show_full: bool = False):
+    def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None,
+             end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
         intend = self._prediction_period + self._model_params[ModelGridColumns.WINDOW_SIZE.name] - 1
         selected_data = self.data[intend:]
         selected_predictions = self.predictions[:-self._prediction_period - 1]
+        base_file_name = f"{img_dir}/{self._data_name}"
         if not show_full:
-            print(selected_data.shape[0])
-            print(len(selected_predictions))
             watch_intend = (self._last_train_date_index - intend) - 150
             selected_data = selected_data[watch_intend:]
             selected_predictions = selected_predictions[watch_intend:]
-            print(selected_data.index[0])
-            print(self._last_train_date)
+
+            corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_predictions[self._prediction_period:])
+            print(f"{self._data_name} Correlation last known close and prediction on train = {corr[0][1]}")
+            auto_corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_data[self._prediction_period:]["Close"])
+            print(f"{self._data_name} Autocorrelation last known close and prediction on train = {auto_corr[0][1]}")
+        else:
+            base_file_name += " full data"
+            corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_predictions[self._prediction_period:])
+            print(f"{self._data_name} Correlation last known close and prediction on full = {corr[0][1]}")
+            auto_corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"],
+                                    selected_data[self._prediction_period:]["Close"])
+            print(f"{self._data_name} Autocorrelation last known close and prediction on full = {auto_corr[0][1]}")
 
         fig = go.Figure()
 
-        title = f"LSTM model with params LR={self._model_params[ModelGridColumns.LEARNING_RATE.name]}, HL={self._model_params[ModelGridColumns.HIDDEN.name]}, WINDOW={self._model_params[ModelGridColumns.WINDOW_SIZE.name]}"
+        title = f"{self._data_name} LSTM model with params LR={self._model_params[ModelGridColumns.LEARNING_RATE.name]}, HL={self._model_params[ModelGridColumns.HIDDEN.name]}, WINDOW={self._model_params[ModelGridColumns.WINDOW_SIZE.name]}"
         fig.update_layout(
             title=title,
             xaxis_title="Date")
@@ -313,11 +322,13 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
 
         fig.add_trace(go.Scatter(x=selected_data.index, y=selected_predictions, mode='lines',
                                  line=dict(width=2, color="orange"), name="Predicted close price"))
+
         d_max, d_min = selected_data["Close"].max(), selected_data["Close"].min()
         fig.add_trace(go.Scatter(x=[self._last_train_date, self._last_train_date], y=[d_max, d_min], mode='lines',
                                  line=dict(width=1, dash="dash", color="red"), name="Start of trading"))
 
-        fig.show()
+        # fig.show()
+        fig.write_image((base_file_name + " without marks.png"), scale=1, width=1400, height=900)
 
         buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
         active_actions = [TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL]
@@ -351,4 +362,5 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
                                          line=dict(width=1, color=color), showlegend=False))
                 trade_point_index += 1
 
-        fig.show()
+        # fig.show()
+        fig.write_image((base_file_name + ".png"), scale=1, width=1400, height=900)

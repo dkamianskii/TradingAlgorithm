@@ -32,14 +32,14 @@ data_jpm = yf.download("JPM", start=start_date, end=end_date)
 
 # one_indicator_trade_algorithms: List = [RSITradeAlgorithm, MACDTradeAlgorithm, SuperTrendTradeAlgorithm,
 #                                         CCITrradeAlgorithm, BollingerBandsTradeAlgorithm, MASupportLevelsTradeAlgorithm]
-one_indicator_trade_algorithms: List = [RSITradeAlgorithm]
+one_indicator_trade_algorithms: List = [CCITrradeAlgorithm]
 
 for indicator_trade_algorithm in one_indicator_trade_algorithms:
     print(indicator_trade_algorithm.get_algorithm_name())
     manager = TradeManager(days_to_keep_limit=10, days_to_chill=5, use_limited_money=True, start_capital=200000, equity_risk_rate=0.04)
     manager.set_tracked_stock("WMT", data_wmt[:test_start_date_ts], indicator_trade_algorithm())
-    manager.set_tracked_stock("AAPL", data_aapl[:test_start_date_ts], indicator_trade_algorithm())
-    manager.set_tracked_stock("JPM", data_jpm[:test_start_date_ts], indicator_trade_algorithm())
+    # manager.set_tracked_stock("AAPL", data_aapl[:test_start_date_ts], indicator_trade_algorithm())
+    # manager.set_tracked_stock("JPM", data_jpm[:test_start_date_ts], indicator_trade_algorithm())
     # manager.set_tracked_stock("XOM", data_xom[:test_start_date_ts], indicator_trade_algorithm())
     train_result_1 = manager.train(back_test_start_date)
     print(manager.get_chosen_params())

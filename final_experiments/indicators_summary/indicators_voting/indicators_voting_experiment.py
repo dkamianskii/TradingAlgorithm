@@ -59,20 +59,19 @@ for i in range(eb.random_grid_search_attempts - 2):
 
     train_result = manager.train(eb.back_test_start_date, plot_test=False)
 
-    print("TRADING PHASE")
-
-    for date in eb.dates_test:
-        for company in eb.companies_names:
-            data = eb.companies_data[company]["trade data"]
-            if date in data.index:
-                point = data.loc[date]
-                manager.evaluate_new_point(company, point, date)
-
-    result = manager.get_equity_info()["account money"]
-    print(f"Final account money = {result}")
-    if best_trade_manager is None or result > best_trade_manager_result:
+    print(f"Final train result = {train_result}")
+    if best_trade_manager is None or train_result > best_trade_manager_result:
         best_trade_manager = manager
-        best_trade_manager_result = result
+        best_trade_manager_result = train_result
         best_trade_manager_params = trade_manager_params
+
+print("TRADING PHASE")
+
+for date in eb.dates_test:
+    for company in eb.companies_names:
+        data = eb.companies_data[company]["trade data"]
+        if date in data.index:
+            point = data.loc[date]
+            best_trade_manager.evaluate_new_point(company, point, date)
 
 eb.print_best_manager_results(best_trade_manager, best_trade_manager_params)

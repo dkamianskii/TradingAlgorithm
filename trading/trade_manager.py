@@ -136,7 +136,6 @@ class TradeManager:
         self.portfolio[PortfolioColumn.DATE] = pd.to_datetime(self.portfolio[PortfolioColumn.DATE])
         self._statistics_manager.clear_history()
         self._risk_manager.reset_money()
-        self._train_results = 0
         for _, stock in self._tracked_stocks.items():
             stock[TrackedStocksColumn.TRADING_START_DATE] = None
 

@@ -99,8 +99,7 @@ Earnings = 1179.2497482299805
 Earnings = 202.4700698852539
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 704.7595596313477
-TRADING PHASE
-Final account money = 198916.32886886597
+Final train result = 2218.695888519287
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
 TRAINING PHASE
@@ -195,8 +194,7 @@ Earnings = 518.1403579711914
 Earnings = 128.65926361083984
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 34.110076904296875
-TRADING PHASE
-Final account money = 197909.9661140442
+Final train result = -1913.0155982971191
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
 TRAINING PHASE
@@ -291,8 +289,7 @@ Earnings = 1382.4499816894531
 Earnings = 326.05865478515625
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 521.1983108520508
-TRADING PHASE
-Final account money = 197426.1618309021
+Final train result = 3098.9222679138184
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
 TRAINING PHASE
@@ -387,8 +384,7 @@ Earnings = 830.5102386474609
 Earnings = 320.4193649291992
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 197.27025604248047
-TRADING PHASE
-Final account money = 196503.7346725464
+Final train result = -2166.984920501709
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.075}
 TRAINING PHASE
@@ -483,8 +479,7 @@ Earnings = 1220.5918579101562
 Earnings = 734.5808563232422
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 223.051025390625
-TRADING PHASE
-Final account money = 192680.9849205017
+Final train result = 141.09521102905273
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.075}
 TRAINING PHASE
@@ -579,8 +574,7 @@ Earnings = 1382.4499816894531
 Earnings = 326.05865478515625
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 565.3984146118164
-TRADING PHASE
-Final account money = 198503.7992286682
+Final train result = 3534.0788917541504
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
 TRAINING PHASE
@@ -675,8 +669,7 @@ Earnings = 960.6707458496094
 Earnings = 373.1991653442383
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 34.54981231689453
-TRADING PHASE
-Final account money = 199565.50234985352
+Final train result = -772.3465766906738
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
 TRAINING PHASE
@@ -771,8 +764,7 @@ Earnings = 1213.3318176269531
 Earnings = 683.1207122802734
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 60.881317138671875
-TRADING PHASE
-Final account money = 192318.13131332397
+Final train result = 93.26569747924805
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
 TRAINING PHASE
@@ -867,8 +859,7 @@ Earnings = 1318.3698272705078
 Earnings = 366.9597473144531
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 843.8693084716797
-TRADING PHASE
-Final account money = 197679.3766937256
+Final train result = 2113.426525115967
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.05}
 TRAINING PHASE
@@ -963,44 +954,44 @@ Earnings = 1213.3318176269531
 Earnings = 683.1207122802734
 {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'}
 Earnings = 60.881317138671875
+Final train result = 192.48445892333984
 TRADING PHASE
-Final account money = 192102.6633758545
 BEST TRADE MANAGER PARAMS
-{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.075}
 CHOSEN PARAMS
-[('WMT', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 20, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CLASSIC: (1,)>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 20}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'WMT'}), ('AAPL', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 20, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CLASSIC: (1,)>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 20}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'AAPL'}), ('MSFT', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 2, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 12, <MACDHyperparam.LONG_PERIOD: 2>: 26, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CLASSIC: (1,)>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'MSFT'}), ('JPM', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 2, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 12, <MACDHyperparam.LONG_PERIOD: 2>: 26, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CLASSIC: (1,)>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'JPM'}), ('KO', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 5, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 12, <MACDHyperparam.LONG_PERIOD: 2>: 26, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CLASSIC: (1,)>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 2.5}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 20}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'KO'}), ('PG', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'PG'}), ('XOM', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 12, <MACDHyperparam.LONG_PERIOD: 2>: 26, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CLASSIC: (1,)>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 20}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'})]
+[('WMT', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'WMT'}), ('AAPL', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 20, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CLASSIC: (1,)>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 8, <SuperTrendHyperparam.MULTIPLIER: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 20}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'AAPL'}), ('MSFT', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 20}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'MSFT'}), ('JPM', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 2, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 12, <MACDHyperparam.LONG_PERIOD: 2>: 26, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CLASSIC: (1,)>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'JPM'}), ('KO', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 2, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 12, <MACDHyperparam.LONG_PERIOD: 2>: 26, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CLASSIC: (1,)>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'KO'}), ('PG', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 8}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 18}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 14, <BollingerBandsHyperparam.K: 2>: 1.5}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'PG'}), ('XOM', {<IndicatorsVotingTradeAlgorithmHyperparam.RETROSPECTIVE_PERIOD: 7>: 3, <IndicatorsVotingTradeAlgorithmHyperparam.QUALIFICATION_BARRIER: 8>: 0.3, <IndicatorsVotingTradeAlgorithmHyperparam.RSI_HYPERPARAMS: 1>: {'N': 14}, <IndicatorsVotingTradeAlgorithmHyperparam.MACD_HYPERPARAMS: 2>: {<MACDHyperparam.SHORT_PERIOD: 1>: 10, <MACDHyperparam.LONG_PERIOD: 2>: 22, <MACDHyperparam.SIGNAL_PERIOD: 3>: 9, <MACDHyperparam.TRADE_STRATEGY: 4>: <MACDTradeStrategy.CONVERGENCE: 2>}, <IndicatorsVotingTradeAlgorithmHyperparam.SUPER_TREND_HYPERPARAMS: 3>: {<SuperTrendHyperparam.LOOKBACK_PERIOD: 1>: 10, <SuperTrendHyperparam.MULTIPLIER: 2>: 3}, <IndicatorsVotingTradeAlgorithmHyperparam.CCI_HYPERPARAMS: 4>: {'N': 20}, <IndicatorsVotingTradeAlgorithmHyperparam.BOLLINGER_BANDS_HYPERPARAMS: 5>: {<BollingerBandsHyperparam.N: 1>: 20, <BollingerBandsHyperparam.K: 2>: 2}, <IndicatorsVotingTradeAlgorithmHyperparam.MA_SUPPORT_LEVELS_HYPERPARAMS: 6>: {'ma_periods': [20, 30, 50, 100, 150, 200]}, 'DATA_NAME': 'XOM'})]
             EARNED_PROFIT  WINS  LOSES  DRAWS
 STOCK_NAME                                   
-XOM            -12.529625    23     39      9
-PG           -1000.290207    19     36     24
-KO            2051.080357    16     17     16
-JPM            622.011086    17     28     11
-MSFT         -2135.320908    22     44     11
-AAPL         -2241.618801    14     42      8
-WMT           2282.170448    17     13     21
-TOTAL         -434.497650   128    219    100
-WIN RATE = 0.28635346756152125
-LOSE RATE = 0.4899328859060403
-RETURN ON START CAPITAL = -0.002172488250732422
-MAX DROWDOWN = 4774.2515869140625
-AVG WIN / AVG LOSE = 1.321177935524198
-Sharpe ratio = -8.844610418287586e-06
-Calmar ratio = -9.04206617124181e-06
+XOM            448.821140     3      8     45
+PG            -486.481827     9      8     56
+KO            1517.980991     7      2     40
+JPM           -322.139854     4      5     34
+MSFT          -910.139526     2      5     44
+AAPL         -2238.079800     3      5     42
+WMT            493.838104     4      2     53
+TOTAL        -1496.200771    32     35    314
+WIN RATE = 0.08398950131233596
+LOSE RATE = 0.09186351706036745
+RETURN ON START CAPITAL = -0.007481003856658936
+MAX DROWDOWN = 3956.443576812744
+AVG WIN / AVG LOSE = 1.0407626412183122
+Sharpe ratio = -2.892695157323774e-05
+Calmar ratio = -2.945557801136249e-05
 With respect to 2020 corona crisis
             EARNED_PROFIT         WINS        LOSES        DRAWS
 STOCK_NAME                                                      
-XOM           1427.440197  1462.969822  1478.969822  1448.969822
-PG           -1863.090210  -843.800003  -826.800003  -838.800003
-KO            1304.050430  -731.029926  -730.029926  -731.029926
-JPM           1914.021332  1309.010246  1320.010246  1303.010246
-MSFT          -865.011322  1292.309586  1314.309586  1281.309586
-AAPL         -1549.291939   706.326862   734.326862   700.326862
-WMT           1330.521126  -934.649323  -938.649323  -930.649323
-TOTAL         1698.639614  2261.137264  2352.137264  2233.137264
-WIN RATE = 0.33026603317148473
-LOSE RATE = 0.34355766720616204
-RETURN ON START CAPITAL = 0.008493198070526124
-MAX DROWDOWN = 4774.2515869140625
-AVG WIN / AVG LOSE = 1.2928658747222346
-Sharpe ratio = 1.4601222756506977e-05
-Calmar ratio = 1.4279354902019651e-05
+XOM           1824.671242  1378.850101  1383.850101  1420.850101
+PG           -2014.632111 -1519.150284 -1520.150284 -1472.150284
+KO            1843.300922   332.319931   327.319931   365.319931
+JPM            755.050560  1081.190414  1082.190414  1111.190414
+MSFT          -329.329971   582.809555   585.809555   624.809555
+AAPL         -2068.533089   172.546711   174.546711   211.546711
+WMT           1095.168320   605.330215   603.330215   654.330215
+TOTAL         1105.695873  2633.896645  2636.896645  2915.896645
+WIN RATE = 0.3217291317856423
+LOSE RATE = 0.3220955802555694
+RETURN ON START CAPITAL = 0.00552847936630249
+MAX DROWDOWN = 2802.742488861084
+AVG WIN / AVG LOSE = 1.1799730987933574
+Sharpe ratio = 4.2282664152761886e-05
+Calmar ratio = 4.174521422053001e-05

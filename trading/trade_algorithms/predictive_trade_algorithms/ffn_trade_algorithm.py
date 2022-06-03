@@ -48,7 +48,8 @@ class ModelGridColumns(BaseEnum):
 
 class FFNTradeAlgorithm(AbstractTradeAlgorithm):
     name = "FFN trade algorithm"
-    model_directory = "../../../models/ffn/"
+    # model_directory = "../../../models/ffn/"
+    model_directory = "../models/ffn/"
 
     look_back_period = 3
     min_max_periods = [20, 30, 40, 50]
@@ -185,7 +186,6 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
             model_params[ModelGridColumns.NUM_OF_ADD_LAYERS.name] = num_of_add_layers
             model_params[ModelGridColumns.LAYER_2.name] = layer_2_n
             model_params[ModelGridColumns.LAYER_3.name] = layer_3_n
-            print(model_params)
 
             for random_seed in model_grid[ModelGridColumns.RANDOM_SEED]:
                 optimizer = Adam(learning_rate=learning_rate)
@@ -213,7 +213,6 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
                                     validation_split=0.15, callbacks=[es], verbose=0)
                 model_loss = history.history['val_mse'][-1]
 
-                print(f"MSE = {history.history['mse'][-1]} Val MSE ={model_loss}")
                 if (best_model is None) or model_loss < best_val_loss:
                     best_model = model
                     best_val_loss = model_loss
@@ -243,9 +242,11 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         x_train = self._input_scaler.fit_transform(x_train)
 
         if exists(self._model_name + ".h5"):
+            print("loading")
             self.__load_model()
         else:
             self.__choose_best_model(x_train, y_train)
+            self.__save_model()
 
         print("Model params")
         print(self._model_params)
@@ -260,7 +261,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
             cum_sum += abs_relative_diff
         self.mean_absolute_prediction_error = cum_sum / len(predictions)
 
-        print(f"MARGE = {self.mean_absolute_prediction_error}")
+        print(f"MADRC = {self.mean_absolute_prediction_error}")
 
         x = self._dataframe.drop(f"target t + {self._prediction_period}", axis=1)
         x = self._input_scaler.transform(x)
@@ -269,34 +270,33 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         history = self._model.fit(x=x, y=y, epochs=FFNTradeAlgorithm.epochs, batch_size=FFNTradeAlgorithm.batch_size,
                                   validation_split=0.15, shuffle=False, callbacks=[es], verbose=0)
         print(f"Loss of best model {history.history['val_mse'][-1]}")
-        self.__save_model()
 
-        predictions = self._model.predict(x=x, batch_size=FFNTradeAlgorithm.batch_size)
+        predictions = self._model.predict(x=x, batch_size=FFNTradeAlgorithm.batch_size, verbose=0)
         self.predictions = predictions.flatten().tolist()
         self._last_train_date = self.data.index[-(self._prediction_period + 1)]
         self._last_train_date_index = self.data.shape[0] - (self._prediction_period + 1)
 
-        for i in range(self._prediction_period, 0, -1):
+        for i in range(self._prediction_period - 1, -1, -1):
             x = self.__transform_point(i)
             prediction = self._model.predict(x=x, verbose=0)
             self.predictions.append(prediction[0][0])
 
-    def __transform_point(self, index: int = 1) -> np.ndarray:
+    def __transform_point(self, index: int = 0) -> np.ndarray:
         new_point_dict = {}
 
         for i in range(0, FFNTradeAlgorithm.look_back_period):
-            new_point_dict[f"Close t - {i}"] = self.data["Close"][-(i + index)]
-            new_point_dict[f"Open t - {i}"] = self.data["Open"][-(i + index)]
-            new_point_dict[f"High t - {i}"] = self.data["High"][-(i + index)]
-            new_point_dict[f"Low t - {i}"] = self.data["Low"][-(i + index)]
-            new_point_dict[f"Volume t - {i}"] = self.data["Volume"][-(i + index)]
+            new_point_dict[f"Close t - {i}"] = self.data["Close"][-(i + index + 1)]
+            new_point_dict[f"Open t - {i}"] = self.data["Open"][-(i + index + 1)]
+            new_point_dict[f"High t - {i}"] = self.data["High"][-(i + index + 1)]
+            new_point_dict[f"Low t - {i}"] = self.data["Low"][-(i + index + 1)]
+            new_point_dict[f"Volume t - {i}"] = self.data["Volume"][-(i + index + 1)]
 
         for min_max_period in FFNTradeAlgorithm.min_max_periods:
             new_point_dict[f"Max Close t - {min_max_period}"] = \
-                self.data[-(min_max_period + FFNTradeAlgorithm.min_max_window + index - 1):-min_max_period][
+                self.data[-(min_max_period + FFNTradeAlgorithm.min_max_window + index):-(min_max_period + index)][
                     "Close"].max()
             new_point_dict[f"Min Close t - {min_max_period}"] = \
-                self.data[-(min_max_period + FFNTradeAlgorithm.min_max_window + index - 1):-min_max_period][
+                self.data[-(min_max_period + FFNTradeAlgorithm.min_max_window + index):-(min_max_period + index)][
                     "Close"].min()
 
         new_point_dataframe = pd.DataFrame([new_point_dict])
@@ -314,7 +314,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         relative_diff = (prediction - last_close) / last_close
 
         if relative_diff > 0:
-            relative_diff -= self.mean_absolute_prediction_error
+            # relative_diff -= self.mean_absolute_prediction_error
             if np.abs(relative_diff) >= 0.15:
                 return final_action
             if relative_diff >= self._take_action_barrier:
@@ -323,7 +323,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
                 else:
                     final_action = TradeAction.BUY
         else:
-            relative_diff += self.mean_absolute_prediction_error
+            # relative_diff += self.mean_absolute_prediction_error
             if np.abs(relative_diff) >= 0.15:
                 return final_action
             if relative_diff <= -self._take_action_barrier:
@@ -343,13 +343,13 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
              end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
         intend = FFNTradeAlgorithm.min_max_periods[-1] + FFNTradeAlgorithm.min_max_window + self._prediction_period - 1
         selected_data = self.data[intend:]
-        selected_predictions = self.predictions[:-self._prediction_period - 1]
+        selected_predictions = self.predictions[:-self._prediction_period]
+        print(selected_data.shape[0], len(selected_predictions))
         base_file_name = f"{img_dir}/{self._data_name}"
         if not show_full:
             watch_intend = (self._last_train_date_index - intend) - 150
             selected_data = selected_data[watch_intend:]
             selected_predictions = selected_predictions[watch_intend:]
-
             corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_predictions[self._prediction_period:])
             print(f"{self._data_name} Correlation last known close and prediction on train = {corr[0][1]}")
             auto_corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_data[self._prediction_period:]["Close"])

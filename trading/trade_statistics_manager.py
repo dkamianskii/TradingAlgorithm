@@ -18,6 +18,12 @@ class TradeStatisticsManager:
                                                          TradeResultColumn.LOSES: 0,
                                                          TradeResultColumn.DRAWS: 0}]).set_index(
             TradeResultColumn.STOCK_NAME)
+        self.out_crisis_trade_result: pd.DataFrame = pd.DataFrame([{TradeResultColumn.STOCK_NAME: TradeResultColumn.TOTAL,
+                                                                TradeResultColumn.EARNED_PROFIT: 0.0,
+                                                                TradeResultColumn.WINS: 0,
+                                                                TradeResultColumn.LOSES: 0,
+                                                                TradeResultColumn.DRAWS: 0}]).set_index(
+            TradeResultColumn.STOCK_NAME)
         self.bids_history: pd.DataFrame = pd.DataFrame(columns=BidsHistoryColumn.get_elements_list())
         self.earnings_history: Dict[str, pd.DataFrame] = {str(EarningsHistoryColumn.TOTAL): pd.DataFrame(
             columns=[EarningsHistoryColumn.DATE,
@@ -27,6 +33,8 @@ class TradeStatisticsManager:
         if stock_name in self.trade_result.index:
             self.trade_result.loc[stock_name] = {TradeResultColumn.EARNED_PROFIT: 0.0, TradeResultColumn.WINS: 0,
                                                  TradeResultColumn.LOSES: 0, TradeResultColumn.DRAWS: 0}
+            self.out_crisis_trade_result.loc[stock_name] = {TradeResultColumn.EARNED_PROFIT: 0.0, TradeResultColumn.WINS: 0,
+                                                        TradeResultColumn.LOSES: 0, TradeResultColumn.DRAWS: 0}
         else:
             new_stock = pd.DataFrame([{TradeResultColumn.STOCK_NAME: stock_name,
                                        TradeResultColumn.EARNED_PROFIT: 0.0,
@@ -34,6 +42,7 @@ class TradeStatisticsManager:
                                        TradeResultColumn.LOSES: 0,
                                        TradeResultColumn.DRAWS: 0}]).set_index(TradeResultColumn.STOCK_NAME)
             self.trade_result = pd.concat([new_stock, self.trade_result])
+            self.out_crisis_trade_result = pd.concat([new_stock, self.out_crisis_trade_result])
 
         self.earnings_history[stock_name] = pd.DataFrame(columns=[EarningsHistoryColumn.DATE,
                                                                   EarningsHistoryColumn.VALUE]).set_index(
@@ -60,15 +69,7 @@ class TradeStatisticsManager:
         if ignore_crisis:
             return self.trade_result
         else:
-            out_crisis_trade_result = self.trade_result.copy()
-            total_crisis_earnings = 0
-            for name in self.trade_result.index[:-1]:
-                crisis_earnings_history = self.earnings_history[name][:TradeStatisticsManager.end_crisis]
-                crisis_earnings = crisis_earnings_history[EarningsHistoryColumn.VALUE].sum()
-                out_crisis_trade_result.loc[name] -= crisis_earnings
-                total_crisis_earnings += crisis_earnings
-            out_crisis_trade_result.loc[TradeResultColumn.TOTAL] -= total_crisis_earnings
-            return out_crisis_trade_result
+            return self.out_crisis_trade_result
 
     def clear_history(self):
         self.trade_result[self.trade_result.columns] = 0
@@ -78,16 +79,25 @@ class TradeStatisticsManager:
                                                                       EarningsHistoryColumn.VALUE]).set_index(
                 EarningsHistoryColumn.DATE)
 
-    def update_trade_result(self, stock_name: str, profit: Optional[float], result: BidResult):
+    def update_trade_result(self, stock_name: str, profit: Optional[float], result: BidResult, date: pd.Timestamp):
         if result == BidResult.DRAW:
             self.trade_result.loc[[stock_name, TradeResultColumn.TOTAL],
                                   [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.DRAWS]] += [profit, 1]
+            if date > TradeStatisticsManager.end_crisis:
+                self.out_crisis_trade_result.loc[[stock_name, TradeResultColumn.TOTAL],
+                                             [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.DRAWS]] += [profit, 1]
         elif result == BidResult.WIN:
             self.trade_result.loc[[stock_name, TradeResultColumn.TOTAL],
                                   [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.WINS]] += [profit, 1]
+            if date > TradeStatisticsManager.end_crisis:
+                self.out_crisis_trade_result.loc[[stock_name, TradeResultColumn.TOTAL],
+                                      [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.WINS]] += [profit, 1]
         else:
             self.trade_result.loc[[stock_name, TradeResultColumn.TOTAL],
                                   [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.LOSES]] += [profit, 1]
+            if date > TradeStatisticsManager.end_crisis:
+                self.out_crisis_trade_result.loc[[stock_name, TradeResultColumn.TOTAL],
+                                      [TradeResultColumn.EARNED_PROFIT, TradeResultColumn.LOSES]] += [profit, 1]
 
     def add_earnings(self, stock_name: str, earnings: float, date: pd.Timestamp):
         self.earnings_history[stock_name].loc[date] = [earnings]

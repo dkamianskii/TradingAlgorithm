@@ -49,6 +49,7 @@ class ModelGridColumns(BaseEnum):
 class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
     name = "LSTM trade algorithm"
     model_directory = "../../../models/lstm/"
+    # model_directory = "../models/lstm/"
 
     model_grid = {ModelGridColumns.WINDOW_SIZE: [20, 40, 60],
                   ModelGridColumns.LEARNING_RATE: [0.01, 0.001, 0.0001],
@@ -161,7 +162,6 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
                 dropout = model_grid[ModelGridColumns.DROPOUT][
                     random.randint(0, len(model_grid[ModelGridColumns.DROPOUT]) - 1)]
                 model_params[ModelGridColumns.DROPOUT.name] = dropout
-                print(model_params)
                 random_seed = model_grid[ModelGridColumns.RANDOM_SEED][
                     random.randint(0, len(model_grid[ModelGridColumns.RANDOM_SEED]) - 1)]
 
@@ -184,7 +184,6 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
                 history = model.fit(x=x_train, y=y_train, epochs=LSTMTradeAlgorithm.epochs, shuffle=False,
                                     validation_split=0.15, callbacks=[es], verbose=0)
                 model_loss = history.history['val_mse'][-1]
-                print(f"MSE = {history.history['mse'][-1]} Val MSE ={model_loss}")
                 if (best_model is None) or model_loss < best_val_loss:
                     best_model = model
                     best_val_loss = model_loss
@@ -207,9 +206,11 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
         self._scaled_data = self._input_scaler.fit_transform(selected_data)
 
         if exists(self._model_name + ".h5"):
+            print("loading")
             self.__load_model()
         else:
             self.__choose_best_model()
+            self.__save_model()
 
         print("Model params")
         print(self._model_params)
@@ -227,26 +228,28 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
             cum_sum += abs_relative_diff
         self.mean_absolute_prediction_error = cum_sum / len(predictions)
 
-        print(f"MARGE = {self.mean_absolute_prediction_error}")
+        print(f"MADRC = {self.mean_absolute_prediction_error}")
         es = EarlyStopping(min_delta=1e-8, patience=5, verbose=0)
         history = self._model.fit(x=x, y=y, epochs=LSTMTradeAlgorithm.epochs, validation_split=0.15,
                                   shuffle=False, callbacks=[es], verbose=0)
         print(f"Best model MSE = {history.history['mse'][-1]}, Val MSE = {history.history['val_mse'][-1]}")
-        self.__save_model()
 
-        predictions = self._model.predict(x=x)
+        predictions = self._model.predict(x=x, verbose=0)
         self.predictions = predictions.flatten().tolist()
         self._last_train_date = self.data.index[-(self._prediction_period + 1)]
         self._last_train_date_index = self.data.shape[0] - (self._prediction_period + 1)
 
-        for i in range(self._prediction_period, 0, -1):
+        for i in range(self._prediction_period - 1, -1, -1):
             x = self.__transform_point(i)
             prediction = self._model.predict(x=x, verbose=0)
             self.predictions.append(prediction[0][0])
 
-    def __transform_point(self, index: int = 1) -> np.ndarray:
+    def __transform_point(self, index: int = 0) -> np.ndarray:
         window_size = self._model_params[ModelGridColumns.WINDOW_SIZE.name]
-        window = self.data[-(window_size + index): -index]
+        if index == 0:
+            window = self.data[-window_size:]
+        else:
+            window = self.data[-(window_size + index): -index]
         window = window.drop("Adj Close", axis=1)
         window = self._input_scaler.transform(window)
         return np.array([window], dtype=np.float32)
@@ -262,7 +265,7 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
         relative_diff = (prediction - last_close) / last_close
 
         if relative_diff > 0:
-            relative_diff -= self.mean_absolute_prediction_error
+            # relative_diff -= self.mean_absolute_prediction_error
             if np.abs(relative_diff) >= 0.15:
                 return final_action
             if relative_diff >= self._take_action_barrier:
@@ -271,7 +274,7 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
                 else:
                     final_action = TradeAction.BUY
         else:
-            relative_diff += self.mean_absolute_prediction_error
+            # relative_diff += self.mean_absolute_prediction_error
             if np.abs(relative_diff) >= 0.15:
                 return final_action
             if relative_diff <= -self._take_action_barrier:
@@ -291,13 +294,13 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
              end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
         intend = self._prediction_period + self._model_params[ModelGridColumns.WINDOW_SIZE.name] - 1
         selected_data = self.data[intend:]
-        selected_predictions = self.predictions[:-self._prediction_period - 1]
+        selected_predictions = self.predictions[:-self._prediction_period]
         base_file_name = f"{img_dir}/{self._data_name}"
+        print(f"MADRC = {self.mean_absolute_prediction_error}")
         if not show_full:
             watch_intend = (self._last_train_date_index - intend) - 150
             selected_data = selected_data[watch_intend:]
             selected_predictions = selected_predictions[watch_intend:]
-
             corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_predictions[self._prediction_period:])
             print(f"{self._data_name} Correlation last known close and prediction on train = {corr[0][1]}")
             auto_corr = np.corrcoef(selected_data[:-self._prediction_period]["Close"], selected_data[self._prediction_period:]["Close"])

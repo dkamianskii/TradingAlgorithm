@@ -1,9 +1,12 @@
 from datetime import datetime
 
+import pylab as pl
 import yfinance as yf
 import pandas as pd
 import numpy as np
 import json
+from matplotlib import pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf
 
 from indicators.abstract_indicator import TradeAction
 from indicators.atr import ATR
@@ -13,6 +16,8 @@ from trading.trade_algorithms.indicators_summary_trade_algorithms.decision_tree_
     DecisionTreeTradeAlgorithm
 from trading.trade_algorithms.predictive_trade_algorithms.ffn_trade_algorithm import ModelGridColumns, FFNTradeAlgorithm
 from trading.trade_algorithms.predictive_trade_algorithms.lstm_trade_algorithm import LSTMTradeAlgorithm
+from trading.trade_algorithms.predictive_trade_algorithms.lstm_diff_trade_algorithm import LSTMDiffTradeAlgorithm
+from trading.trade_algorithms.predictive_trade_algorithms.arima_trade_algorithm import ARIMATradeAlgorithm
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import make_classification
@@ -27,36 +32,35 @@ from helping.base_enum import BaseEnum
 
 cf.go_offline()
 
-start_date = "2008-01-01"
+start_date = "2017-01-01"
 end_date = "2021-12-31"
 test_start_date = "2019-01-01"
 back_test_start_date = "2019-01-01"
 test_start_date_ts = pd.Timestamp(ts_input=test_start_date)
 start_test = datetime.strptime(test_start_date, "%Y-%m-%d")
 
-a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-b = [5, 7, 1, 2, 3, 4, 5, 6, 7, 8]
 
-cor_1 = np.corrcoef(a, b)
-print(cor_1)
-print(a[:-2])
-print(b[2:])
-cor_2 = np.corrcoef(a[:-2], b[2:])
-print(cor_2)
+data = yf.download("MSFT", start=start_date, end=end_date)
 
-# data = yf.download("WMT", start=start_date, end=end_date)
-#
-#
-# train_data = data.loc[:start_test]
-# test_data = data[start_test:]
-#
-# m = FFNTradeAlgorithm()
-# h = FFNTradeAlgorithm.create_hyperparameters_dict()
+
+# h = LSTMDiffTradeAlgorithm.create_hyperparameters_dict()
 # h["DATA_NAME"] = "TEST"
+# k = LSTMDiffTradeAlgorithm()
+# k.train(data[:-2], h)
+# k.evaluate_new_point(data.iloc[-2], data.index[-2])
+# k.evaluate_new_point(data.iloc[-1], data.index[-1])
+# k.plot(img_dir="images")
+
+train_data = data.loc[:start_test]
+test_data = data[start_test:]
+
+# m = ARIMATradeAlgorithm()
+# h = ARIMATradeAlgorithm.create_hyperparameters_dict(use_refit=True)
+# h["DATA_NAME"] = "MSFT"
 # m.train(train_data, hyperparameters=h)
 # for date, point in test_data.iterrows():
 #     m.evaluate_new_point(point, date)
-# m.plot(show_full=True)
+# m.plot(img_dir="images", show_full=False)
 
 
 

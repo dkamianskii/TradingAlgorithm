@@ -18,7 +18,7 @@ dates_test = pd.date_range(start_test, end_test)
 companies_names = ["WMT", "AAPL", "MSFT", "JPM", "KO", "PG", "XOM"]
 companies_data = {}
 
-for company in companies_names:
+for company in companies_names[:1]:
     companies_data[company] = yf.download(company, start=start_date, end=end_date)
 # data_wmt = yf.download("WMT", start=start_date, end=end_date)
 # data_aapl = yf.download("AAPL", start=start_date, end=end_date)
@@ -30,7 +30,7 @@ for company in companies_names:
 
 manager = TradeManager(days_to_chill=5)
 
-for company in companies_names:
+for company in companies_names[:1]:
     manager.set_tracked_stock(company, companies_data[company][:test_start_date_ts], FFNTradeAlgorithm())
 
 # manager.set_tracked_stock("WMT", data_wmt[:test_start_date_ts], FFNTradeAlgorithm())
@@ -41,7 +41,7 @@ train_result = manager.train(back_test_start_date, plot_test=False)
 print(manager.get_chosen_params())
 
 for date in dates_test:
-    for company in companies_names:
+    for company in companies_names[:1]:
         data = companies_data[company]
         if date in data[start_test:].index:
             point = data.loc[date]
@@ -57,11 +57,11 @@ for date in dates_test:
     #     manager.evaluate_new_point("XOM", point_xom, date)
 
 print(manager.get_trade_results())
-# print(manager.get_bids_history())
-manager.plot_earnings_curve()
-for company in companies_names:
-    manager.plot_stock_history(company, plot_algorithm_graph=True)
-    manager.plot_stock_history(company, plot_algorithm_graph=True, plot_algorithm_graph_full=True)
-# manager.plot_stock_history("WMT", plot_algorithm_graph=True)
+print(manager.get_bids_history())
+# manager.plot_earnings_curve()
+# for company in companies_names:
+#     manager.plot_stock_history(company, plot_algorithm_graph=True)
+#     manager.plot_stock_history(company, plot_algorithm_graph=True, plot_algorithm_graph_full=True)
+manager.plot_stock_history("WMT", img_dir="images", plot_algorithm_graph=True)
 # manager.plot_stock_history("JPM", plot_algorithm_graph=True)
 # manager.plot_stock_history("XOM", plot_algorithm_graph=True)

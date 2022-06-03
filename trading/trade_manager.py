@@ -232,7 +232,7 @@ class TradeManager:
     def __close_bid(self, stock_name: str, close_price: float,
                     open_date: pd.Timestamp, close_date: pd.Timestamp,
                     cashback: float, profit: float, result: BidResult):
-        self._statistics_manager.update_trade_result(stock_name, profit, result)
+        self._statistics_manager.update_trade_result(stock_name, profit, result, close_date)
         self._statistics_manager.close_bid(stock_name, open_date, close_date, close_price, result)
         self._statistics_manager.add_earnings(stock_name, profit, close_date)
         self._risk_manager.set_bid_returns(cashback, profit)

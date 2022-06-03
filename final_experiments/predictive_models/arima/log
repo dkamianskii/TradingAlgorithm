@@ -1,0 +1,805 @@
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+[*********************100%***********************]  1 of 1 completed
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = -173.47549438476562
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 418.85943603515625
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 271.50001525878906
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = -33.7901496887207
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = -164.11011123657227
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 283.65982818603516
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 151.10997772216797
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = -53.540985107421875
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 1125.1292572021484
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = -181.23785018920898
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 331.07952880859375
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 270.9999084472656
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = -22.88990020751953
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = -245.9503288269043
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 175.82980346679688
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 151.10997772216797
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = -53.540985107421875
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 929.0192184448242
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 0
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = 0
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 0
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 0.0
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = -181.23785018920898
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 331.07952880859375
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 270.9999084472656
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = -22.88990020751953
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = -245.9503288269043
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 31.919784545898438
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 70.8298568725586
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 6.9587860107421875
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 704.8290786743164
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.075}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 0
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = 0
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 0
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 0.0
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.075}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 0
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = 0
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 0
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 0.0
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 0
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = 0
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 151.9101791381836
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 151.9101791381836
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 0
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = 0
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 0
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 0.0
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = -173.47549438476562
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 418.85943603515625
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 271.50001525878906
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = -33.7901496887207
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = -164.11011123657227
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 296.96990966796875
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 70.8298568725586
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 6.9587860107421875
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 1058.1592178344727
+TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.05}
+TRAINING PHASE
+Train for WMT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0.0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'WMT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'WMT'}
+Earnings = 0
+Train for AAPL
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'AAPL'}
+Earnings = 0
+Train for MSFT
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'MSFT'}
+Earnings = 0
+Train for JPM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'JPM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'JPM'}
+Earnings = 0
+Train for KO
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'KO'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'KO'}
+Earnings = 0
+Train for PG
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'PG'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'PG'}
+Earnings = 0
+Train for XOM
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}
+Earnings = 0
+{<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}
+Earnings = 0
+Final train result = 0.0
+TRADING PHASE
+BEST TRADE MANAGER PARAMS
+{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
+CHOSEN PARAMS
+[('WMT', {<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}), ('AAPL', {<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}), ('MSFT', {<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}), ('JPM', {<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}), ('KO', {<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'}), ('PG', {<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: True, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 120, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 15, 'DATA_NAME': 'XOM'}), ('XOM', {<ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <ARIMATradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <ARIMATradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, <ARIMATradeAlgorithmHyperparam.USE_REFIT: 5>: False, <ARIMATradeAlgorithmHyperparam.FIT_SIZE: 6>: 200, <ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE: 7>: 30, 'DATA_NAME': 'XOM'})]
+            EARNED_PROFIT  WINS  LOSES  DRAWS
+STOCK_NAME                                   
+XOM            523.951962     5     18     18
+PG             -59.600700     3      1      5
+KO             118.389767     1      2      1
+JPM           -526.679840     9     13      9
+MSFT          4457.009521    14      9     11
+AAPL          4741.008114    13      6     14
+WMT           1495.559776     2      1      4
+TOTAL        10749.638599    47     50     62
+WIN RATE = 0.29559748427672955
+LOSE RATE = 0.31446540880503143
+RETURN ON START CAPITAL = 0.05374819299697876
+MAX DROWDOWN = 3327.6705207824707
+AVG WIN / AVG LOSE = 1.496233354920198
+Sharpe ratio = 0.0005310447424730653
+Calmar ratio = 0.0005234509649766207
+WMT ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (2, 1, 5), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': False}
+AR coefs:
+[-0.54833549  0.31962581]
+MA coefs:
+[ 0.47315714 -0.38926432  0.00422146 -0.04370032 -0.03313781]
+WMT ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (2, 1, 5), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': False}
+AR coefs:
+[-0.54833549  0.31962581]
+MA coefs:
+[ 0.47315714 -0.38926432  0.00422146 -0.04370032 -0.03313781]
+AAPL ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (5, 1, 7), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': True}
+AR coefs:
+[-1.31376343 -0.52612848  0.45774229  1.22380053  0.92303039]
+MA coefs:
+[ 1.25132085  0.44896917 -0.47445227 -1.18406323 -0.81010861  0.04637444
+ -0.01445732]
+AAPL ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (5, 1, 7), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': True}
+AR coefs:
+[-1.31376343 -0.52612848  0.45774229  1.22380053  0.92303039]
+MA coefs:
+[ 1.25132085  0.44896917 -0.47445227 -1.18406323 -0.81010861  0.04637444
+ -0.01445732]
+MSFT ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (0, 1, 0), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': True}
+AR coefs:
+[]
+MA coefs:
+[]
+MSFT ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (0, 1, 0), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': True}
+AR coefs:
+[]
+MA coefs:
+[]
+JPM ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (1, 0, 1), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': True}
+AR coefs:
+[0.93097596]
+MA coefs:
+[0.05971638]
+JPM ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (1, 0, 1), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': True}
+AR coefs:
+[0.93097596]
+MA coefs:
+[0.05971638]
+KO ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (3, 1, 6), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': False}
+AR coefs:
+[-0.24538265  0.22901747  0.84976963]
+MA coefs:
+[ 0.21784884 -0.24068495 -0.86290558  0.00217083  0.01049931 -0.01319476]
+KO ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (3, 1, 6), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': False}
+AR coefs:
+[-0.24538265  0.22901747  0.84976963]
+MA coefs:
+[ 0.21784884 -0.24068495 -0.86290558  0.00217083  0.01049931 -0.01319476]
+PG ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (0, 1, 0), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': False}
+AR coefs:
+[]
+MA coefs:
+[]
+PG ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (0, 1, 0), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': False}
+AR coefs:
+[]
+MA coefs:
+[]
+XOM ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (8, 1, 4), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': False}
+AR coefs:
+[-0.22539736 -0.11679676  0.26956815  0.81461858  0.07878137  0.05364541
+ -0.03559731  0.03626424]
+MA coefs:
+[ 0.13383928  0.04016934 -0.27888734 -0.80644632]
+XOM ARIMA params
+{'maxiter': 50, 'method': 'lbfgs', 'order': (8, 1, 4), 'out_of_sample_size': 0, 'scoring': 'mse', 'scoring_args': {}, 'seasonal_order': (0, 0, 0, 0), 'start_params': None, 'suppress_warnings': True, 'trend': None, 'with_intercept': False}
+AR coefs:
+[-0.22539736 -0.11679676  0.26956815  0.81461858  0.07878137  0.05364541
+ -0.03559731  0.03626424]
+MA coefs:
+[ 0.13383928  0.04016934 -0.27888734 -0.80644632]
+With respect to 2020 corona crisis
+            EARNED_PROFIT         WINS        LOSES        DRAWS
+STOCK_NAME                                                      
+XOM           2500.222080  1981.270119  1994.270119  1994.270119
+PG             -59.600700     3.000000     1.000000     5.000000
+KO               0.000000  -117.389767  -116.389767  -117.389767
+JPM             65.520256   601.200096   605.200096   601.200096
+MSFT          2364.849014 -2078.160507 -2083.160507 -2081.160507
+AAPL          1979.920609 -2748.087505 -2755.087505 -2747.087505
+WMT            618.949966  -874.609810  -875.609810  -872.609810
+TOTAL         7469.861225 -3232.777374 -3229.777374 -3217.777374
+WIN RATE = 0.33395314677814963
+LOSE RATE = 0.3336432400557415
+RETURN ON START CAPITAL = 0.03734930612564087
+MAX DROWDOWN = 972.2599868774414
+AVG WIN / AVG LOSE = 1.3850850011694655
+Sharpe ratio = 0.0005115223322644384
+Calmar ratio = 0.0005098157561094542

@@ -1,8 +1,10 @@
+from os.path import exists
 from typing import Optional, Union, Dict, List, Iterable, Set, Hashable
 from helping.base_enum import BaseEnum
 
 import pandas as pd
 import numpy as np
+import pickle
 from pmdarima.arima import ARIMA, auto_arima
 
 from indicators.abstract_indicator import TradeAction, TradePointColumn
@@ -26,6 +28,8 @@ class ARIMATradeAlgorithmHyperparam(BaseEnum):
 
 class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
     name = "ARIMA trade algorithm"
+    model_directory = "../../../models/arima/"
+    # model_directory = "../models/arima/"
 
     def __init__(self):
         super().__init__()
@@ -33,6 +37,7 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
         self._take_action_barrier: float = 0
         self._active_action_multiplier: float = 0
         self._test_period_size: int = 0
+        self._data_name = ""
 
         self._use_refit: bool = False
         self._fit_size: int = 0
@@ -54,9 +59,9 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
         return ARIMATradeAlgorithm.name
 
     @staticmethod
-    def create_hyperparameters_dict(prediction_period: int = 3, test_period_size=50,
-                                    take_action_barrier: float = 0.01, active_action_multiplier: float = 1.5,
-                                    use_refit: bool = False, fit_size: int = 100, refit_add_size: int = 14):
+    def create_hyperparameters_dict(prediction_period: int = 3, test_period_size=60,
+                                    take_action_barrier: float = 0.01, active_action_multiplier: float = 2,
+                                    use_refit: bool = False, fit_size: int = 200, refit_add_size: int = 30):
         return {
             ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE: test_period_size,
             ARIMATradeAlgorithmHyperparam.PREDICTION_PERIOD: prediction_period,
@@ -70,10 +75,9 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
     @staticmethod
     def get_default_hyperparameters_grid() -> List[Dict]:
         return [ARIMATradeAlgorithm.create_hyperparameters_dict(),
-                ARIMATradeAlgorithm.create_hyperparameters_dict(prediction_period=2),
-                ARIMATradeAlgorithm.create_hyperparameters_dict(prediction_period=4),
+                ARIMATradeAlgorithm.create_hyperparameters_dict(prediction_period=5),
                 ARIMATradeAlgorithm.create_hyperparameters_dict(use_refit=True),
-                ARIMATradeAlgorithm.create_hyperparameters_dict(use_refit=True, fit_size=60, refit_add_size=5)]
+                ARIMATradeAlgorithm.create_hyperparameters_dict(use_refit=True, fit_size=120, refit_add_size=15)]
 
     def __clear_vars(self):
         self.trade_points = pd.DataFrame(columns=TradePointColumn.get_elements_list()).set_index(TradePointColumn.DATE)
@@ -82,6 +86,20 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
         self._last_train_date_index = 0
         self.predictions = None
         self._refit_upload: int = 0
+
+    def __define_model_name(self):
+        base_name = f"{self._data_name} PP={self._prediction_period} TPS={self._test_period_size} UR={self._use_refit} FS={self._fit_size} RFS={self._refit_add_size}"
+        self._model_name = ARIMATradeAlgorithm.model_directory + base_name
+
+    def __save_model(self):
+        m = self._model_name + ".pkl"
+        with open(m, 'wb') as pkl:
+            pickle.dump(self._model, pkl)
+
+    def __load_model(self):
+        m = self._model_name + ".pkl"
+        with open(m, 'rb') as pkl:
+            self._model = pickle.load(pkl)
 
     def train(self, data: pd.DataFrame, hyperparameters: Dict):
         super().train(data, hyperparameters)
@@ -93,6 +111,8 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
         self._fit_size = hyperparameters[ARIMATradeAlgorithmHyperparam.FIT_SIZE]
         self._refit_add_size = hyperparameters[ARIMATradeAlgorithmHyperparam.REFIT_ADD_SIZE]
         self._test_period_size = hyperparameters[ARIMATradeAlgorithmHyperparam.TEST_PERIOD_SIZE]
+        self._data_name = hyperparameters["DATA_NAME"]
+        self.__define_model_name()
 
         train_data = self.data[:-self._test_period_size]
         test_data = self.data[-self._test_period_size:]
@@ -101,8 +121,14 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
             train_data = self.data[-self._fit_size:]
 
         train_closes = train_data["Close"]
-        self._model: ARIMA = auto_arima(y=train_closes, start_p=6, start_q=6, max_p=10, max_q=10,
-                                        seasonal=False, max_order=21, max_d=1, error_action="ignore")
+        if exists(self._model_name + ".h5"):
+            print("loading")
+            self.__load_model()
+        else:
+            self._model: ARIMA = auto_arima(y=train_closes, start_p=6, start_q=6, max_p=10, max_q=10,
+                                            seasonal=False, max_order=21, max_d=1, error_action="ignore")
+            self.__save_model()
+
         self.best_model_order = self._model.order
 
         test_closes = test_data["Close"]
@@ -165,14 +191,18 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
         prediction = self._model.predict(n_periods=self._prediction_period)[-1]
         relative_diff = (prediction - last_close) / last_close
         if relative_diff > 0:
-            relative_diff -= self.mean_absolute_prediction_error
+            # relative_diff -= self.mean_absolute_prediction_error
+            if np.abs(relative_diff) >= 0.15:
+                return final_action
             if relative_diff >= self._take_action_barrier:
                 if relative_diff >= self._take_action_barrier * self._active_action_multiplier:
                     final_action = TradeAction.ACTIVELY_BUY
                 else:
                     final_action = TradeAction.BUY
         else:
-            relative_diff += self.mean_absolute_prediction_error
+            # relative_diff += self.mean_absolute_prediction_error
+            if np.abs(relative_diff) >= 0.15:
+                return final_action
             if relative_diff <= -self._take_action_barrier:
                 if relative_diff <= -self._take_action_barrier * self._active_action_multiplier:
                     final_action = TradeAction.ACTIVELY_SELL
@@ -192,20 +222,46 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
 
     def plot(self, img_dir: str, start_date: Optional[pd.Timestamp] = None,
              end_date: Optional[pd.Timestamp] = None, show_full: bool = False):
-        start_index = self._last_train_date_index - self._test_period_size
-        selected_data = self.data[start_index:]
-        if self._use_refit:
-            selected_predictions = self.predictions[(self._fit_size - self._test_period_size):-self._prediction_period]
+        print(f"{self._data_name} ARIMA params")
+        print(self._model.get_params())
+        print("AR coefs:")
+        print(self._model.arparams())
+        print("MA coefs:")
+        print(self._model.maparams())
+        base_file_name = f"{img_dir}/{self._data_name}"
+
+        selected_predictions = self.predictions[1:-self._prediction_period]
+        selected_data = self.data[-len(selected_predictions):]
+
+        if not show_full:
+            if not self._use_refit:
+                watch_intend = self._last_train_date_index - 180
+                selected_data = selected_data[watch_intend:]
+                selected_predictions = selected_predictions[watch_intend:]
         else:
-            selected_predictions = self.predictions[start_index:-self._prediction_period]
+            base_file_name += " full data"
 
         fig = go.Figure()
+
+        if self._use_refit:
+            title = f"ARIMA model with reevaluation"
+        else:
+            title = f"ARIMA model ({self.best_model_order[0]}, {self.best_model_order[1]}, {self.best_model_order[2]})"
+        fig.update_layout(
+            title=title,
+            xaxis_title="Date")
 
         fig.add_trace(go.Scatter(x=selected_data.index, y=selected_data["Close"], mode='lines',
                                  line=dict(width=2, color="blue"), name="Real close price"))
 
         fig.add_trace(go.Scatter(x=selected_data.index, y=selected_predictions, mode='lines',
                                  line=dict(width=2, color="orange"), name="Predicted close price"))
+
+        d_max, d_min = selected_data["Close"].max(), selected_data["Close"].min()
+        fig.add_trace(go.Scatter(x=[self._last_train_date, self._last_train_date], y=[d_max, d_min], mode='lines',
+                                 line=dict(width=1, dash="dash", color="red"), name="Start of trading"))
+
+        fig.write_image((base_file_name + " without marks.png"), scale=1, width=1400, height=900)
 
         buy_actions = [TradeAction.BUY, TradeAction.ACTIVELY_BUY]
         active_actions = [TradeAction.ACTIVELY_BUY, TradeAction.ACTIVELY_SELL]
@@ -221,26 +277,23 @@ class ARIMATradeAlgorithm(AbstractTradeAlgorithm):
                                      symbol=np.where(bool_buys, "triangle-up", "triangle-down")),
                                  name="Action points"))
 
-        if self._use_refit:
-            fig.add_trace(go.Scatter(x=self.refit_points.index,
-                                     y=self.refit_points["price"],
-                                     mode="markers",
-                                     marker=dict(
-                                         color="yellow",
-                                         size=3,
-                                         symbol="square"),
-                                     name="Reevaluation points"))
+        trade_point_index = 0
+        for i in range(0, selected_data.shape[0]):
+            if (trade_point_index == self.trade_points.shape[0]) or (
+                    i + self._prediction_period == len(selected_predictions)):
+                break
+            if selected_data.index[i] == self.trade_points.index[trade_point_index]:
+                prediction = selected_predictions[i + self._prediction_period]
+                prediction_date = selected_data.index[i + self._prediction_period]
+                trade_point = self.trade_points.iloc[trade_point_index]
+                if prediction - trade_point[TradePointColumn.PRICE] >= 0:
+                    color = "green"
+                else:
+                    color = "red"
+                fig.add_trace(go.Scatter(x=[self.trade_points.index[trade_point_index], prediction_date],
+                                         y=[trade_point[TradePointColumn.PRICE], prediction], mode='lines',
+                                         line=dict(width=1, color=color), showlegend=False))
+                trade_point_index += 1
 
-        d_max, d_min = selected_data["Close"].max(), selected_data["Close"].min()
-        fig.add_trace(go.Scatter(x=[self._last_train_date, self._last_train_date], y=[d_max, d_min], mode='lines',
-                                 line=dict(width=1, dash="dash", color="red"), name="Start of trading"))
-
-        if self._use_refit:
-            title = f"ARIMA model with reevaluation | prediction period {self._prediction_period}"
-        else:
-            title = f"ARIMA model ({self.best_model_order[0]}, {self.best_model_order[1]}, {self.best_model_order[2]}) | prediction period {self._prediction_period}"
-        fig.update_layout(
-            title=title,
-            xaxis_title="Date")
-
-        fig.show()
+        # fig.show()
+        fig.write_image((base_file_name + ".png"), scale=1, width=1400, height=900)

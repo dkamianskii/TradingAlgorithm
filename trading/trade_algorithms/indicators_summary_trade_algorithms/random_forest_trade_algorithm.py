@@ -33,7 +33,7 @@ class RandomForestTradeAlgorithmHyperparam(BaseEnum):
 
 class RandomForestTradeAlgorithm(AbstractTradeAlgorithm):
     name = "Random Forest trade algorithm"
-    model_directory = "../models/random_forest/"
+    model_directory = "../../../models/random_forest/"
 
     random_forest_grid = {'n_estimators': [100, 200, 300, 400],
                           'max_features': [4, 6, 8, 10],

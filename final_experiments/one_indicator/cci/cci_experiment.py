@@ -3,7 +3,7 @@ from typing import Optional
 
 from trading.trade_manager import TradeManager
 
-from trading.trade_algorithms.one_indicator_trade_algorithms.ma_support_levels_trade_algorithm import MASupportLevelsTradeAlgorithm
+from trading.trade_algorithms.one_indicator_trade_algorithms.cci_trade_algorithm import CCITrradeAlgorithm
 from final_experiments import experiment_base as eb
 from final_experiments.experiment_base import TradeManagerGrid
 
@@ -53,7 +53,7 @@ for i in range(eb.random_grid_search_attempts):
                            use_atr=use_atr,
                            keep_holding_rate=keep_holding_rate)
     for company in eb.companies_names:
-        manager.set_tracked_stock(company, eb.companies_data[company]["train data"][-900:], MASupportLevelsTradeAlgorithm())
+        manager.set_tracked_stock(company, eb.companies_data[company]["train data"][-900:], CCITrradeAlgorithm())
 
     print("TRAINING PHASE")
 

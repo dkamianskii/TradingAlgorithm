@@ -1,5 +1,5 @@
-2022-06-03 21:08:09.475496: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
-2022-06-03 21:08:09.487712: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-06-05 07:07:34.948741: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-05 07:07:34.949579: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
 [*********************100%***********************]  1 of 1 completed
 [*********************100%***********************]  1 of 1 completed
 [*********************100%***********************]  1 of 1 completed
@@ -13,38 +13,38 @@ TRAINING PHASE
 Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
-2022-06-03 21:08:38.777633: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
-2022-06-03 21:08:38.778278: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublas64_11.dll'; dlerror: cublas64_11.dll not found
-2022-06-03 21:08:38.778924: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublasLt64_11.dll'; dlerror: cublasLt64_11.dll not found
-2022-06-03 21:08:38.779520: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cufft64_10.dll'; dlerror: cufft64_10.dll not found
-2022-06-03 21:08:38.780078: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'curand64_10.dll'; dlerror: curand64_10.dll not found
-2022-06-03 21:08:38.781024: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusolver64_11.dll'; dlerror: cusolver64_11.dll not found
-2022-06-03 21:08:38.781860: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusparse64_11.dll'; dlerror: cusparse64_11.dll not found
-2022-06-03 21:08:38.783012: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
-2022-06-03 21:08:38.783259: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+2022-06-05 07:07:54.896889: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2022-06-05 07:07:54.897828: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublas64_11.dll'; dlerror: cublas64_11.dll not found
+2022-06-05 07:07:54.898518: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cublasLt64_11.dll'; dlerror: cublasLt64_11.dll not found
+2022-06-05 07:07:54.899161: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cufft64_10.dll'; dlerror: cufft64_10.dll not found
+2022-06-05 07:07:54.900125: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'curand64_10.dll'; dlerror: curand64_10.dll not found
+2022-06-05 07:07:54.900765: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusolver64_11.dll'; dlerror: cusolver64_11.dll not found
+2022-06-05 07:07:54.901891: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cusparse64_11.dll'; dlerror: cusparse64_11.dll not found
+2022-06-05 07:07:54.902858: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
+2022-06-05 07:07:54.918253: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...
-2022-06-03 21:08:38.844148: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX
+2022-06-05 07:07:54.925044: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 1s2/2 [==============================] - 1s 16ms/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
-Earnings = -1317.0815124511719
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
+Earnings = 707.0895919799805
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
-Earnings = -1478.110725402832
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
+Earnings = -1336.7914352416992
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+MADRC = 0.10769739636716784
+Loss of best model 3.7705023288726807
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
@@ -52,91 +52,91 @@ Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = -2310.8863983154297
+Loss of best model 3.5131261348724365
+Earnings = 2863.7317810058594
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = 2105.8685913085938
+Loss of best model 5.369813919067383
+Earnings = 4171.3051834106445
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+Loss of best model 9.981521606445312
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
-Earnings = 596.9990005493164
+Loss of best model 7.93264627456665
+Earnings = 2034.1100692749023
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
-Earnings = 1047.101692199707
+Loss of best model 10.58491039276123
+Earnings = 1524.6491012573242
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.20865906432787373
-Loss of best model 8.243980407714844
+MADRC = 0.20210189544704182
+Loss of best model 6.236014366149902
 Train for JPM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
-Earnings = 89.19935607910156
+Loss of best model 7.997894763946533
+Earnings = -50.660499572753906
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
-Earnings = 1351.2708129882812
+Loss of best model 13.050795555114746
+Earnings = 1172.9304885864258
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.029968909859848757
-Loss of best model 9.687857627868652
+Loss of best model 10.375873565673828
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = 1255.2900886535645
+Loss of best model 0.7496525645256042
+Earnings = 1205.9505424499512
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
-Earnings = 1319.7202491760254
+Loss of best model 1.4439753293991089
+Earnings = 1316.0592994689941
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.13259229285289742
-Loss of best model 0.9406512379646301
+Loss of best model 2.219566583633423
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
@@ -144,46 +144,46 @@ Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 2155.198402404785
+Loss of best model 3.9790380001068115
+Earnings = -1181.2900466918945
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 4ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
-Earnings = 217.6688995361328
+Loss of best model 5.726535797119141
+Earnings = 931.6706771850586
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
-MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+MADRC = 0.23791009237032246
+Loss of best model 7.09660005569458
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
-Earnings = -62.66968536376953
+Loss of best model 5.187522888183594
+Earnings = -139.55902099609375
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
-Earnings = -367.29964447021484
+Loss of best model 8.483241081237793
+Earnings = 528.7712478637695
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
-MADRC = 0.015591322807585297
-Loss of best model 3.028489828109741
-Final train result = 6230.010597229004
+{'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.016225044380238293
+Loss of best model 4.24114465713501
+Final train result = 13560.109313964844
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
 TRAINING PHASE
@@ -191,48 +191,48 @@ Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
-Earnings = -1848.9309768676758
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
+Earnings = 1605.150993347168
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
-Earnings = -2114.509765625
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
+Earnings = -1788.640281677246
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+MADRC = 0.10769739636716784
+Loss of best model 3.7705023288726807
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = -4240.322696685791
+Loss of best model 3.5131261348724365
+Earnings = 3358.6403160095215
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = 2089.0579376220703
+Loss of best model 5.369813919067383
+Earnings = 5773.966857910156
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+Loss of best model 9.981521606445312
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
@@ -240,45 +240,45 @@ Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
-Earnings = -195.00201416015625
+Loss of best model 7.93264627456665
+Earnings = 1840.210090637207
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
-Earnings = 296.5701599121094
+Loss of best model 10.58491039276123
+Earnings = 1417.9891815185547
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.20865906432787373
-Loss of best model 8.243980407714844
+MADRC = 0.20210189544704182
+Loss of best model 6.236014366149902
 Train for JPM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
 MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
-Earnings = -485.24098205566406
+Loss of best model 7.997894763946533
+Earnings = -929.0303955078125
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
-Earnings = 1973.3597869873047
+Loss of best model 13.050795555114746
+Earnings = 1654.8694763183594
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.029968909859848757
-Loss of best model 9.687857627868652
+Loss of best model 10.375873565673828
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
@@ -286,22 +286,22 @@ Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = 1663.9811553955078
+Loss of best model 0.7496525645256042
+Earnings = 1520.8610649108887
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
-Earnings = 1768.8613319396973
+Loss of best model 1.4439753293991089
+Earnings = 1858.8806228637695
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.13259229285289742
-Loss of best model 0.9406512379646301
+Loss of best model 2.219566583633423
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
@@ -309,46 +309,46 @@ Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 3684.089454650879
+Loss of best model 3.9790380001068115
+Earnings = -2062.990280151367
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
-Earnings = 514.9496154785156
+Loss of best model 5.726535797119141
+Earnings = 1479.0097122192383
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+MADRC = 0.23791009237032246
+Loss of best model 7.09660005569458
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
-Earnings = -838.0294418334961
+Loss of best model 5.187522888183594
+Earnings = -655.8684234619141
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
-Earnings = -826.369384765625
+Loss of best model 8.483241081237793
+Earnings = -142.69837951660156
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.016225044380238293
-Loss of best model 4.786269664764404
-Final train result = 3042.02433013916
+Loss of best model 4.24114465713501
+Final train result = 15301.001655578613
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'BID_RISK_RATE': 0.05}
 TRAINING PHASE
@@ -356,48 +356,48 @@ Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
-Earnings = 105.84037017822266
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
+Earnings = 0.0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
-Earnings = 39.420257568359375
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
+Earnings = 81.84002685546875
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+MADRC = 0.0652070406073226
+Loss of best model 4.519285678863525
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = 120.47469711303711
+Loss of best model 3.5131261348724365
+Earnings = 1099.0995597839355
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = 584.35009765625
+Loss of best model 5.369813919067383
+Earnings = 1043.8344383239746
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+MADRC = 0.038499501328856496
+Loss of best model 6.463083744049072
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'MSFT'}
 loading
@@ -405,45 +405,45 @@ Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
-Earnings = 0
+Loss of best model 7.93264627456665
+Earnings = 574.3603515625
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
+Loss of best model 10.58491039276123
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.20210189544704182
-Loss of best model 5.219450950622559
+Loss of best model 6.236014366149902
 Train for JPM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
+Loss of best model 7.997894763946533
 Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
+Loss of best model 13.050795555114746
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 995us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.02228709210135185
-Loss of best model 5.755550861358643
+Loss of best model 5.966857433319092
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'KO'}
 loading
@@ -451,22 +451,22 @@ Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = 971.1203193664551
+Loss of best model 0.7496525645256042
+Earnings = -33.7901496887207
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
-Earnings = 153.21976470947266
+Loss of best model 1.4439753293991089
+Earnings = -33.7901496887207
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.12848418975230985
-Loss of best model 2.03652024269104
+Loss of best model 3.275806427001953
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'PG'}
 loading
@@ -474,46 +474,46 @@ Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 470.7399444580078
+Loss of best model 3.9790380001068115
+Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 996us/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
+Loss of best model 5.726535797119141
 Earnings = 8.199874877929688
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
-MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.23791009237032246
+Loss of best model 7.09660005569458
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
+Loss of best model 5.187522888183594
 Earnings = 118.29998016357422
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1.5, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
+Loss of best model 8.483241081237793
 Earnings = 118.29998016357422
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.015591322807585297
-Loss of best model 3.028489828109741
-Final train result = 2370.825408935547
+Loss of best model 3.071272373199463
+Final train result = 1848.0096435546875
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
 TRAINING PHASE
@@ -521,71 +521,71 @@ Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
-Earnings = -2120.051139831543
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
+Earnings = 1554.810920715332
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
-Earnings = -2382.1399307250977
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
+Earnings = -1767.8803329467773
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+MADRC = 0.10769739636716784
+Loss of best model 3.7705023288726807
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = -4240.322696685791
+Loss of best model 3.5131261348724365
+Earnings = 3358.6403160095215
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = 2089.0579376220703
+Loss of best model 5.369813919067383
+Earnings = 5773.966857910156
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+Loss of best model 9.981521606445312
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
-Earnings = -195.00201416015625
+Loss of best model 7.93264627456665
+Earnings = 1834.9900588989258
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
-Earnings = 296.5701599121094
+Loss of best model 10.58491039276123
+Earnings = 1417.9891815185547
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.20865906432787373
-Loss of best model 8.243980407714844
+MADRC = 0.20210189544704182
+Loss of best model 6.236014366149902
 Train for JPM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
@@ -593,92 +593,92 @@ Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
-Earnings = -440.8509750366211
+Loss of best model 7.997894763946533
+Earnings = -884.6403884887695
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
-Earnings = 2371.2098236083984
+Loss of best model 13.050795555114746
+Earnings = 2103.439407348633
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.029968909859848757
-Loss of best model 9.687857627868652
+Loss of best model 10.375873565673828
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = 1267.3810119628906
+Loss of best model 0.7496525645256042
+Earnings = 1450.7310333251953
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
-Earnings = 1448.0413780212402
+Loss of best model 1.4439753293991089
+Earnings = 1837.250644683838
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.13259229285289742
-Loss of best model 0.9406512379646301
+Loss of best model 2.219566583633423
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 3326.239273071289
+Loss of best model 3.9790380001068115
+Earnings = -1976.9201736450195
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
-Earnings = 479.9496154785156
+Loss of best model 5.726535797119141
+Earnings = 1373.7995986938477
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
+MADRC = 0.23791009237032246
+Loss of best model 7.09660005569458
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
-Earnings = -831.5592651367188
+Loss of best model 5.187522888183594
+Earnings = -609.6283950805664
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
-Earnings = -778.3592910766602
+Loss of best model 8.483241081237793
+Earnings = 19.461830139160156
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.016225044380238293
-Loss of best model 4.786269664764404
-Final train result = 2192.354202270508
+Loss of best model 4.24114465713501
+Final train result = 15835.901710510254
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.075}
 TRAINING PHASE
@@ -686,25 +686,25 @@ Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
 Earnings = 0.0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
 Earnings = 0
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+MADRC = 0.10769739636716784
+Loss of best model 3.7705023288726807
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
@@ -712,68 +712,68 @@ Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = 512.0501708984375
+Loss of best model 3.5131261348724365
+Earnings = 749.957633972168
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = 950.3152809143066
+Loss of best model 5.369813919067383
+Earnings = 1035.3251037597656
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+Loss of best model 9.981521606445312
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
+Loss of best model 7.93264627456665
 Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
+Loss of best model 10.58491039276123
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.20210189544704182
-Loss of best model 5.219450950622559
+Loss of best model 6.236014366149902
 Train for JPM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
 MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
+Loss of best model 7.997894763946533
 Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
+Loss of best model 13.050795555114746
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.02228709210135185
-Loss of best model 5.755550861358643
+Loss of best model 5.966857433319092
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
@@ -781,53 +781,53 @@ Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = -22.88990020751953
+Loss of best model 0.7496525645256042
+Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 961us/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
+Loss of best model 1.4439753293991089
 Earnings = -22.88990020751953
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.12848418975230985
-Loss of best model 2.03652024269104
+Loss of best model 3.275806427001953
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 96.34993743896484
+Loss of best model 3.9790380001068115
+Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
+Loss of best model 5.726535797119141
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+Loss of best model 6.3063836097717285
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
+Loss of best model 5.187522888183594
 Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
@@ -835,15 +835,15 @@ Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
+Loss of best model 8.483241081237793
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.015591322807585297
-Loss of best model 3.028489828109741
-Final train result = 1535.8254890441895
+Loss of best model 3.071272373199463
+Final train result = 1785.2827377319336
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.075}
 TRAINING PHASE
@@ -851,25 +851,25 @@ Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
 Earnings = 0.0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
 Earnings = 0
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+MADRC = 0.10769739636716784
+Loss of best model 3.7705023288726807
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
@@ -877,22 +877,22 @@ Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = 353.4996795654297
+Loss of best model 3.5131261348724365
+Earnings = 779.5124359130859
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = 755.9723052978516
+Loss of best model 5.369813919067383
+Earnings = 855.2473754882812
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
 MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+Loss of best model 9.981521606445312
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
@@ -900,7 +900,7 @@ Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
+Loss of best model 7.93264627456665
 Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
@@ -908,14 +908,14 @@ Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
+Loss of best model 10.58491039276123
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.20210189544704182
-Loss of best model 5.219450950622559
+Loss of best model 6.236014366149902
 Train for JPM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
@@ -923,68 +923,68 @@ Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
+Loss of best model 7.997894763946533
 Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
+Loss of best model 13.050795555114746
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.02228709210135185
-Loss of best model 5.755550861358643
+Loss of best model 5.966857433319092
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 994us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = -33.7901496887207
+Loss of best model 0.7496525645256042
+Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
+Loss of best model 1.4439753293991089
 Earnings = -33.7901496887207
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.12848418975230985
-Loss of best model 2.03652024269104
+Loss of best model 3.275806427001953
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 996us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 8.199874877929688
+Loss of best model 3.9790380001068115
+Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
+Loss of best model 5.726535797119141
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 4ms/step
 MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+Loss of best model 6.3063836097717285
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
@@ -992,23 +992,23 @@ Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
+Loss of best model 5.187522888183594
 Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.056249999999999994, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
+Loss of best model 8.483241081237793
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.015591322807585297
-Loss of best model 3.028489828109741
-Final train result = 1083.8817100524902
+Loss of best model 3.071272373199463
+Final train result = 1634.7598114013672
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.025}
 TRAINING PHASE
@@ -1016,164 +1016,164 @@ Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
-Earnings = -1464.1102828979492
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
+Earnings = 963.8297805786133
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
-Earnings = -1489.0603637695312
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
+Earnings = -1312.1289596557617
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+MADRC = 0.10769739636716784
+Loss of best model 3.7705023288726807
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = -2791.4010124206543
+Loss of best model 3.5131261348724365
+Earnings = 1927.718849182129
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = -99.32778930664062
+Loss of best model 5.369813919067383
+Earnings = 3408.7534942626953
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+Loss of best model 9.981521606445312
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
-Earnings = 754.749755859375
+Loss of best model 7.93264627456665
+Earnings = 1975.7109298706055
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
-Earnings = 598.1896820068359
+Loss of best model 10.58491039276123
+Earnings = 1744.2311935424805
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.20210189544704182
-Loss of best model 5.219450950622559
+Loss of best model 6.236014366149902
 Train for JPM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
-Earnings = 183.97962951660156
+Loss of best model 7.997894763946533
+Earnings = 328.45965576171875
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
+Loss of best model 13.050795555114746
 Earnings = 267.78006744384766
 loading
 Model params
-{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.029968909859848757
-Loss of best model 9.687857627868652
+{'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+MADRC = 0.02228709210135185
+Loss of best model 5.966857433319092
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = 2869.17032623291
+Loss of best model 0.7496525645256042
+Earnings = 82.91024017333984
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
-Earnings = 2401.9700317382812
+Loss of best model 1.4439753293991089
+Earnings = 2268.8310012817383
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
-MADRC = 0.12848418975230985
-Loss of best model 2.03652024269104
+{'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+MADRC = 0.13259229285289742
+Loss of best model 2.219566583633423
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 2787.839530944824
+Loss of best model 3.9790380001068115
+Earnings = -41.40022277832031
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
-Earnings = 309.6498489379883
+Loss of best model 5.726535797119141
+Earnings = 968.4993896484375
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 4ms/step
+MADRC = 0.23791009237032246
+Loss of best model 7.09660005569458
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
-Earnings = 272.4101257324219
+Loss of best model 5.187522888183594
+Earnings = -701.5492477416992
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.018750000000000003, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
-Earnings = -152.96929931640625
+Loss of best model 8.483241081237793
+Earnings = -401.5393524169922
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
-MADRC = 0.015591322807585297
-Loss of best model 3.028489828109741
-Final train result = 2781.0903511047363
+{'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+MADRC = 0.016225044380238293
+Loss of best model 4.24114465713501
+Final train result = 10780.224517822266
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'BID_RISK_RATE': 0.05}
 TRAINING PHASE
@@ -1181,148 +1181,148 @@ Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
-Earnings = 9.290519714355469
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
+Earnings = 0.0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
-Earnings = -135.4397430419922
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
+Earnings = -69.07998657226562
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+MADRC = 0.10769739636716784
+Loss of best model 3.7705023288726807
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = 162.27509689331055
+Loss of best model 3.5131261348724365
+Earnings = 1354.4475059509277
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 996us/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = 912.7176971435547
+Loss of best model 5.369813919067383
+Earnings = 1299.1823844909668
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
-MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.038499501328856496
+Loss of best model 6.463083744049072
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
-Earnings = 0
+Loss of best model 7.93264627456665
+Earnings = 539.7601318359375
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
-Earnings = 0
-loading
-Model params
-{'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
-MADRC = 0.20210189544704182
-Loss of best model 5.219450950622559
-Train for JPM
-{<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'JPM'}
-loading
-Model params
-{'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
-MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
-Earnings = 0
-{<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'JPM'}
-loading
-Model params
-{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
-MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
+Loss of best model 10.58491039276123
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.20210189544704182
+Loss of best model 6.236014366149902
+Train for JPM
+{<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'JPM'}
+loading
+Model params
+{'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.027640209311414896
+Loss of best model 7.997894763946533
+Earnings = 0
+{<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'JPM'}
+loading
+Model params
+{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.0354206629124817
+Loss of best model 13.050795555114746
+Earnings = 0
+loading
+Model params
+{'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.02228709210135185
-Loss of best model 5.755550861358643
+Loss of best model 5.966857433319092
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = 1227.1601295471191
+Loss of best model 0.7496525645256042
+Earnings = -22.88990020751953
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
-Earnings = 348.33040618896484
+Loss of best model 1.4439753293991089
+Earnings = -22.88990020751953
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.12848418975230985
-Loss of best model 2.03652024269104
+Loss of best model 3.275806427001953
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 497.4099655151367
+Loss of best model 3.9790380001068115
+Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
+Loss of best model 5.726535797119141
 Earnings = 96.34993743896484
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
-MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+MADRC = 0.23791009237032246
+Loss of best model 7.09660005569458
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
+Loss of best model 5.187522888183594
 Earnings = -150.15033721923828
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 1, 'DATA_NAME': 'XOM'}
 loading
@@ -1330,15 +1330,15 @@ Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
+Loss of best model 8.483241081237793
 Earnings = -150.15033721923828
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.015591322807585297
-Loss of best model 3.028489828109741
-Final train result = 2658.7030715942383
+Loss of best model 3.071272373199463
+Final train result = 1817.5173377990723
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
 TRAINING PHASE
@@ -1346,164 +1346,164 @@ Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
-Earnings = -1352.0615997314453
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
+Earnings = 729.6496963500977
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
-Earnings = -1513.0908126831055
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
+Earnings = -1377.591453552246
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
+MADRC = 0.10769739636716784
+Loss of best model 3.7705023288726807
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = -2310.8863983154297
+Loss of best model 3.5131261348724365
+Earnings = 2863.7317810058594
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = 2105.8685913085938
+Loss of best model 5.369813919067383
+Earnings = 4171.3051834106445
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+Loss of best model 9.981521606445312
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
-Earnings = 596.9990005493164
+Loss of best model 7.93264627456665
+Earnings = 2034.1100692749023
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
-Earnings = 1047.101692199707
+Loss of best model 10.58491039276123
+Earnings = 1524.6491012573242
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.20865906432787373
-Loss of best model 8.243980407714844
+{'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+MADRC = 0.20210189544704182
+Loss of best model 6.236014366149902
 Train for JPM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
-Earnings = 89.19935607910156
+Loss of best model 7.997894763946533
+Earnings = -50.660499572753906
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
 MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
-Earnings = 1515.3908233642578
+Loss of best model 13.050795555114746
+Earnings = 1337.0504989624023
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.029968909859848757
-Loss of best model 9.687857627868652
+Loss of best model 10.375873565673828
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = 1173.3400535583496
+Loss of best model 0.7496525645256042
+Earnings = 1161.2905082702637
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
-Earnings = 1319.7202491760254
+Loss of best model 1.4439753293991089
+Earnings = 1234.2793998718262
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
 MADRC = 0.13259229285289742
-Loss of best model 0.9406512379646301
+Loss of best model 2.219566583633423
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 883us/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 2125.4784622192383
+Loss of best model 3.9790380001068115
+Earnings = -1164.4899673461914
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
-Earnings = 230.2688446044922
+Loss of best model 5.726535797119141
+Earnings = 991.9407348632812
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
-MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+MADRC = 0.23791009237032246
+Loss of best model 7.09660005569458
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
-Earnings = -128.46958923339844
+Loss of best model 5.187522888183594
+Earnings = -67.2889404296875
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
-Earnings = -433.09954833984375
+Loss of best model 8.483241081237793
+Earnings = 634.6113891601562
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.015591322807585297
-Loss of best model 3.028489828109741
-Final train result = 6181.680641174316
+MADRC = 0.016225044380238293
+Loss of best model 4.24114465713501
+Final train result = 13875.5298538208
 TRADE MANAGER PARAMS
 {'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.25, 'TAKE_PROFIT_ACTIVE_ACTION': (1.5, 2), 'BID_RISK_RATE': 0.05}
 TRAINING PHASE
@@ -1511,140 +1511,140 @@ Train for WMT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
-MADRC = 0.02726682125213682
-Loss of best model 6.533533573150635
-Earnings = 9.290519714355469
+MADRC = 0.02935539841336525
+Loss of best model 8.335002899169922
+Earnings = 0.0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'WMT'}
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
-MADRC = 0.030517667574931222
-Loss of best model 6.913127899169922
-Earnings = -135.4397430419922
+{'LEARNING_RATE': 0.001, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 42, 'LAYER_3': 13}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
+MADRC = 0.033317705779256086
+Loss of best model 9.930603981018066
+Earnings = -69.07998657226562
 loading
 Model params
-{'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 17, 'LAYER_3': 0}
+{'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 11, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
-MADRC = 0.0988919082968037
-Loss of best model 144.0382080078125
+MADRC = 0.10769739636716784
+Loss of best model 3.7705023288726807
 Train for AAPL
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.042361981419991875
-Loss of best model 1.613316297531128
-Earnings = 17.030227661132812
+Loss of best model 3.5131261348724365
+Earnings = 993.0423851013184
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'AAPL'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.05305563965129548
-Loss of best model 2.198016405105591
-Earnings = 705.0178260803223
+Loss of best model 5.369813919067383
+Earnings = 938.384765625
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
-MADRC = 0.05208462657551186
-Loss of best model 3.861811876296997
+MADRC = 0.038499501328856496
+Loss of best model 6.463083744049072
 Train for MSFT
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.030107711571335984
-Loss of best model 3.729635238647461
-Earnings = 0
+Loss of best model 7.93264627456665
+Earnings = 537.7599487304688
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'MSFT'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.03153135405182009
-Loss of best model 5.192447662353516
+Loss of best model 10.58491039276123
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.20210189544704182
-Loss of best model 5.219450950622559
+Loss of best model 6.236014366149902
 Train for JPM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 997us/step
 MADRC = 0.027640209311414896
-Loss of best model 4.5778961181640625
+Loss of best model 7.997894763946533
 Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'JPM'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.0354206629124817
-Loss of best model 7.272629737854004
+Loss of best model 13.050795555114746
 Earnings = 0
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 23, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.02228709210135185
-Loss of best model 5.755550861358643
+Loss of best model 5.966857433319092
 Train for KO
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 8ms/step
 MADRC = 0.015883514010507898
-Loss of best model 1.921927809715271
-Earnings = 1227.1601295471191
+Loss of best model 0.7496525645256042
+Earnings = -22.88990020751953
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'KO'}
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 40, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 50, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 3ms/step
 MADRC = 0.020402372601602232
-Loss of best model 1.5705041885375977
-Earnings = 348.33040618896484
+Loss of best model 1.4439753293991089
+Earnings = -22.88990020751953
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 23, 'NUM_OF_ADD_LAYERS': 2, 'LAYER_2': 28, 'LAYER_3': 18}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 996us/step
 MADRC = 0.12848418975230985
-Loss of best model 2.03652024269104
+Loss of best model 3.275806427001953
 Train for PG
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 998us/step
 MADRC = 0.023278919204034278
-Loss of best model 3.3061046600341797
-Earnings = 497.4099655151367
+Loss of best model 3.9790380001068115
+Earnings = 0
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'PG'}
 loading
 Model params
 {'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 999us/step
 MADRC = 0.029318445117951997
-Loss of best model 3.21855092048645
+Loss of best model 5.726535797119141
 Earnings = 96.34993743896484
 loading
 Model params
-{'LEARNING_RATE': 0.01, 'LAYER_1': 46, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 57, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
-MADRC = 0.24391924302399562
-Loss of best model 3.5151543617248535
+{'LEARNING_RATE': 0.001, 'LAYER_1': 28, 'NUM_OF_ADD_LAYERS': 1, 'LAYER_2': 42, 'LAYER_3': 0}
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1000us/step
+MADRC = 0.23791009237032246
+Loss of best model 7.09660005569458
 Train for XOM
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
@@ -1652,102 +1652,102 @@ Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
 1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.02968720289025689
-Loss of best model 3.233703374862671
+Loss of best model 5.187522888183594
 Earnings = -150.15033721923828
 {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.037500000000000006, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}
 loading
 Model params
 {'LEARNING_RATE': 0.01, 'LAYER_1': 51, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
 MADRC = 0.03600556698401791
-Loss of best model 4.768583297729492
+Loss of best model 8.483241081237793
 Earnings = -150.15033721923828
 loading
 Model params
 {'LEARNING_RATE': 0.1, 'LAYER_1': 34, 'NUM_OF_ADD_LAYERS': 0, 'LAYER_2': 0, 'LAYER_3': 0}
-1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 2ms/step
+1/2 [==============>...............] - ETA: 0s2/2 [==============================] - 0s 1ms/step
 MADRC = 0.015591322807585297
-Loss of best model 3.028489828109741
-Final train result = 2305.758331298828
+Loss of best model 3.071272373199463
+Final train result = 1454.1120338439941
 TRADING PHASE
 BEST TRADE MANAGER PARAMS
-{'DAYS_TO_KEEP_LIMIT': 7, 'KEEP_HOLDING_RATE': 0, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1.5), 'USE_ATR': True}
+{'DAYS_TO_KEEP_LIMIT': 14, 'KEEP_HOLDING_RATE': 0.5, 'TAKE_PROFIT_ACTIVE_ACTION': (2, 1), 'USE_ATR': True}
 CHOSEN PARAMS
-[('WMT', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('AAPL', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('MSFT', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('JPM', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('KO', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('PG', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('XOM', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'})]
+[('WMT', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('AAPL', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('MSFT', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 3, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('JPM', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('KO', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('PG', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'}), ('XOM', {<FFNTradeAlgorithmHyperparam.TEST_PERIOD_SIZE: 1>: 60, <FFNTradeAlgorithmHyperparam.PREDICTION_PERIOD: 2>: 5, <FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER: 3>: 0.01, <FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER: 4>: 2, 'DATA_NAME': 'XOM'})]
             EARNED_PROFIT  WINS  LOSES  DRAWS
 STOCK_NAME                                   
-XOM           -724.008743    69     61     38
-PG            -525.128433    14     51     68
-KO             649.691395    26     40     58
-JPM          -2043.560745    27     45     49
-MSFT          -391.768845    31     67     61
-AAPL         -1761.955177    40     59     57
-WMT            268.509392     1      4     14
-TOTAL        -4528.221157   208    327    345
-WIN RATE = 0.23636363636363636
-LOSE RATE = 0.3715909090909091
-RETURN ON START CAPITAL = -0.02264110578536987
-MAX DROWDOWN = 8701.184562683105
-AVG WIN / AVG LOSE = 1.0012018007980408
-Sharpe ratio = -5.7581742601649575e-05
-Calmar ratio = -5.996479184283894e-05
+XOM           1920.139854    95     74     12
+PG             390.950333    38     68     27
+KO           -1147.190857    37     77     41
+JPM            645.548820    46     54     19
+MSFT          5480.869125    69     55     12
+AAPL         -4485.428078    39     96     27
+WMT           1591.638885    43     65     36
+TOTAL         4396.528084   367    489    174
+WIN RATE = 0.35631067961165047
+LOSE RATE = 0.4747572815533981
+RETURN ON START CAPITAL = 0.021982640419006348
+MAX DROWDOWN = 8852.527515411377
+AVG WIN / AVG LOSE = 1.214562968986938
+Sharpe ratio = 5.2984258229813746e-05
+Calmar ratio = 5.084751991749987e-05
 5474 5474
-WMT Correlation last known close and prediction on train = 0.9874908479765041
+WMT Correlation last known close and prediction on train = 0.9934894177371182
 WMT Autocorrelation last known close and prediction on train = 0.9765215591826536
 5474 5474
-WMT Correlation last known close and prediction on full = 0.9982951718963888
+WMT Correlation last known close and prediction on full = 0.9992304080503387
 WMT Autocorrelation last known close and prediction on full = 0.9980284569258058
 5472 5472
-AAPL Correlation last known close and prediction on train = 0.9983140757893391
+AAPL Correlation last known close and prediction on train = 0.9985198162948002
 AAPL Autocorrelation last known close and prediction on train = 0.9929146164695312
 5472 5472
-AAPL Correlation last known close and prediction on full = 0.9996845088571152
+AAPL Correlation last known close and prediction on full = 0.9997281893610866
 AAPL Autocorrelation last known close and prediction on full = 0.998859138885307
+5474 5474
+MSFT Correlation last known close and prediction on train = 0.9986504919418969
+MSFT Autocorrelation last known close and prediction on train = 0.9954629342068393
+5474 5474
+MSFT Correlation last known close and prediction on full = 0.9997950136182598
+MSFT Autocorrelation last known close and prediction on full = 0.9993618679324361
 5472 5472
-MSFT Correlation last known close and prediction on train = 0.9988375324329815
-MSFT Autocorrelation last known close and prediction on train = 0.9927962782450394
-5472 5472
-MSFT Correlation last known close and prediction on full = 0.9998242390407828
-MSFT Autocorrelation last known close and prediction on full = 0.9989936665491049
-5472 5472
-JPM Correlation last known close and prediction on train = 0.9981222185279248
+JPM Correlation last known close and prediction on train = 0.9982921836012568
 JPM Autocorrelation last known close and prediction on train = 0.9792454061577046
 5472 5472
-JPM Correlation last known close and prediction on full = 0.9996822767539102
+JPM Correlation last known close and prediction on full = 0.999583720649999
 JPM Autocorrelation last known close and prediction on full = 0.9969033366402201
 5472 5472
-KO Correlation last known close and prediction on train = 0.9894209539951374
+KO Correlation last known close and prediction on train = 0.9896431526993895
 KO Autocorrelation last known close and prediction on train = 0.90517444286584
 5472 5472
-KO Correlation last known close and prediction on full = 0.9995131731839253
+KO Correlation last known close and prediction on full = 0.999449901765747
 KO Autocorrelation last known close and prediction on full = 0.9962069272316724
-5474 5474
-PG Correlation last known close and prediction on train = 0.9937217970546134
-PG Autocorrelation last known close and prediction on train = 0.9723090267368877
-5474 5474
-PG Correlation last known close and prediction on full = 0.9995427477348463
-PG Autocorrelation last known close and prediction on full = 0.99856878961726
-5474 5474
-XOM Correlation last known close and prediction on train = 0.9962580115064131
-XOM Autocorrelation last known close and prediction on train = 0.9867899835647922
-5474 5474
-XOM Correlation last known close and prediction on full = 0.9989005919617298
-XOM Autocorrelation last known close and prediction on full = 0.9963033020096778
+5472 5472
+PG Correlation last known close and prediction on train = 0.9920916167578097
+PG Autocorrelation last known close and prediction on train = 0.9612523715855386
+5472 5472
+PG Correlation last known close and prediction on full = 0.9994830423818278
+PG Autocorrelation last known close and prediction on full = 0.9978485890412457
+5472 5472
+XOM Correlation last known close and prediction on train = 0.9963629673875035
+XOM Autocorrelation last known close and prediction on train = 0.9790299375446792
+5472 5472
+XOM Correlation last known close and prediction on full = 0.9986374281986073
+XOM Autocorrelation last known close and prediction on full = 0.9941406712484819
 With respect to 2020 corona crisis
             EARNED_PROFIT  WINS  LOSES  DRAWS
 STOCK_NAME                                   
-XOM           1823.592117    63     47     36
-PG           -1149.407906     5     44     64
-KO            -269.678318    15     31     55
-JPM          -1119.790955    23     34     43
-MSFT         -3156.588913    18     53     58
-AAPL         -3528.645294    32     50     52
-WMT           -231.700287     0      2     13
-TOTAL        -7632.219555   156    261    321
-WIN RATE = 0.21138211382113822
-LOSE RATE = 0.35365853658536583
-RETURN ON START CAPITAL = -0.03816109777450562
-MAX DROWDOWN = 8701.184562683105
-AVG WIN / AVG LOSE = 0.8804543521540416
-Sharpe ratio = -0.00010215203307454425
-Calmar ratio = -0.00010643066129360532
+XOM           1784.260376    83     62     12
+PG            -466.999451    27     60     25
+KO           -1666.050468    26     64     40
+JPM            673.239082    38     43     16
+MSFT          3078.739822    55     45     12
+AAPL         -9493.330238    21     88     26
+WMT            781.188942    35     53     35
+TOTAL        -5308.951935   285    415    166
+WIN RATE = 0.32909930715935337
+LOSE RATE = 0.4792147806004619
+RETURN ON START CAPITAL = -0.026544759674072264
+MAX DROWDOWN = 8852.527515411377
+AVG WIN / AVG LOSE = 1.0211894891288
+Sharpe ratio = -6.10511196065995e-05
+Calmar ratio = -6.364747355189206e-05

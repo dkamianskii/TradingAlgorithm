@@ -159,7 +159,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         best_model: Optional[Sequential] = None
         best_model_params: Optional[Dict] = None
         best_val_loss = 0
-        random.seed(1666)
+        random.seed(7744)
 
         for i in range(0, FFNTradeAlgorithm.random_grid_search_attempts):
             model_params = {}
@@ -268,7 +268,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
         y = self._dataframe[f"target t + {self._prediction_period}"]
         es = EarlyStopping(min_delta=1e-8, patience=5, verbose=0)
         history = self._model.fit(x=x, y=y, epochs=FFNTradeAlgorithm.epochs, batch_size=FFNTradeAlgorithm.batch_size,
-                                  validation_split=0.15, shuffle=False, callbacks=[es], verbose=0)
+                                  validation_split=0.05, shuffle=False, callbacks=[es], verbose=0)
         print(f"Loss of best model {history.history['val_mse'][-1]}")
 
         predictions = self._model.predict(x=x, batch_size=FFNTradeAlgorithm.batch_size, verbose=0)

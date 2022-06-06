@@ -137,7 +137,7 @@ class RSI(AbstractIndicator):
             if self._prev_RSI is None:
                 self._prev_RSI = RSI
                 trade_action = TradeAction.NONE
-            elif (abs(RSI - self._prev_RSI) >= 5) or ((RSI > self._prev_RSI) and (RSI > 30.5)):
+            elif (abs(RSI - self._prev_RSI) >= 5) or ((RSI > self._prev_RSI) and (RSI > 29.5)):
                 trade_action = TradeAction.BUY
                 self._prev_RSI = None
             else:

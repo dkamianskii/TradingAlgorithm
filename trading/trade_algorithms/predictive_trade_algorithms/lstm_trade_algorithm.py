@@ -144,7 +144,7 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
         best_model_params: Optional[Dict] = None
         best_val_loss = 0
         es = EarlyStopping(min_delta=1e-8, patience=15, verbose=0)
-        random.seed(1666)
+        random.seed(4477)
 
         for window_size in model_grid[ModelGridColumns.WINDOW_SIZE]:
             x, y = self.__create_train_dataset(window_size)
@@ -230,7 +230,7 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
 
         print(f"MADRC = {self.mean_absolute_prediction_error}")
         es = EarlyStopping(min_delta=1e-8, patience=5, verbose=0)
-        history = self._model.fit(x=x, y=y, epochs=LSTMTradeAlgorithm.epochs, validation_split=0.15,
+        history = self._model.fit(x=x, y=y, epochs=LSTMTradeAlgorithm.epochs, validation_split=0.05,
                                   shuffle=False, callbacks=[es], verbose=0)
         print(f"Best model MSE = {history.history['mse'][-1]}, Val MSE = {history.history['val_mse'][-1]}")
 

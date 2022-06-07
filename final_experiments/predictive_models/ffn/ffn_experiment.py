@@ -47,7 +47,7 @@ for i in range(eb.random_grid_search_attempts - 2):
     ffn_hyperparams_grid = FFNTradeAlgorithm.get_default_hyperparameters_grid()
     if not use_atr:
         for ffn_hyperparams in ffn_hyperparams_grid:
-            ffn_hyperparams[FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER] = bid_risk_rate * 0.75
+            ffn_hyperparams[FFNTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER] = bid_risk_rate * 0.1
             ffn_hyperparams[FFNTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER] = active_action_multiplier
 
     manager = TradeManager(days_to_keep_limit=days_to_keep_limit,

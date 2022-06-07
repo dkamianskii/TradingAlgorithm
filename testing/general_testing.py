@@ -32,7 +32,7 @@ from helping.base_enum import BaseEnum
 
 cf.go_offline()
 
-start_date = "2017-01-01"
+start_date = "2000-01-01"
 end_date = "2021-12-31"
 test_start_date = "2019-01-01"
 back_test_start_date = "2019-01-01"
@@ -42,6 +42,9 @@ start_test = datetime.strptime(test_start_date, "%Y-%m-%d")
 
 data = yf.download("MSFT", start=start_date, end=end_date)
 
+p = plot_acf(data["Close"].diff()[1:])
+plt.title("MSFT Autocorrelation of Close Price diff")
+plt.show()
 
 # h = LSTMDiffTradeAlgorithm.create_hyperparameters_dict()
 # h["DATA_NAME"] = "TEST"

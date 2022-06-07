@@ -47,7 +47,7 @@ for i in range(eb.random_grid_search_attempts - 2):
     lstm_hyperparams_grid = LSTMDiffTradeAlgorithm.get_default_hyperparameters_grid()
     if not use_atr:
         for lstm_hyperparams in lstm_hyperparams_grid:
-            lstm_hyperparams[LSTMDiffTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER] = bid_risk_rate * 0.75
+            lstm_hyperparams[LSTMDiffTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER] = bid_risk_rate * 0.1
             lstm_hyperparams[LSTMDiffTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER] = active_action_multiplier
 
     manager = TradeManager(days_to_keep_limit=days_to_keep_limit,

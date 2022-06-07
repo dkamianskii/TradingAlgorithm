@@ -3,7 +3,8 @@ from datetime import datetime
 import yfinance as yf
 import pandas as pd
 from trading.trade_manager import TradeManager
-from trading.trade_algorithms.predictive_trade_algorithms.lstm_trade_algorithm import LSTMTradeAlgorithm
+from trading.trade_algorithms.predictive_trade_algorithms.lstm_trade_algorithm import LSTMTradeAlgorithm, \
+    LSTMTradeAlgorithmHyperparam
 
 img_dir = "images"
 
@@ -20,7 +21,7 @@ dates_test = pd.date_range(start_test, end_test)
 companies_names = ["WMT", "AAPL", "MSFT", "JPM", "KO", "PG", "XOM"]
 companies_data = {}
 
-for company in companies_names[:1]:
+for company in companies_names[3:4]:
     companies_data[company] = yf.download(company, start=start_date, end=end_date)
 # data_wmt = yf.download("WMT", start=start_date, end=end_date)
 # data_aapl = yf.download("AAPL", start=start_date, end=end_date)
@@ -30,10 +31,16 @@ for company in companies_names[:1]:
 # data_pg = yf.download("PG", start=start_date, end=end_date)
 # data_xom = yf.download("XOM", start=start_date, end=end_date)
 
-manager = TradeManager(days_to_chill=5)
+manager = TradeManager(days_to_keep_limit=14, keep_holding_rate=0,
+                       take_profit_multiplier=2, active_action_multiplier=1, bid_risk_rate=0.025)
 
-for company in companies_names[:1]:
-    manager.set_tracked_stock(company, companies_data[company][:test_start_date_ts], LSTMTradeAlgorithm())
+lstm_hyperparams_grid = LSTMTradeAlgorithm.get_default_hyperparameters_grid()
+for lstm_hyperparams in lstm_hyperparams_grid:
+    lstm_hyperparams[LSTMTradeAlgorithmHyperparam.TAKE_ACTION_BARRIER] = 0.025 * 0.1
+    lstm_hyperparams[LSTMTradeAlgorithmHyperparam.ACTIVE_ACTION_MULTIPLIER] = 1
+
+for company in companies_names[3:4]:
+    manager.set_tracked_stock(company, companies_data[company][:test_start_date_ts], LSTMTradeAlgorithm(), lstm_hyperparams_grid)
 
 # manager.set_tracked_stock("WMT", data_wmt[:test_start_date_ts], FFNTradeAlgorithm())
 # manager.set_tracked_stock("JPM", data_jpm[:test_start_date_ts], FFNTradeAlgorithm())
@@ -43,7 +50,7 @@ train_result = manager.train(back_test_start_date, plot_test=False)
 print(manager.get_chosen_params())
 
 for date in dates_test:
-    for company in companies_names[:1]:
+    for company in companies_names[3:4]:
         data = companies_data[company]
         if date in data[start_test:].index:
             point = data.loc[date]
@@ -61,7 +68,7 @@ for date in dates_test:
 print(manager.get_trade_results())
 # print(manager.get_bids_history())
 manager.plot_earnings_curve(img_dir)
-for company in companies_names:
+for company in companies_names[3:4]:
     manager.plot_stock_history(company, img_dir, plot_algorithm_graph=True)
     manager.plot_stock_history(company, img_dir, plot_algorithm_graph=True, plot_algorithm_graph_full=True)
 # manager.plot_stock_history("WMT", plot_algorithm_graph=True)

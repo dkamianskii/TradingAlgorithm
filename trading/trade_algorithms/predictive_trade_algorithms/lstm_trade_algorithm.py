@@ -49,7 +49,7 @@ class ModelGridColumns(BaseEnum):
 class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
     name = "LSTM trade algorithm"
     model_directory = "../../../models/lstm/"
-    # model_directory = "../models/lstm/"
+    #model_directory = "../models/lstm/"
 
     model_grid = {ModelGridColumns.WINDOW_SIZE: [20, 40, 60],
                   ModelGridColumns.LEARNING_RATE: [0.01, 0.001, 0.0001],
@@ -144,7 +144,7 @@ class LSTMTradeAlgorithm(AbstractTradeAlgorithm):
         best_model_params: Optional[Dict] = None
         best_val_loss = 0
         es = EarlyStopping(min_delta=1e-8, patience=15, verbose=0)
-        random.seed(4477)
+        random.seed(4117)
 
         for window_size in model_grid[ModelGridColumns.WINDOW_SIZE]:
             x, y = self.__create_train_dataset(window_size)

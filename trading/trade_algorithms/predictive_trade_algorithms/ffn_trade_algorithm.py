@@ -51,7 +51,7 @@ class FFNTradeAlgorithm(AbstractTradeAlgorithm):
     model_directory = "../../../models/ffn/"
     # model_directory = "../models/ffn/"
 
-    look_back_period = 3
+    look_back_period = 10
     min_max_periods = [20, 30, 40, 50]
     min_max_window = 10
 
